@@ -8,6 +8,7 @@ export const projectsData: Project[] = [
     tagline: 'Plataforma web para la gestión integral de producción avícola, lotes de postura, inventario y costos agropecuarios.',
     category: 'Gestión Agropecuaria & Avícola',
     icon: 'Sprout',
+    image: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=800&q=80',
     demoUrl: 'https://granjawp.netlify.app/',
     description: 'Sistema web y móvil desarrollado por INTEPE S.A.S. para digitalizar y automatizar el control productivo, sanitario, logístico y financiero de granjas avícolas y agropecuarias.',
     fullDescription: 'GranjaWP es una solución integral desarrollada por INTEPE S.A.S. para transformar la administración operativa en explotaciones avícolas. Permite registrar en tiempo real la producción de huevos clasificada por calidades, control de mortalidad, pesajes periódicos, consumo de alimento por lote y vacunación, integrando la liquidación de nómina de galponeros, control de ventas y cálculo automático del punto de equilibrio financiero por lote.',
@@ -42,6 +43,7 @@ export const projectsData: Project[] = [
     tagline: 'Plataforma web integral para la administración, monitoreo, control de cosechas, insumos y rentabilidad de cultivos bajo invernadero.',
     category: 'Automatización & Control Agronómico',
     icon: 'Layers',
+    image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80',
     demoUrl: 'https://invernaderofm.netlify.app/',
     description: 'Herramienta tecnológica desarrollada por INTEPE S.A.S. para supervisar variables agronómicas, registrar cosechas diarias, controlar dosificación de insumos y calcular la rentabilidad por bloque.',
     fullDescription: 'InvernaderoFM es una plataforma web modular diseñada por INTEPE S.A.S. para la gestión operativa y financiera de cultivos protegidos en invernaderos y naves agrícolas. Centraliza la captura diaria de datos de corte por producto y calidad, el control riguroso de bodega (fertilizantes, pesticidas y herramientas), la aplicación de dosis fitosanitarias por operario y la liquidación de labores agrícolas, permitiendo a los administradores conocer con exactitud el costo de producción y el margen neto de cada lote.',
@@ -77,6 +79,7 @@ export const projectsData: Project[] = [
     tagline: 'Sistema ERP empresarial modular desarrollado para centralizar y gestionar procesos administrativos, inventarios y operativos.',
     category: 'Sistemas Empresariales & ERP',
     icon: 'Building2',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
     description: 'Sistema empresarial integral desarrollado por INTEPE S.A.S. para unificar la administración, compras, inventarios, facturación y reportes gerenciales en una arquitectura escalable sin cobros abusivos por usuario.',
     fullDescription: 'INTEPR-ERP representa la capacidad de ingeniería de INTEPE S.A.S. para construir plataformas de gestión empresarial a la medida exacta del flujo de trabajo de cada organización. Centraliza los datos financieros, comerciales y logísticos en un entorno seguro y de alto rendimiento, permitiendo a gerencias y directores tomar decisiones con información auditada en tiempo real.',
     features: [

@@ -1,6 +1,8 @@
 import React from 'react';
 import { PageHeader } from '../components/common/PageHeader';
 import { DifferentialSection } from '../components/home/DifferentialSection';
+import { TrustSLASection } from '../components/home/TrustSLASection';
+import { TechEcosystem } from '../components/home/TechEcosystem';
 import { servicesData } from '../data/servicesData';
 import { Link } from 'react-router-dom';
 import { Check, Briefcase, Headset, Server, Wrench, ShieldCheck, Cloud, ArrowRight } from 'lucide-react';
@@ -96,6 +98,12 @@ export const ServicesPage: React.FC = () => {
 
         </div>
       </div>
+
+      {/* Trust & SLA Guarantees Banner */}
+      <TrustSLASection />
+
+      {/* Tech Ecosystem & Compatible Brands */}
+      <TechEcosystem />
 
       {/* Differential Section (Deep Forest Contrast) */}
       <DifferentialSection />

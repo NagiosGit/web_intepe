@@ -25,6 +25,7 @@ export interface Project {
   highlights: string[];
   targetAudience: string;
   icon: string;
+  image?: string;
   demoUrl?: string;
   modules?: { name: string; desc: string }[];
 }

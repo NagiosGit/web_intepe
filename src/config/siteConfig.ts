@@ -4,7 +4,7 @@ export const siteConfig = {
   commercialName: 'INTEPE S.A.S.',
   nit: '830.066.815-0',
   city: 'Bogotá, Colombia',
-  address: 'Calle 152A No. 54-68 Casa 8, Bogotá, Colombia',
+  address: 'Calle 152A No. 54-68, Bogotá, Colombia',
   bank: 'Bancolombia',
   email: 'soporte@intepe.net',
   phone: '(+60 1) 471 8518',

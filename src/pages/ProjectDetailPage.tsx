@@ -71,6 +71,23 @@ export const ProjectDetailPage: React.FC = () => {
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-stone-950 tracking-tight">
                   Descripción y Alcance de la Solución
                 </h2>
+
+                {project.image && (
+                  <div className="rounded-3xl overflow-hidden border border-[#E8E2D5] shadow-xs relative h-64 sm:h-72 w-full bg-stone-900 my-4">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover opacity-90"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
+                    <div className="absolute bottom-4 left-4 right-4 text-white">
+                      <span className="text-[11px] font-bold uppercase tracking-wider bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/20">
+                        {project.category}
+                      </span>
+                    </div>
+                  </div>
+                )}
+
                 <p className="text-stone-700 text-base leading-relaxed">
                   {project.fullDescription}
                 </p>
