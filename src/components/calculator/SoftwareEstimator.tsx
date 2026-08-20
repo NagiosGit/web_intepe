@@ -64,19 +64,19 @@ export const SoftwareEstimator: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-white border-t border-[#D8E1EA]/60">
+    <section className="py-24 bg-[#FDFBF7] border-b border-[#E8E2D5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#EAF5FC] border border-[#D8E1EA] text-[#0B1F3A] text-xs font-semibold">
-            <Code2 className="w-3.5 h-3.5 text-[#0077C8]" />
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#F5F0E6] border border-[#E8E2D5] text-stone-800 text-xs font-semibold shadow-2xs">
+            <Code2 className="w-3.5 h-3.5 text-[#B86B42]" />
             <span>Estimador de Alcance de Software</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1F3A] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-950 tracking-tight">
             Estime su proyecto de software
           </h2>
-          <p className="text-[#243447] text-sm sm:text-base">
+          <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
             Seleccione las características clave para estructurar una evaluación técnica preliminar con nuestros ingenieros.
           </p>
         </div>
@@ -84,12 +84,12 @@ export const SoftwareEstimator: React.FC = () => {
         {/* Form Container */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Controls */}
-          <div className="lg:col-span-7 bg-[#F7F9FC] rounded-3xl p-6 sm:p-8 border border-[#D8E1EA] space-y-6">
+          {/* Controls (Left 7 cols) */}
+          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E2D5] shadow-xs space-y-6">
             
             {/* 1. Tipo de Aplicación */}
             <div className="space-y-3">
-              <label className="text-xs font-bold text-[#0B1F3A] uppercase tracking-wider block">
+              <label className="text-xs font-bold text-stone-900 uppercase tracking-wider block">
                 1. Tipo de Aplicación requerida:
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -105,8 +105,8 @@ export const SoftwareEstimator: React.FC = () => {
                     onClick={() => setAppType(item.label)}
                     className={`py-2.5 px-3 rounded-xl text-xs font-semibold border text-center transition-all ${
                       appType === item.label
-                        ? 'bg-[#EAF5FC] border-[#0077C8] text-[#0077C8] font-bold shadow-sm ring-1 ring-[#0077C8]/20'
-                        : 'bg-white border-[#D8E1EA] text-[#243447] hover:bg-[#F7F9FC] hover:border-[#0077C8]/40'
+                        ? 'bg-[#F5F0E6] border-[#B86B42] text-stone-950 font-bold shadow-2xs ring-1 ring-[#B86B42]/30'
+                        : 'bg-[#FDFBF7] border-[#E8E2D5] text-stone-700 hover:bg-white hover:border-[#B86B42]/40'
                     }`}
                   >
                     {item.label}
@@ -116,8 +116,8 @@ export const SoftwareEstimator: React.FC = () => {
             </div>
 
             {/* 2. Plataforma */}
-            <div className="space-y-3 pt-3 border-t border-[#D8E1EA]">
-              <label className="text-xs font-bold text-[#0B1F3A] uppercase tracking-wider block">
+            <div className="space-y-3 pt-3 border-t border-[#F5F0E6]">
+              <label className="text-xs font-bold text-stone-900 uppercase tracking-wider block">
                 2. Plataforma principal de uso:
               </label>
               <div className="grid grid-cols-3 gap-2.5">
@@ -132,8 +132,8 @@ export const SoftwareEstimator: React.FC = () => {
                     onClick={() => setPlatform(p.label)}
                     className={`py-2.5 px-3 rounded-xl text-xs font-semibold border text-center transition-all ${
                       platform === p.label
-                        ? 'bg-[#EAF5FC] border-[#0077C8] text-[#0077C8] font-bold shadow-sm ring-1 ring-[#0077C8]/20'
-                        : 'bg-white border-[#D8E1EA] text-[#243447] hover:bg-[#F7F9FC] hover:border-[#0077C8]/40'
+                        ? 'bg-[#F5F0E6] border-[#B86B42] text-stone-950 font-bold shadow-2xs ring-1 ring-[#B86B42]/30'
+                        : 'bg-[#FDFBF7] border-[#E8E2D5] text-stone-700 hover:bg-white hover:border-[#B86B42]/40'
                     }`}
                   >
                     {p.label}
@@ -143,8 +143,8 @@ export const SoftwareEstimator: React.FC = () => {
             </div>
 
             {/* 3. Escala de Usuarios */}
-            <div className="space-y-3 pt-3 border-t border-[#D8E1EA]">
-              <label className="text-xs font-bold text-[#0B1F3A] uppercase tracking-wider block">
+            <div className="space-y-3 pt-3 border-t border-[#F5F0E6]">
+              <label className="text-xs font-bold text-stone-900 uppercase tracking-wider block">
                 3. Cantidad estimada de usuarios del sistema:
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -160,8 +160,8 @@ export const SoftwareEstimator: React.FC = () => {
                     onClick={() => setUserScale(scale)}
                     className={`py-2.5 px-3 rounded-xl text-xs font-semibold border text-center transition-all ${
                       userScale === scale
-                        ? 'bg-[#EAF5FC] border-[#0077C8] text-[#0077C8] font-bold shadow-sm ring-1 ring-[#0077C8]/20'
-                        : 'bg-white border-[#D8E1EA] text-[#243447] hover:bg-[#F7F9FC] hover:border-[#0077C8]/40'
+                        ? 'bg-[#F5F0E6] border-[#B86B42] text-stone-950 font-bold shadow-2xs ring-1 ring-[#B86B42]/30'
+                        : 'bg-[#FDFBF7] border-[#E8E2D5] text-stone-700 hover:bg-white hover:border-[#B86B42]/40'
                     }`}
                   >
                     {scale}
@@ -171,8 +171,8 @@ export const SoftwareEstimator: React.FC = () => {
             </div>
 
             {/* 4. Módulos / Requerimientos */}
-            <div className="space-y-3 pt-3 border-t border-[#D8E1EA]">
-              <label className="text-xs font-bold text-[#0B1F3A] uppercase tracking-wider block">
+            <div className="space-y-3 pt-3 border-t border-[#F5F0E6]">
+              <label className="text-xs font-bold text-stone-900 uppercase tracking-wider block">
                 4. Componentes y Módulos a integrar:
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -185,19 +185,19 @@ export const SoftwareEstimator: React.FC = () => {
                       onClick={() => toggleModule(m.id)}
                       className={`p-3 rounded-xl border cursor-pointer transition-all flex items-start space-x-2.5 ${
                         isChecked 
-                          ? 'bg-[#EAF5FC] border-[#0077C8] text-[#0B1F3A]' 
-                          : 'bg-white border-[#D8E1EA] text-[#64748B] hover:bg-[#F7F9FC] hover:border-[#0077C8]/40'
+                          ? 'bg-[#F5F0E6] border-[#B86B42] text-stone-950' 
+                          : 'bg-[#FDFBF7] border-[#E8E2D5] text-stone-600 hover:bg-white hover:border-[#B86B42]/40'
                       }`}
                     >
                       <input
                         type="checkbox"
                         checked={isChecked}
                         readOnly
-                        className="mt-0.5 w-4 h-4 rounded text-[#0077C8] focus:ring-[#0077C8] border-[#D8E1EA]"
+                        className="mt-0.5 w-4 h-4 rounded text-[#B86B42] focus:ring-[#B86B42] border-[#E8E2D5]"
                       />
                       <div>
-                        <div className="text-xs font-bold text-[#0B1F3A]">{m.label}</div>
-                        <div className="text-[10px] text-[#64748B]">{m.desc}</div>
+                        <div className="text-xs font-bold text-stone-900">{m.label}</div>
+                        <div className="text-[10px] text-stone-500">{m.desc}</div>
                       </div>
                     </div>
                   );
@@ -207,11 +207,11 @@ export const SoftwareEstimator: React.FC = () => {
 
           </div>
 
-          {/* Right Summary */}
-          <div className="lg:col-span-5 bg-[#0B1F3A] text-white rounded-3xl p-7 sm:p-8 border border-white/10 space-y-6 shadow-xl">
+          {/* Right Summary (Deep Forest Contrast) */}
+          <div className="lg:col-span-5 bg-[#1F2923] text-white rounded-3xl p-7 sm:p-8 border border-stone-800 space-y-6 shadow-xl sticky top-28">
             <div className="border-b border-white/10 pb-4">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#0077C8] flex items-center">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B86F4B] mr-1.5"></span>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#B86B42] flex items-center">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42] mr-1.5"></span>
                 Diagnóstico de Alcance
               </span>
               <h3 className="text-xl font-extrabold text-white">
@@ -219,7 +219,7 @@ export const SoftwareEstimator: React.FC = () => {
               </h3>
             </div>
 
-            <div className="space-y-3 text-xs text-slate-300">
+            <div className="space-y-3 text-xs text-stone-300">
               <div className="flex justify-between">
                 <span>Tipo de Solución:</span>
                 <strong className="text-white">{appType}</strong>
@@ -230,7 +230,7 @@ export const SoftwareEstimator: React.FC = () => {
               </div>
               <div className="flex justify-between">
                 <span>Nivel de Alcance:</span>
-                <strong className="text-[#EAF5FC] font-bold">{scopeInfo.level}</strong>
+                <strong className="text-[#FAF6EE] font-bold">{scopeInfo.level}</strong>
               </div>
               <div className="flex justify-between">
                 <span>Complejidad Técnica:</span>
@@ -242,12 +242,12 @@ export const SoftwareEstimator: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-black/30 border border-white/10 text-xs text-slate-300 space-y-2">
-              <div className="flex items-center text-[#B86F4B] font-semibold text-xs">
+            <div className="p-4 rounded-2xl bg-black/30 border border-white/10 text-xs text-stone-300 space-y-2">
+              <div className="flex items-center text-[#B86B42] font-semibold text-xs">
                 <Info className="w-4 h-4 mr-1.5 shrink-0" />
                 <span>Evaluación Técnica Requerida</span>
               </div>
-              <p className="text-[11px] text-slate-300 leading-relaxed">
+              <p className="text-[11px] text-stone-300 leading-relaxed">
                 Cada desarrollo de software es único. Para brindarle una cotización definitiva y cronograma exacto, realizamos una sesión de análisis de requerimientos sin costo.
               </p>
             </div>
@@ -257,15 +257,15 @@ export const SoftwareEstimator: React.FC = () => {
                 href={`https://wa.me/${siteConfig.whatsappNumber}?text=${generateWhatsAppMessage()}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3.5 px-5 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#0077C8] hover:bg-[#0062a6] shadow-lg shadow-[#0077C8]/25 flex items-center justify-center space-x-2 transition-all"
+                className="w-full py-3.5 px-5 rounded-xl font-bold text-xs uppercase tracking-wider text-stone-900 bg-[#FDFBF7] hover:bg-[#FAF6EE] shadow-md transition-all flex items-center justify-center space-x-2"
               >
-                <Send className="w-4 h-4" />
+                <Send className="w-4 h-4 text-[#B86B42]" />
                 <span>Solicitar evaluación técnica</span>
               </a>
 
               <a
                 href={`mailto:${siteConfig.email}?subject=Solicitud%20Evaluaci%C3%B3n%20Software%20INTEPE&body=Hola%20INTEPE,%20deseo%20evaluar%20un%20proyecto%20de%20software.`}
-                className="w-full py-3 px-5 rounded-xl font-semibold text-xs text-slate-300 hover:text-white bg-white/10 hover:bg-white/15 text-center block transition-all"
+                className="w-full py-3 px-5 rounded-xl font-semibold text-xs text-stone-300 hover:text-white bg-white/10 hover:bg-white/15 text-center block transition-all"
               >
                 Enviar por correo a soporte@intepe.net
               </a>

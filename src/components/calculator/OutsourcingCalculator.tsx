@@ -47,7 +47,7 @@ export const OutsourcingCalculator: React.FC = () => {
   const scheduleOpt = pricingConfig.schedules.find(s => s.id === selectedScheduleId) || pricingConfig.schedules[0];
   const infraOpt = pricingConfig.infrastructureLevels[1];
 
-  // Base Calculation Formula (Decoupled from pricingConfig.ts)
+  // Base Calculation Formula
   const calculateTotal = () => {
     let usersSubtotal = workstationsCount * userRange.baseRatePerUser;
     let serversSubtotal = serverOpt.cost;
@@ -118,34 +118,34 @@ export const OutsourcingCalculator: React.FC = () => {
   };
 
   return (
-    <section id="cotizador" className="py-24 bg-[#F7F9FC] border-b border-[#D8E1EA]/60">
+    <section id="cotizador" className="py-24 bg-[#FDFBF7] border-b border-[#E8E2D5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#EAF5FC] border border-[#D8E1EA] text-[#0B1F3A] text-xs font-semibold">
-            <Calculator className="w-3.5 h-3.5 text-[#0077C8]" />
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#F5F0E6] border border-[#E8E2D5] text-stone-800 text-xs font-semibold shadow-2xs">
+            <Calculator className="w-3.5 h-3.5 text-[#B86B42]" />
             <span>Herramienta Interactiva en Tiempo Real</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B1F3A] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-950 tracking-tight">
             Calcule su plan de Outsourcing TI
           </h2>
-          <p className="text-[#243447] text-sm sm:text-base">
-            Configure las necesidades de su empresa y obtenga una estimación en tiempo real.
+          <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+            Configure las necesidades de su empresa y obtenga una estimación transparente en segundos.
           </p>
         </div>
 
         {/* Wizard Form & Sticky Summary */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* 6 Steps Form */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-[#D8E1EA] shadow-sm space-y-8">
+          {/* 6 Steps Form (Left 7 cols) */}
+          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E2D5] shadow-xs space-y-8">
             
             {/* PASO 1: Usuarios */}
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-bold uppercase tracking-wider text-[#0B1F3A] flex items-center">
-                  <span className="w-5 h-5 rounded-full bg-[#0077C8] text-white text-[10px] flex items-center justify-center font-mono mr-2">1</span>
+                <label className="text-xs font-bold uppercase tracking-wider text-stone-900 flex items-center">
+                  <span className="w-5 h-5 rounded-full bg-[#1F2923] text-white text-[10px] flex items-center justify-center font-mono mr-2">1</span>
                   ¿Cuántos usuarios tiene su empresa?
                 </label>
               </div>
@@ -160,8 +160,8 @@ export const OutsourcingCalculator: React.FC = () => {
                     }}
                     className={`py-2.5 px-3 rounded-xl text-xs font-semibold border text-center transition-all ${
                       selectedUserRangeId === ur.id
-                        ? 'bg-[#EAF5FC] border-[#0077C8] text-[#0077C8] font-bold shadow-sm ring-1 ring-[#0077C8]/20'
-                        : 'bg-[#F7F9FC] border-[#D8E1EA] text-[#243447] hover:bg-white hover:border-[#0077C8]/40'
+                        ? 'bg-[#F5F0E6] border-[#B86B42] text-stone-950 font-bold shadow-2xs ring-1 ring-[#B86B42]/30'
+                        : 'bg-[#FDFBF7] border-[#E8E2D5] text-stone-700 hover:bg-white hover:border-[#B86B42]/40'
                     }`}
                   >
                     {ur.label}
@@ -171,13 +171,13 @@ export const OutsourcingCalculator: React.FC = () => {
             </div>
 
             {/* PASO 2: Equipos */}
-            <div className="space-y-3 pt-4 border-t border-[#F7F9FC]">
+            <div className="space-y-3 pt-4 border-t border-[#F5F0E6]">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-bold uppercase tracking-wider text-[#0B1F3A] flex items-center">
-                  <span className="w-5 h-5 rounded-full bg-[#0077C8] text-white text-[10px] flex items-center justify-center font-mono mr-2">2</span>
+                <label className="text-xs font-bold uppercase tracking-wider text-stone-900 flex items-center">
+                  <span className="w-5 h-5 rounded-full bg-[#1F2923] text-white text-[10px] flex items-center justify-center font-mono mr-2">2</span>
                   ¿Cuántos equipos necesita administrar?
                 </label>
-                <span className="text-sm font-bold text-[#0077C8] font-mono">
+                <span className="text-sm font-bold text-[#B86B42] font-mono">
                   {workstationsCount} computadores
                 </span>
               </div>
@@ -187,9 +187,9 @@ export const OutsourcingCalculator: React.FC = () => {
                 max="150"
                 value={workstationsCount}
                 onChange={(e) => setWorkstationsCount(Number(e.target.value))}
-                className="w-full h-2 bg-[#D8E1EA] rounded-lg appearance-none cursor-pointer accent-[#0077C8]"
+                className="w-full h-2 bg-[#E8E2D5] rounded-lg appearance-none cursor-pointer accent-[#B86B42]"
               />
-              <div className="flex justify-between text-[10px] text-[#64748B] font-mono">
+              <div className="flex justify-between text-[10px] text-stone-500 font-mono">
                 <span>1 equipo</span>
                 <span>50 equipos</span>
                 <span>100 equipos</span>
@@ -198,9 +198,9 @@ export const OutsourcingCalculator: React.FC = () => {
             </div>
 
             {/* PASO 3: Servidores */}
-            <div className="space-y-3 pt-4 border-t border-[#F7F9FC]">
-              <label className="text-xs font-bold uppercase tracking-wider text-[#0B1F3A] flex items-center">
-                <span className="w-5 h-5 rounded-full bg-[#0077C8] text-white text-[10px] flex items-center justify-center font-mono mr-2">3</span>
+            <div className="space-y-3 pt-4 border-t border-[#F5F0E6]">
+              <label className="text-xs font-bold uppercase tracking-wider text-stone-900 flex items-center">
+                <span className="w-5 h-5 rounded-full bg-[#1F2923] text-white text-[10px] flex items-center justify-center font-mono mr-2">3</span>
                 ¿Tiene servidores?
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -211,8 +211,8 @@ export const OutsourcingCalculator: React.FC = () => {
                     onClick={() => setSelectedServerId(srv.id)}
                     className={`py-2.5 px-3 rounded-xl text-xs font-semibold border text-center transition-all ${
                       selectedServerId === srv.id
-                        ? 'bg-[#EAF5FC] border-[#0077C8] text-[#0077C8] font-bold shadow-sm ring-1 ring-[#0077C8]/20'
-                        : 'bg-[#F7F9FC] border-[#D8E1EA] text-[#243447] hover:bg-white hover:border-[#0077C8]/40'
+                        ? 'bg-[#F5F0E6] border-[#B86B42] text-stone-950 font-bold shadow-2xs ring-1 ring-[#B86B42]/30'
+                        : 'bg-[#FDFBF7] border-[#E8E2D5] text-stone-700 hover:bg-white hover:border-[#B86B42]/40'
                     }`}
                   >
                     {srv.label}
@@ -222,9 +222,9 @@ export const OutsourcingCalculator: React.FC = () => {
             </div>
 
             {/* PASO 4: Modalidad de Soporte */}
-            <div className="space-y-3 pt-4 border-t border-[#F7F9FC]">
-              <label className="text-xs font-bold uppercase tracking-wider text-[#0B1F3A] flex items-center">
-                <span className="w-5 h-5 rounded-full bg-[#0077C8] text-white text-[10px] flex items-center justify-center font-mono mr-2">4</span>
+            <div className="space-y-3 pt-4 border-t border-[#F5F0E6]">
+              <label className="text-xs font-bold uppercase tracking-wider text-stone-900 flex items-center">
+                <span className="w-5 h-5 rounded-full bg-[#1F2923] text-white text-[10px] flex items-center justify-center font-mono mr-2">4</span>
                 ¿Qué modalidad de soporte necesita?
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -235,21 +235,21 @@ export const OutsourcingCalculator: React.FC = () => {
                     onClick={() => setSelectedSupportModeId(mode.id)}
                     className={`p-3.5 rounded-2xl text-left border transition-all ${
                       selectedSupportModeId === mode.id
-                        ? 'bg-[#EAF5FC] border-[#0077C8] text-[#0B1F3A] ring-2 ring-[#0077C8]/20'
-                        : 'bg-[#F7F9FC] border-[#D8E1EA] text-[#243447] hover:bg-white hover:border-[#0077C8]/40'
+                        ? 'bg-[#F5F0E6] border-[#B86B42] text-stone-950 ring-2 ring-[#B86B42]/25 font-bold'
+                        : 'bg-[#FDFBF7] border-[#E8E2D5] text-stone-700 hover:bg-white hover:border-[#B86B42]/40'
                     }`}
                   >
-                    <div className="font-bold text-xs sm:text-sm text-[#0B1F3A]">{mode.label}</div>
-                    <div className="text-[10px] text-[#64748B] mt-0.5">{mode.description}</div>
+                    <div className="font-bold text-xs sm:text-sm text-stone-900">{mode.label}</div>
+                    <div className="text-[10px] text-stone-500 mt-0.5">{mode.description}</div>
                   </button>
                 ))}
               </div>
             </div>
 
             {/* PASO 5: Horario */}
-            <div className="space-y-3 pt-4 border-t border-[#F7F9FC]">
-              <label className="text-xs font-bold uppercase tracking-wider text-[#0B1F3A] flex items-center">
-                <span className="w-5 h-5 rounded-full bg-[#0077C8] text-white text-[10px] flex items-center justify-center font-mono mr-2">5</span>
+            <div className="space-y-3 pt-4 border-t border-[#F5F0E6]">
+              <label className="text-xs font-bold uppercase tracking-wider text-stone-900 flex items-center">
+                <span className="w-5 h-5 rounded-full bg-[#1F2923] text-white text-[10px] flex items-center justify-center font-mono mr-2">5</span>
                 Horario de cobertura:
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -260,21 +260,21 @@ export const OutsourcingCalculator: React.FC = () => {
                     onClick={() => setSelectedScheduleId(sc.id)}
                     className={`p-3 rounded-xl text-left border transition-all ${
                       selectedScheduleId === sc.id
-                        ? 'bg-[#EAF5FC] border-[#0077C8] text-[#0B1F3A] font-bold'
-                        : 'bg-[#F7F9FC] border-[#D8E1EA] text-[#243447] hover:bg-white hover:border-[#0077C8]/40'
+                        ? 'bg-[#F5F0E6] border-[#B86B42] text-stone-950 font-bold'
+                        : 'bg-[#FDFBF7] border-[#E8E2D5] text-stone-700 hover:bg-white hover:border-[#B86B42]/40'
                     }`}
                   >
                     <div className="text-xs font-bold">{sc.label}</div>
-                    <div className="text-[10px] text-[#64748B]">{sc.description}</div>
+                    <div className="text-[10px] text-stone-500">{sc.description}</div>
                   </button>
                 ))}
               </div>
             </div>
 
             {/* PASO 6: Servicios Adicionales */}
-            <div className="space-y-3 pt-4 border-t border-[#F7F9FC]">
-              <label className="text-xs font-bold uppercase tracking-wider text-[#0B1F3A] flex items-center">
-                <span className="w-5 h-5 rounded-full bg-[#0077C8] text-white text-[10px] flex items-center justify-center font-mono mr-2">6</span>
+            <div className="space-y-3 pt-4 border-t border-[#F5F0E6]">
+              <label className="text-xs font-bold uppercase tracking-wider text-stone-900 flex items-center">
+                <span className="w-5 h-5 rounded-full bg-[#1F2923] text-white text-[10px] flex items-center justify-center font-mono mr-2">6</span>
                 Servicios adicionales:
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -286,19 +286,19 @@ export const OutsourcingCalculator: React.FC = () => {
                       onClick={() => toggleAddon(addon.id)}
                       className={`p-3 rounded-xl border cursor-pointer transition-all flex items-start space-x-2.5 ${
                         isChecked 
-                          ? 'bg-[#EAF5FC] border-[#0077C8]/60 text-[#0B1F3A]' 
-                          : 'bg-[#F7F9FC] border-[#D8E1EA] text-[#64748B] hover:bg-white hover:border-[#0077C8]/40'
+                          ? 'bg-[#F5F0E6] border-[#B86B42] text-stone-950' 
+                          : 'bg-[#FDFBF7] border-[#E8E2D5] text-stone-600 hover:bg-white hover:border-[#B86B42]/40'
                       }`}
                     >
                       <input
                         type="checkbox"
                         checked={isChecked}
                         readOnly
-                        className="mt-0.5 w-4 h-4 rounded text-[#0077C8] focus:ring-[#0077C8] border-[#D8E1EA] pointer-events-none"
+                        className="mt-0.5 w-4 h-4 rounded text-[#B86B42] focus:ring-[#B86B42] border-[#E8E2D5] pointer-events-none"
                       />
                       <div>
-                        <div className="text-xs font-bold text-[#0B1F3A]">{addon.label}</div>
-                        <div className="text-[10px] text-[#64748B]">{addon.description}</div>
+                        <div className="text-xs font-bold text-stone-900">{addon.label}</div>
+                        <div className="text-[10px] text-stone-500">{addon.description}</div>
                       </div>
                     </div>
                   );
@@ -310,12 +310,12 @@ export const OutsourcingCalculator: React.FC = () => {
 
           {/* Lateral Summary (Sticky on Desktop, Accordion on Mobile) */}
           <div className="lg:col-span-5 sticky top-28 space-y-4">
-            <div className="bg-[#0B1F3A] text-white rounded-3xl p-7 border border-white/10 shadow-xl space-y-5">
+            <div className="bg-[#1F2923] text-white rounded-3xl p-7 border border-stone-800 shadow-xl space-y-5">
               
               <div className="border-b border-white/10 pb-3 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#0077C8] flex items-center">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#B86F4B] mr-1.5"></span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#B86B42] flex items-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42] mr-1.5"></span>
                     Resumen en Tiempo Real
                   </span>
                   <h3 className="text-lg font-bold text-white">
@@ -325,14 +325,14 @@ export const OutsourcingCalculator: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setMobileSummaryOpen(!mobileSummaryOpen)}
-                  className="lg:hidden p-1.5 rounded-lg bg-white/10 text-slate-300"
+                  className="lg:hidden p-1.5 rounded-lg bg-white/10 text-stone-300"
                 >
                   {mobileSummaryOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                 </button>
               </div>
 
               {/* Breakdown Details */}
-              <div className={`space-y-2 text-xs text-slate-300 ${mobileSummaryOpen ? 'block' : 'hidden lg:block'}`}>
+              <div className={`space-y-2 text-xs text-stone-300 ${mobileSummaryOpen ? 'block' : 'hidden lg:block'}`}>
                 <div className="flex justify-between">
                   <span>Usuarios / Puestos:</span>
                   <strong className="text-white font-mono">{workstationsCount} equipos</strong>
@@ -347,7 +347,7 @@ export const OutsourcingCalculator: React.FC = () => {
                 </div>
                 <div className="flex justify-between">
                   <span>Modalidad:</span>
-                  <strong className="text-[#0077C8]">{supportMode.label}</strong>
+                  <strong className="text-[#B86B42] font-semibold">{supportMode.label}</strong>
                 </div>
                 <div className="flex justify-between">
                   <span>Horario:</span>
@@ -355,8 +355,8 @@ export const OutsourcingCalculator: React.FC = () => {
                 </div>
 
                 <div className="pt-2 border-t border-white/10">
-                  <span className="text-[11px] text-slate-400 block mb-1">Adicionales incluidos:</span>
-                  <p className="text-[11px] text-[#EAF5FC] leading-relaxed font-medium">
+                  <span className="text-[11px] text-stone-400 block mb-1">Adicionales incluidos:</span>
+                  <p className="text-[11px] text-stone-200 leading-relaxed font-medium">
                     {getAddonsNames() || 'Ninguno'}
                   </p>
                 </div>
@@ -364,15 +364,15 @@ export const OutsourcingCalculator: React.FC = () => {
 
               {/* Price Tag Output */}
               <div className="p-4 rounded-2xl bg-black/30 border border-white/10 space-y-1">
-                <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">
+                <span className="text-[10px] uppercase tracking-wider text-stone-400 font-bold">
                   SU PLAN ESTIMADO:
                 </span>
-                <div className="text-2xl sm:text-3xl font-black text-[#EAF5FC] font-mono">
+                <div className="text-2xl sm:text-3xl font-black text-[#FAF6EE] font-mono">
                   {formatCOP(estimatedMonthlyTotal)}
-                  <span className="text-xs font-normal text-slate-400 ml-1">COP / mes</span>
+                  <span className="text-xs font-normal text-stone-400 ml-1">COP / mes</span>
                 </div>
-                <div className="flex items-center text-[10px] text-slate-400 pt-1">
-                  <Info className="w-3 h-3 mr-1 text-[#0077C8] shrink-0" />
+                <div className="flex items-center text-[10px] text-stone-400 pt-1">
+                  <Info className="w-3 h-3 mr-1 text-[#B86B42] shrink-0" />
                   <span>*Estimado orientativo en pesos colombianos antes de IVA.</span>
                 </div>
               </div>
@@ -381,10 +381,10 @@ export const OutsourcingCalculator: React.FC = () => {
               <div className="pt-1">
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className="w-full py-3.5 px-5 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#0077C8] hover:bg-[#0062a6] shadow-lg shadow-[#0077C8]/25 transition-all flex items-center justify-center space-x-2"
+                  className="w-full py-3.5 px-5 rounded-xl font-bold text-xs uppercase tracking-wider text-stone-900 bg-[#FDFBF7] hover:bg-[#FAF6EE] shadow-md hover:shadow-lg transition-all flex items-center justify-center space-x-2"
                 >
                   <span>SOLICITAR ESTA PROPUESTA</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-[#B86B42]" />
                 </button>
               </div>
 
@@ -397,16 +397,16 @@ export const OutsourcingCalculator: React.FC = () => {
 
       {/* Lead Capture Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B1F3A]/70 backdrop-blur-sm animate-in fade-in duration-150">
-          <div className="relative w-full max-w-lg bg-white rounded-3xl p-7 sm:p-8 shadow-2xl border border-[#D8E1EA]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1F2923]/70 backdrop-blur-sm animate-in fade-in duration-150">
+          <div className="relative w-full max-w-lg bg-white rounded-3xl p-7 sm:p-8 shadow-2xl border border-[#E8E2D5]">
             
             {isSubmitted ? (
               <div className="text-center py-8 space-y-3">
-                <div className="w-14 h-14 rounded-full bg-[#EAF5FC] text-[#0077C8] flex items-center justify-center mx-auto border border-[#D8E1EA]">
+                <div className="w-14 h-14 rounded-full bg-[#F5F0E6] text-[#B86B42] flex items-center justify-center mx-auto border border-[#E8E2D5]">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
-                <h3 className="text-xl font-bold text-[#0B1F3A]">¡Propuesta Solicitada!</h3>
-                <p className="text-[#243447] text-xs sm:text-sm">
+                <h3 className="text-xl font-bold text-stone-900">¡Propuesta Solicitada!</h3>
+                <p className="text-stone-600 text-xs sm:text-sm">
                   Hemos transferido los detalles calculados al canal oficial de INTEPE S.A.S. Un ingeniero se comunicará a la brevedad.
                 </p>
                 <button
@@ -414,26 +414,26 @@ export const OutsourcingCalculator: React.FC = () => {
                     setIsSubmitted(false);
                     setIsModalOpen(false);
                   }}
-                  className="px-5 py-2 rounded-xl text-xs font-bold bg-[#0B1F3A] text-white"
+                  className="px-5 py-2 rounded-xl text-xs font-bold bg-[#1F2923] text-white"
                 >
                   Cerrar
                 </button>
               </div>
             ) : (
               <form onSubmit={handleFormSubmit} className="space-y-4">
-                <div className="flex items-center justify-between border-b border-[#F7F9FC] pb-3">
+                <div className="flex items-center justify-between border-b border-[#F5F0E6] pb-3">
                   <div>
-                    <h3 className="text-lg font-bold text-[#0B1F3A]">
+                    <h3 className="text-lg font-bold text-stone-900">
                       Solicitud Formal de Propuesta TI
                     </h3>
-                    <p className="text-xs text-[#64748B]">
-                      Estimado: <strong className="text-[#0077C8]">{formatCOP(estimatedMonthlyTotal)} COP / mes</strong>
+                    <p className="text-xs text-stone-500">
+                      Estimado: <strong className="text-[#B86B42]">{formatCOP(estimatedMonthlyTotal)} COP / mes</strong>
                     </p>
                   </div>
                   <button
                     type="button"
                     onClick={() => setIsModalOpen(false)}
-                    className="p-1 rounded-lg text-[#64748B] hover:text-[#0B1F3A]"
+                    className="p-1 rounded-lg text-stone-400 hover:text-stone-900"
                   >
                     ✕
                   </button>
@@ -441,98 +441,98 @@ export const OutsourcingCalculator: React.FC = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="text-xs font-semibold text-[#243447] block mb-1">Nombre Completo *</label>
+                    <label className="text-xs font-semibold text-stone-700 block mb-1">Nombre Completo *</label>
                     <input
                       type="text"
                       required
                       placeholder="Ej. Andrés Ramírez"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-[#F7F9FC] border border-[#D8E1EA] text-xs text-[#243447] focus:outline-none focus:border-[#0077C8] focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-[#FDFBF7] border border-[#E8E2D5] text-xs text-stone-900 focus:outline-none focus:border-[#B86B42] focus:bg-white"
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-[#243447] block mb-1">Empresa / Razón Social *</label>
+                    <label className="text-xs font-semibold text-stone-700 block mb-1">Empresa / Razón Social *</label>
                     <input
                       type="text"
                       required
                       placeholder="Ej. Logística SAS"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-[#F7F9FC] border border-[#D8E1EA] text-xs text-[#243447] focus:outline-none focus:border-[#0077C8] focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-[#FDFBF7] border border-[#E8E2D5] text-xs text-stone-900 focus:outline-none focus:border-[#B86B42] focus:bg-white"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="text-xs font-semibold text-[#243447] block mb-1">Cargo en la empresa</label>
+                    <label className="text-xs font-semibold text-stone-700 block mb-1">Cargo en la empresa</label>
                     <input
                       type="text"
                       placeholder="Ej. Gerente General / TI"
                       value={formData.role}
                       onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-[#F7F9FC] border border-[#D8E1EA] text-xs text-[#243447] focus:outline-none focus:border-[#0077C8] focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-[#FDFBF7] border border-[#E8E2D5] text-xs text-stone-900 focus:outline-none focus:border-[#B86B42] focus:bg-white"
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-[#243447] block mb-1">Ciudad *</label>
+                    <label className="text-xs font-semibold text-stone-700 block mb-1">Ciudad *</label>
                     <input
                       type="text"
                       required
                       placeholder="Ej. Bogotá"
                       value={formData.city}
                       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-[#F7F9FC] border border-[#D8E1EA] text-xs text-[#243447] focus:outline-none focus:border-[#0077C8] focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-[#FDFBF7] border border-[#E8E2D5] text-xs text-stone-900 focus:outline-none focus:border-[#B86B42] focus:bg-white"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="text-xs font-semibold text-[#243447] block mb-1">Teléfono / WhatsApp *</label>
+                    <label className="text-xs font-semibold text-stone-700 block mb-1">Teléfono / WhatsApp *</label>
                     <input
                       type="tel"
                       required
                       placeholder="313 386 2656"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-[#F7F9FC] border border-[#D8E1EA] text-xs text-[#243447] focus:outline-none focus:border-[#0077C8] focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-[#FDFBF7] border border-[#E8E2D5] text-xs text-stone-900 focus:outline-none focus:border-[#B86B42] focus:bg-white"
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-[#243447] block mb-1">Correo Corporativo *</label>
+                    <label className="text-xs font-semibold text-stone-700 block mb-1">Correo Corporativo *</label>
                     <input
                       type="email"
                       required
                       placeholder="andres@empresa.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl bg-[#F7F9FC] border border-[#D8E1EA] text-xs text-[#243447] focus:outline-none focus:border-[#0077C8] focus:bg-white"
+                      className="w-full px-3 py-2 rounded-xl bg-[#FDFBF7] border border-[#E8E2D5] text-xs text-stone-900 focus:outline-none focus:border-[#B86B42] focus:bg-white"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-[#243447] block mb-1">Comentarios o requerimientos adicionales</label>
+                  <label className="text-xs font-semibold text-stone-700 block mb-1">Comentarios adicionales</label>
                   <textarea
                     rows={2}
                     placeholder="Detalles sobre sedes, sucursales, o necesidades puntuales..."
                     value={formData.comments}
                     onChange={(e) => setFormData({ ...formData, comments: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-[#F7F9FC] border border-[#D8E1EA] text-xs text-[#243447] focus:outline-none focus:border-[#0077C8] focus:bg-white"
+                    className="w-full px-3 py-2 rounded-xl bg-[#FDFBF7] border border-[#E8E2D5] text-xs text-stone-900 focus:outline-none focus:border-[#B86B42] focus:bg-white"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#0077C8] hover:bg-[#0062a6] transition-all flex items-center justify-center space-x-2"
+                  className="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#1F2923] hover:bg-[#141C17] shadow-md transition-all flex items-center justify-center space-x-2"
                 >
-                  <Send className="w-3.5 h-3.5" />
+                  <Send className="w-3.5 h-3.5 text-[#B86B42]" />
                   <span>Enviar Propuesta a INTEPE S.A.S.</span>
                 </button>
 
-                <p className="text-[10px] text-[#64748B] text-center">
+                <p className="text-[10px] text-stone-500 text-center">
                   Información protegida bajo la Ley 1581 de 2012 de Colombia.
                 </p>
               </form>

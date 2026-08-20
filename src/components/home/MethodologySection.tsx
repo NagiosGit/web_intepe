@@ -37,18 +37,19 @@ export const MethodologySection: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-white border-b border-[#D8E1EA]/60">
+    <section className="py-24 bg-[#FAF6EE] border-b border-[#E8E2D5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#0077C8] bg-[#EAF5FC] px-3 py-1 rounded-full border border-[#D8E1EA]">
-            Metodología Comprobada
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1F3A] tracking-tight">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white border border-[#E8E2D5] text-stone-800 text-xs font-semibold shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42]"></span>
+            <span>Metodología Comprobada</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-950 tracking-tight">
             De la idea al software en funcionamiento
           </h2>
-          <p className="text-[#243447] text-sm sm:text-base">
+          <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
             Un proceso estructurado y transparente para convertir necesidades operativas en herramientas de software de alto impacto.
           </p>
         </div>
@@ -60,23 +61,23 @@ export const MethodologySection: React.FC = () => {
             return (
               <div 
                 key={idx}
-                className="bg-[#F7F9FC] rounded-2xl p-6 border border-[#D8E1EA] hover:border-[#0077C8] hover:bg-white hover:shadow-md transition-all duration-200 flex flex-col justify-between group space-y-4"
+                className="bg-white rounded-3xl p-6 border border-[#E8E2D5] shadow-xs hover:-translate-y-1 hover:shadow-md hover:border-[#B86B42]/50 transition-all duration-300 flex flex-col justify-between group space-y-4"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-2xl font-black text-[#B86F4B] tracking-tight">
+                    <span className="font-mono text-2xl font-black text-[#B86B42] tracking-tight">
                       {step.number}
                     </span>
-                    <div className="w-8 h-8 rounded-lg bg-white border border-[#D8E1EA] flex items-center justify-center text-[#0077C8] group-hover:bg-[#0077C8] group-hover:text-white transition-colors">
+                    <div className="w-9 h-9 rounded-xl bg-[#F5F0E6] border border-[#E8E2D5] flex items-center justify-center text-stone-800 group-hover:bg-[#1F2923] group-hover:text-white transition-colors">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
 
-                  <h3 className="font-bold text-sm text-[#0B1F3A] group-hover:text-[#0077C8] transition-colors">
+                  <h3 className="font-bold text-sm text-stone-950 group-hover:text-[#B86B42] transition-colors">
                     {step.title}
                   </h3>
 
-                  <p className="text-xs text-[#64748B] leading-relaxed">
+                  <p className="text-xs text-stone-600 leading-relaxed">
                     {step.desc}
                   </p>
                 </div>
@@ -86,13 +87,13 @@ export const MethodologySection: React.FC = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-12 text-center">
+        <div className="mt-14 text-center">
           <Link
             to="/contacto"
-            className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#0077C8] hover:text-[#0B1F3A] transition-colors"
+            className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-stone-900 hover:text-[#B86B42] transition-colors"
           >
             <span>Iniciar consultoría de desarrollo</span>
-            <ArrowRight className="w-4 h-4 text-[#B86F4B]" />
+            <ArrowRight className="w-4 h-4 text-[#B86B42]" />
           </Link>
         </div>
 

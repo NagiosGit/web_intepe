@@ -41,7 +41,6 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menus on route change
   useEffect(() => {
     setMobileMenuOpen(false);
     setServicesOpen(false);
@@ -88,33 +87,33 @@ export const Navbar: React.FC = () => {
   ].includes(location.pathname);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-white/95 backdrop-blur-md border-b border-[#D8E1EA] shadow-sm' 
-        : 'bg-white border-b border-[#EAF5FC]'
+        ? 'bg-[#FDFBF7]/95 backdrop-blur-md border-b border-[#E8E2D5] shadow-xs' 
+        : 'bg-[#FDFBF7] border-b border-[#E8E2D5]/70'
     }`}>
       
-      {/* 1. Top Micro Header - Discreto corporativo */}
-      <div className="hidden lg:block bg-[#F7F9FC] border-b border-[#D8E1EA]/60 py-1.5 text-xs text-[#64748B]">
+      {/* 1. Micro Header - Tonos Cálidos */}
+      <div className="hidden lg:block bg-[#F5F0E6] border-b border-[#E8E2D5]/60 py-1.5 text-xs text-stone-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          <div className="flex items-center space-x-2 font-medium text-[#243447]">
-            <span className="w-2 h-2 rounded-full bg-[#B86F4B] inline-block"></span>
+          <div className="flex items-center space-x-2 font-medium text-stone-800">
+            <span className="w-2 h-2 rounded-full bg-[#B86B42] inline-block"></span>
             <span>{siteConfig.legalName} · {siteConfig.city}</span>
           </div>
           <div className="flex items-center space-x-6">
             <a 
               href={`mailto:${siteConfig.email}`}
-              className="flex items-center hover:text-[#0077C8] transition-colors"
+              className="flex items-center hover:text-[#B86B42] transition-colors"
             >
-              <Mail className="w-3.5 h-3.5 mr-1.5 text-[#0077C8]" />
+              <Mail className="w-3.5 h-3.5 mr-1.5 text-stone-500" />
               <span>{siteConfig.email}</span>
             </a>
-            <span className="text-[#D8E1EA]">|</span>
+            <span className="text-[#E8E2D5]">|</span>
             <a 
               href={`tel:${siteConfig.mobile.replace(/[^0-9]/g, '')}`}
-              className="flex items-center font-semibold text-[#0B1F3A] hover:text-[#0077C8] transition-colors"
+              className="flex items-center font-semibold text-stone-800 hover:text-[#B86B42] transition-colors"
             >
-              <Phone className="w-3.5 h-3.5 mr-1.5 text-[#0077C8]" />
+              <Phone className="w-3.5 h-3.5 mr-1.5 text-[#B86B42]" />
               <span>{siteConfig.mobile}</span>
             </a>
           </div>
@@ -125,7 +124,7 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* Logo LOGON.png + Sigla Solo_Intepe_2026_8.png */}
+          {/* Logo & Sigla */}
           <Link to="/" className="flex items-center space-x-3 group shrink-0">
             <img 
               src="/logo/LOGON.png" 
@@ -139,11 +138,11 @@ export const Navbar: React.FC = () => {
                   alt="INTEPE" 
                   className="h-5 sm:h-6 w-auto object-contain"
                 />
-                <span className="text-xs font-black tracking-wider text-[#0077C8]">
+                <span className="text-xs font-black tracking-wider text-stone-700">
                   S.A.S.
                 </span>
               </div>
-              <span className="text-[10px] text-[#64748B] font-semibold tracking-wider uppercase mt-0.5">
+              <span className="text-[10px] text-stone-500 font-semibold tracking-wider uppercase mt-0.5">
                 Soluciones Tecnológicas B2B
               </span>
             </div>
@@ -155,16 +154,16 @@ export const Navbar: React.FC = () => {
             {/* INICIO */}
             <Link
               to="/"
-              className={`px-3 py-2 rounded-lg transition-colors ${
+              className={`px-3 py-2 rounded-xl transition-colors ${
                 location.pathname === '/' 
-                  ? 'text-[#0077C8] font-bold' 
-                  : 'text-[#0B1F3A] hover:text-[#0077C8]'
+                  ? 'text-[#1F2923] font-bold bg-[#F5F0E6]' 
+                  : 'text-stone-700 hover:text-stone-950 hover:bg-[#FAF6EE]'
               }`}
             >
               INICIO
             </Link>
 
-            {/* SERVICIOS ▾ (Dropdown) */}
+            {/* SERVICIOS ▾ */}
             <div 
               className="relative"
               onMouseEnter={handleServicesEnter}
@@ -172,83 +171,83 @@ export const Navbar: React.FC = () => {
             >
               <button
                 type="button"
-                className={`px-3 py-2 rounded-lg transition-colors flex items-center space-x-1 ${
-                  isServicesActive ? 'text-[#0077C8] font-bold' : 'text-[#0B1F3A] hover:text-[#0077C8]'
+                className={`px-3 py-2 rounded-xl transition-colors flex items-center space-x-1 ${
+                  isServicesActive ? 'text-[#1F2923] font-bold bg-[#F5F0E6]' : 'text-stone-700 hover:text-stone-950 hover:bg-[#FAF6EE]'
                 }`}
                 onClick={() => setServicesOpen(!servicesOpen)}
               >
                 <span>SERVICIOS</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesOpen ? 'rotate-180 text-[#0077C8]' : 'text-[#64748B]'}`} />
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesOpen ? 'rotate-180 text-stone-900' : 'text-stone-400'}`} />
               </button>
 
               {servicesOpen && (
                 <div className="absolute top-full left-0 w-[380px] pt-3 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="bg-white rounded-2xl shadow-xl border border-[#D8E1EA] p-5 space-y-3">
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-[#64748B] border-b border-[#EAF5FC] pb-2 flex items-center justify-between">
+                  <div className="bg-[#FDFBF7] rounded-2xl shadow-xl border border-[#E8E2D5] p-5 space-y-3">
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-stone-500 border-b border-[#E8E2D5] pb-2 flex items-center justify-between">
                       <span>Servicios TI Empresariales</span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#0077C8]"></span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42]"></span>
                     </div>
-                    <div className="grid grid-cols-1 gap-2">
+                    <div className="grid grid-cols-1 gap-1.5">
                       <Link
                         to="/outsourcing-ti"
-                        className="p-2.5 rounded-xl hover:bg-[#EAF5FC] transition-colors flex items-start space-x-3 group"
+                        className="p-2.5 rounded-xl hover:bg-[#F5F0E6] transition-colors flex items-start space-x-3 group"
                       >
-                        <Briefcase className="w-5 h-5 text-[#0077C8] shrink-0 mt-0.5 group-hover:text-[#B86F4B] transition-colors" />
+                        <Briefcase className="w-5 h-5 text-stone-700 shrink-0 mt-0.5 group-hover:text-[#B86B42] transition-colors" />
                         <div>
-                          <div className="font-bold text-[#0B1F3A] text-xs group-hover:text-[#0077C8]">Outsourcing TI</div>
-                          <div className="text-[11px] text-[#64748B]">Gestión integral de tecnología</div>
+                          <div className="font-bold text-stone-900 text-xs">Outsourcing TI</div>
+                          <div className="text-[11px] text-stone-500">Gestión integral de tecnología</div>
                         </div>
                       </Link>
 
                       <Link
                         to="/help-desk"
-                        className="p-2.5 rounded-xl hover:bg-[#EAF5FC] transition-colors flex items-start space-x-3 group"
+                        className="p-2.5 rounded-xl hover:bg-[#F5F0E6] transition-colors flex items-start space-x-3 group"
                       >
-                        <Headset className="w-5 h-5 text-[#0077C8] shrink-0 mt-0.5 group-hover:text-[#B86F4B] transition-colors" />
+                        <Headset className="w-5 h-5 text-stone-700 shrink-0 mt-0.5 group-hover:text-[#B86B42] transition-colors" />
                         <div>
-                          <div className="font-bold text-[#0B1F3A] text-xs group-hover:text-[#0077C8]">Help Desk</div>
-                          <div className="text-[11px] text-[#64748B]">Soporte y atención ágil a usuarios</div>
+                          <div className="font-bold text-stone-900 text-xs">Help Desk</div>
+                          <div className="text-[11px] text-stone-500">Soporte y atención ágil a usuarios</div>
                         </div>
                       </Link>
 
                       <Link
                         to="/infraestructura-tecnologica"
-                        className="p-2.5 rounded-xl hover:bg-[#EAF5FC] transition-colors flex items-start space-x-3 group"
+                        className="p-2.5 rounded-xl hover:bg-[#F5F0E6] transition-colors flex items-start space-x-3 group"
                       >
-                        <Server className="w-5 h-5 text-[#0077C8] shrink-0 mt-0.5 group-hover:text-[#B86F4B] transition-colors" />
+                        <Server className="w-5 h-5 text-stone-700 shrink-0 mt-0.5 group-hover:text-[#B86B42] transition-colors" />
                         <div>
-                          <div className="font-bold text-[#0B1F3A] text-xs group-hover:text-[#0077C8]">Infraestructura</div>
-                          <div className="text-[11px] text-[#64748B]">Servidores, redes y virtualización</div>
+                          <div className="font-bold text-stone-900 text-xs">Infraestructura</div>
+                          <div className="text-[11px] text-stone-500">Servidores, redes y virtualización</div>
                         </div>
                       </Link>
 
                       <Link
                         to="/mantenimiento"
-                        className="p-2.5 rounded-xl hover:bg-[#EAF5FC] transition-colors flex items-start space-x-3 group"
+                        className="p-2.5 rounded-xl hover:bg-[#F5F0E6] transition-colors flex items-start space-x-3 group"
                       >
-                        <Wrench className="w-5 h-5 text-[#B86F4B] shrink-0 mt-0.5" />
+                        <Wrench className="w-5 h-5 text-[#B86B42] shrink-0 mt-0.5" />
                         <div>
-                          <div className="font-bold text-[#0B1F3A] text-xs group-hover:text-[#0077C8]">Mantenimiento</div>
-                          <div className="text-[11px] text-[#64748B]">Preventivo y correctivo periódico</div>
+                          <div className="font-bold text-stone-900 text-xs">Mantenimiento</div>
+                          <div className="text-[11px] text-stone-500">Preventivo y correctivo periódico</div>
                         </div>
                       </Link>
 
                       <Link
                         to="/google-workspace"
-                        className="p-2.5 rounded-xl hover:bg-[#EAF5FC] transition-colors flex items-start space-x-3 group"
+                        className="p-2.5 rounded-xl hover:bg-[#F5F0E6] transition-colors flex items-start space-x-3 group"
                       >
-                        <Cloud className="w-5 h-5 text-[#0077C8] shrink-0 mt-0.5 group-hover:text-[#B86F4B] transition-colors" />
+                        <Cloud className="w-5 h-5 text-stone-700 shrink-0 mt-0.5 group-hover:text-[#B86B42] transition-colors" />
                         <div>
-                          <div className="font-bold text-[#0B1F3A] text-xs group-hover:text-[#0077C8]">Cloud & Workspace</div>
-                          <div className="text-[11px] text-[#64748B]">Google Workspace y colaboración</div>
+                          <div className="font-bold text-stone-900 text-xs">Cloud & Workspace</div>
+                          <div className="text-[11px] text-stone-500">Google Workspace y colaboración</div>
                         </div>
                       </Link>
                     </div>
 
-                    <div className="pt-2 border-t border-[#EAF5FC] flex items-center justify-between">
+                    <div className="pt-2 border-t border-[#E8E2D5] flex items-center justify-between">
                       <Link
                         to="/servicios"
-                        className="text-xs font-bold text-[#0077C8] hover:text-[#0B1F3A] flex items-center"
+                        className="text-xs font-bold text-stone-900 hover:text-[#B86B42] flex items-center"
                       >
                         <span>Ver todos los servicios</span>
                         <ArrowRight className="w-3.5 h-3.5 ml-1" />
@@ -259,7 +258,7 @@ export const Navbar: React.FC = () => {
               )}
             </div>
 
-            {/* SOFTWARE ▾ (Mega Dropdown with Capabilities + Real Projects) */}
+            {/* SOFTWARE ▾ */}
             <div 
               className="relative"
               onMouseEnter={handleSoftwareEnter}
@@ -267,111 +266,111 @@ export const Navbar: React.FC = () => {
             >
               <button
                 type="button"
-                className={`px-3 py-2 rounded-lg transition-colors flex items-center space-x-1 ${
-                  isSoftwareActive ? 'text-[#0077C8] font-bold' : 'text-[#0B1F3A] hover:text-[#0077C8]'
+                className={`px-3 py-2 rounded-xl transition-colors flex items-center space-x-1 ${
+                  isSoftwareActive ? 'text-[#1F2923] font-bold bg-[#F5F0E6]' : 'text-stone-700 hover:text-stone-950 hover:bg-[#FAF6EE]'
                 }`}
                 onClick={() => setSoftwareOpen(!softwareOpen)}
               >
                 <span>SOFTWARE</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${softwareOpen ? 'rotate-180 text-[#0077C8]' : 'text-[#64748B]'}`} />
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${softwareOpen ? 'rotate-180 text-stone-900' : 'text-stone-400'}`} />
               </button>
 
               {softwareOpen && (
                 <div className="absolute top-full -left-20 w-[540px] pt-3 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="bg-white rounded-2xl shadow-xl border border-[#D8E1EA] p-6">
+                  <div className="bg-[#FDFBF7] rounded-2xl shadow-xl border border-[#E8E2D5] p-6">
                     <div className="grid grid-cols-12 gap-6">
                       
                       {/* Left: Capacidades (7 cols) */}
                       <div className="col-span-7 space-y-3">
-                        <div className="text-[11px] font-bold uppercase tracking-wider text-[#64748B] border-b border-[#EAF5FC] pb-1.5 flex items-center justify-between">
+                        <div className="text-[11px] font-bold uppercase tracking-wider text-stone-500 border-b border-[#E8E2D5] pb-1.5 flex items-center justify-between">
                           <span>Desarrollo de Software</span>
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#B86F4B]"></span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42]"></span>
                         </div>
 
-                        <div className="space-y-2">
+                        <div className="space-y-1.5">
                           <Link
                             to="/desarrollo-software"
-                            className="block p-2 rounded-xl hover:bg-[#EAF5FC] transition-colors"
+                            className="block p-2 rounded-xl hover:bg-[#F5F0E6] transition-colors"
                           >
-                            <div className="font-bold text-xs text-[#0B1F3A] flex items-center">
-                              <Code2 className="w-3.5 h-3.5 mr-1.5 text-[#0077C8]" />
+                            <div className="font-bold text-xs text-stone-900 flex items-center">
+                              <Code2 className="w-3.5 h-3.5 mr-1.5 text-stone-700" />
                               Software a Medida
                             </div>
-                            <div className="text-[11px] text-[#64748B]">Soluciones adaptadas a sus procesos</div>
+                            <div className="text-[11px] text-stone-500">Soluciones adaptadas a sus procesos</div>
                           </Link>
 
                           <Link
                             to="/desarrollo-software"
-                            className="block p-2 rounded-xl hover:bg-[#EAF5FC] transition-colors"
+                            className="block p-2 rounded-xl hover:bg-[#F5F0E6] transition-colors"
                           >
-                            <div className="font-bold text-xs text-[#0B1F3A] flex items-center">
-                              <Globe className="w-3.5 h-3.5 mr-1.5 text-[#0077C8]" />
+                            <div className="font-bold text-xs text-stone-900 flex items-center">
+                              <Globe className="w-3.5 h-3.5 mr-1.5 text-stone-700" />
                               Aplicaciones Web
                             </div>
-                            <div className="text-[11px] text-[#64748B]">Sistemas accesibles y seguros</div>
+                            <div className="text-[11px] text-stone-500">Sistemas accesibles y seguros</div>
                           </Link>
 
                           <Link
                             to="/desarrollo-software"
-                            className="block p-2 rounded-xl hover:bg-[#EAF5FC] transition-colors"
+                            className="block p-2 rounded-xl hover:bg-[#F5F0E6] transition-colors"
                           >
-                            <div className="font-bold text-xs text-[#0B1F3A] flex items-center">
-                              <Layers className="w-3.5 h-3.5 mr-1.5 text-[#0077C8]" />
+                            <div className="font-bold text-xs text-stone-900 flex items-center">
+                              <Layers className="w-3.5 h-3.5 mr-1.5 text-stone-700" />
                               Sistemas ERP
                             </div>
-                            <div className="text-[11px] text-[#64748B]">Administración y flujos empresariales</div>
+                            <div className="text-[11px] text-stone-500">Administración y flujos empresariales</div>
                           </Link>
 
                           <Link
                             to="/desarrollo-software"
-                            className="block p-2 rounded-xl hover:bg-[#EAF5FC] transition-colors"
+                            className="block p-2 rounded-xl hover:bg-[#F5F0E6] transition-colors"
                           >
-                            <div className="font-bold text-xs text-[#0B1F3A] flex items-center">
-                              <Zap className="w-3.5 h-3.5 mr-1.5 text-[#B86F4B]" />
+                            <div className="font-bold text-xs text-stone-900 flex items-center">
+                              <Zap className="w-3.5 h-3.5 mr-1.5 text-[#B86B42]" />
                               Automatización & APIs
                             </div>
-                            <div className="text-[11px] text-[#64748B]">Integración con bases de datos y servicios</div>
+                            <div className="text-[11px] text-stone-500">Integración con bases de datos</div>
                           </Link>
                         </div>
                       </div>
 
-                      {/* Right: Experiencia y Proyectos (5 cols) */}
-                      <div className="col-span-5 bg-[#F7F9FC] rounded-xl p-4 flex flex-col justify-between space-y-3 border border-[#E8DCCB]/60">
+                      {/* Right: Proyectos Reales (5 cols) */}
+                      <div className="col-span-5 bg-[#FAF6EE] rounded-xl p-4 flex flex-col justify-between space-y-3 border border-[#E8E2D5]">
                         <div className="space-y-2.5">
-                          <div className="text-[11px] font-bold uppercase tracking-wider text-[#6F5544]">
+                          <div className="text-[11px] font-bold uppercase tracking-wider text-stone-600">
                             Experiencia Real
                           </div>
                           
                           <div className="space-y-2">
-                            <Link to="/proyectos/granjaweb" className="block hover:text-[#0077C8] text-xs">
-                              <div className="font-bold text-[#0B1F3A] flex items-center">
-                                <Sprout className="w-3.5 h-3.5 mr-1 text-[#B86F4B]" />
-                                GranjaWEB
+                            <Link to="/proyectos/granjaweb" className="block hover:text-[#B86B42] text-xs">
+                              <div className="font-bold text-stone-900 flex items-center">
+                                <Sprout className="w-3.5 h-3.5 mr-1 text-[#B86B42]" />
+                                GranjaWP
                               </div>
-                              <div className="text-[10px] text-[#64748B]">Gestión agropecuaria</div>
+                              <div className="text-[10px] text-stone-500">Gestión avícola y pecuaria</div>
                             </Link>
 
-                            <Link to="/proyectos/invernaderos" className="block hover:text-[#0077C8] text-xs">
-                              <div className="font-bold text-[#0B1F3A] flex items-center">
-                                <Layers className="w-3.5 h-3.5 mr-1 text-[#0077C8]" />
-                                Invernaderos
+                            <Link to="/proyectos/invernaderos" className="block hover:text-[#B86B42] text-xs">
+                              <div className="font-bold text-stone-900 flex items-center">
+                                <Layers className="w-3.5 h-3.5 mr-1 text-stone-700" />
+                                InvernaderoFM
                               </div>
-                              <div className="text-[10px] text-[#64748B]">Monitoreo y control</div>
+                              <div className="text-[10px] text-stone-500">Monitoreo agronómico</div>
                             </Link>
 
-                            <Link to="/proyectos/intepr-erp" className="block hover:text-[#0077C8] text-xs">
-                              <div className="font-bold text-[#0B1F3A] flex items-center">
-                                <Building2 className="w-3.5 h-3.5 mr-1 text-[#0077C8]" />
+                            <Link to="/proyectos/intepr-erp" className="block hover:text-[#B86B42] text-xs">
+                              <div className="font-bold text-stone-900 flex items-center">
+                                <Building2 className="w-3.5 h-3.5 mr-1 text-stone-700" />
                                 INTEPR-ERP
                               </div>
-                              <div className="text-[10px] text-[#64748B]">ERP a medida</div>
+                              <div className="text-[10px] text-stone-500">ERP a la medida</div>
                             </Link>
                           </div>
                         </div>
 
                         <Link
                           to="/proyectos"
-                          className="text-[11px] font-bold text-[#0077C8] hover:text-[#0B1F3A] flex items-center pt-2 border-t border-[#D8E1EA]"
+                          className="text-[11px] font-bold text-stone-900 hover:text-[#B86B42] flex items-center pt-2 border-t border-[#E8E2D5]"
                         >
                           <span>Ver proyectos →</span>
                         </Link>
@@ -386,10 +385,10 @@ export const Navbar: React.FC = () => {
             {/* PROYECTOS */}
             <Link
               to="/proyectos"
-              className={`px-3 py-2 rounded-lg transition-colors ${
+              className={`px-3 py-2 rounded-xl transition-colors ${
                 location.pathname.startsWith('/proyectos') 
-                  ? 'text-[#0077C8] font-bold' 
-                  : 'text-[#0B1F3A] hover:text-[#0077C8]'
+                  ? 'text-[#1F2923] font-bold bg-[#F5F0E6]' 
+                  : 'text-stone-700 hover:text-stone-950 hover:bg-[#FAF6EE]'
               }`}
             >
               PROYECTOS
@@ -398,10 +397,10 @@ export const Navbar: React.FC = () => {
             {/* COTIZADOR TI */}
             <Link
               to="/cotizador-outsourcing"
-              className={`px-3 py-2 rounded-lg transition-colors ${
+              className={`px-3 py-2 rounded-xl transition-colors ${
                 location.pathname === '/cotizador-outsourcing' 
-                  ? 'text-[#0077C8] font-bold' 
-                  : 'text-[#0B1F3A] hover:text-[#0077C8]'
+                  ? 'text-[#1F2923] font-bold bg-[#F5F0E6]' 
+                  : 'text-stone-700 hover:text-stone-950 hover:bg-[#FAF6EE]'
               }`}
             >
               COTIZADOR TI
@@ -410,10 +409,10 @@ export const Navbar: React.FC = () => {
             {/* NOSOTROS */}
             <Link
               to="/nosotros"
-              className={`px-3 py-2 rounded-lg transition-colors ${
+              className={`px-3 py-2 rounded-xl transition-colors ${
                 location.pathname === '/nosotros' 
-                  ? 'text-[#0077C8] font-bold' 
-                  : 'text-[#0B1F3A] hover:text-[#0077C8]'
+                  ? 'text-[#1F2923] font-bold bg-[#F5F0E6]' 
+                  : 'text-stone-700 hover:text-stone-950 hover:bg-[#FAF6EE]'
               }`}
             >
               NOSOTROS
@@ -422,10 +421,10 @@ export const Navbar: React.FC = () => {
             {/* CONTACTO */}
             <Link
               to="/contacto"
-              className={`px-3 py-2 rounded-lg transition-colors ${
+              className={`px-3 py-2 rounded-xl transition-colors ${
                 location.pathname === '/contacto' 
-                  ? 'text-[#0077C8] font-bold' 
-                  : 'text-[#0B1F3A] hover:text-[#0077C8]'
+                  ? 'text-[#1F2923] font-bold bg-[#F5F0E6]' 
+                  : 'text-stone-700 hover:text-stone-950 hover:bg-[#FAF6EE]'
               }`}
             >
               CONTACTO
@@ -433,14 +432,14 @@ export const Navbar: React.FC = () => {
 
           </nav>
 
-          {/* Far Right: Único Botón Principal */}
+          {/* Botón CTA Primario en Tono Oscuro de Contraste Fuerte */}
           <div className="hidden lg:flex items-center">
             <Link
               to="/cotizador-outsourcing"
-              className="px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-[#0077C8] hover:bg-[#0062a6] shadow-sm shadow-[#0077C8]/20 hover:shadow-md transition-all flex items-center space-x-1.5"
+              className="px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-[#FDFBF7] bg-[#1F2923] hover:bg-[#141C17] shadow-sm hover:shadow-md transition-all flex items-center space-x-2"
             >
               <span>COTIZAR AHORA</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#B86B42]" />
             </Link>
           </div>
 
@@ -448,13 +447,13 @@ export const Navbar: React.FC = () => {
           <div className="flex lg:hidden items-center space-x-2">
             <Link
               to="/cotizador-outsourcing"
-              className="px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-[#0077C8]"
+              className="px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-[#1F2923]"
             >
               Cotizar
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-[#0B1F3A] hover:text-[#0077C8] hover:bg-[#EAF5FC] transition-colors"
+              className="p-2 rounded-lg text-stone-800 hover:bg-[#F5F0E6] transition-colors"
               aria-label="Abrir menú de navegación"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -466,12 +465,12 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-[#D8E1EA] px-6 py-6 shadow-2xl animate-in slide-in-from-top-2 duration-150 max-h-[80vh] overflow-y-auto space-y-3">
+        <div className="lg:hidden bg-[#FDFBF7] border-b border-[#E8E2D5] px-6 py-6 shadow-2xl animate-in slide-in-from-top-2 duration-150 max-h-[80vh] overflow-y-auto space-y-3">
           
           <Link
             to="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-bold text-[#0B1F3A] border-b border-[#F7F9FC]"
+            className="block py-2 text-sm font-bold text-stone-900 border-b border-[#F5F0E6]"
           >
             INICIO
           </Link>
@@ -481,29 +480,29 @@ export const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-              className="w-full py-2 text-sm font-bold text-[#0B1F3A] flex items-center justify-between border-b border-[#F7F9FC]"
+              className="w-full py-2 text-sm font-bold text-stone-900 flex items-center justify-between border-b border-[#F5F0E6]"
             >
               <span>SERVICIOS TI</span>
               <ChevronDown className={`w-4 h-4 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
             </button>
             {mobileServicesOpen && (
-              <div className="pl-4 py-2 space-y-2 bg-[#F7F9FC] rounded-xl my-1 text-xs">
-                <Link to="/outsourcing-ti" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-[#243447] font-medium">
+              <div className="pl-4 py-2 space-y-2 bg-[#F5F0E6] rounded-xl my-1 text-xs">
+                <Link to="/outsourcing-ti" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
                   • Outsourcing TI
                 </Link>
-                <Link to="/help-desk" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-[#243447] font-medium">
+                <Link to="/help-desk" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
                   • Mesa de Ayuda (Help Desk)
                 </Link>
-                <Link to="/infraestructura-tecnologica" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-[#243447] font-medium">
+                <Link to="/infraestructura-tecnologica" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
                   • Infraestructura Tecnológica
                 </Link>
-                <Link to="/mantenimiento" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-[#243447] font-medium">
+                <Link to="/mantenimiento" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
                   • Mantenimiento y Soporte
                 </Link>
-                <Link to="/google-workspace" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-[#243447] font-medium">
+                <Link to="/google-workspace" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
                   • Google Workspace & Cloud
                 </Link>
-                <Link to="/servicios" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-[#0077C8] font-bold">
+                <Link to="/servicios" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-900 font-bold">
                   → Ver todos los servicios
                 </Link>
               </div>
@@ -515,26 +514,26 @@ export const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={() => setMobileSoftwareOpen(!mobileSoftwareOpen)}
-              className="w-full py-2 text-sm font-bold text-[#0B1F3A] flex items-center justify-between border-b border-[#F7F9FC]"
+              className="w-full py-2 text-sm font-bold text-stone-900 flex items-center justify-between border-b border-[#F5F0E6]"
             >
               <span>DESARROLLO DE SOFTWARE</span>
               <ChevronDown className={`w-4 h-4 transition-transform ${mobileSoftwareOpen ? 'rotate-180' : ''}`} />
             </button>
             {mobileSoftwareOpen && (
-              <div className="pl-4 py-2 space-y-2 bg-[#F7F9FC] rounded-xl my-1 text-xs">
-                <Link to="/desarrollo-software" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-[#243447] font-medium">
+              <div className="pl-4 py-2 space-y-2 bg-[#F5F0E6] rounded-xl my-1 text-xs">
+                <Link to="/desarrollo-software" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
                   • Software a Medida
                 </Link>
-                <Link to="/desarrollo-software" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-[#243447] font-medium">
+                <Link to="/desarrollo-software" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
                   • Aplicaciones Web & ERP
                 </Link>
-                <Link to="/proyectos/granjaweb" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-[#243447] font-medium">
-                  • Caso: GranjaWEB
+                <Link to="/proyectos/granjaweb" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
+                  • Caso: GranjaWP
                 </Link>
-                <Link to="/proyectos/invernaderos" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-[#243447] font-medium">
-                  • Caso: Invernaderos
+                <Link to="/proyectos/invernaderos" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
+                  • Caso: InvernaderoFM
                 </Link>
-                <Link to="/proyectos/intepr-erp" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-[#243447] font-medium">
+                <Link to="/proyectos/intepr-erp" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
                   • Caso: INTEPR-ERP
                 </Link>
               </div>
@@ -544,7 +543,7 @@ export const Navbar: React.FC = () => {
           <Link
             to="/proyectos"
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-bold text-[#0B1F3A] border-b border-[#F7F9FC]"
+            className="block py-2 text-sm font-bold text-stone-900 border-b border-[#F5F0E6]"
           >
             PROYECTOS
           </Link>
@@ -552,7 +551,7 @@ export const Navbar: React.FC = () => {
           <Link
             to="/cotizador-outsourcing"
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-bold text-[#0B1F3A] border-b border-[#F7F9FC]"
+            className="block py-2 text-sm font-bold text-stone-900 border-b border-[#F5F0E6]"
           >
             COTIZADOR TI
           </Link>
@@ -560,7 +559,7 @@ export const Navbar: React.FC = () => {
           <Link
             to="/nosotros"
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-bold text-[#0B1F3A] border-b border-[#F7F9FC]"
+            className="block py-2 text-sm font-bold text-stone-900 border-b border-[#F5F0E6]"
           >
             NOSOTROS
           </Link>
@@ -568,7 +567,7 @@ export const Navbar: React.FC = () => {
           <Link
             to="/contacto"
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-bold text-[#0B1F3A] border-b border-[#F7F9FC]"
+            className="block py-2 text-sm font-bold text-stone-900 border-b border-[#F5F0E6]"
           >
             CONTACTO
           </Link>
@@ -577,10 +576,10 @@ export const Navbar: React.FC = () => {
             <Link
               to="/cotizador-outsourcing"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-center text-white bg-[#0077C8] hover:bg-[#0062a6] flex items-center justify-center space-x-2"
+              className="w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-center text-white bg-[#1F2923] hover:bg-[#141C17] flex items-center justify-center space-x-2"
             >
               <span>COTIZAR AHORA</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 text-[#B86B42]" />
             </Link>
           </div>
 

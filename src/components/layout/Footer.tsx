@@ -12,7 +12,7 @@ import { siteConfig } from '../../config/siteConfig';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#0B1F3A] text-white pt-16 pb-12 border-t border-white/10">
+    <footer className="bg-[#1F2923] text-stone-200 pt-16 pb-12 border-t border-stone-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Main 4 Columns Grid */}
@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
           {/* Col 1: Corporate Profile & Official Logo (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center space-x-3">
-              {/* LOGON.png on neat light container */}
+              {/* Logo on neat light container */}
               <div className="w-12 h-12 rounded-xl bg-white p-1 flex items-center justify-center shadow-md shrink-0">
                 <img 
                   src="/logo/LOGON.png" 
@@ -31,72 +31,72 @@ export const Footer: React.FC = () => {
               </div>
               <div className="flex flex-col">
                 <div className="flex items-baseline space-x-1.5">
-                  <div className="bg-white px-2 py-0.5 rounded-lg flex items-center shadow-xs">
+                  <div className="bg-white px-2 py-0.5 rounded-lg flex items-center shadow-2xs">
                     <img 
                       src="/logo/Solo_Intepe_2026_8.png" 
                       alt="INTEPE" 
                       className="h-4 sm:h-5 w-auto object-contain"
                     />
                   </div>
-                  <span className="text-xs font-black tracking-wider text-[#0077C8]">
+                  <span className="text-xs font-black tracking-wider text-stone-300">
                     S.A.S.
                   </span>
                 </div>
-                <span className="text-[10px] text-slate-400 font-semibold tracking-wider uppercase mt-1">
+                <span className="text-[10px] text-stone-400 font-semibold tracking-wider uppercase mt-1">
                   {siteConfig.legalName}
                 </span>
               </div>
             </div>
 
-            <p className="text-slate-300 text-xs leading-relaxed max-w-sm">
+            <p className="text-stone-400 text-xs leading-relaxed max-w-sm">
               Aliado estratégico en Outsourcing TI, soporte tecnológico, infraestructura empresarial y desarrollo de software a la medida en Colombia.
             </p>
 
-            <div className="pt-2 flex items-center space-x-2 text-[11px] text-slate-300 font-medium">
-              <span className="w-2 h-2 rounded-full bg-[#B86F4B]"></span>
+            <div className="pt-2 flex items-center space-x-2 text-[11px] text-stone-300 font-medium">
+              <span className="w-2 h-2 rounded-full bg-[#B86B42]"></span>
               <span>NIT: {siteConfig.nit} · Bogotá, Colombia</span>
             </div>
           </div>
 
           {/* Col 2: Servicios TI (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-white/10 pb-2 flex items-center justify-between">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400 border-b border-stone-700/80 pb-2 flex items-center justify-between">
               <span>Servicios TI</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0077C8]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42]"></span>
             </h4>
-            <ul className="space-y-2 text-xs text-slate-300">
+            <ul className="space-y-2 text-xs text-stone-300">
               <li>
-                <Link to="/outsourcing-ti" className="hover:text-[#0077C8] transition-colors flex items-center">
-                  <ChevronRight className="w-3 h-3 mr-1 text-[#0077C8]" />
+                <Link to="/outsourcing-ti" className="hover:text-white transition-colors flex items-center">
+                  <ChevronRight className="w-3 h-3 mr-1 text-[#B86B42]" />
                   <span>Outsourcing TI Integral</span>
                 </Link>
               </li>
               <li>
-                <Link to="/help-desk" className="hover:text-[#0077C8] transition-colors flex items-center">
-                  <ChevronRight className="w-3 h-3 mr-1 text-[#0077C8]" />
+                <Link to="/help-desk" className="hover:text-white transition-colors flex items-center">
+                  <ChevronRight className="w-3 h-3 mr-1 text-[#B86B42]" />
                   <span>Mesa de Ayuda (Help Desk)</span>
                 </Link>
               </li>
               <li>
-                <Link to="/infraestructura-tecnologica" className="hover:text-[#0077C8] transition-colors flex items-center">
-                  <ChevronRight className="w-3 h-3 mr-1 text-[#0077C8]" />
+                <Link to="/infraestructura-tecnologica" className="hover:text-white transition-colors flex items-center">
+                  <ChevronRight className="w-3 h-3 mr-1 text-[#B86B42]" />
                   <span>Infraestructura & Servidores</span>
                 </Link>
               </li>
               <li>
-                <Link to="/mantenimiento" className="hover:text-[#0077C8] transition-colors flex items-center">
-                  <ChevronRight className="w-3 h-3 mr-1 text-[#0077C8]" />
+                <Link to="/mantenimiento" className="hover:text-white transition-colors flex items-center">
+                  <ChevronRight className="w-3 h-3 mr-1 text-[#B86B42]" />
                   <span>Mantenimiento Preventivo</span>
                 </Link>
               </li>
               <li>
-                <Link to="/google-workspace" className="hover:text-[#0077C8] transition-colors flex items-center">
-                  <ChevronRight className="w-3 h-3 mr-1 text-[#0077C8]" />
+                <Link to="/google-workspace" className="hover:text-white transition-colors flex items-center">
+                  <ChevronRight className="w-3 h-3 mr-1 text-[#B86B42]" />
                   <span>Google Workspace & Cloud</span>
                 </Link>
               </li>
               <li>
-                <Link to="/cotizador-outsourcing" className="text-[#0077C8] font-semibold hover:underline flex items-center pt-1">
+                <Link to="/cotizador-outsourcing" className="text-[#B86B42] font-semibold hover:underline flex items-center pt-1">
                   <span>→ Cotizador en tiempo real</span>
                 </Link>
               </li>
@@ -105,38 +105,38 @@ export const Footer: React.FC = () => {
 
           {/* Col 3: Desarrollo & Software (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-white/10 pb-2 flex items-center justify-between">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400 border-b border-stone-700/80 pb-2 flex items-center justify-between">
               <span>Software</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B86F4B]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42]"></span>
             </h4>
-            <ul className="space-y-2 text-xs text-slate-300">
+            <ul className="space-y-2 text-xs text-stone-300">
               <li>
-                <Link to="/desarrollo-software" className="hover:text-[#0077C8] transition-colors flex items-center">
-                  <ChevronRight className="w-3 h-3 mr-1 text-[#B86F4B]" />
+                <Link to="/desarrollo-software" className="hover:text-white transition-colors flex items-center">
+                  <ChevronRight className="w-3 h-3 mr-1 text-[#B86B42]" />
                   <span>Software a Medida</span>
                 </Link>
               </li>
               <li>
-                <Link to="/desarrollo-software" className="hover:text-[#0077C8] transition-colors flex items-center">
-                  <ChevronRight className="w-3 h-3 mr-1 text-[#B86F4B]" />
+                <Link to="/desarrollo-software" className="hover:text-white transition-colors flex items-center">
+                  <ChevronRight className="w-3 h-3 mr-1 text-[#B86B42]" />
                   <span>Sistemas ERP</span>
                 </Link>
               </li>
               <li>
-                <Link to="/proyectos/granjaweb" className="hover:text-[#0077C8] transition-colors flex items-center">
-                  <ChevronRight className="w-3 h-3 mr-1 text-[#B86F4B]" />
-                  <span>Caso: GranjaWEB</span>
+                <Link to="/proyectos/granjaweb" className="hover:text-white transition-colors flex items-center">
+                  <ChevronRight className="w-3 h-3 mr-1 text-[#B86B42]" />
+                  <span>Caso: GranjaWP</span>
                 </Link>
               </li>
               <li>
-                <Link to="/proyectos/invernaderos" className="hover:text-[#0077C8] transition-colors flex items-center">
-                  <ChevronRight className="w-3 h-3 mr-1 text-[#B86F4B]" />
-                  <span>Caso: Invernaderos</span>
+                <Link to="/proyectos/invernaderos" className="hover:text-white transition-colors flex items-center">
+                  <ChevronRight className="w-3 h-3 mr-1 text-[#B86B42]" />
+                  <span>Caso: InvernaderoFM</span>
                 </Link>
               </li>
               <li>
-                <Link to="/proyectos/intepr-erp" className="hover:text-[#0077C8] transition-colors flex items-center">
-                  <ChevronRight className="w-3 h-3 mr-1 text-[#B86F4B]" />
+                <Link to="/proyectos/intepr-erp" className="hover:text-white transition-colors flex items-center">
+                  <ChevronRight className="w-3 h-3 mr-1 text-[#B86B42]" />
                   <span>Caso: INTEPR-ERP</span>
                 </Link>
               </li>
@@ -145,30 +145,30 @@ export const Footer: React.FC = () => {
 
           {/* Col 4: Contacto Oficial (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-white/10 pb-2 flex items-center justify-between">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400 border-b border-stone-700/80 pb-2 flex items-center justify-between">
               <span>Contacto</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0077C8]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42]"></span>
             </h4>
-            <ul className="space-y-2.5 text-xs text-slate-300">
+            <ul className="space-y-2.5 text-xs text-stone-300">
               <li className="flex items-start space-x-2">
-                <MapPin className="w-3.5 h-3.5 text-[#0077C8] shrink-0 mt-0.5" />
+                <MapPin className="w-3.5 h-3.5 text-[#B86B42] shrink-0 mt-0.5" />
                 <span>{siteConfig.address}</span>
               </li>
               <li className="flex items-start space-x-2">
-                <Mail className="w-3.5 h-3.5 text-[#0077C8] shrink-0 mt-0.5" />
-                <a href={`mailto:${siteConfig.email}`} className="text-[#0077C8] hover:underline">
+                <Mail className="w-3.5 h-3.5 text-[#B86B42] shrink-0 mt-0.5" />
+                <a href={`mailto:${siteConfig.email}`} className="text-stone-200 hover:text-white hover:underline">
                   {siteConfig.email}
                 </a>
               </li>
               <li className="flex items-start space-x-2">
-                <Phone className="w-3.5 h-3.5 text-[#B86F4B] shrink-0 mt-0.5" />
+                <Phone className="w-3.5 h-3.5 text-[#B86B42] shrink-0 mt-0.5" />
                 <div>
                   <span>Cel: {siteConfig.mobile}</span><br />
                   <span>Fijo: {siteConfig.phone}</span>
                 </div>
               </li>
               <li className="flex items-start space-x-2">
-                <Building2 className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" />
+                <Building2 className="w-3.5 h-3.5 text-stone-400 shrink-0 mt-0.5" />
                 <span>Banco: {siteConfig.bank}</span>
               </li>
             </ul>
@@ -177,13 +177,13 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Legal Subfooter */}
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
+        <div className="pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-stone-400">
           
           <div>
             © 2026 <strong>{siteConfig.legalName}</strong> (INTEPE S.A.S.). Todos los derechos reservados.
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-slate-400">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-stone-400">
             <Link to="/politica-privacidad" className="hover:text-white transition-colors">
               Política de Privacidad
             </Link>
@@ -192,8 +192,8 @@ export const Footer: React.FC = () => {
               Tratamiento de Datos Personales
             </Link>
             <span>•</span>
-            <div className="flex items-center space-x-1 text-slate-400">
-              <Lock className="w-3 h-3 text-[#0077C8]" />
+            <div className="flex items-center space-x-1 text-stone-400">
+              <Lock className="w-3 h-3 text-[#B86B42]" />
               <span>Conexión Segura SSL</span>
             </div>
           </div>

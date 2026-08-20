@@ -2,162 +2,173 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
+  CheckCircle2, 
+  ShieldCheck, 
+  Headset, 
   Server, 
   Code2, 
-  Shield, 
-  Cloud, 
-  CheckCircle2,
-  Layers
+  Sparkles,
+  MessageSquare
 } from 'lucide-react';
 import { siteConfig } from '../../config/siteConfig';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative pt-32 pb-20 md:pt-44 md:pb-28 bg-gradient-to-b from-[#F7F9FC]/80 via-white to-[#F7F9FC]/40 overflow-hidden border-b border-[#D8E1EA]/60">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-[#FDFBF7] border-b border-[#E8E2D5] overflow-hidden">
       
-      {/* Subtle Background Glows */}
-      <div className="absolute top-10 right-10 w-96 h-96 bg-[#EAF5FC]/60 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#E8DCCB]/20 rounded-full blur-3xl pointer-events-none" />
+      {/* Decorative Warm Ambient Glows */}
+      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#F5F0E6] rounded-full blur-3xl opacity-80 pointer-events-none -mr-40"></div>
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#FAF6EE] rounded-full blur-3xl opacity-70 pointer-events-none -ml-32"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Heading, Value & 2 Buttons */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+          {/* Left Column: Value Proposition (7 cols) */}
+          <div className="lg:col-span-7 space-y-8 text-left">
             
-            {/* Tagline Badge with Terracotta accent dot */}
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#EAF5FC] border border-[#D8E1EA] text-[#0B1F3A] text-xs font-semibold">
-              <span className="w-2 h-2 rounded-full bg-[#B86F4B] animate-pulse"></span>
-              <span>INTEPE S.A.S. · Su Aliado Tecnológico</span>
+            {/* Tagline Badge */}
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#F5F0E6] border border-[#E8E2D5] text-stone-800 text-xs font-semibold shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#B86B42] animate-pulse"></span>
+              <span>{siteConfig.tagline}</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl xl:text-6xl font-black text-[#0B1F3A] tracking-tight leading-[1.12]">
-              {siteConfig.tagline}
-            </h1>
+            <div className="space-y-3">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-stone-950 tracking-tight leading-[1.12]">
+                Tecnología confiable para impulsar su empresa
+              </h1>
+              <p className="text-stone-600 text-base sm:text-lg leading-relaxed max-w-2xl font-normal pt-2">
+                {siteConfig.heroSubtitle}
+              </p>
+            </div>
 
-            {/* Subtitle */}
-            <p className="text-base sm:text-lg text-[#243447] max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              {siteConfig.heroSubtitle}
-            </p>
-
-            {/* 4 Value Checkmarks */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 max-w-xl mx-auto lg:mx-0 text-left">
-              <div className="flex items-center space-x-2 text-xs sm:text-sm text-[#243447] font-medium">
-                <CheckCircle2 className="w-4 h-4 text-[#0077C8] shrink-0" />
-                <span>Outsourcing TI y soporte especializado</span>
+            {/* Quick Benefits Bullet Points */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              <div className="flex items-center space-x-2 text-xs font-semibold text-stone-800">
+                <CheckCircle2 className="w-4 h-4 text-[#B86B42] shrink-0" />
+                <span>Outsourcing TI y Help Desk especializado</span>
               </div>
-              <div className="flex items-center space-x-2 text-xs sm:text-sm text-[#243447] font-medium">
-                <CheckCircle2 className="w-4 h-4 text-[#0077C8] shrink-0" />
-                <span>Desarrollo de software y ERP a medida</span>
+              <div className="flex items-center space-x-2 text-xs font-semibold text-stone-800">
+                <CheckCircle2 className="w-4 h-4 text-[#B86B42] shrink-0" />
+                <span>Servidores, redes y respaldo continuo</span>
               </div>
-              <div className="flex items-center space-x-2 text-xs sm:text-sm text-[#243447] font-medium">
-                <CheckCircle2 className="w-4 h-4 text-[#0077C8] shrink-0" />
-                <span>Servidores, redes y virtualización</span>
+              <div className="flex items-center space-x-2 text-xs font-semibold text-stone-800">
+                <CheckCircle2 className="w-4 h-4 text-[#B86B42] shrink-0" />
+                <span>Desarrollo de software y ERP a la medida</span>
               </div>
-              <div className="flex items-center space-x-2 text-xs sm:text-sm text-[#243447] font-medium">
-                <CheckCircle2 className="w-4 h-4 text-[#0077C8] shrink-0" />
-                <span>Atención remota y presencial en Bogotá</span>
+              <div className="flex items-center space-x-2 text-xs font-semibold text-stone-800">
+                <CheckCircle2 className="w-4 h-4 text-[#B86B42] shrink-0" />
+                <span>Google Workspace y licenciamiento oficial</span>
               </div>
             </div>
 
-            {/* Strict Button Hierarchy */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+            {/* 2 Clear Action Buttons */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <Link
                 to="/cotizador-outsourcing"
-                className="w-full sm:w-auto px-7 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#0077C8] hover:bg-[#0062a6] shadow-md shadow-[#0077C8]/20 hover:shadow-lg hover:shadow-[#0077C8]/30 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center space-x-2"
+                className="px-7 py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-center text-[#FDFBF7] bg-[#1F2923] hover:bg-[#141C17] shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2.5 group"
               >
                 <span>Cotizar Outsourcing TI</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 text-[#B86B42] group-hover:translate-x-1 transition-transform" />
               </Link>
 
               <Link
                 to="/desarrollo-software"
-                className="w-full sm:w-auto px-7 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-[#0B1F3A] bg-white hover:bg-[#EAF5FC] border border-[#0077C8] shadow-sm transition-all flex items-center justify-center space-x-2"
+                className="px-7 py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-center text-stone-800 bg-white hover:bg-[#F5F0E6] border border-[#E8E2D5] shadow-2xs hover:shadow-sm transition-all flex items-center justify-center space-x-2"
               >
-                <Code2 className="w-4 h-4 text-[#0077C8]" />
-                <span>Desarrollar mi software</span>
+                <span>Desarrollo de Software</span>
+                <Code2 className="w-4 h-4 text-stone-600" />
               </Link>
+            </div>
+
+            {/* WhatsApp Quick Note */}
+            <div className="pt-2 flex items-center space-x-2 text-xs text-stone-500 font-medium">
+              <MessageSquare className="w-4 h-4 text-[#B86B42]" />
+              <span>Atención corporativa directa:</span>
+              <a 
+                href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Hola INTEPE S.A.S., deseo consultar sobre sus servicios de TI.')}`}
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-stone-900 font-bold hover:underline"
+              >
+                {siteConfig.mobile}
+              </a>
             </div>
 
           </div>
 
-          {/* Right Column: Mini Dashboard Tecnológico */}
-          <div className="lg:col-span-5 relative">
-            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#D8E1EA] shadow-xl shadow-[#0B1F3A]/5 space-y-5">
+          {/* Right Column: Clean Technical Authority Bento Floating Card (5 cols) */}
+          <div className="lg:col-span-5">
+            <div className="bg-[#FAF6EE] rounded-3xl p-6 sm:p-8 border border-[#E8E2D5] shadow-md space-y-6 relative">
               
-              {/* Dashboard Header */}
-              <div className="flex items-center justify-between border-b border-[#EAF5FC] pb-3.5">
-                <div className="flex items-center space-x-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#0077C8] animate-pulse"></div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#0B1F3A]">
-                    SOLUCIONES PARA SU EMPRESA
-                  </span>
+              {/* Header Card */}
+              <div className="flex items-center justify-between border-b border-[#E8E2D5] pb-4">
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-white border border-[#E8E2D5] flex items-center justify-center text-stone-800 shadow-2xs">
+                    <ShieldCheck className="w-5 h-5 text-[#B86B42]" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-stone-900 text-sm">Respaldo Tecnológico B2B</h3>
+                    <span className="text-[10px] text-stone-500 font-mono">INTEPE S.A.S. · Bogotá</span>
+                  </div>
                 </div>
-                <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-[#F7F9FC] text-[#64748B] border border-[#D8E1EA]/60">
-                  INTEPE S.A.S.
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white text-stone-800 border border-[#E8E2D5]">
+                  Activo 2026
                 </span>
               </div>
 
-              {/* 4 Quadrants */}
-              <div className="grid grid-cols-2 gap-3">
+              {/* 4 Quadrants of Authority */}
+              <div className="grid grid-cols-2 gap-3.5">
                 
-                {/* INFRA */}
-                <div className="p-4 rounded-2xl bg-[#F7F9FC] border border-[#D8E1EA]/70 hover:border-[#0077C8] hover:bg-white transition-all space-y-1 group">
-                  <div className="flex items-center justify-between text-[#0077C8]">
-                    <Server className="w-4 h-4" />
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#64748B]">INFRA</span>
+                {/* 1. Help Desk */}
+                <div className="p-4 rounded-2xl bg-white border border-[#E8E2D5] shadow-2xs space-y-2 hover:border-[#B86B42]/50 transition-colors">
+                  <div className="flex items-center justify-between">
+                    <Headset className="w-4 h-4 text-stone-700" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
                   </div>
-                  <div className="font-bold text-[#0B1F3A] text-xs sm:text-sm">Servidores & Redes</div>
-                  <div className="text-[10px] sm:text-[11px] text-[#64748B]">Windows · Linux · Virtualización · Wi-Fi</div>
+                  <div className="font-bold text-xs text-stone-900">Mesa de Ayuda</div>
+                  <div className="text-[10px] text-stone-500">Atención remota y presencial L1/L2</div>
                 </div>
 
-                {/* DEV (with terracotta accent indicator) */}
-                <div className="p-4 rounded-2xl bg-[#F7F9FC] border border-[#D8E1EA]/70 hover:border-[#B86F4B] hover:bg-white transition-all space-y-1 group">
-                  <div className="flex items-center justify-between text-[#0077C8]">
-                    <Code2 className="w-4 h-4" />
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#B86F4B]">DEV</span>
+                {/* 2. Infraestructura */}
+                <div className="p-4 rounded-2xl bg-white border border-[#E8E2D5] shadow-2xs space-y-2 hover:border-[#B86B42]/50 transition-colors">
+                  <div className="flex items-center justify-between">
+                    <Server className="w-4 h-4 text-stone-700" />
+                    <span className="text-[9px] font-bold text-stone-600 bg-[#F5F0E6] px-1.5 py-0.5 rounded">99.8% SLA</span>
                   </div>
-                  <div className="font-bold text-[#0B1F3A] text-xs sm:text-sm">Software a Medida</div>
-                  <div className="text-[10px] sm:text-[11px] text-[#64748B]">Web · ERP · Apps · Automatización</div>
+                  <div className="font-bold text-xs text-stone-900">Infraestructura</div>
+                  <div className="text-[10px] text-stone-500">Servidores, redes y copias de seguridad</div>
                 </div>
 
-                {/* CLOUD */}
-                <div className="p-4 rounded-2xl bg-[#F7F9FC] border border-[#D8E1EA]/70 hover:border-[#0077C8] hover:bg-white transition-all space-y-1 group">
-                  <div className="flex items-center justify-between text-[#0077C8]">
-                    <Cloud className="w-4 h-4" />
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#64748B]">CLOUD</span>
+                {/* 3. Software a Medida */}
+                <div className="p-4 rounded-2xl bg-white border border-[#E8E2D5] shadow-2xs space-y-2 hover:border-[#B86B42]/50 transition-colors">
+                  <div className="flex items-center justify-between">
+                    <Code2 className="w-4 h-4 text-[#B86B42]" />
+                    <Sparkles className="w-3.5 h-3.5 text-[#B86B42]" />
                   </div>
-                  <div className="font-bold text-[#0B1F3A] text-xs sm:text-sm">Google Workspace</div>
-                  <div className="text-[10px] sm:text-[11px] text-[#64748B]">Colaboración · Correo · Backups</div>
+                  <div className="font-bold text-xs text-stone-900">Software a Medida</div>
+                  <div className="text-[10px] text-stone-500">Sistemas ERP y plataformas web</div>
                 </div>
 
-                {/* SOPORTE */}
-                <div className="p-4 rounded-2xl bg-[#F7F9FC] border border-[#D8E1EA]/70 hover:border-[#0077C8] hover:bg-white transition-all space-y-1 group">
-                  <div className="flex items-center justify-between text-[#0077C8]">
-                    <Shield className="w-4 h-4" />
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#64748B]">SOPORTE</span>
+                {/* 4. Casos Reales */}
+                <div className="p-4 rounded-2xl bg-white border border-[#E8E2D5] shadow-2xs space-y-2 hover:border-[#B86B42]/50 transition-colors">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-stone-800">GranjaWP</span>
+                    <span className="text-[9px] font-bold text-stone-500 bg-[#F5F0E6] px-1.5 py-0.5 rounded">Producción</span>
                   </div>
-                  <div className="font-bold text-[#0B1F3A] text-xs sm:text-sm">Help Desk L1/L2</div>
-                  <div className="text-[10px] sm:text-[11px] text-[#64748B]">Atención remota y presencial</div>
+                  <div className="font-bold text-xs text-stone-900">InvernaderoFM</div>
+                  <div className="text-[10px] text-stone-500">Casos demostrados en vivo</div>
                 </div>
 
               </div>
 
-              {/* Bottom Proposition */}
-              <div className="p-3.5 rounded-2xl bg-[#EAF5FC] border border-[#D8E1EA] flex items-center justify-between text-xs">
-                <div className="space-y-0.5">
-                  <div className="font-bold text-[#0B1F3A] flex items-center text-xs">
-                    <Layers className="w-3.5 h-3.5 mr-1 text-[#0077C8]" />
-                    Un solo punto de contacto
-                  </div>
-                  <div className="text-[#64748B] text-[11px]">Tecnología centralizada, segura y escalable.</div>
-                </div>
-                <Link
-                  to="/servicios"
-                  className="font-bold text-[#0077C8] hover:text-[#0B1F3A] hover:underline shrink-0 ml-3 text-xs"
-                >
-                  Ver soluciones →
+              {/* Bottom Quick Indicator */}
+              <div className="p-3.5 rounded-xl bg-white border border-[#E8E2D5] flex items-center justify-between text-xs text-stone-700">
+                <span className="font-medium">¿Desea una cotización inmediata?</span>
+                <Link to="/cotizador-outsourcing" className="font-bold text-[#B86B42] hover:underline flex items-center">
+                  <span>Abrir cotizador</span>
+                  <ArrowRight className="w-3 h-3 ml-1" />
                 </Link>
               </div>
 
@@ -165,6 +176,7 @@ export const Hero: React.FC = () => {
           </div>
 
         </div>
+
       </div>
     </section>
   );

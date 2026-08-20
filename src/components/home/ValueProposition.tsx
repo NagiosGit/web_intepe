@@ -12,38 +12,39 @@ export const ValueProposition: React.FC = () => {
       link: '/outsourcing-ti',
     },
     {
-      title: 'Soporte TI',
-      description: 'Atención remota y presencial para mantener a sus colaboradores y sistemas siempre productivos.',
+      title: 'Soporte TI & Help Desk',
+      description: 'Atención remota y presencial oportuna para mantener a sus colaboradores y sistemas siempre operativos.',
       icon: Headset,
       link: '/help-desk',
     },
     {
-      title: 'Infraestructura',
-      description: 'Servidores, redes, virtualización y soluciones cloud configuradas para alta disponibilidad.',
+      title: 'Infraestructura & Redes',
+      description: 'Servidores, redes, virtualización y soluciones cloud configuradas para alta disponibilidad y seguridad.',
       icon: Server,
       link: '/infraestructura-tecnologica',
     },
     {
       title: 'Desarrollo de Software',
-      description: 'Sistemas personalizados y aplicaciones adaptadas a los flujos y procesos de cada organización.',
+      description: 'Sistemas ERP y aplicaciones a la medida adaptadas exactamente a los flujos y procesos de su empresa.',
       icon: Code2,
       link: '/desarrollo-software',
     }
   ];
 
   return (
-    <section className="py-20 bg-white border-b border-[#D8E1EA]/60">
+    <section className="py-24 bg-[#FDFBF7] border-b border-[#E8E2D5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#0077C8] bg-[#EAF5FC] px-3 py-1 rounded-full border border-[#D8E1EA]">
-            Propuesta de Valor Integral
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1F3A] tracking-tight">
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#F5F0E6] border border-[#E8E2D5] text-stone-800 text-xs font-semibold shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42]"></span>
+            <span>Propuesta de Valor Integral</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-950 tracking-tight">
             Un solo aliado para toda su tecnología
           </h2>
-          <p className="text-[#243447] text-sm sm:text-base leading-relaxed">
+          <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
             {siteConfig.valueProposition}
           </p>
         </div>
@@ -55,27 +56,27 @@ export const ValueProposition: React.FC = () => {
             return (
               <div 
                 key={idx}
-                className="p-6 rounded-2xl bg-[#F7F9FC] border border-[#D8E1EA] hover:border-[#0077C8] hover:bg-white hover:shadow-md transition-all duration-200 flex flex-col justify-between group"
+                className="p-7 rounded-3xl bg-white border border-[#E8E2D5] shadow-xs hover:-translate-y-1 hover:shadow-md hover:border-[#B86B42]/50 transition-all duration-300 flex flex-col justify-between group"
               >
-                <div className="space-y-3">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-[#D8E1EA] flex items-center justify-center text-[#0077C8] group-hover:bg-[#0077C8] group-hover:text-white transition-colors shadow-sm">
-                    <Icon className="w-5 h-5" />
+                <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-2xl bg-[#F5F0E6] border border-[#E8E2D5] flex items-center justify-center text-stone-800 group-hover:bg-[#1F2923] group-hover:text-white transition-colors">
+                    <Icon className="w-6 h-6" />
                   </div>
-                  <h3 className="text-base font-bold text-[#0B1F3A] tracking-tight">
+                  <h3 className="text-lg font-bold text-stone-950 tracking-tight group-hover:text-[#B86B42] transition-colors">
                     {card.title}
                   </h3>
-                  <p className="text-[#64748B] text-xs leading-relaxed">
+                  <p className="text-stone-600 text-xs leading-relaxed">
                     {card.description}
                   </p>
                 </div>
 
-                <div className="pt-4 mt-2">
+                <div className="pt-5 mt-4 border-t border-[#F5F0E6]">
                   <Link
                     to={card.link}
-                    className="inline-flex items-center text-xs font-bold text-[#0077C8] hover:text-[#0B1F3A] group-hover:translate-x-0.5 transition-all"
+                    className="inline-flex items-center text-xs font-bold text-stone-900 hover:text-[#B86B42] group-hover:translate-x-1 transition-all"
                   >
                     <span>Conocer más</span>
-                    <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                    <ArrowRight className="w-3.5 h-3.5 ml-1 text-[#B86B42]" />
                   </Link>
                 </div>
               </div>

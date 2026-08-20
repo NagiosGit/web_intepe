@@ -1,139 +1,116 @@
 import React from 'react';
 import { PageHeader } from '../components/common/PageHeader';
 import { Link } from 'react-router-dom';
-import { Cloud, CheckCircle2, ArrowRight, MessageSquare, Mail, Users, Shield, HardDrive } from 'lucide-react';
+import { Cloud, Mail, HardDrive, ShieldCheck, CheckCircle2, ArrowRight, MessageSquare } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
 export const GoogleWorkspacePage: React.FC = () => {
-  const tools = [
-    { title: 'Gmail Corporativo', desc: 'Correo profesional con dominio @suempresa.com, protección antispam y 99.9% de uptime.', icon: Mail },
-    { title: 'Google Drive & Docs', desc: 'Almacenamiento en la nube y trabajo colaborativo en documentos en tiempo real.', icon: HardDrive },
-    { title: 'Google Meet', desc: 'Videollamadas empresariales seguras con grabación y enlace directo de calendario.', icon: Users },
-    { title: 'Seguridad & Administración', desc: 'Control centralizado de dispositivos, 2FA y políticas de acceso a la información.', icon: Shield }
-  ];
-
   return (
     <div>
       <PageHeader
-        badge="Productividad Cloud"
-        title="Google Workspace para Empresas"
-        subtitle="Implementación, administración, soporte y licenciamiento corporativo de Google Workspace."
+        badge="Productividad en la Nube"
+        title="Google Workspace y Soluciones Cloud"
+        subtitle="Correo corporativo @suempresa.com, almacenamiento seguro en la nube y herramientas de colaboración en tiempo real."
         breadcrumbCurrent="Google Workspace"
       />
 
-      {/* 1. Main 2-Column Overview (Clean White) */}
-      <div className="bg-white py-20 border-b border-[#D8E1EA]">
+      {/* 1. Intro Section */}
+      <div className="bg-[#FDFBF7] py-24 border-b border-[#E8E2D5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
             <div className="lg:col-span-7 space-y-6">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B1F3A] tracking-tight">
-                Colaboración empresarial en la nube con Gmail corporativo
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-stone-950 tracking-tight">
+                Comuníquese y colabore con herramientas cloud de clase mundial
               </h2>
-              <p className="text-[#243447] text-base leading-relaxed">
-                En <strong>INTEPE S.A.S.</strong> somos especialistas en la implementación y administración de <strong>Google Workspace</strong> (Gmail, Google Drive, Google Meet, Calendar, Documentos y Hojas de cálculo) para organizaciones de todos los tamaños.
+              <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
+                Asesoramos, implementamos y administramos el ecosistema de <strong>Google Workspace</strong> para su empresa: cuentas de correo corporativo personalizadas con la máxima seguridad antispam de Gmail, almacenamiento colaborativo en Google Drive y videoconferencias en Google Meet.
               </p>
-              <p className="text-[#64748B] text-sm leading-relaxed">
-                Configuramos su dominio institucional (@suempresa.com), migramos los correos existentes sin interrupciones y establecemos políticas de seguridad para proteger la información de su empresa.
+              <p className="text-stone-500 text-xs sm:text-sm leading-relaxed">
+                Nos encargamos de la migración de correos históricos desde otros servidores sin pérdida de información ni interrupciones operativas.
               </p>
 
-              <div className="flex flex-wrap gap-3 pt-2">
-                <Link
-                  to="/contacto"
-                  className="px-6 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#0077C8] hover:bg-[#0062a6] shadow-md shadow-[#0077C8]/20 transition-all flex items-center space-x-2"
-                >
-                  <span>Solicitar Google Workspace</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+              <div className="pt-2 flex flex-wrap gap-3">
                 <a
-                  href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Hola INTEPE S.A.S., deseo cotizar licencias y administración de Google Workspace.')}`}
+                  href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Hola INTEPE S.A.S., deseo cotizar licencias y configuración de Google Workspace para mi empresa.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3.5 rounded-xl font-semibold text-xs text-[#0B1F3A] bg-[#F7F9FC] border border-[#D8E1EA] hover:bg-[#EAF5FC] transition-all flex items-center space-x-2"
+                  className="inline-flex items-center space-x-2 px-7 py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-stone-100 bg-[#1F2923] hover:bg-[#141C17] shadow-md transition-all"
                 >
-                  <MessageSquare className="w-4 h-4 text-[#0077C8]" />
-                  <span>Asesoría por WhatsApp</span>
+                  <span>Cotizar Google Workspace</span>
+                  <ArrowRight className="w-4 h-4 text-[#B86B42]" />
                 </a>
+                <Link
+                  to="/contacto"
+                  className="px-7 py-4 rounded-xl font-semibold text-xs text-stone-800 bg-white border border-[#E8E2D5] hover:bg-[#F5F0E6] transition-all flex items-center space-x-2 shadow-2xs"
+                >
+                  <MessageSquare className="w-4 h-4 text-[#B86B42]" />
+                  <span>Contactar Asesor</span>
+                </Link>
               </div>
             </div>
 
-            <div className="lg:col-span-5 bg-[#F7F9FC] p-8 rounded-3xl border border-[#D8E1EA] space-y-4 shadow-sm">
-              <h3 className="font-bold text-[#0B1F3A] text-lg flex items-center">
-                <Cloud className="w-5 h-5 mr-2 text-[#0077C8]" />
-                Servicios de Google Workspace:
+            <div className="lg:col-span-5 bg-[#FAF6EE] p-8 sm:p-10 rounded-3xl border border-[#E8E2D5] space-y-5 shadow-xs">
+              <h3 className="font-bold text-stone-900 text-base flex items-center">
+                <Cloud className="w-4 h-4 mr-2 text-[#B86B42]" />
+                Ventajas de Google Workspace
               </h3>
-              <ul className="space-y-3 text-xs sm:text-sm text-[#243447]">
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0077C8] shrink-0 mt-0.5" />
-                  <span>Configuración de correos corporativos @suempresa.com.</span>
+              <ul className="space-y-3.5 text-xs sm:text-sm text-stone-700">
+                <li className="flex items-start space-x-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#B86B42] shrink-0 mt-0.5" />
+                  <span>Correo corporativo profesional con interfaz intuitiva de Gmail.</span>
                 </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0077C8] shrink-0 mt-0.5" />
-                  <span>Migración transparente de buzones y contactos antiguos.</span>
+                <li className="flex items-start space-x-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#B86B42] shrink-0 mt-0.5" />
+                  <span>Almacenamiento compartido seguro en Google Drive (desde 30 GB hasta ilimitado).</span>
                 </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0077C8] shrink-0 mt-0.5" />
-                  <span>Almacenamiento corporativo seguro en Google Drive.</span>
+                <li className="flex items-start space-x-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#B86B42] shrink-0 mt-0.5" />
+                  <span>Edición de documentos, hojas de cálculo y presentaciones en tiempo real.</span>
                 </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0077C8] shrink-0 mt-0.5" />
-                  <span>Políticas de seguridad, 2FA y control de dispositivos.</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#B86F4B] shrink-0 mt-0.5" />
-                  <span>Soporte técnico continuo y administración de cuentas.</span>
+                <li className="flex items-start space-x-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#B86B42] shrink-0 mt-0.5" />
+                  <span>Consola de administración centralizada con autenticación en dos pasos (2FA).</span>
                 </li>
               </ul>
             </div>
+
           </div>
         </div>
       </div>
 
-      {/* 2. Google Workspace Apps (Contrasting #F7F9FC Background) */}
-      <div className="bg-[#F7F9FC] py-20 border-b border-[#D8E1EA]">
+      {/* 2. Grid de Aplicaciones */}
+      <div className="bg-[#FAF6EE] py-24 border-b border-[#E8E2D5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0077C8] bg-white px-3.5 py-1 rounded-full border border-[#D8E1EA] shadow-2xs">
-              Ecosistema Integrado
+            <span className="text-xs font-bold uppercase tracking-wider text-stone-800 bg-white px-3.5 py-1 rounded-full border border-[#E8E2D5] shadow-2xs">
+              Ecosistema Integral
             </span>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0B1F3A]">
-              Herramientas líderes para el trabajo en equipo
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-stone-950">
+              Herramientas Incluidas en Google Workspace
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {tools.map((t, idx) => {
-              const Icon = t.icon;
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: 'Gmail Empresarial', desc: 'Direcciones personalizadas @suempresa.com con 99.9% de disponibilidad garantizada.', icon: Mail },
+              { title: 'Google Drive', desc: 'Almacene, sincronice y comparta archivos institucionales con permisos granulares.', icon: HardDrive },
+              { title: 'Google Meet', desc: 'Videoconferencias seguras con cifrado de extremo a extremo y control de participantes.', icon: Cloud },
+              { title: 'Google Docs & Sheets', desc: 'Trabaje en simultáneo con su equipo en hojas de cálculo y reportes corporativos.', icon: Cloud },
+              { title: 'Seguridad & Consola Admin', desc: 'Control central de dispositivos móviles, políticas de contraseña y retención de datos.', icon: ShieldCheck },
+              { title: 'Soporte y Migración INTEPE', desc: 'Acompañamiento en el alta de usuarios, renovación de licencias y soporte continuo.', icon: CheckCircle2 },
+            ].map((item, idx) => {
+              const Icon = item.icon;
               return (
-                <div key={idx} className="p-6 rounded-2xl bg-white border border-[#D8E1EA] shadow-sm space-y-3 hover:border-[#0077C8] transition-all">
-                  <div className="w-10 h-10 rounded-xl bg-[#EAF5FC] flex items-center justify-center text-[#0077C8] shadow-2xs">
-                    <Icon className="w-5 h-5" />
+                <div key={idx} className="p-7 rounded-3xl bg-white border border-[#E8E2D5] shadow-xs space-y-3 hover:border-[#B86B42]/50 hover:-translate-y-1 transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-[#F5F0E6] flex items-center justify-center text-stone-800">
+                    <Icon className="w-5 h-5 text-[#B86B42]" />
                   </div>
-                  <h4 className="text-sm font-bold text-[#0B1F3A]">{t.title}</h4>
-                  <p className="text-[#64748B] text-xs leading-relaxed">{t.desc}</p>
+                  <h4 className="text-base font-bold text-stone-900">{item.title}</h4>
+                  <p className="text-stone-600 text-xs leading-relaxed">{item.desc}</p>
                 </div>
               );
             })}
-          </div>
-        </div>
-      </div>
-
-      {/* 3. Bottom Action Section (Clean White) */}
-      <div className="bg-white py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0B1F3A]">
-            ¿Necesita migrar a Google Workspace o adquirir nuevas licencias?
-          </h3>
-          <p className="text-[#243447] text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
-            Le asesoramos en la selección del plan ideal para su empresa con facturación y soporte en Colombia.
-          </p>
-          <div className="pt-2">
-            <Link
-              to="/contacto"
-              className="inline-flex items-center space-x-2 px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#0077C8] hover:bg-[#0062a6] shadow-lg shadow-[#0077C8]/20 transition-all"
-            >
-              <span>Consultar Planes y Precios</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
           </div>
         </div>
       </div>

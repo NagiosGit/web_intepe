@@ -25,10 +25,10 @@ export const ProjectDetailPage: React.FC = () => {
 
   const renderIcon = (iconName: string) => {
     switch (iconName) {
-      case 'Sprout': return <Sprout className="w-8 h-8 text-[#B86F4B]" />;
-      case 'Layers': return <Layers className="w-8 h-8 text-[#0077C8]" />;
-      case 'Building2': return <Building2 className="w-8 h-8 text-[#0B1F3A]" />;
-      default: return <Layers className="w-8 h-8 text-[#0077C8]" />;
+      case 'Sprout': return <Sprout className="w-8 h-8 text-[#B86B42]" />;
+      case 'Layers': return <Layers className="w-8 h-8 text-stone-700" />;
+      case 'Building2': return <Building2 className="w-8 h-8 text-stone-900" />;
+      default: return <Layers className="w-8 h-8 text-stone-700" />;
     }
   };
 
@@ -41,8 +41,8 @@ export const ProjectDetailPage: React.FC = () => {
         breadcrumbCurrent={`Proyectos / ${project.title}`}
       />
 
-      {/* 1. Main Project Details (Clean White Background) */}
-      <div className="bg-white py-20 border-b border-[#D8E1EA]">
+      {/* 1. Main Project Details (Clean Ivory / Cream Background) */}
+      <div className="bg-[#FDFBF7] py-24 border-b border-[#E8E2D5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -51,7 +51,7 @@ export const ProjectDetailPage: React.FC = () => {
             <div className="lg:col-span-7 space-y-8">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="p-4 rounded-2xl bg-[#F7F9FC] border border-[#D8E1EA] inline-block shadow-xs">
+                  <div className="p-4 rounded-2xl bg-[#FAF6EE] border border-[#E8E2D5] inline-block shadow-2xs">
                     {renderIcon(project.icon)}
                   </div>
 
@@ -60,18 +60,18 @@ export const ProjectDetailPage: React.FC = () => {
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-[#0077C8] hover:bg-[#0062a6] shadow-sm transition-all"
+                      className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold text-stone-900 bg-[#FAF6EE] hover:bg-[#F5F0E6] border border-[#E8E2D5] shadow-2xs transition-all"
                     >
                       <span>Probar App en Vivo</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
+                      <ExternalLink className="w-3.5 h-3.5 text-[#B86B42]" />
                     </a>
                   )}
                 </div>
 
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B1F3A] tracking-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-stone-950 tracking-tight">
                   Descripción y Alcance de la Solución
                 </h2>
-                <p className="text-[#243447] text-base leading-relaxed">
+                <p className="text-stone-700 text-base leading-relaxed">
                   {project.fullDescription}
                 </p>
               </div>
@@ -79,15 +79,15 @@ export const ProjectDetailPage: React.FC = () => {
               {/* Modules Grid if available */}
               {project.modules && (
                 <div className="space-y-4">
-                  <h3 className="text-lg font-bold text-[#0B1F3A] flex items-center">
-                    <Cpu className="w-5 h-5 mr-2 text-[#0077C8]" />
+                  <h3 className="text-lg font-bold text-stone-950 flex items-center">
+                    <Cpu className="w-5 h-5 mr-2 text-[#B86B42]" />
                     Módulos de la Plataforma
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {project.modules.map((mod, idx) => (
-                      <div key={idx} className="p-4 rounded-2xl bg-[#F7F9FC] border border-[#D8E1EA] space-y-1 shadow-2xs">
-                        <h4 className="font-bold text-xs text-[#0B1F3A]">{mod.name}</h4>
-                        <p className="text-[11px] text-[#64748B] leading-relaxed">{mod.desc}</p>
+                      <div key={idx} className="p-5 rounded-2xl bg-white border border-[#E8E2D5] space-y-1 shadow-2xs">
+                        <h4 className="font-bold text-xs text-stone-900">{mod.name}</h4>
+                        <p className="text-[11px] text-stone-600 leading-relaxed">{mod.desc}</p>
                       </div>
                     ))}
                   </div>
@@ -95,15 +95,15 @@ export const ProjectDetailPage: React.FC = () => {
               )}
 
               {/* Highlights */}
-              <div className="p-6 rounded-2xl bg-[#EAF5FC] border border-[#D8E1EA] space-y-3">
-                <h3 className="font-bold text-[#0B1F3A] text-base flex items-center">
-                  <Sparkles className="w-4 h-4 mr-2 text-[#0077C8]" />
+              <div className="p-7 rounded-3xl bg-[#FAF6EE] border border-[#E8E2D5] space-y-3">
+                <h3 className="font-bold text-stone-950 text-base flex items-center">
+                  <Sparkles className="w-4 h-4 mr-2 text-[#B86B42]" />
                   Impacto y Resultados Clave:
                 </h3>
-                <ul className="space-y-2 text-xs sm:text-sm text-[#243447]">
+                <ul className="space-y-2 text-xs sm:text-sm text-stone-700">
                   {project.highlights.map((h, idx) => (
                     <li key={idx} className="flex items-start space-x-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#0077C8] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-[#B86B42] shrink-0 mt-0.5" />
                       <span>{h}</span>
                     </li>
                   ))}
@@ -111,33 +111,33 @@ export const ProjectDetailPage: React.FC = () => {
               </div>
 
               {/* Target Audience */}
-              <div className="p-6 rounded-2xl bg-[#F7F9FC] border border-[#D8E1EA] space-y-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#64748B]">
+              <div className="p-6 rounded-2xl bg-white border border-[#E8E2D5] space-y-2">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500">
                   Sector o Perfil de Aplicación:
                 </h4>
-                <p className="text-[#0B1F3A] text-sm font-medium">
+                <p className="text-stone-900 text-sm font-medium">
                   {project.targetAudience}
                 </p>
               </div>
             </div>
 
             {/* Right Column: Features Checklist & Action */}
-            <div className="lg:col-span-5 bg-[#F7F9FC] p-8 rounded-3xl border border-[#D8E1EA] shadow-sm space-y-6 sticky top-28">
-              <h3 className="font-bold text-[#0B1F3A] text-lg">
+            <div className="lg:col-span-5 bg-[#FAF6EE] p-8 rounded-3xl border border-[#E8E2D5] shadow-xs space-y-6 sticky top-28">
+              <h3 className="font-bold text-stone-950 text-lg">
                 Capacidades Implementadas
               </h3>
 
               <div className="space-y-3">
                 {project.features.map((feat, idx) => (
-                  <div key={idx} className="flex items-start space-x-2.5 text-xs text-[#243447]">
-                    <CheckCircle2 className="w-4 h-4 text-[#0077C8] shrink-0 mt-0.5" />
+                  <div key={idx} className="flex items-start space-x-2.5 text-xs text-stone-700">
+                    <CheckCircle2 className="w-4 h-4 text-[#B86B42] shrink-0 mt-0.5" />
                     <span>{feat}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="pt-6 border-t border-[#D8E1EA] space-y-3">
-                <span className="text-xs text-[#64748B] block">
+              <div className="pt-6 border-t border-[#E8E2D5] space-y-3">
+                <span className="text-xs text-stone-600 block">
                   ¿Le gustaría implementar un sistema similar o adaptado a su empresa?
                 </span>
 
@@ -146,9 +146,9 @@ export const ProjectDetailPage: React.FC = () => {
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider text-center text-[#0B1F3A] bg-white hover:bg-[#EAF5FC] border border-[#D8E1EA] flex items-center justify-center space-x-2 transition-all shadow-2xs"
+                    className="w-full py-3.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider text-center text-stone-900 bg-white hover:bg-[#F5F0E6] border border-[#E8E2D5] flex items-center justify-center space-x-2 transition-all shadow-2xs"
                   >
-                    <ExternalLink className="w-4 h-4 text-[#0077C8]" />
+                    <ExternalLink className="w-4 h-4 text-[#B86B42]" />
                     <span>Abrir Demo en Vivo</span>
                   </a>
                 )}
@@ -157,15 +157,15 @@ export const ProjectDetailPage: React.FC = () => {
                   href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(`Hola INTEPE S.A.S., me interesa una solución similar a ${project.title} para mi empresa.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider text-center text-white bg-[#0077C8] hover:bg-[#0062a6] shadow-md shadow-[#0077C8]/20 flex items-center justify-center space-x-2 transition-all"
+                  className="w-full py-3.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider text-center text-[#FDFBF7] bg-[#1F2923] hover:bg-[#141C17] shadow-md flex items-center justify-center space-x-2 transition-all"
                 >
                   <span>Cotizar Proyecto Similar</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-[#B86B42]" />
                 </a>
 
                 <Link
                   to="/contacto"
-                  className="w-full py-3 px-4 rounded-xl font-semibold text-xs text-center text-[#0B1F3A] bg-white hover:bg-[#EAF5FC] border border-[#D8E1EA] block transition-all"
+                  className="w-full py-3 px-4 rounded-xl font-semibold text-xs text-center text-stone-800 bg-white hover:bg-[#F5F0E6] border border-[#E8E2D5] block transition-all"
                 >
                   Solicitar Diagnóstico por Formulario
                 </Link>
@@ -178,22 +178,22 @@ export const ProjectDetailPage: React.FC = () => {
         </div>
       </div>
 
-      {/* 2. Other Projects Banner (Warm Arena Background) */}
-      <div className="bg-[#FAF7F2] py-16 border-b border-[#E8DCCB]">
+      {/* 2. Other Projects Banner (Warm Sand Background) */}
+      <div className="bg-[#F5F0E6] py-16 border-b border-[#E8E2D5]">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-4">
-          <h3 className="text-xl sm:text-2xl font-bold text-[#0B1F3A]">
+          <h3 className="text-xl sm:text-2xl font-bold text-stone-950">
             Explore más proyectos y soluciones desarrolladas por INTEPE
           </h3>
-          <p className="text-[#64748B] text-xs sm:text-sm">
+          <p className="text-stone-600 text-xs sm:text-sm">
             Contamos con experiencia en desarrollo de plataformas web, software pecuario, control agronómico y sistemas ERP.
           </p>
           <div className="pt-2">
             <Link
               to="/proyectos"
-              className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#0077C8] hover:text-[#0B1F3A]"
+              className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-stone-900 hover:text-[#B86B42]"
             >
               <span>Ver todos los proyectos</span>
-              <ArrowRight className="w-4 h-4 text-[#B86F4B]" />
+              <ArrowRight className="w-4 h-4 text-[#B86B42]" />
             </Link>
           </div>
         </div>
