@@ -54,7 +54,24 @@ Este código PIN protege el **Estudio de Impresión Física** y el **Personaliza
 
 ---
 
-## 📁 4. ARCHIVOS LOCALES EN ESTA CARPETA (`Documentos/Papeleria/`)
+---
+
+## ⚡ 4. RECURSOS GRÁFICOS, LOGOS & GENERADOR WHATSAPP (`Documentos/Logo/`)
+
+1. **`Generador_LOG-8_WhatsApp.html`**:
+   * Estudio interactivo de diseño para generar banners de WhatsApp en alta definición (Modo Cyber Dark o Blanco Ejecutivo) y descarga en 4K Retina.
+2. **`logo.png`**:
+   * Nuevo logo oficial con procesador Microchip CPU + corchetes HUD en naranja neón (`#FF7120`) y fondo transparente en 1024 × 1024 px.
+3. **`logo_perfil_avatar.png`**:
+   * Avatar oficial en 1024 × 1024 px con fondo oscuro `#080B0E` para foto de perfil de WhatsApp Business, LinkedIn o Instagram.
+4. **`logo_horizontal_completo.png`**:
+   * Logo horizontal en 2400 × 800 px con imagotipo + `INTEPE S.A.S.` + *Informática y Tecnología Penagos S.A.S.* + NIT.
+5. **`logo.svg`**:
+   * Vector gráfico puro SVG escalable al 100% sin pérdida para litografía, uniformes o papelería física.
+
+---
+
+## 📁 5. ARCHIVOS LOCALES EN ESTA CARPETA (`Documentos/Papeleria/`)
 
 1. **`Tarjeta_Presentacion_INTEPE.html`**:
    * Tarjeta 3D del Ing. William Penagos (100% offline sin internet).
@@ -65,7 +82,7 @@ Este código PIN protege el **Estudio de Impresión Física** y el **Personaliza
 4. **`Contacto_INTEPE_Patricia_Munoz.vcf`**:
    * Archivo de contacto digital para celular de Patricia Muñoz.
 5. **`ACCESO_TARJETA_PROFESIONAL.html`**:
-   * Panel interactivo con botones y enlaces directos en el navegador.
+   * Panel interactivo con botones y enlaces directos a papelería y generadores de logos.
 6. **`ACCESO_TARJETA_PROFESIONAL.md`**:
    * Este documento con las credenciales y links oficiales.
 
