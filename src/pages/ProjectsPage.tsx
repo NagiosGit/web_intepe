@@ -2,12 +2,12 @@ import React from 'react';
 import { PageHeader } from '../components/common/PageHeader';
 import { ProjectsOverview } from '../components/home/ProjectsOverview';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MessageSquare } from 'lucide-react';
+import { ArrowRight, MessageSquare, Terminal } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
 export const ProjectsPage: React.FC = () => {
   return (
-    <div>
+    <div className="bg-[#080B0E] text-slate-100">
       <PageHeader
         badge="Experiencia & Capacidad"
         title="Tecnología desarrollada por INTEPE"
@@ -15,38 +15,40 @@ export const ProjectsPage: React.FC = () => {
         breadcrumbCurrent="Proyectos"
       />
 
-      {/* Projects Showcase on warm sand contrast */}
+      {/* Projects Showcase */}
       <ProjectsOverview showHeader={false} isFullPage={true} />
 
-      {/* Bottom CTA Banner with warm deep forest contrast */}
-      <div className="py-24 bg-[#1F2923] text-white border-t border-stone-800">
-        <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-[#FAF6EE] text-xs font-semibold">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42]"></span>
-            <span>Desarrollo de Software a Medida</span>
+      {/* Bottom Cyber CTA Banner */}
+      <div className="py-24 bg-[#080B0E] text-white border-t border-white/10 cyber-grid relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[#FF7120]/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-4xl mx-auto px-4 text-center space-y-6 relative z-10">
+          <div className="tech-badge">
+            <Terminal className="w-3.5 h-3.5 text-[#FF7120]" />
+            <span>DESARROLLO DE SOFTWARE A LA MEDIDA</span>
           </div>
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white">
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-['Space_Grotesk']">
             ¿Requiere una solución tecnológica a la medida de su empresa?
           </h3>
-          <p className="text-stone-300 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
+          <p className="text-slate-300 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed font-sans">
             Diseñamos plataformas personalizadas sin cobros de licenciamiento por usuario, integradas con bases de datos seguras y soporte continuo.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3 pt-2">
             <Link
               to="/contacto"
-              className="px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-stone-900 bg-[#FDFBF7] hover:bg-[#FAF6EE] transition-all flex items-center justify-center space-x-2 shadow-md"
+              className="btn-cyber-primary text-xs"
             >
-              <span>Presentar mi requerimiento</span>
-              <ArrowRight className="w-4 h-4 text-[#B86B42]" />
+              <span>PRESENTAR REQUERIMIENTO</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
             <a
               href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Hola INTEPE S.A.S., me gustaría cotizar un desarrollo de software para mi empresa.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 rounded-xl font-semibold text-xs text-white bg-white/10 hover:bg-white/15 border border-white/20 transition-all flex items-center justify-center space-x-2"
+              className="btn-cyber-outline text-xs"
             >
-              <MessageSquare className="w-4 h-4 text-[#B86B42]" />
-              <span>Consultar en WhatsApp</span>
+              <MessageSquare className="w-4 h-4 text-[#FF7120]" />
+              <span>CONSULTAR EN WHATSAPP</span>
             </a>
           </div>
         </div>

@@ -5,35 +5,35 @@ export const projectsData: Project[] = [
     id: 'granjaweb',
     slug: 'granjaweb',
     title: 'GranjaWP',
-    tagline: 'Plataforma web para la gestión integral de producción avícola, lotes de postura, inventario y costos agropecuarios.',
-    category: 'Gestión Agropecuaria & Avícola',
+    tagline: 'Plataforma web integral para la gestión agronómica, control de invernaderos, cosechas diarias, inventario de bodega, costos por lote y rentabilidad financiera.',
+    category: 'Gestión Agrícola & Invernaderos',
     icon: 'Sprout',
-    image: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=800&q=80',
-    demoUrl: 'https://granjawp.netlify.app/',
-    description: 'Sistema web y móvil desarrollado por INTEPE S.A.S. para digitalizar y automatizar el control productivo, sanitario, logístico y financiero de granjas avícolas y agropecuarias.',
-    fullDescription: 'GranjaWP es una solución integral desarrollada por INTEPE S.A.S. para transformar la administración operativa en explotaciones avícolas. Permite registrar en tiempo real la producción de huevos clasificada por calidades, control de mortalidad, pesajes periódicos, consumo de alimento por lote y vacunación, integrando la liquidación de nómina de galponeros, control de ventas y cálculo automático del punto de equilibrio financiero por lote.',
+    image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80',
+    description: 'Sistema web integral desarrollado por INTEPE S.A.S. para digitalizar, controlar y rentabilizar operaciones agrícolas, producción en invernaderos (arándanos, tomate, hortalizas, uchuvas), bodega de insumos, despachos y liquidación de jornales.',
+    fullDescription: 'GranjaWP es una plataforma ERP agropecuaria desarrollada a la medida por INTEPE S.A.S. para transformar la administración operativa y financiera de granjas agrícolas y cultivos bajo invernadero. Centraliza en una arquitectura moderna el monitoreo en tiempo real de lotes en producción, cálculo automático del punto de equilibrio y precio mínimo de venta base, control de cosechas diarias, inventario de agroquímicos y herramientas con alertas de agotamiento, registro de gastos y facturas, gestión de despachos, cartera y liquidación de nómina de operarios de campo.',
     features: [
-      'Dashboard con KPIs en tiempo real: postura diaria, conversión alimenticia, mortalidad y aves activas.',
-      'Control de lotes y galpones con seguimiento por edades (semanas/días) y línea genética.',
-      'Planilla diaria de producción de huevos clasificada por calidades (Jumbo, AAA, AA, A, B, C, Roto, Sucio).',
-      'Registro de consumo de alimento en bultos y kilos con descuento automático de inventario.',
-      'Plan de vacunación y sanidad con trazabilidad de dosis, tratamientos veterinarios y alertas.',
-      'Módulo de despachos, clientes y remisiones de venta con control de cartera y cobranza.',
-      'Liquidación de nómina de operarios con registro de jornales, horas extras, vales y generación de vouchers.',
-      'Análisis financiero de rentabilidad, cálculo del costo base por huevo y exportación de reportes a Excel y PDF.'
+      'Dashboard ejecutivo con KPIs en tiempo real: ingresos en producción, gastos consolidados, utilidad neta activa y porcentaje de eficiencia financiera.',
+      'Cálculo automático de costo base y punto de equilibrio por lote/invernadero (INV_ARAN2, INV_TOMATE, INV_HORTALIZAS, INV_ARANDANOS) determinando el precio mínimo de venta por kilo o canastilla.',
+      'Control de gastos y facturación electrónica de proveedores clasificado por labores de siembra, mantenimiento, agroinsumos, servicios públicos y fletes.',
+      'Reporte de ventas y finanzas con comparativas de rentabilidad, análisis de márgenes y estado de cartera (total cobrado en caja vs. cuentas por cobrar pendientes).',
+      'Inventario integral de bodega con clasificación de consumibles (fertilizantes, abonos, fungicidas) y activos fijos/herramientas, con alertas tempranas de stock crítico.',
+      'Planilla de cosecha diaria con registro de corte por invernadero, pesaje de canastillas/kilos y trazabilidad de recolección.',
+      'Liquidación automatizada de nómina y mano de obra agrícola: control de jornales, horas trabajadas, vales de anticipo y comprobantes de pago.',
+      'Módulo de despachos y remisiones comerciales a clientes con control de entregas, precios unitarios y flujo de caja diario.'
     ],
     highlights: [
-      'Reemplazo 100% de planillas de papel por registros digitales seguros desde cualquier dispositivo.',
-      'Cálculo automático de la tasa de conversión alimenticia y costo unitario de producción.',
-      'Visibilidad financiera instantánea de utilidades netas, ingresos y gastos operativos.'
+      'Visibilidad financiera 100% precisa del costo real de producción y margen por cada invernadero y cultivo.',
+      'Alertas inteligentes en tiempo real para evitar desabastecimiento de fertilizantes e insumos químicos críticos.',
+      'Control riguroso de cartera y cobranzas para maximizar la liquidez y rentabilidad del negocio agrícola.'
     ],
-    targetAudience: 'Productores avícolas, granjas de postura y engorde, administradores agropecuarios y empresas del sector pecuario.',
+    targetAudience: 'Productores agrícolas, administradores de invernaderos y cultivos comerciales (arándanos, hortalizas, tomate, frutales), agroindustrias y empresas del sector agropecuario.',
     modules: [
-      { name: 'Dashboard Ejecutivo', desc: 'Resumen consolidado de aves activas, mortalidad acumulada, porcentaje de postura y saldo en caja.' },
-      { name: 'Galpones & Lotes', desc: 'Gestión por etapas de desarrollo (cría, levante, producción) y estado operativo del galpón.' },
-      { name: 'Inventario & Bodega', desc: 'Control de existencias de alimento concentrado, medicamentos e insumos con alerta de stock mínimo.' },
-      { name: 'Despachos & Facturación', desc: 'Emisión de remisiones, control de precios por cubeta, cartera de clientes y cuentas por cobrar.' },
-      { name: 'Mano de Obra', desc: 'Control de asistencia, jornales, adelantos y liquidación de nómina periódica por trabajador.' }
+      { name: 'Dashboard & Punto de Equilibrio', desc: 'Monitoreo de ingresos, gastos, utilidad neta activa y cálculo del precio base por kilo/canastilla por cada lote en producción.' },
+      { name: 'Control de Gastos & Facturación', desc: 'Registro de egresos de proveedores por concepto agronómico (siembras, abonos, fletes, servicios) con adjuntos en PDF y exportación a Excel.' },
+      { name: 'Ventas, Finanzas & Cartera', desc: 'Análisis de rentabilidad por invernadero, gráficas de rendimiento financiero y seguimiento de cobros en caja vs. cartera pendiente.' },
+      { name: 'Inventario & Bodega de Insumos', desc: 'Control de stock físico en tiempo real de fertilizantes, pesticidas y herramientas en uso por operarios con alertas de nivel crítico.' },
+      { name: 'Cosecha Diaria & Despachos', desc: 'Registro diario de recolección en campo, pesajes por variedad y generación de remisiones de despacho a clientes.' },
+      { name: 'Nómina & Mano de Obra Agrícola', desc: 'Administración de operarios, asignación de tareas por bloque, control de jornales diarios y deducción de vales.' }
     ]
   },
   {

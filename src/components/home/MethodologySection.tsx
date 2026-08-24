@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, FileCode2, Palette, Cpu, Rocket, ArrowRight } from 'lucide-react';
+import { Search, FileCode2, Palette, Cpu, Rocket, ArrowRight, Terminal } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const MethodologySection: React.FC = () => {
@@ -37,20 +37,20 @@ export const MethodologySection: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#FAF6EE] border-b border-[#E8E2D5]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-[#080B0E] border-b border-white/10 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white border border-[#E8E2D5] text-stone-800 text-xs font-semibold shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42]"></span>
-            <span>Metodología Comprobada</span>
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <div className="tech-badge">
+            <Terminal className="w-3.5 h-3.5 text-[#FF7120]" />
+            <span>CICLO DE VIDA DE SOFTWARE</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-950 tracking-tight">
-            De la idea al software en funcionamiento
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-['Space_Grotesk']">
+            Metodología de <span className="text-[#FF7120]">Desarrollo Ágil</span>
           </h2>
-          <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-            Un proceso estructurado y transparente para convertir necesidades operativas en herramientas de software de alto impacto.
+          <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-sans">
+            Un proceso estructurado y transparente para convertir necesidades operativas en herramientas tecnológicas de alto impacto.
           </p>
         </div>
 
@@ -61,23 +61,26 @@ export const MethodologySection: React.FC = () => {
             return (
               <div 
                 key={idx}
-                className="bg-white rounded-3xl p-6 border border-[#E8E2D5] shadow-xs hover:-translate-y-1 hover:shadow-md hover:border-[#B86B42]/50 transition-all duration-300 flex flex-col justify-between group space-y-4"
+                className="cyber-card rounded-lg p-6 hud-box flex flex-col justify-between group space-y-4"
               >
+                <div className="hud-corner-tl"></div>
+                <div className="hud-corner-br"></div>
+
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-2xl font-black text-[#B86B42] tracking-tight">
+                    <span className="font-mono text-2xl font-black text-[#FF7120] tracking-tight">
                       {step.number}
                     </span>
-                    <div className="w-9 h-9 rounded-xl bg-[#F5F0E6] border border-[#E8E2D5] flex items-center justify-center text-stone-800 group-hover:bg-[#1F2923] group-hover:text-white transition-colors">
+                    <div className="w-9 h-9 rounded bg-white/5 border border-white/10 flex items-center justify-center text-[#FF7120] group-hover:scale-105 transition-transform">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
 
-                  <h3 className="font-bold text-sm text-stone-950 group-hover:text-[#B86B42] transition-colors">
+                  <h3 className="font-bold text-sm text-white font-['Space_Grotesk'] group-hover:text-[#FF853A] transition-colors">
                     {step.title}
                   </h3>
 
-                  <p className="text-xs text-stone-600 leading-relaxed">
+                  <p className="text-xs text-slate-400 leading-relaxed font-sans">
                     {step.desc}
                   </p>
                 </div>
@@ -90,10 +93,10 @@ export const MethodologySection: React.FC = () => {
         <div className="mt-14 text-center">
           <Link
             to="/contacto"
-            className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-stone-900 hover:text-[#B86B42] transition-colors"
+            className="btn-cyber-outline text-xs"
           >
-            <span>Iniciar consultoría de desarrollo</span>
-            <ArrowRight className="w-4 h-4 text-[#B86B42]" />
+            <span>INICIAR CONSULTORÍA DE SOFTWARE</span>
+            <ArrowRight className="w-4 h-4 text-[#FF7120]" />
           </Link>
         </div>
 

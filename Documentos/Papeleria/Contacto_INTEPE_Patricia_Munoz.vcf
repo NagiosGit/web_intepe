@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Patricia Muñoz
+N:Muñoz;Patricia;;;
+ORG:INTEPE S.A.S. - Informática y Tecnología Penagos S.A.S.
+TITLE:Gerente de Recursos Humanos
+ROLE:Gestión del Talento & Desarrollo Organizacional
+TEL;TYPE=CELL,VOICE:(+57) 313 386 2656
+TEL;TYPE=WORK,VOICE:(+60 1) 471 8518
+EMAIL;TYPE=WORK,INTERNET:rrhh@intepe.net
+URL:https://www.intepe.net
+ADR;TYPE=WORK:;;Calle 152A No. 54-68;Bogotá;Cundinamarca;;Colombia
+NOTE:NIT: 830.066.815-0 | Gerencia de Recursos Humanos, Gestión del Talento y Selección TI.
+END:VCARD

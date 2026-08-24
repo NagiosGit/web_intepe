@@ -4,10 +4,10 @@ import { QuickContact } from '../components/home/QuickContact';
 
 export const ContactPage: React.FC = () => {
   return (
-    <div>
+    <div className="bg-[#080B0E] text-slate-100">
       <PageHeader
         badge="Canales de Atención"
-        title="Hablemos de tecnología"
+        title="Hablemos de Tecnología"
         subtitle="Cuéntenos qué necesita su empresa y encontraremos la mejor solución tecnológica para su operación."
         breadcrumbCurrent="Contacto"
       />

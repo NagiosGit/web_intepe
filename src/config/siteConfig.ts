@@ -22,4 +22,16 @@ export const siteConfig = {
   projectsSubtitle: 'Conozca algunos de los proyectos y soluciones desarrollados por INTEPE.',
   whyChooseHeadline: 'Tecnología con visión empresarial',
   whyChooseSubtitle: 'Combinamos experiencia técnica, soporte oportuno y desarrollo propio para impulsar la operación de su compañía.',
+  paymentLinks: {
+    wompi: 'https://checkout.wompi.co/method',
+    paypal: 'https://www.paypal.com/paypalme/pagosintepe'
+  },
+  bankDetails: {
+    breB: '0068574664',
+    holder: 'Informática y Tecnología Penagos S.A.S.',
+    nit: '830.066.815-0',
+    accountingEmail: 'soporte@intepe.net'
+  }
 };
+
+

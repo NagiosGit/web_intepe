@@ -20,13 +20,22 @@ import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { DataTreatmentPage } from './pages/DataTreatmentPage';
+import { PaymentsPage } from './pages/PaymentsPage';
+import { BusinessCardPage } from './pages/BusinessCardPage';
 
 export function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen bg-white text-slate-800 font-sans selection:bg-sky-500 selection:text-white flex flex-col antialiased">
-        {/* Sticky Corporate Header */}
+      <div className="min-h-screen bg-[#080B0E] text-slate-100 font-sans selection:bg-[#FF7120] selection:text-black flex flex-col antialiased relative cyber-grid">
+        {/* Architectural vertical body lines (ChainGPT Labs style) */}
+        <div className="fixed inset-0 pointer-events-none z-0 flex justify-between max-w-7xl mx-auto px-4 opacity-15">
+          <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+          <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-white/10 to-transparent hidden md:block"></div>
+          <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+        </div>
+
+        {/* Sticky Cyber Header */}
         <Navbar />
 
         {/* Dynamic Route Content */}
@@ -43,6 +52,12 @@ export function App() {
             <Route path="/proyectos" element={<ProjectsPage />} />
             <Route path="/proyectos/:slug" element={<ProjectDetailPage />} />
             <Route path="/cotizador-outsourcing" element={<CalculatorPage />} />
+            <Route path="/pagos" element={<PaymentsPage />} />
+            <Route path="/link-pagos" element={<PaymentsPage />} />
+            <Route path="/tarjeta-presentacion" element={<BusinessCardPage />} />
+            <Route path="/tarjeta" element={<BusinessCardPage />} />
+            <Route path="/papeleria/tarjeta" element={<BusinessCardPage />} />
+            <Route path="/papeleria" element={<BusinessCardPage />} />
             <Route path="/nosotros" element={<AboutPage />} />
             <Route path="/contacto" element={<ContactPage />} />
             <Route path="/politica-privacidad" element={<PrivacyPolicyPage />} />

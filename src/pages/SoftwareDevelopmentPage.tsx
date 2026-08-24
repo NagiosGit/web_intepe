@@ -5,12 +5,12 @@ import { SoftwareSection } from '../components/home/SoftwareSection';
 import { MethodologySection } from '../components/home/MethodologySection';
 import { ProjectsOverview } from '../components/home/ProjectsOverview';
 import { SoftwareEstimator } from '../components/calculator/SoftwareEstimator';
-import { ArrowRight, MessageSquare } from 'lucide-react';
+import { ArrowRight, MessageSquare, Terminal } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
 export const SoftwareDevelopmentPage: React.FC = () => {
   return (
-    <div>
+    <div className="bg-[#080B0E] text-slate-100">
       <PageHeader
         badge="Software & Sistemas a Medida"
         title="Su proceso. Su software. Su solución."
@@ -18,49 +18,49 @@ export const SoftwareDevelopmentPage: React.FC = () => {
         breadcrumbCurrent="Desarrollo de Software"
       />
 
-      {/* 1. Main Capabilities Grid (White Cards on Contrasting #FAF6EE Background) */}
-      <SoftwareSection showHeader={false} bgClass="bg-[#FAF6EE]" />
+      {/* Main Capabilities Grid */}
+      <SoftwareSection showHeader={false} bgClass="bg-[#080B0E]" />
 
-      {/* 2. Estimator Tool (Ivory Background) */}
-      <div className="bg-[#FDFBF7] border-b border-[#E8E2D5]">
-        <SoftwareEstimator />
-      </div>
+      {/* Estimator Tool */}
+      <SoftwareEstimator />
 
-      {/* 3. Methodology: 5 Stages (Contrasting #FAF6EE) */}
+      {/* Methodology: 5 Stages */}
       <MethodologySection />
 
-      {/* 4. Real Projects Showcase (Warm Sand #F5F0E6 Background) */}
+      {/* Real Projects Showcase */}
       <ProjectsOverview showHeader={true} />
 
-      {/* 5. Final Action (Warm Deep Forest) */}
-      <div className="py-24 bg-[#1F2923] text-white border-t border-stone-800">
-        <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-[#FAF6EE] text-xs font-semibold">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42]"></span>
-            <span>Iniciar Proyecto</span>
+      {/* Final Action Banner */}
+      <div className="py-24 bg-[#080B0E] text-white border-t border-white/10 cyber-grid relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[#FF7120]/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-4xl mx-auto px-4 text-center space-y-6 relative z-10">
+          <div className="tech-badge">
+            <Terminal className="w-3.5 h-3.5 text-[#FF7120]" />
+            <span>INICIAR PROYECTO DE INGENIERÍA</span>
           </div>
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white">
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-['Space_Grotesk']">
             ¿Listo para digitalizar su operación con software propio?
           </h3>
-          <p className="text-stone-300 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
+          <p className="text-slate-300 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed font-sans">
             Cuéntenos su proceso y estructuraremos una propuesta técnica y económica personalizada sin ataduras de licenciamiento por usuario.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3 pt-2">
             <Link
               to="/contacto"
-              className="px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-stone-900 bg-[#FDFBF7] hover:bg-[#FAF6EE] transition-all flex items-center justify-center space-x-2 shadow-md"
+              className="btn-cyber-primary text-xs"
             >
-              <span>Solicitar proyecto de software</span>
-              <ArrowRight className="w-4 h-4 text-[#B86B42]" />
+              <span>SOLICITAR PROYECTO DE SOFTWARE</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
             <a
               href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Hola INTEPE S.A.S., deseo cotizar un desarrollo de software para mi empresa.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 rounded-xl font-semibold text-xs text-white bg-white/10 hover:bg-white/15 border border-white/20 transition-all flex items-center justify-center space-x-2"
+              className="btn-cyber-outline text-xs"
             >
-              <MessageSquare className="w-4 h-4 text-[#B86B42]" />
-              <span>Chatear por WhatsApp</span>
+              <MessageSquare className="w-4 h-4 text-[#FF7120]" />
+              <span>CHATEAR POR WHATSAPP</span>
             </a>
           </div>
         </div>

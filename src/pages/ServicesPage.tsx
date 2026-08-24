@@ -11,85 +11,86 @@ import { siteConfig } from '../config/siteConfig';
 export const ServicesPage: React.FC = () => {
   const renderIcon = (iconName: string) => {
     switch (iconName) {
-      case 'Briefcase': return <Briefcase className="w-6 h-6 text-stone-700" />;
-      case 'Headset': return <Headset className="w-6 h-6 text-stone-700" />;
-      case 'Server': return <Server className="w-6 h-6 text-stone-700" />;
-      case 'Wrench': return <Wrench className="w-6 h-6 text-[#B86B42]" />;
-      case 'ShieldCheck': return <ShieldCheck className="w-6 h-6 text-stone-700" />;
-      case 'Cloud': return <Cloud className="w-6 h-6 text-stone-700" />;
-      default: return <Server className="w-6 h-6 text-stone-700" />;
+      case 'Briefcase': return <Briefcase className="w-6 h-6 text-[#FF7120]" />;
+      case 'Headset': return <Headset className="w-6 h-6 text-cyan-400" />;
+      case 'Server': return <Server className="w-6 h-6 text-amber-400" />;
+      case 'Wrench': return <Wrench className="w-6 h-6 text-emerald-400" />;
+      case 'ShieldCheck': return <ShieldCheck className="w-6 h-6 text-purple-400" />;
+      case 'Cloud': return <Cloud className="w-6 h-6 text-blue-400" />;
+      default: return <Server className="w-6 h-6 text-[#FF7120]" />;
     }
   };
 
   return (
-    <div>
+    <div className="bg-[#080B0E] text-slate-100">
       <PageHeader
         badge="Portafolio de Servicios"
-        title="Soluciones tecnológicas para su empresa"
+        title="Soluciones Tecnológicas para su Empresa"
         subtitle="Un portafolio integral de servicios tecnológicos diseñado para mantener, proteger y hacer evolucionar su operación."
         breadcrumbCurrent="Servicios"
       />
 
-      {/* Services Grid on Contrasting #FAF6EE Background */}
-      <div className="bg-[#FAF6EE] border-b border-[#E8E2D5] py-24">
+      {/* Services Grid */}
+      <div className="bg-[#080B0E] border-b border-white/10 py-24 cyber-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {servicesData.map((service) => (
+            {servicesData.map((service, idx) => (
               <div
                 key={service.id}
-                className="bg-white rounded-3xl p-8 border border-[#E8E2D5] shadow-xs hover:border-[#B86B42]/60 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
+                className="cyber-card rounded-lg p-8 hud-box flex flex-col justify-between group"
               >
+                <div className="hud-corner-tl"></div>
+                <div className="hud-corner-br"></div>
+
                 <div className="space-y-4">
                   <div className="flex items-start justify-between">
-                    <div className="p-3.5 rounded-2xl bg-[#F5F0E6] border border-[#E8E2D5] group-hover:bg-[#1F2923] group-hover:text-white transition-colors">
+                    <div className="p-3.5 rounded bg-white/5 border border-white/10 group-hover:scale-105 transition-transform">
                       {renderIcon(service.icon)}
                     </div>
-                    {service.badge && (
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#F5F0E6] text-stone-800 border border-[#E8E2D5]">
-                        {service.badge}
-                      </span>
-                    )}
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-white/5 text-[#FF853A] border border-[#FF7120]/30">
+                      [0{idx + 1}]
+                    </span>
                   </div>
 
                   <div>
-                    <h3 className="text-xl font-bold text-stone-950 tracking-tight group-hover:text-[#B86B42] transition-colors">
+                    <h3 className="text-xl font-bold text-white tracking-tight font-['Space_Grotesk'] group-hover:text-[#FF853A] transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-stone-600 text-xs leading-relaxed mt-2">
+                    <p className="text-slate-400 text-xs leading-relaxed mt-2 font-sans">
                       {service.fullDescription}
                     </p>
                   </div>
 
-                  <div className="space-y-1.5 pt-3 border-t border-[#F5F0E6]">
-                    <h4 className="text-[11px] font-bold uppercase tracking-wider text-stone-700">
-                      Alcance principal:
+                  <div className="space-y-2 pt-3 border-t border-white/10">
+                    <h4 className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#FF7120]">
+                      // Alcance Principal:
                     </h4>
-                    {service.features.slice(0, 4).map((feat, idx) => (
-                      <div key={idx} className="flex items-start space-x-2 text-xs text-stone-800">
-                        <Check className="w-3.5 h-3.5 text-[#B86B42] shrink-0 mt-0.5" />
+                    {service.features.slice(0, 4).map((feat, fIdx) => (
+                      <div key={fIdx} className="flex items-start space-x-2 text-xs text-slate-300 font-sans">
+                        <Check className="w-3.5 h-3.5 text-[#FF7120] shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-[#F5F0E6] flex items-center justify-between">
+                <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between">
                   <Link
                     to={service.ctaLink}
-                    className="inline-flex items-center text-xs font-bold text-stone-900 hover:text-[#B86B42] transition-colors"
+                    className="btn-cyber-outline text-xs py-2 px-3"
                   >
                     <span>{service.ctaText}</span>
-                    <ArrowRight className="w-3.5 h-3.5 ml-1 text-[#B86B42]" />
+                    <ArrowRight className="w-3.5 h-3.5 ml-1 text-[#FF7120]" />
                   </Link>
 
                   <a
                     href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(`Hola INTEPE S.A.S., deseo cotizar el servicio de ${service.title}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-stone-500 hover:text-stone-900 underline"
+                    className="text-xs font-mono text-slate-400 hover:text-[#FF7120] transition-colors"
                   >
-                    Cotizar por WhatsApp
+                    WhatsApp →
                   </a>
                 </div>
               </div>
@@ -99,14 +100,9 @@ export const ServicesPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Trust & SLA Guarantees Banner */}
       <TrustSLASection />
-
-      {/* Tech Ecosystem & Compatible Brands */}
-      <TechEcosystem />
-
-      {/* Differential Section (Deep Forest Contrast) */}
       <DifferentialSection />
+      <TechEcosystem />
     </div>
   );
 };

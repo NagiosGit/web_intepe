@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, CheckCircle2, TrendingUp, HeartHandshake } from 'lucide-react';
+import { Star, Terminal } from 'lucide-react';
 
 export const TestimonialsSection: React.FC = () => {
   const reviews = [
@@ -16,13 +16,13 @@ export const TestimonialsSection: React.FC = () => {
     },
     {
       author: 'Alejandro P. Gómez',
-      role: 'Director de Producción Avícola',
+      role: 'Director de Producción & Cultivos',
       company: 'Sector Agropecuario Cundinamarca',
-      sector: 'Avicultura & Campo',
+      sector: 'Invernaderos & Campo',
       rating: 5,
       metric: '100% Control Digital',
-      metricDesc: 'de postura, concentrado y mortalidad en lotes',
-      quote: 'El desarrollo de GranjaWP cambió por completo la administración de nuestros galpones. Dejamos de perder datos en libretas de papel y ahora tenemos reportes exactos de conversión alimenticia y costos diarios.',
+      metricDesc: 'de cosechas, bodega y punto de equilibrio por lote',
+      quote: 'El desarrollo de GranjaWP cambió por completo la administración de nuestros invernaderos. Dejamos de perder datos en libretas de papel y ahora tenemos reportes exactos de cosecha diaria, costo base por kilo y control de insumos en tiempo real.',
       verified: true
     },
     {
@@ -39,20 +39,20 @@ export const TestimonialsSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#FAF6EE] border-b border-[#E8E2D5] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-[#080B0E] border-b border-white/10 relative overflow-hidden cyber-grid">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white border border-[#E8E2D5] text-stone-800 text-xs font-semibold shadow-2xs">
-            <HeartHandshake className="w-3.5 h-3.5 text-[#B86B42]" />
-            <span>Casos Reales & Prueba Social</span>
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <div className="tech-badge">
+            <Terminal className="w-3.5 h-3.5 text-[#FF7120]" />
+            <span>TESTIMONIOS & CASOS REALES</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-950 tracking-tight">
-            Resultados tangibles que respaldan nuestro servicio
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-['Space_Grotesk']">
+            Resultados que <span className="text-[#FF7120]">Respaldan</span> Nuestro Trabajo
           </h2>
-          <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-            Conozca cómo empresas en Colombia optimizan su productividad y aseguran su información trabajando con INTEPE S.A.S.
+          <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-sans">
+            Conozca cómo empresas en Colombia optimizan su productividad y aseguran su infraestructura con INTEPE S.A.S.
           </p>
         </div>
 
@@ -61,71 +61,56 @@ export const TestimonialsSection: React.FC = () => {
           {reviews.map((rev, idx) => (
             <div 
               key={idx}
-              className="bg-white rounded-3xl p-8 border border-[#E8E2D5] shadow-xs flex flex-col justify-between space-y-6 hover:-translate-y-1 hover:shadow-md hover:border-[#B86B42]/50 transition-all duration-300 relative group"
+              className="cyber-card rounded-lg p-7 sm:p-8 hud-box flex flex-col justify-between space-y-6 group"
             >
+              <div className="hud-corner-tl"></div>
+              <div className="hud-corner-br"></div>
+
               <div className="space-y-4">
-                {/* Metric Badge Header */}
-                <div className="p-4 rounded-2xl bg-[#FAF6EE] border border-[#E8E2D5] space-y-0.5">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#B86B42]">
-                      Resultado Medible
-                    </span>
-                    <TrendingUp className="w-3.5 h-3.5 text-[#B86B42]" />
+                {/* Metric Badge */}
+                <div className="p-3 rounded bg-white/[0.02] border border-white/5 space-y-1">
+                  <div className="text-xs font-mono font-bold text-[#FF853A]">
+                    {rev.metric}
                   </div>
-                  <strong className="text-base font-black text-stone-950 block">{rev.metric}</strong>
-                  <span className="text-[11px] text-stone-500 block leading-tight">{rev.metricDesc}</span>
+                  <div className="text-[11px] text-slate-400 font-sans">
+                    {rev.metricDesc}
+                  </div>
                 </div>
 
-                {/* Star Rating */}
+                {/* Rating stars */}
                 <div className="flex items-center space-x-1">
-                  {[...Array(rev.rating)].map((_, sIdx) => (
-                    <Star key={sIdx} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  {[...Array(rev.rating)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 text-[#FF7120] fill-[#FF7120]" />
                   ))}
-                  <span className="text-xs font-bold text-stone-700 ml-1.5">5.0 / 5.0</span>
                 </div>
 
-                {/* Quote Body */}
-                <p className="text-stone-700 text-xs sm:text-sm leading-relaxed italic">
+                {/* Quote */}
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans italic">
                   "{rev.quote}"
                 </p>
               </div>
 
-              {/* Author Footer */}
-              <div className="pt-4 border-t border-[#F5F0E6] flex items-center justify-between">
-                <div className="space-y-0.5">
-                  <strong className="text-xs font-bold text-stone-950 block">{rev.author}</strong>
-                  <span className="text-[11px] text-stone-500 block">{rev.role}</span>
-                  <span className="text-[10px] text-stone-400 font-medium block">{rev.company}</span>
+              {/* Author Info */}
+              <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                <div>
+                  <div className="text-xs font-bold text-white font-['Space_Grotesk']">
+                    {rev.author}
+                  </div>
+                  <div className="text-[11px] text-slate-400 font-mono">
+                    {rev.role}
+                  </div>
+                  <div className="text-[10px] text-slate-500 font-sans">
+                    {rev.company}
+                  </div>
                 </div>
                 {rev.verified && (
-                  <div className="flex items-center space-x-1 text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-1 rounded-md border border-emerald-200" title="Cliente verificado">
-                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                    <span>Verificado</span>
-                  </div>
+                  <span className="text-[9px] font-mono text-emerald-400 border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 rounded">
+                    VERIFICADO
+                  </span>
                 )}
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Bottom Trust Stat Bar */}
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-          <div className="p-5 rounded-2xl bg-white border border-[#E8E2D5] shadow-2xs">
-            <strong className="text-2xl font-black text-stone-950 block">99.8%</strong>
-            <span className="text-xs text-stone-500">SLA de Disponibilidad</span>
-          </div>
-          <div className="p-5 rounded-2xl bg-white border border-[#E8E2D5] shadow-2xs">
-            <strong className="text-2xl font-black text-stone-950 block">&lt; 30 min</strong>
-            <span className="text-xs text-stone-500">Tiempo de Respuesta L1</span>
-          </div>
-          <div className="p-5 rounded-2xl bg-white border border-[#E8E2D5] shadow-2xs">
-            <strong className="text-2xl font-black text-stone-950 block">100%</strong>
-            <span className="text-xs text-stone-500">Contratos con NDA Legal</span>
-          </div>
-          <div className="p-5 rounded-2xl bg-white border border-[#E8E2D5] shadow-2xs">
-            <strong className="text-2xl font-black text-[#B86B42] block">0</strong>
-            <span className="text-xs text-stone-500">Pasivos Laborales para el Cliente</span>
-          </div>
         </div>
 
       </div>

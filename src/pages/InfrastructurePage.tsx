@@ -1,12 +1,12 @@
 import React from 'react';
 import { PageHeader } from '../components/common/PageHeader';
 import { Link } from 'react-router-dom';
-import { Server, Wifi, Database, ShieldCheck, CheckCircle2, ArrowRight, MessageSquare } from 'lucide-react';
+import { Server, Wifi, Database, ShieldCheck, CheckCircle2, ArrowRight, MessageSquare, Terminal } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
 export const InfrastructurePage: React.FC = () => {
   return (
-    <div>
+    <div className="bg-[#080B0E] text-slate-100">
       <PageHeader
         badge="Servidores, Redes y Virtualización"
         title="Infraestructura Tecnológica"
@@ -14,63 +14,70 @@ export const InfrastructurePage: React.FC = () => {
         breadcrumbCurrent="Infraestructura"
       />
 
-      {/* 1. Intro Section */}
-      <div className="bg-[#FDFBF7] py-24 border-b border-[#E8E2D5]">
+      {/* Intro Section */}
+      <div className="bg-[#080B0E] py-24 border-b border-white/10 cyber-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-7 space-y-6">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-stone-950 tracking-tight">
+              <div className="tech-badge">
+                <Terminal className="w-3.5 h-3.5 text-[#FF7120]" />
+                <span>ALTA DISPONIBILIDAD & SEGURIDAD</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight font-['Space_Grotesk']">
                 Bases sólidas para la operación continua de su negocio
               </h2>
-              <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-sans">
                 Diseñamos y administramos la infraestructura física y virtual que soporta las aplicaciones críticas de su empresa: servidores locales y en la nube, cableado estructurado, switches, routers, puntos de acceso Wi-Fi y sistemas de almacenamiento NAS.
               </p>
-              <p className="text-stone-500 text-xs sm:text-sm leading-relaxed">
+              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed font-sans">
                 Priorizamos la redundancia, la velocidad de transferencia y la seguridad perimetral para proteger su información institucional.
               </p>
 
               <div className="pt-2 flex flex-wrap gap-3">
                 <Link
                   to="/cotizador-outsourcing"
-                  className="inline-flex items-center space-x-2 px-7 py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-stone-100 bg-[#1F2923] hover:bg-[#141C17] shadow-md transition-all"
+                  className="btn-cyber-primary text-xs"
                 >
-                  <span>Cotizar Infraestructura TI</span>
-                  <ArrowRight className="w-4 h-4 text-[#B86B42]" />
+                  <span>COTIZAR INFRAESTRUCTURA TI</span>
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
                 <a
                   href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Hola INTEPE S.A.S., deseo consultar sobre administración de servidores e infraestructura.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-7 py-4 rounded-xl font-semibold text-xs text-stone-800 bg-white border border-[#E8E2D5] hover:bg-[#F5F0E6] transition-all flex items-center space-x-2 shadow-2xs"
+                  className="btn-cyber-outline text-xs"
                 >
-                  <MessageSquare className="w-4 h-4 text-[#B86B42]" />
-                  <span>Consultar por WhatsApp</span>
+                  <MessageSquare className="w-4 h-4 text-[#FF7120]" />
+                  <span>CONSULTAR POR WHATSAPP</span>
                 </a>
               </div>
             </div>
 
-            <div className="lg:col-span-5 bg-[#FAF6EE] p-8 sm:p-10 rounded-3xl border border-[#E8E2D5] space-y-5 shadow-xs">
-              <h3 className="font-bold text-stone-900 text-base flex items-center">
-                <Server className="w-4 h-4 mr-2 text-[#B86B42]" />
+            <div className="lg:col-span-5 cyber-card p-8 sm:p-10 rounded-lg hud-box border border-white/10 space-y-5">
+              <div className="hud-corner-tl"></div>
+              <div className="hud-corner-br"></div>
+              
+              <h3 className="font-bold text-white text-base flex items-center font-['Space_Grotesk']">
+                <Server className="w-4 h-4 mr-2 text-[#FF7120]" />
                 Capacidades de Infraestructura
               </h3>
-              <ul className="space-y-3.5 text-xs sm:text-sm text-stone-700">
+              <ul className="space-y-3.5 text-xs sm:text-sm text-slate-300 font-sans">
                 <li className="flex items-start space-x-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#B86B42] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-[#FF7120] shrink-0 mt-0.5" />
                   <span>Windows Server (Active Directory, DNS, DHCP, File Server).</span>
                 </li>
                 <li className="flex items-start space-x-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#B86B42] shrink-0 mt-0.5" />
-                  <span>Servidores Linux (Ubuntu, Debian, CentOS, bases de datos).</span>
+                  <CheckCircle2 className="w-4 h-4 text-[#FF7120] shrink-0 mt-0.5" />
+                  <span>Servidores Linux (Ubuntu, Debian, Rocky, PostgreSQL).</span>
                 </li>
                 <li className="flex items-start space-x-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#B86B42] shrink-0 mt-0.5" />
-                  <span>Virtualización de entornos (VMware, Hyper-V, Proxmox).</span>
+                  <CheckCircle2 className="w-4 h-4 text-[#FF7120] shrink-0 mt-0.5" />
+                  <span>Virtualización de entornos (VMware, Hyper-V, Proxmox VE).</span>
                 </li>
                 <li className="flex items-start space-x-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#B86B42] shrink-0 mt-0.5" />
-                  <span>Redes corporativas, VLANs, VPNs y Wi-Fi empresarial de alta densidad.</span>
+                  <CheckCircle2 className="w-4 h-4 text-[#FF7120] shrink-0 mt-0.5" />
+                  <span>Redes corporativas, VLANs, VPNs y Wi-Fi de alta densidad.</span>
                 </li>
               </ul>
             </div>
@@ -79,14 +86,14 @@ export const InfrastructurePage: React.FC = () => {
         </div>
       </div>
 
-      {/* 2. Arquitectura de Red */}
-      <div className="bg-[#FAF6EE] py-24 border-b border-[#E8E2D5]">
+      {/* Pilares de Infraestructura */}
+      <div className="bg-[#080B0E] py-24 border-b border-white/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-stone-800 bg-white px-3.5 py-1 rounded-full border border-[#E8E2D5] shadow-2xs">
-              Servicios Especializados
-            </span>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-stone-950">
+            <div className="tech-badge">
+              <span>SERVICIOS ESPECIALIZADOS</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-['Space_Grotesk']">
               Pilares de Infraestructura
             </h3>
           </div>
@@ -98,23 +105,24 @@ export const InfrastructurePage: React.FC = () => {
               { title: 'Copias de Seguridad (Backup)', desc: 'Esquemas 3-2-1 con copias locales en NAS y replicación en la nube para recuperación rápida ante desastres.', icon: Database },
               { title: 'Seguridad Perimetral', desc: 'Configuración de Firewalls, filtrado de contenido y políticas de navegación segura.', icon: ShieldCheck },
               { title: 'Migración a Servidores Cloud', desc: 'Traslado seguro de cargas de trabajo a entornos Cloud escalables.', icon: Server },
-              { title: 'Monitoreo de Salud 24/7', desc: 'Alertas automáticas ante caídas de servicio, saturación de enlaces o intentos no autorizados.', icon: CheckCircle2 },
+              { title: 'Virtualización Proxmox & VMware', desc: 'Consolidación de múltiples servidores físicos en clústeres virtuales de alta disponibilidad.', icon: Server },
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="p-7 rounded-3xl bg-white border border-[#E8E2D5] shadow-xs space-y-3 hover:border-[#B86B42]/50 hover:-translate-y-1 transition-all">
-                  <div className="w-10 h-10 rounded-xl bg-[#F5F0E6] flex items-center justify-center text-stone-800">
-                    <Icon className="w-5 h-5 text-[#B86B42]" />
+                <div key={idx} className="p-7 rounded-lg cyber-card hud-box space-y-3">
+                  <div className="hud-corner-tl"></div>
+                  <div className="hud-corner-br"></div>
+                  <div className="w-10 h-10 rounded bg-[#FF7120]/10 border border-[#FF7120]/30 flex items-center justify-center text-[#FF7120]">
+                    <Icon className="w-5 h-5" />
                   </div>
-                  <h4 className="text-base font-bold text-stone-900">{item.title}</h4>
-                  <p className="text-stone-600 text-xs leading-relaxed">{item.desc}</p>
+                  <h4 className="font-bold text-sm text-white font-['Space_Grotesk']">{item.title}</h4>
+                  <p className="text-xs text-slate-400 font-sans">{item.desc}</p>
                 </div>
               );
             })}
           </div>
         </div>
       </div>
-
     </div>
   );
 };

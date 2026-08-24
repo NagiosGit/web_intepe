@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { 
-  Code2, 
   Send, 
-  Info
+  Terminal
 } from 'lucide-react';
 import { siteConfig } from '../../config/siteConfig';
 
 export const SoftwareEstimator: React.FC = () => {
-  const [appType, setAppType] = useState<string>('web');
-  const [platform, setPlatform] = useState<string>('web_desktop');
+  const [appType, setAppType] = useState<string>('Aplicación Web');
   const [userScale, setUserScale] = useState<string>('10 – 50 usuarios');
   const [selectedModules, setSelectedModules] = useState<string[]>([
     'admin_panel',
@@ -53,7 +51,6 @@ export const SoftwareEstimator: React.FC = () => {
     const msg = `*ESTIMACIÓN DE PROYECTO DE SOFTWARE — INTEPE S.A.S.*\n` +
       `--------------------------------\n` +
       `• *Tipo de Solución:* ${appType}\n` +
-      `• *Plataforma:* ${platform}\n` +
       `• *Escala de Usuarios:* ${userScale}\n` +
       `• *Nivel Estimado:* ${scopeInfo.level} (Complejidad ${scopeInfo.complexity})\n` +
       `• *Módulos Requeridos:* ${activeMods}\n` +
@@ -64,20 +61,20 @@ export const SoftwareEstimator: React.FC = () => {
   };
 
   return (
-    <section className="py-24 bg-[#FDFBF7] border-b border-[#E8E2D5]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-[#080B0E] border-b border-white/10 relative overflow-hidden cyber-grid">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#F5F0E6] border border-[#E8E2D5] text-stone-800 text-xs font-semibold shadow-2xs">
-            <Code2 className="w-3.5 h-3.5 text-[#B86B42]" />
-            <span>Estimador de Alcance de Software</span>
+          <div className="tech-badge">
+            <Terminal className="w-3.5 h-3.5 text-[#FF7120]" />
+            <span>ARQUITECTURA DE SOFTWARE & ESTIMACIÓN</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-950 tracking-tight">
-            Estime su proyecto de software
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-['Space_Grotesk']">
+            Estime su Proyecto de <span className="text-[#FF7120]">Software</span>
           </h2>
-          <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-            Seleccione las características clave para estructurar una evaluación técnica preliminar con nuestros ingenieros.
+          <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-sans">
+            Seleccione las características clave para estructurar una evaluación técnica preliminar con nuestro equipo de ingeniería.
           </p>
         </div>
 
@@ -85,12 +82,14 @@ export const SoftwareEstimator: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Controls (Left 7 cols) */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E2D5] shadow-xs space-y-6">
-            
+          <div className="lg:col-span-7 cyber-card rounded-lg p-6 sm:p-8 hud-box space-y-6">
+            <div className="hud-corner-tl"></div>
+            <div className="hud-corner-br"></div>
+
             {/* 1. Tipo de Aplicación */}
             <div className="space-y-3">
-              <label className="text-xs font-bold text-stone-900 uppercase tracking-wider block">
-                1. Tipo de Aplicación requerida:
+              <label className="text-xs font-mono font-bold text-[#FF7120] uppercase tracking-wider block">
+                [01] // TIPO DE SOLUCIÓN REQUERIDA:
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                 {[
@@ -103,10 +102,10 @@ export const SoftwareEstimator: React.FC = () => {
                     key={item.id}
                     type="button"
                     onClick={() => setAppType(item.label)}
-                    className={`py-2.5 px-3 rounded-xl text-xs font-semibold border text-center transition-all ${
+                    className={`py-2 px-3 rounded text-xs font-mono transition-all text-center ${
                       appType === item.label
-                        ? 'bg-[#F5F0E6] border-[#B86B42] text-stone-950 font-bold shadow-2xs ring-1 ring-[#B86B42]/30'
-                        : 'bg-[#FDFBF7] border-[#E8E2D5] text-stone-700 hover:bg-white hover:border-[#B86B42]/40'
+                        ? 'bg-[#FF7120] text-black font-bold shadow-[0_0_15px_rgba(255,113,32,0.4)]'
+                        : 'bg-white/5 text-slate-400 hover:text-white border border-white/5'
                     }`}
                   >
                     {item.label}
@@ -115,89 +114,68 @@ export const SoftwareEstimator: React.FC = () => {
               </div>
             </div>
 
-            {/* 2. Plataforma */}
-            <div className="space-y-3 pt-3 border-t border-[#F5F0E6]">
-              <label className="text-xs font-bold text-stone-900 uppercase tracking-wider block">
-                2. Plataforma principal de uso:
-              </label>
-              <div className="grid grid-cols-3 gap-2.5">
-                {[
-                  { id: 'web_desktop', label: 'Navegador Web (PC/Laptop)' },
-                  { id: 'mobile_field', label: 'Móvil / Trabajo de Campo' },
-                  { id: 'cross_platform', label: 'Multiplataforma (Web + App)' },
-                ].map((p) => (
-                  <button
-                    key={p.id}
-                    type="button"
-                    onClick={() => setPlatform(p.label)}
-                    className={`py-2.5 px-3 rounded-xl text-xs font-semibold border text-center transition-all ${
-                      platform === p.label
-                        ? 'bg-[#F5F0E6] border-[#B86B42] text-stone-950 font-bold shadow-2xs ring-1 ring-[#B86B42]/30'
-                        : 'bg-[#FDFBF7] border-[#E8E2D5] text-stone-700 hover:bg-white hover:border-[#B86B42]/40'
-                    }`}
-                  >
-                    {p.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* 3. Escala de Usuarios */}
-            <div className="space-y-3 pt-3 border-t border-[#F5F0E6]">
-              <label className="text-xs font-bold text-stone-900 uppercase tracking-wider block">
-                3. Cantidad estimada de usuarios del sistema:
+            {/* 2. Escala de Usuarios */}
+            <div className="space-y-3 pt-4 border-t border-white/10">
+              <label className="text-xs font-mono font-bold text-[#FF7120] uppercase tracking-wider block">
+                [02] // ESCALA DE USUARIOS ESTIMADA:
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                 {[
                   '1 – 10 usuarios',
-                  '11 – 50 usuarios',
-                  '51 – 200 usuarios',
+                  '10 – 50 usuarios',
+                  '50 – 200 usuarios',
                   'Más de 200 usuarios'
-                ].map((scale) => (
+                ].map((item) => (
                   <button
-                    key={scale}
+                    key={item}
                     type="button"
-                    onClick={() => setUserScale(scale)}
-                    className={`py-2.5 px-3 rounded-xl text-xs font-semibold border text-center transition-all ${
-                      userScale === scale
-                        ? 'bg-[#F5F0E6] border-[#B86B42] text-stone-950 font-bold shadow-2xs ring-1 ring-[#B86B42]/30'
-                        : 'bg-[#FDFBF7] border-[#E8E2D5] text-stone-700 hover:bg-white hover:border-[#B86B42]/40'
+                    onClick={() => setUserScale(item)}
+                    className={`py-2 px-3 rounded text-xs font-mono transition-all text-center ${
+                      userScale === item
+                        ? 'bg-cyan-500 text-black font-bold shadow-[0_0_15px_rgba(0,229,255,0.4)]'
+                        : 'bg-white/5 text-slate-400 hover:text-white border border-white/5'
                     }`}
                   >
-                    {scale}
+                    {item}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* 4. Módulos / Requerimientos */}
-            <div className="space-y-3 pt-3 border-t border-[#F5F0E6]">
-              <label className="text-xs font-bold text-stone-900 uppercase tracking-wider block">
-                4. Componentes y Módulos a integrar:
-              </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {/* 3. Módulos Funcionales */}
+            <div className="space-y-3 pt-4 border-t border-white/10">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-mono font-bold text-[#FF7120] uppercase tracking-wider block">
+                  [03] // MÓDULOS FUNCIONALES ({selectedModules.length} ACTIVOS):
+                </label>
+              </div>
 
-                {modulesList.map((m) => {
-                  const isChecked = selectedModules.includes(m.id);
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {modulesList.map((mod) => {
+                  const isChecked = selectedModules.includes(mod.id);
                   return (
                     <div
-                      key={m.id}
-                      onClick={() => toggleModule(m.id)}
-                      className={`p-3 rounded-xl border cursor-pointer transition-all flex items-start space-x-2.5 ${
-                        isChecked 
-                          ? 'bg-[#F5F0E6] border-[#B86B42] text-stone-950' 
-                          : 'bg-[#FDFBF7] border-[#E8E2D5] text-stone-600 hover:bg-white hover:border-[#B86B42]/40'
+                      key={mod.id}
+                      onClick={() => toggleModule(mod.id)}
+                      className={`p-3 rounded-lg border cursor-pointer transition-all flex items-start space-x-3 ${
+                        isChecked
+                          ? 'bg-[#FF7120]/10 border-[#FF7120]/60 text-white'
+                          : 'bg-white/[0.02] border-white/5 text-slate-400 hover:border-white/20'
                       }`}
                     >
                       <input
                         type="checkbox"
                         checked={isChecked}
-                        readOnly
-                        className="mt-0.5 w-4 h-4 rounded text-[#B86B42] focus:ring-[#B86B42] border-[#E8E2D5]"
+                        onChange={() => {}}
+                        className="mt-0.5 rounded accent-[#FF7120]"
                       />
-                      <div>
-                        <div className="text-xs font-bold text-stone-900">{m.label}</div>
-                        <div className="text-[10px] text-stone-500">{m.desc}</div>
+                      <div className="flex-1 text-xs font-sans">
+                        <div className="font-bold font-['Space_Grotesk'] text-white">
+                          {mod.label}
+                        </div>
+                        <div className="text-[11px] text-slate-400 leading-snug">
+                          {mod.desc}
+                        </div>
                       </div>
                     </div>
                   );
@@ -207,70 +185,56 @@ export const SoftwareEstimator: React.FC = () => {
 
           </div>
 
-          {/* Right Summary (Deep Forest Contrast) */}
-          <div className="lg:col-span-5 bg-[#1F2923] text-white rounded-3xl p-7 sm:p-8 border border-stone-800 space-y-6 shadow-xl sticky top-28">
-            <div className="border-b border-white/10 pb-4">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#B86B42] flex items-center">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42] mr-1.5"></span>
-                Diagnóstico de Alcance
-              </span>
-              <h3 className="text-xl font-extrabold text-white">
-                Estimación Preliminar de Software
-              </h3>
-            </div>
+          {/* Scope Cockpit Card (Right 5 cols) */}
+          <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
+            <div className="cyber-card rounded-lg p-6 sm:p-8 hud-box border border-[#FF7120]/30 shadow-[0_0_35px_rgba(255,113,32,0.15)] space-y-6">
+              <div className="hud-corner-tl !border-[#FF7120]"></div>
+              <div className="hud-corner-tr !border-[#FF7120]"></div>
+              <div className="hud-corner-bl !border-[#FF7120]"></div>
+              <div className="hud-corner-br !border-[#FF7120]"></div>
 
-            <div className="space-y-3 text-xs text-stone-300">
-              <div className="flex justify-between">
-                <span>Tipo de Solución:</span>
-                <strong className="text-white">{appType}</strong>
+              <div>
+                <span className="text-xs font-mono font-bold text-[#FF7120] uppercase tracking-wider block">
+                  // DICTAMEN TÉCNICO PRELIMINAR
+                </span>
+                <h3 className="text-xl font-bold text-white font-['Space_Grotesk'] mt-1">
+                  {scopeInfo.level}
+                </h3>
               </div>
-              <div className="flex justify-between">
-                <span>Plataforma:</span>
-                <strong className="text-white">{platform}</strong>
-              </div>
-              <div className="flex justify-between">
-                <span>Nivel de Alcance:</span>
-                <strong className="text-[#FAF6EE] font-bold">{scopeInfo.level}</strong>
-              </div>
-              <div className="flex justify-between">
-                <span>Complejidad Técnica:</span>
-                <strong className="text-white">{scopeInfo.complexity}</strong>
-              </div>
-              <div className="flex justify-between">
-                <span>Tiempo de Entrega Estimado:</span>
-                <strong className="text-white font-mono">{scopeInfo.duration}</strong>
-              </div>
-            </div>
 
-            <div className="p-4 rounded-2xl bg-black/30 border border-white/10 text-xs text-stone-300 space-y-2">
-              <div className="flex items-center text-[#B86B42] font-semibold text-xs">
-                <Info className="w-4 h-4 mr-1.5 shrink-0" />
-                <span>Evaluación Técnica Requerida</span>
+              <div className="space-y-3 font-mono text-xs text-slate-300 border-y border-white/10 py-4">
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Tipo de Software:</span>
+                  <span className="font-bold text-white">{appType}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Complejidad:</span>
+                  <span className="font-bold text-cyan-400">{scopeInfo.complexity}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Tiempo de desarrollo:</span>
+                  <span className="font-bold text-emerald-400">{scopeInfo.duration}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Módulos seleccionados:</span>
+                  <span className="font-bold text-[#FF853A]">{selectedModules.length} módulos</span>
+                </div>
               </div>
-              <p className="text-[11px] text-stone-300 leading-relaxed">
-                Cada desarrollo de software es único. Para brindarle una cotización definitiva y cronograma exacto, realizamos una sesión de análisis de requerimientos sin costo.
-              </p>
-            </div>
 
-            <div className="space-y-2.5 pt-2">
               <a
                 href={`https://wa.me/${siteConfig.whatsappNumber}?text=${generateWhatsAppMessage()}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3.5 px-5 rounded-xl font-bold text-xs uppercase tracking-wider text-stone-900 bg-[#FDFBF7] hover:bg-[#FAF6EE] shadow-md transition-all flex items-center justify-center space-x-2"
+                className="w-full btn-cyber-primary text-xs py-3.5 flex items-center justify-center space-x-2"
               >
-                <Send className="w-4 h-4 text-[#B86B42]" />
-                <span>Solicitar evaluación técnica</span>
+                <Send className="w-4 h-4" />
+                <span>SOLICITAR EVALUACIÓN TÉCNICA</span>
               </a>
 
-              <a
-                href={`mailto:${siteConfig.email}?subject=Solicitud%20Evaluaci%C3%B3n%20Software%20INTEPE&body=Hola%20INTEPE,%20deseo%20evaluar%20un%20proyecto%20de%20software.`}
-                className="w-full py-3 px-5 rounded-xl font-semibold text-xs text-stone-300 hover:text-white bg-white/10 hover:bg-white/15 text-center block transition-all"
-              >
-                Enviar por correo a soporte@intepe.net
-              </a>
+              <p className="text-[11px] text-slate-400 font-sans text-center">
+                Un ingeniero de INTEPE revisará sus flujos y requerimientos para entregar una cotización formal con garantía.
+              </p>
             </div>
-
           </div>
 
         </div>

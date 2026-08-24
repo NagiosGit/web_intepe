@@ -13,11 +13,11 @@ import {
   Wrench,
   Cloud,
   Code2,
-  Globe,
   Layers,
-  Zap,
   Sprout,
-  Building2
+  Calculator,
+  Cpu,
+  CreditCard
 } from 'lucide-react';
 import { siteConfig } from '../../config/siteConfig';
 
@@ -41,6 +41,7 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close menus on route change
   useEffect(() => {
     setMobileMenuOpen(false);
     setServicesOpen(false);
@@ -58,7 +59,7 @@ export const Navbar: React.FC = () => {
   const handleServicesLeave = () => {
     servicesTimeoutRef.current = setTimeout(() => {
       setServicesOpen(false);
-    }, 150);
+    }, 180);
   };
 
   const handleSoftwareEnter = () => {
@@ -70,7 +71,7 @@ export const Navbar: React.FC = () => {
   const handleSoftwareLeave = () => {
     softwareTimeoutRef.current = setTimeout(() => {
       setSoftwareOpen(false);
-    }, 150);
+    }, 180);
   };
 
   const isServicesActive = [
@@ -89,32 +90,34 @@ export const Navbar: React.FC = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-[#FDFBF7]/95 backdrop-blur-md border-b border-[#E8E2D5] shadow-xs' 
-        : 'bg-[#FDFBF7] border-b border-[#E8E2D5]/70'
+        ? 'bg-[#080B0E]/90 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.8)]' 
+        : 'bg-[#080B0E]/75 backdrop-blur-md border-b border-white/5'
     }`}>
       
-      {/* 1. Micro Header - Tonos Cálidos */}
-      <div className="hidden lg:block bg-[#F5F0E6] border-b border-[#E8E2D5]/60 py-1.5 text-xs text-stone-600">
+      {/* 1. Micro Top Bar - Cyber HUD style */}
+      <div className="hidden lg:block bg-[#05070A] border-b border-white/5 py-1 text-xs text-slate-400 font-mono">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          <div className="flex items-center space-x-2 font-medium text-stone-800">
-            <span className="w-2 h-2 rounded-full bg-[#B86B42] inline-block"></span>
-            <span>{siteConfig.legalName} · {siteConfig.city}</span>
+          <div className="flex items-center space-x-3">
+            <span className="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold tracking-wider">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 -ml-2.5"></span>
+              SISTEMA OPERATIVO TI
+            </span>
+            <span className="text-slate-700">|</span>
+            <span className="text-slate-400 tracking-wide">NIT: {siteConfig.nit}</span>
+            <span className="text-slate-700">|</span>
+            <span className="text-slate-400">BOGOTÁ, COLOMBIA</span>
           </div>
-          <div className="flex items-center space-x-6">
-            <a 
-              href={`mailto:${siteConfig.email}`}
-              className="flex items-center hover:text-[#B86B42] transition-colors"
-            >
-              <Mail className="w-3.5 h-3.5 mr-1.5 text-stone-500" />
-              <span>{siteConfig.email}</span>
-            </a>
-            <span className="text-[#E8E2D5]">|</span>
-            <a 
-              href={`tel:${siteConfig.mobile.replace(/[^0-9]/g, '')}`}
-              className="flex items-center font-semibold text-stone-800 hover:text-[#B86B42] transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5 mr-1.5 text-[#B86B42]" />
+
+          <div className="flex items-center space-x-4 text-slate-300">
+            <a href={`tel:${siteConfig.mobile.replace(/\s+/g, '')}`} className="flex items-center gap-1.5 hover:text-[#FF7120] transition-colors">
+              <Phone className="w-3 h-3 text-[#FF7120]" />
               <span>{siteConfig.mobile}</span>
+            </a>
+            <span className="text-slate-700">|</span>
+            <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-1.5 hover:text-[#FF7120] transition-colors">
+              <Mail className="w-3 h-3 text-[#FF7120]" />
+              <span>{siteConfig.email}</span>
             </a>
           </div>
         </div>
@@ -124,468 +127,442 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* Logo & Sigla */}
-          <Link to="/" className="flex items-center space-x-3 group shrink-0">
-            <img 
-              src="/logo/LOGON.png" 
-              alt="Logo INTEPE S.A.S." 
-              className="h-11 w-auto object-contain group-hover:scale-105 transition-transform" 
-            />
-            <div className="flex flex-col justify-center">
-              <div className="flex items-baseline space-x-1.5">
-                <img 
-                  src="/logo/Solo_Intepe_2026_8.png" 
-                  alt="INTEPE" 
-                  className="h-5 sm:h-6 w-auto object-contain"
-                />
-                <span className="text-xs font-black tracking-wider text-stone-700">
-                  S.A.S.
-                </span>
-              </div>
-              <span className="text-[10px] text-stone-500 font-semibold tracking-wider uppercase mt-0.5">
-                Soluciones Tecnológicas B2B
+          {/* Brand Logo */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="relative p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-[#FF7120]/50 transition-colors">
+              <div className="hud-corner-tl"></div>
+              <div className="hud-corner-br"></div>
+              <Cpu className="w-6 h-6 text-[#FF7120] transition-transform group-hover:scale-110" />
+            </div>
+            <div>
+              <span className="text-xl font-bold tracking-tight text-white font-['Space_Grotesk']">
+                INTEPE <span className="text-[#FF7120]">S.A.S.</span>
+              </span>
+              <span className="block text-[10px] font-mono tracking-widest text-slate-400 uppercase -mt-0.5">
+                TI & SOFTWARE SOLUTIONS
               </span>
             </div>
           </Link>
 
-          {/* Desktop Typographic Menu */}
-          <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2 text-sm font-semibold">
-            
-            {/* INICIO */}
-            <Link
-              to="/"
-              className={`px-3 py-2 rounded-xl transition-colors ${
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center space-x-1">
+            <Link 
+              to="/" 
+              className={`px-3.5 py-2 text-sm font-medium transition-colors rounded-sm ${
                 location.pathname === '/' 
-                  ? 'text-[#1F2923] font-bold bg-[#F5F0E6]' 
-                  : 'text-stone-700 hover:text-stone-950 hover:bg-[#FAF6EE]'
+                  ? 'text-[#FF7120] bg-white/5 font-semibold' 
+                  : 'text-slate-300 hover:text-white hover:bg-white/5'
               }`}
             >
-              INICIO
+              Inicio
             </Link>
 
-            {/* SERVICIOS ▾ */}
+            {/* Dropdown: Servicios TI */}
             <div 
               className="relative"
               onMouseEnter={handleServicesEnter}
               onMouseLeave={handleServicesLeave}
             >
-              <button
-                type="button"
-                className={`px-3 py-2 rounded-xl transition-colors flex items-center space-x-1 ${
-                  isServicesActive ? 'text-[#1F2923] font-bold bg-[#F5F0E6]' : 'text-stone-700 hover:text-stone-950 hover:bg-[#FAF6EE]'
+              <button 
+                className={`flex items-center gap-1 px-3.5 py-2 text-sm font-medium transition-colors rounded-sm ${
+                  isServicesActive 
+                    ? 'text-[#FF7120] bg-white/5 font-semibold' 
+                    : 'text-slate-300 hover:text-white hover:bg-white/5'
                 }`}
-                onClick={() => setServicesOpen(!servicesOpen)}
               >
-                <span>SERVICIOS</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesOpen ? 'rotate-180 text-stone-900' : 'text-stone-400'}`} />
+                <span>Servicios TI</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesOpen ? 'rotate-180 text-[#FF7120]' : ''}`} />
               </button>
 
+              {/* Mega Dropdown Menu */}
               {servicesOpen && (
-                <div className="absolute top-full left-0 w-[380px] pt-3 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="bg-[#FDFBF7] rounded-2xl shadow-xl border border-[#E8E2D5] p-5 space-y-3">
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-stone-500 border-b border-[#E8E2D5] pb-2 flex items-center justify-between">
-                      <span>Servicios TI Empresariales</span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42]"></span>
-                    </div>
-                    <div className="grid grid-cols-1 gap-1.5">
-                      <Link
-                        to="/outsourcing-ti"
-                        className="p-2.5 rounded-xl hover:bg-[#F5F0E6] transition-colors flex items-start space-x-3 group"
-                      >
-                        <Briefcase className="w-5 h-5 text-stone-700 shrink-0 mt-0.5 group-hover:text-[#B86B42] transition-colors" />
-                        <div>
-                          <div className="font-bold text-stone-900 text-xs">Outsourcing TI</div>
-                          <div className="text-[11px] text-stone-500">Gestión integral de tecnología</div>
-                        </div>
-                      </Link>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[680px] cyber-card rounded-md p-5 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.9)] z-50">
+                  <div className="hud-corner-tl"></div>
+                  <div className="hud-corner-tr"></div>
+                  <div className="hud-corner-bl"></div>
+                  <div className="hud-corner-br"></div>
+                  
+                  <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10 text-xs font-mono text-slate-400">
+                    <span className="text-[#FF7120] font-semibold tracking-wider flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF7120] animate-pulse"></span>
+                      PORTAFOLIO DE SERVICIOS TI CORPORATIVOS
+                    </span>
+                    <Link to="/servicios" className="hover:text-white flex items-center gap-1 transition-colors text-slate-300">
+                      Ver Catálogo Completo <ArrowRight className="w-3 h-3 text-[#FF7120]" />
+                    </Link>
+                  </div>
 
-                      <Link
+                  <div className="grid grid-cols-2 gap-4">
+                    {/* Columna 1: Soporte & Mesa de Ayuda */}
+                    <div className="space-y-2">
+                      <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#00E5FF] px-2 py-0.5 rounded bg-cyan-500/10 inline-block border border-cyan-500/20">
+                        // SOPORTE & MESA DE AYUDA
+                      </div>
+
+                      <Link 
                         to="/help-desk"
-                        className="p-2.5 rounded-xl hover:bg-[#F5F0E6] transition-colors flex items-start space-x-3 group"
+                        className="p-3 rounded-sm bg-white/[0.02] hover:bg-white/[0.06] border border-transparent hover:border-cyan-500/30 transition-all group flex items-start gap-3"
                       >
-                        <Headset className="w-5 h-5 text-stone-700 shrink-0 mt-0.5 group-hover:text-[#B86B42] transition-colors" />
+                        <div className="p-2 rounded bg-cyan-500/10 text-cyan-400 group-hover:scale-105 transition-transform shrink-0">
+                          <Headset className="w-4 h-4" />
+                        </div>
                         <div>
-                          <div className="font-bold text-stone-900 text-xs">Help Desk</div>
-                          <div className="text-[11px] text-stone-500">Soporte y atención ágil a usuarios</div>
+                          <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+                            Mesa de Ayuda (Help Desk)
+                            <span className="text-[9px] px-1.5 py-0.2 rounded bg-cyan-500/20 text-cyan-300 font-mono">L1/L2/L3</span>
+                          </div>
+                          <div className="text-xs text-slate-400 line-clamp-1">Soporte multicanal con SLA &lt; 15 min</div>
                         </div>
                       </Link>
 
-                      <Link
-                        to="/infraestructura-tecnologica"
-                        className="p-2.5 rounded-xl hover:bg-[#F5F0E6] transition-colors flex items-start space-x-3 group"
+                      <Link 
+                        to="/outsourcing-ti"
+                        className="p-3 rounded-sm bg-white/[0.02] hover:bg-white/[0.06] border border-transparent hover:border-[#FF7120]/30 transition-all group flex items-start gap-3"
                       >
-                        <Server className="w-5 h-5 text-stone-700 shrink-0 mt-0.5 group-hover:text-[#B86B42] transition-colors" />
+                        <div className="p-2 rounded bg-[#FF7120]/10 text-[#FF7120] group-hover:scale-105 transition-transform shrink-0">
+                          <Briefcase className="w-4 h-4" />
+                        </div>
                         <div>
-                          <div className="font-bold text-stone-900 text-xs">Infraestructura</div>
-                          <div className="text-[11px] text-stone-500">Servidores, redes y virtualización</div>
+                          <div className="text-sm font-semibold text-white group-hover:text-[#FF7120] transition-colors">
+                            Outsourcing TI Integral
+                          </div>
+                          <div className="text-xs text-slate-400 line-clamp-1">Departamento de sistemas tercerizado</div>
                         </div>
                       </Link>
 
-                      <Link
+                      <Link 
                         to="/mantenimiento"
-                        className="p-2.5 rounded-xl hover:bg-[#F5F0E6] transition-colors flex items-start space-x-3 group"
+                        className="p-3 rounded-sm bg-white/[0.02] hover:bg-white/[0.06] border border-transparent hover:border-emerald-500/30 transition-all group flex items-start gap-3"
                       >
-                        <Wrench className="w-5 h-5 text-[#B86B42] shrink-0 mt-0.5" />
+                        <div className="p-2 rounded bg-emerald-500/10 text-emerald-400 group-hover:scale-105 transition-transform shrink-0">
+                          <Wrench className="w-4 h-4" />
+                        </div>
                         <div>
-                          <div className="font-bold text-stone-900 text-xs">Mantenimiento</div>
-                          <div className="text-[11px] text-stone-500">Preventivo y correctivo periódico</div>
+                          <div className="text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">
+                            Mantenimiento Preventivo
+                          </div>
+                          <div className="text-xs text-slate-400 line-clamp-1">Hardware, limpieza física y optimización SO</div>
+                        </div>
+                      </Link>
+                    </div>
+
+                    {/* Columna 2: Infraestructura & Nube */}
+                    <div className="space-y-2">
+                      <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-amber-400 px-2 py-0.5 rounded bg-amber-500/10 inline-block border border-amber-500/20">
+                        // INFRAESTRUCTURA & CLOUD
+                      </div>
+
+                      <Link 
+                        to="/infraestructura-tecnologica"
+                        className="p-3 rounded-sm bg-white/[0.02] hover:bg-white/[0.06] border border-transparent hover:border-amber-500/30 transition-all group flex items-start gap-3"
+                      >
+                        <div className="p-2 rounded bg-amber-500/10 text-amber-400 group-hover:scale-105 transition-transform shrink-0">
+                          <Server className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="text-sm font-semibold text-white group-hover:text-amber-400 transition-colors">
+                            Infraestructura & Redes
+                          </div>
+                          <div className="text-xs text-slate-400 line-clamp-1">Servidores, cableado, Wi-Fi y backups</div>
                         </div>
                       </Link>
 
-                      <Link
+                      <Link 
                         to="/google-workspace"
-                        className="p-2.5 rounded-xl hover:bg-[#F5F0E6] transition-colors flex items-start space-x-3 group"
+                        className="p-3 rounded-sm bg-white/[0.02] hover:bg-white/[0.06] border border-transparent hover:border-blue-500/30 transition-all group flex items-start gap-3"
                       >
-                        <Cloud className="w-5 h-5 text-stone-700 shrink-0 mt-0.5 group-hover:text-[#B86B42] transition-colors" />
+                        <div className="p-2 rounded bg-blue-500/10 text-blue-400 group-hover:scale-105 transition-transform shrink-0">
+                          <Cloud className="w-4 h-4" />
+                        </div>
                         <div>
-                          <div className="font-bold text-stone-900 text-xs">Cloud & Workspace</div>
-                          <div className="text-[11px] text-stone-500">Google Workspace y colaboración</div>
+                          <div className="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">
+                            Google Workspace & Cloud
+                          </div>
+                          <div className="text-xs text-slate-400 line-clamp-1">Correo corporativo y productividad nube</div>
+                        </div>
+                      </Link>
+
+                      <Link 
+                        to="/desarrollo-software"
+                        className="p-3 rounded-sm bg-white/[0.02] hover:bg-white/[0.06] border border-transparent hover:border-purple-500/30 transition-all group flex items-start gap-3"
+                      >
+                        <div className="p-2 rounded bg-purple-500/10 text-purple-400 group-hover:scale-105 transition-transform shrink-0">
+                          <Code2 className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="text-sm font-semibold text-white group-hover:text-purple-400 transition-colors">
+                            Software a Medida
+                          </div>
+                          <div className="text-xs text-slate-400 line-clamp-1">Automatización y desarrollo especializado</div>
                         </div>
                       </Link>
                     </div>
+                  </div>
 
-                    <div className="pt-2 border-t border-[#E8E2D5] flex items-center justify-between">
-                      <Link
-                        to="/servicios"
-                        className="text-xs font-bold text-stone-900 hover:text-[#B86B42] flex items-center"
-                      >
-                        <span>Ver todos los servicios</span>
-                        <ArrowRight className="w-3.5 h-3.5 ml-1" />
-                      </Link>
-                    </div>
+                  {/* Micro Footer Bar inside dropdown */}
+                  <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                    <span className="text-emerald-400 flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                      Atención Remota + Presencial en Bogotá y Sabana
+                    </span>
+                    <Link to="/cotizador-outsourcing" className="text-[#FF7120] hover:underline font-bold flex items-center gap-1">
+                      Cotizar Plan Mensual →
+                    </Link>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* SOFTWARE ▾ */}
+            {/* Dropdown: Software Propio */}
             <div 
               className="relative"
               onMouseEnter={handleSoftwareEnter}
               onMouseLeave={handleSoftwareLeave}
             >
-              <button
-                type="button"
-                className={`px-3 py-2 rounded-xl transition-colors flex items-center space-x-1 ${
-                  isSoftwareActive ? 'text-[#1F2923] font-bold bg-[#F5F0E6]' : 'text-stone-700 hover:text-stone-950 hover:bg-[#FAF6EE]'
+              <button 
+                className={`flex items-center gap-1 px-3.5 py-2 text-sm font-medium transition-colors rounded-sm ${
+                  isSoftwareActive 
+                    ? 'text-[#FF7120] bg-white/5 font-semibold' 
+                    : 'text-slate-300 hover:text-white hover:bg-white/5'
                 }`}
-                onClick={() => setSoftwareOpen(!softwareOpen)}
               >
-                <span>SOFTWARE</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${softwareOpen ? 'rotate-180 text-stone-900' : 'text-stone-400'}`} />
+                <span>Software</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${softwareOpen ? 'rotate-180 text-[#FF7120]' : ''}`} />
               </button>
 
               {softwareOpen && (
-                <div className="absolute top-full -left-20 w-[540px] pt-3 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="bg-[#FDFBF7] rounded-2xl shadow-xl border border-[#E8E2D5] p-6">
-                    <div className="grid grid-cols-12 gap-6">
-                      
-                      {/* Left: Capacidades (7 cols) */}
-                      <div className="col-span-7 space-y-3">
-                        <div className="text-[11px] font-bold uppercase tracking-wider text-stone-500 border-b border-[#E8E2D5] pb-1.5 flex items-center justify-between">
-                          <span>Desarrollo de Software</span>
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42]"></span>
-                        </div>
-
-                        <div className="space-y-1.5">
-                          <Link
-                            to="/desarrollo-software"
-                            className="block p-2 rounded-xl hover:bg-[#F5F0E6] transition-colors"
-                          >
-                            <div className="font-bold text-xs text-stone-900 flex items-center">
-                              <Code2 className="w-3.5 h-3.5 mr-1.5 text-stone-700" />
-                              Software a Medida
-                            </div>
-                            <div className="text-[11px] text-stone-500">Soluciones adaptadas a sus procesos</div>
-                          </Link>
-
-                          <Link
-                            to="/desarrollo-software"
-                            className="block p-2 rounded-xl hover:bg-[#F5F0E6] transition-colors"
-                          >
-                            <div className="font-bold text-xs text-stone-900 flex items-center">
-                              <Globe className="w-3.5 h-3.5 mr-1.5 text-stone-700" />
-                              Aplicaciones Web
-                            </div>
-                            <div className="text-[11px] text-stone-500">Sistemas accesibles y seguros</div>
-                          </Link>
-
-                          <Link
-                            to="/desarrollo-software"
-                            className="block p-2 rounded-xl hover:bg-[#F5F0E6] transition-colors"
-                          >
-                            <div className="font-bold text-xs text-stone-900 flex items-center">
-                              <Layers className="w-3.5 h-3.5 mr-1.5 text-stone-700" />
-                              Sistemas ERP
-                            </div>
-                            <div className="text-[11px] text-stone-500">Administración y flujos empresariales</div>
-                          </Link>
-
-                          <Link
-                            to="/desarrollo-software"
-                            className="block p-2 rounded-xl hover:bg-[#F5F0E6] transition-colors"
-                          >
-                            <div className="font-bold text-xs text-stone-900 flex items-center">
-                              <Zap className="w-3.5 h-3.5 mr-1.5 text-[#B86B42]" />
-                              Automatización & APIs
-                            </div>
-                            <div className="text-[11px] text-stone-500">Integración con bases de datos</div>
-                          </Link>
-                        </div>
+                <div className="absolute top-full left-0 mt-2 w-72 cyber-card rounded-md p-3 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.9)] z-50">
+                  <div className="hud-corner-tl"></div>
+                  <div className="hud-corner-br"></div>
+                  <div className="space-y-1">
+                    <Link 
+                      to="/desarrollo-software"
+                      className="p-2.5 rounded-sm hover:bg-white/5 flex items-center gap-2.5 text-sm text-slate-300 hover:text-white group"
+                    >
+                      <Code2 className="w-4 h-4 text-[#FF7120]" />
+                      <div>
+                        <div className="font-medium group-hover:text-[#FF7120] transition-colors">Desarrollo Propio</div>
+                        <div className="text-[11px] text-slate-400">ERPs y plataformas a la medida</div>
                       </div>
-
-                      {/* Right: Proyectos Reales (5 cols) */}
-                      <div className="col-span-5 bg-[#FAF6EE] rounded-xl p-4 flex flex-col justify-between space-y-3 border border-[#E8E2D5]">
-                        <div className="space-y-2.5">
-                          <div className="text-[11px] font-bold uppercase tracking-wider text-stone-600">
-                            Experiencia Real
-                          </div>
-                          
-                          <div className="space-y-2">
-                            <Link to="/proyectos/granjaweb" className="block hover:text-[#B86B42] text-xs">
-                              <div className="font-bold text-stone-900 flex items-center">
-                                <Sprout className="w-3.5 h-3.5 mr-1 text-[#B86B42]" />
-                                GranjaWP
-                              </div>
-                              <div className="text-[10px] text-stone-500">Gestión avícola y pecuaria</div>
-                            </Link>
-
-                            <Link to="/proyectos/invernaderos" className="block hover:text-[#B86B42] text-xs">
-                              <div className="font-bold text-stone-900 flex items-center">
-                                <Layers className="w-3.5 h-3.5 mr-1 text-stone-700" />
-                                InvernaderoFM
-                              </div>
-                              <div className="text-[10px] text-stone-500">Monitoreo agronómico</div>
-                            </Link>
-
-                            <Link to="/proyectos/intepr-erp" className="block hover:text-[#B86B42] text-xs">
-                              <div className="font-bold text-stone-900 flex items-center">
-                                <Building2 className="w-3.5 h-3.5 mr-1 text-stone-700" />
-                                INTEPR-ERP
-                              </div>
-                              <div className="text-[10px] text-stone-500">ERP a la medida</div>
-                            </Link>
-                          </div>
-                        </div>
-
-                        <Link
-                          to="/proyectos"
-                          className="text-[11px] font-bold text-stone-900 hover:text-[#B86B42] flex items-center pt-2 border-t border-[#E8E2D5]"
-                        >
-                          <span>Ver proyectos →</span>
-                        </Link>
+                    </Link>
+                    <Link 
+                      to="/proyectos/granjaweb"
+                      className="p-2.5 rounded-sm hover:bg-white/5 flex items-center gap-2.5 text-sm text-slate-300 hover:text-white group"
+                    >
+                      <Sprout className="w-4 h-4 text-emerald-400" />
+                      <div>
+                        <div className="font-medium group-hover:text-emerald-400 transition-colors">GranjaWP</div>
+                        <div className="text-[11px] text-slate-400">Gestión agrícola e invernaderos</div>
                       </div>
-
-                    </div>
+                    </Link>
+                    <Link 
+                      to="/proyectos/invernaderos"
+                      className="p-2.5 rounded-sm hover:bg-white/5 flex items-center gap-2.5 text-sm text-slate-300 hover:text-white group"
+                    >
+                      <Layers className="w-4 h-4 text-cyan-400" />
+                      <div>
+                        <div className="font-medium group-hover:text-cyan-400 transition-colors">InvernaderoFM</div>
+                        <div className="text-[11px] text-slate-400">Control agronómico y cosecha</div>
+                      </div>
+                    </Link>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* PROYECTOS */}
-            <Link
-              to="/proyectos"
-              className={`px-3 py-2 rounded-xl transition-colors ${
-                location.pathname.startsWith('/proyectos') 
-                  ? 'text-[#1F2923] font-bold bg-[#F5F0E6]' 
-                  : 'text-stone-700 hover:text-stone-950 hover:bg-[#FAF6EE]'
+            <Link 
+              to="/proyectos" 
+              className={`px-3.5 py-2 text-sm font-medium transition-colors rounded-sm ${
+                location.pathname === '/proyectos' 
+                  ? 'text-[#FF7120] bg-white/5 font-semibold' 
+                  : 'text-slate-300 hover:text-white hover:bg-white/5'
               }`}
             >
-              PROYECTOS
+              Proyectos
             </Link>
 
-            {/* COTIZADOR TI */}
-            <Link
-              to="/cotizador-outsourcing"
-              className={`px-3 py-2 rounded-xl transition-colors ${
+            <Link 
+              to="/cotizador-outsourcing" 
+              className={`px-3.5 py-2 text-sm font-medium transition-colors rounded-sm flex items-center gap-1.5 ${
                 location.pathname === '/cotizador-outsourcing' 
-                  ? 'text-[#1F2923] font-bold bg-[#F5F0E6]' 
-                  : 'text-stone-700 hover:text-stone-950 hover:bg-[#FAF6EE]'
+                  ? 'text-[#FF7120] bg-white/5 font-semibold' 
+                  : 'text-slate-300 hover:text-[#FF7120] hover:bg-white/5'
               }`}
             >
-              COTIZADOR TI
+              <Calculator className="w-3.5 h-3.5 text-[#FF7120]" />
+              <span>Cotizador</span>
+              <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold bg-[#FF7120]/20 text-[#FF7120] border border-[#FF7120]/30 rounded">
+                LIVE
+              </span>
             </Link>
 
-            {/* NOSOTROS */}
-            <Link
-              to="/nosotros"
-              className={`px-3 py-2 rounded-xl transition-colors ${
+            <Link 
+              to="/nosotros" 
+              className={`px-3.5 py-2 text-sm font-medium transition-colors rounded-sm ${
                 location.pathname === '/nosotros' 
-                  ? 'text-[#1F2923] font-bold bg-[#F5F0E6]' 
-                  : 'text-stone-700 hover:text-stone-950 hover:bg-[#FAF6EE]'
+                  ? 'text-[#FF7120] bg-white/5 font-semibold' 
+                  : 'text-slate-300 hover:text-white hover:bg-white/5'
               }`}
             >
-              NOSOTROS
+              Nosotros
             </Link>
 
-            {/* CONTACTO */}
-            <Link
-              to="/contacto"
-              className={`px-3 py-2 rounded-xl transition-colors ${
+            <Link 
+              to="/contacto" 
+              className={`px-3.5 py-2 text-sm font-medium transition-colors rounded-sm ${
                 location.pathname === '/contacto' 
-                  ? 'text-[#1F2923] font-bold bg-[#F5F0E6]' 
-                  : 'text-stone-700 hover:text-stone-950 hover:bg-[#FAF6EE]'
+                  ? 'text-[#FF7120] bg-white/5 font-semibold' 
+                  : 'text-slate-300 hover:text-white hover:bg-white/5'
               }`}
             >
-              CONTACTO
+              Contacto
             </Link>
-
           </nav>
 
-          {/* Botón CTA Primario en Tono Oscuro de Contraste Fuerte */}
-          <div className="hidden lg:flex items-center">
-            <Link
+          {/* Desktop Call to Action Button */}
+          <div className="hidden lg:flex items-center space-x-3">
+            <Link 
               to="/cotizador-outsourcing"
-              className="px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-[#FDFBF7] bg-[#1F2923] hover:bg-[#141C17] shadow-sm hover:shadow-md transition-all flex items-center space-x-2"
+              className="btn-cyber-primary text-xs"
             >
               <span>COTIZAR AHORA</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#B86B42]" />
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          {/* Mobile Hamburger Button */}
+          {/* Mobile Menu Trigger */}
           <div className="flex lg:hidden items-center space-x-2">
             <Link
               to="/cotizador-outsourcing"
-              className="px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-[#1F2923]"
+              className="px-3 py-1.5 text-xs font-bold bg-[#FF7120] text-black rounded font-['Space_Grotesk']"
             >
-              Cotizar
+              Cotizador
             </Link>
-            <button
+            <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-stone-800 hover:bg-[#F5F0E6] transition-colors"
+              className="p-2 rounded bg-white/5 text-slate-300 hover:text-white border border-white/10 focus:outline-none"
               aria-label="Abrir menú de navegación"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6 text-[#FF7120]" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
 
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Menu Panel */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#FDFBF7] border-b border-[#E8E2D5] px-6 py-6 shadow-2xl animate-in slide-in-from-top-2 duration-150 max-h-[80vh] overflow-y-auto space-y-3">
-          
+        <div className="lg:hidden bg-[#080B0E] border-b border-white/10 px-4 pt-2 pb-6 space-y-2 max-h-[calc(100vh-80px)] overflow-y-auto">
           <Link
             to="/"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-bold text-stone-900 border-b border-[#F5F0E6]"
+            className={`block px-3 py-2 text-base font-medium rounded ${
+              location.pathname === '/' ? 'text-[#FF7120] bg-white/5' : 'text-slate-300'
+            }`}
           >
-            INICIO
+            Inicio
           </Link>
 
-          {/* Accordion Servicios */}
           <div>
             <button
-              type="button"
               onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-              className="w-full py-2 text-sm font-bold text-stone-900 flex items-center justify-between border-b border-[#F5F0E6]"
+              className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-slate-300"
             >
-              <span>SERVICIOS TI</span>
-              <ChevronDown className={`w-4 h-4 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
+              <span>Servicios TI</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${mobileServicesOpen ? 'rotate-180 text-[#FF7120]' : ''}`} />
             </button>
             {mobileServicesOpen && (
-              <div className="pl-4 py-2 space-y-2 bg-[#F5F0E6] rounded-xl my-1 text-xs">
-                <Link to="/outsourcing-ti" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
-                  • Outsourcing TI
-                </Link>
-                <Link to="/help-desk" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
-                  • Mesa de Ayuda (Help Desk)
-                </Link>
-                <Link to="/infraestructura-tecnologica" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
-                  • Infraestructura Tecnológica
-                </Link>
-                <Link to="/mantenimiento" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
-                  • Mantenimiento y Soporte
-                </Link>
-                <Link to="/google-workspace" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
-                  • Google Workspace & Cloud
-                </Link>
-                <Link to="/servicios" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-900 font-bold">
-                  → Ver todos los servicios
-                </Link>
+              <div className="pl-4 space-y-1 mt-1 border-l border-white/10">
+                <Link to="/servicios" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">Ver Catálogo Completo</Link>
+                <Link to="/help-desk" className="block px-3 py-1.5 text-sm text-cyan-400 hover:text-white font-medium">Mesa de Ayuda (Help Desk L1/L2/L3)</Link>
+                <Link to="/outsourcing-ti" className="block px-3 py-1.5 text-sm text-[#FF7120] hover:text-white font-medium">Outsourcing TI Integral</Link>
+                <Link to="/infraestructura-tecnologica" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">Infraestructura & Redes</Link>
+                <Link to="/mantenimiento" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">Mantenimiento Preventivo</Link>
+                <Link to="/google-workspace" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">Google Workspace & Cloud</Link>
+                <Link to="/desarrollo-software" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">Software a Medida</Link>
               </div>
             )}
           </div>
 
-          {/* Accordion Software */}
           <div>
             <button
-              type="button"
               onClick={() => setMobileSoftwareOpen(!mobileSoftwareOpen)}
-              className="w-full py-2 text-sm font-bold text-stone-900 flex items-center justify-between border-b border-[#F5F0E6]"
+              className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-slate-300"
             >
-              <span>DESARROLLO DE SOFTWARE</span>
-              <ChevronDown className={`w-4 h-4 transition-transform ${mobileSoftwareOpen ? 'rotate-180' : ''}`} />
+              <span>Software Desarrollado</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${mobileSoftwareOpen ? 'rotate-180 text-[#FF7120]' : ''}`} />
             </button>
             {mobileSoftwareOpen && (
-              <div className="pl-4 py-2 space-y-2 bg-[#F5F0E6] rounded-xl my-1 text-xs">
-                <Link to="/desarrollo-software" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
-                  • Software a Medida
-                </Link>
-                <Link to="/desarrollo-software" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
-                  • Aplicaciones Web & ERP
-                </Link>
-                <Link to="/proyectos/granjaweb" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
-                  • Caso: GranjaWP
-                </Link>
-                <Link to="/proyectos/invernaderos" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
-                  • Caso: InvernaderoFM
-                </Link>
-                <Link to="/proyectos/intepr-erp" onClick={() => setMobileMenuOpen(false)} className="block py-1 text-stone-800 font-medium">
-                  • Caso: INTEPR-ERP
-                </Link>
+              <div className="pl-4 space-y-1 mt-1 border-l border-white/10">
+                <Link to="/desarrollo-software" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">Software a Medida</Link>
+                <Link to="/proyectos/granjaweb" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">GranjaWP (Agrícola)</Link>
+                <Link to="/proyectos/invernaderos" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">InvernaderoFM (Agronómico)</Link>
               </div>
             )}
           </div>
 
           <Link
             to="/proyectos"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-bold text-stone-900 border-b border-[#F5F0E6]"
+            className={`block px-3 py-2 text-base font-medium rounded ${
+              location.pathname === '/proyectos' ? 'text-[#FF7120] bg-white/5' : 'text-slate-300'
+            }`}
           >
-            PROYECTOS
+            Proyectos
           </Link>
 
           <Link
             to="/cotizador-outsourcing"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-bold text-stone-900 border-b border-[#F5F0E6]"
+            className={`block px-3 py-2 text-base font-medium rounded ${
+              location.pathname === '/cotizador-outsourcing' ? 'text-[#FF7120] bg-white/5' : 'text-slate-300'
+            }`}
           >
-            COTIZADOR TI
+            Cotizador Interactivo
           </Link>
 
           <Link
             to="/nosotros"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-bold text-stone-900 border-b border-[#F5F0E6]"
+            className={`block px-3 py-2 text-base font-medium rounded ${
+              location.pathname === '/nosotros' ? 'text-[#FF7120] bg-white/5' : 'text-slate-300'
+            }`}
           >
-            NOSOTROS
+            Nosotros
+          </Link>
+
+          <Link
+            to="/pagos"
+            className={`block px-3 py-2 text-base font-medium rounded flex items-center justify-between ${
+              location.pathname === '/pagos' || location.pathname === '/link-pagos' ? 'text-cyan-400 bg-white/5' : 'text-slate-300'
+            }`}
+          >
+            <span className="flex items-center gap-2">
+              <CreditCard className="w-4 h-4 text-cyan-400" />
+              <span>Pagos en Línea (PSE / PayPal)</span>
+            </span>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">SEGURO</span>
           </Link>
 
           <Link
             to="/contacto"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-bold text-stone-900 border-b border-[#F5F0E6]"
+            className={`block px-3 py-2 text-base font-medium rounded ${
+              location.pathname === '/contacto' ? 'text-[#FF7120] bg-white/5' : 'text-slate-300'
+            }`}
           >
-            CONTACTO
+            Contacto
           </Link>
 
-          <div className="pt-4">
+          <div className="pt-4 border-t border-white/10 space-y-3">
             <Link
               to="/cotizador-outsourcing"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-center text-white bg-[#1F2923] hover:bg-[#141C17] flex items-center justify-center space-x-2"
+              className="w-full btn-cyber-primary"
             >
-              <span>COTIZAR AHORA</span>
-              <ArrowRight className="w-4 h-4 text-[#B86B42]" />
+              <span>INICIAR COTIZACIÓN TI</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
+            <div className="text-center font-mono text-xs text-slate-400">
+              Móvil: {siteConfig.mobile}
+            </div>
           </div>
-
         </div>
       )}
-
     </header>
   );
 };

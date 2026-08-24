@@ -4,10 +4,9 @@ import { OutsourcingCalculator } from '../components/calculator/OutsourcingCalcu
 import { SoftwareEstimator } from '../components/calculator/SoftwareEstimator';
 import { FAQSection } from '../components/common/FAQSection';
 
-
 export const CalculatorPage: React.FC = () => {
   return (
-    <div>
+    <div className="bg-[#080B0E] text-slate-100">
       <PageHeader
         badge="Herramientas Interactivas"
         title="Cotizador de Servicios TI"

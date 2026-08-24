@@ -4,9 +4,7 @@ import {
   Phone, 
   MapPin, 
   Send, 
-  CheckCircle2, 
-  MessageSquare, 
-  Building2
+  Terminal
 } from 'lucide-react';
 import { siteConfig } from '../../config/siteConfig';
 
@@ -48,222 +46,214 @@ export const QuickContact: React.FC<QuickContactProps> = ({
   };
 
   return (
-    <section id="contacto" className={`bg-[#FDFBF7] border-b border-[#E8E2D5] ${showHeader ? 'py-24' : 'py-16'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contacto" className={`bg-[#080B0E] border-b border-white/10 relative overflow-hidden cyber-grid ${showHeader ? 'py-24' : 'py-16'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header (only when showHeader is true) */}
+        {/* Section Header */}
         {showHeader && (
-          <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#F5F0E6] border border-[#E8E2D5] text-stone-800 text-xs font-semibold shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42]"></span>
-              <span>Atención Empresarial</span>
+          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+            <div className="tech-badge">
+              <Terminal className="w-3.5 h-3.5 text-[#FF7120]" />
+              <span>CANAL DIRECTO & CONSULTORÍA TI</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-950 tracking-tight">
-              Hablemos de tecnología
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-['Space_Grotesk']">
+              Inicie su Proyecto <span className="text-[#FF7120]">Tecnológico</span>
             </h2>
-            <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-              Cuéntenos qué necesita su empresa y estructuraremos una propuesta técnica adaptada a su operación.
+            <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-sans">
+              Escríbanos para evaluar su infraestructura actual o cotizar un servicio de Outsourcing o software adaptado a su empresa.
             </p>
           </div>
         )}
 
-        {/* Contact Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           
-          {/* Left Info Panel */}
+          {/* Left Column: Direct Corporate Channels (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-[#FAF6EE] rounded-3xl p-8 border border-[#E8E2D5] space-y-6 shadow-xs">
-              <div className="flex items-center space-x-3">
-                <div className="w-11 h-11 rounded-2xl bg-white border border-[#E8E2D5] flex items-center justify-center text-stone-800 shadow-2xs">
-                  <Building2 className="w-5 h-5 text-[#B86B42]" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-stone-900 text-base">
-                    {siteConfig.legalName}
-                  </h3>
-                  <span className="text-xs text-stone-500 font-medium">{siteConfig.city}</span>
+            <div className="cyber-card rounded-lg p-8 hud-box space-y-6">
+              <div className="hud-corner-tl"></div>
+              <div className="hud-corner-br"></div>
+
+              <div>
+                <span className="text-xs font-mono font-bold text-[#FF7120] uppercase tracking-wider block mb-1">
+                  // CONTACTO OFICIAL
+                </span>
+                <h3 className="text-xl font-bold text-white font-['Space_Grotesk']">
+                  Información Corporativa
+                </h3>
+                <p className="text-slate-400 text-xs mt-1">
+                  Respuesta técnica y comercial en horario laboral.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <a
+                  href={`tel:${siteConfig.mobile.replace(/\s+/g, '')}`}
+                  className="flex items-center gap-3.5 p-3 rounded bg-white/[0.02] border border-white/5 hover:border-[#FF7120]/40 transition-colors"
+                >
+                  <div className="w-9 h-9 rounded bg-[#FF7120]/10 flex items-center justify-center text-[#FF7120] shrink-0">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] font-mono text-slate-400">Línea Móvil & WhatsApp</div>
+                    <div className="text-sm font-mono font-bold text-white">{siteConfig.mobile}</div>
+                  </div>
+                </a>
+
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="flex items-center gap-3.5 p-3 rounded bg-white/[0.02] border border-white/5 hover:border-[#FF7120]/40 transition-colors"
+                >
+                  <div className="w-9 h-9 rounded bg-[#FF7120]/10 flex items-center justify-center text-[#FF7120] shrink-0">
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] font-mono text-slate-400">Correo Electrónico</div>
+                    <div className="text-xs font-mono font-bold text-white">{siteConfig.email}</div>
+                  </div>
+                </a>
+
+                <div className="flex items-center gap-3.5 p-3 rounded bg-white/[0.02] border border-white/5">
+                  <div className="w-9 h-9 rounded bg-white/5 flex items-center justify-center text-slate-400 shrink-0">
+                    <MapPin className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] font-mono text-slate-400">Sede Principal</div>
+                    <div className="text-xs font-mono text-white">{siteConfig.address}</div>
+                  </div>
                 </div>
               </div>
 
-              <div className="space-y-3 text-xs sm:text-sm text-stone-700">
-                <div className="flex items-start space-x-3 p-3.5 rounded-2xl bg-white border border-[#E8E2D5]">
-                  <MapPin className="w-4 h-4 text-[#B86B42] shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-stone-900 block text-xs">Ubicación:</strong>
-                    <span>{siteConfig.address}</span>
-                  </div>
+              <div className="p-4 rounded bg-[#FF7120]/5 border border-[#FF7120]/20 space-y-1">
+                <div className="text-xs font-mono font-bold text-[#FF853A]">
+                  // COMPROMISO DE ATENCIÓN
                 </div>
-
-                <div className="flex items-start space-x-3 p-3.5 rounded-2xl bg-white border border-[#E8E2D5]">
-                  <Mail className="w-4 h-4 text-[#B86B42] shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-stone-900 block text-xs">Correo Electrónico:</strong>
-                    <a href={`mailto:${siteConfig.email}`} className="text-stone-900 font-semibold hover:underline">
-                      {siteConfig.email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-3 p-3.5 rounded-2xl bg-white border border-[#E8E2D5]">
-                  <Phone className="w-4 h-4 text-[#B86B42] shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-stone-900 block text-xs">Líneas de Atención:</strong>
-                    <span>Celular: {siteConfig.mobile}</span><br />
-                    <span>Fijo Bogotá: {siteConfig.phone}</span>
-                  </div>
-                </div>
+                <p className="text-[11px] text-slate-400 font-sans leading-relaxed">
+                  Asignamos un consultor técnico para evaluar sus requerimientos y estructurar una propuesta sin costo inicial.
+                </p>
               </div>
 
-              <a
-                href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Hola INTEPE S.A.S., estoy interesado en conocer sus soluciones tecnológicas.')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider text-center text-stone-900 bg-white hover:bg-[#F5F0E6] border border-[#E8E2D5] flex items-center justify-center space-x-2 transition-all shadow-2xs"
-              >
-                <MessageSquare className="w-4 h-4 text-[#B86B42]" />
-                <span>Escribir por WhatsApp</span>
-              </a>
             </div>
           </div>
 
-          {/* Right Form */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border border-[#E8E2D5] shadow-xs">
-            {isSubmitted ? (
-              <div className="text-center py-10 space-y-3">
-                <div className="w-14 h-14 rounded-full bg-[#F5F0E6] text-[#B86B42] flex items-center justify-center mx-auto border border-[#E8E2D5]">
-                  <CheckCircle2 className="w-7 h-7" />
-                </div>
-                <h3 className="text-xl font-bold text-stone-900">¡Solicitud Enviada!</h3>
-                <p className="text-stone-600 text-xs sm:text-sm max-w-md mx-auto">
-                  Gracias por escribirnos. Nuestro equipo se pondrá en contacto en breve para atender su requerimiento.
-                </p>
-                <button
-                  onClick={() => setIsSubmitted(false)}
-                  className="px-5 py-2 rounded-xl text-xs font-bold bg-[#1F2923] text-white"
-                >
-                  Enviar otro mensaje
-                </button>
-              </div>
-            ) : (
+          {/* Right Column: Interactive Cyber Form (7 cols) */}
+          <div className="lg:col-span-7">
+            <div className="cyber-card rounded-lg p-8 sm:p-10 hud-box">
+              <div className="hud-corner-tl"></div>
+              <div className="hud-corner-tr"></div>
+              <div className="hud-corner-bl"></div>
+              <div className="hud-corner-br"></div>
+
               <form onSubmit={handleSubmit} className="space-y-4">
-                
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-xs font-semibold text-stone-700 block mb-1">
-                      Nombre completo *
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono font-bold text-slate-300">
+                      Nombre y Apellido *
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="Ej. Juan Pérez"
+                      placeholder="Ej: Ing. Carlos Medina"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FDFBF7] border border-[#E8E2D5] text-xs text-stone-900 focus:outline-none focus:border-[#B86B42] focus:bg-white"
+                      className="w-full px-3.5 py-2.5 rounded bg-white/5 border border-white/10 text-white text-xs font-sans placeholder:text-slate-500 focus:outline-none focus:border-[#FF7120]"
                     />
                   </div>
-                  <div>
-                    <label className="text-xs font-semibold text-stone-700 block mb-1">
-                      Empresa
+
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono font-bold text-slate-300">
+                      Empresa *
                     </label>
                     <input
                       type="text"
-                      placeholder="Ej. Comercializadora SAS"
+                      required
+                      placeholder="Nombre de su compañía"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FDFBF7] border border-[#E8E2D5] text-xs text-stone-900 focus:outline-none focus:border-[#B86B42] focus:bg-white"
+                      className="w-full px-3.5 py-2.5 rounded bg-white/5 border border-white/10 text-white text-xs font-sans placeholder:text-slate-500 focus:outline-none focus:border-[#FF7120]"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-xs font-semibold text-stone-700 block mb-1">
-                      Cargo en la empresa
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Ej. Gerente / Director TI"
-                      value={formData.role}
-                      onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FDFBF7] border border-[#E8E2D5] text-xs text-stone-900 focus:outline-none focus:border-[#B86B42] focus:bg-white"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-xs font-semibold text-stone-700 block mb-1">
-                      Servicio de interés *
-                    </label>
-                    <select
-                      value={formData.service}
-                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FDFBF7] border border-[#E8E2D5] text-xs text-stone-900 focus:outline-none focus:border-[#B86B42] focus:bg-white"
-                    >
-                      <option value="Outsourcing TI">Outsourcing TI</option>
-                      <option value="Help Desk">Help Desk</option>
-                      <option value="Infraestructura">Infraestructura</option>
-                      <option value="Desarrollo de software">Desarrollo de software</option>
-                      <option value="ERP">ERP</option>
-                      <option value="Google Workspace">Google Workspace</option>
-                      <option value="Mantenimiento">Mantenimiento</option>
-                      <option value="Otro">Otro</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-xs font-semibold text-stone-700 block mb-1">
-                      Correo corporativo *
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono font-bold text-slate-300">
+                      Correo Electrónico *
                     </label>
                     <input
                       type="email"
                       required
-                      placeholder="juan@empresa.com"
+                      placeholder="carlos@empresa.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FDFBF7] border border-[#E8E2D5] text-xs text-stone-900 focus:outline-none focus:border-[#B86B42] focus:bg-white"
+                      className="w-full px-3.5 py-2.5 rounded bg-white/5 border border-white/10 text-white text-xs font-sans placeholder:text-slate-500 focus:outline-none focus:border-[#FF7120]"
                     />
                   </div>
-                  <div>
-                    <label className="text-xs font-semibold text-stone-700 block mb-1">
+
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono font-bold text-slate-300">
                       Teléfono / WhatsApp *
                     </label>
                     <input
                       type="tel"
                       required
-                      placeholder="313 386 2656"
+                      placeholder="310 123 4567"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FDFBF7] border border-[#E8E2D5] text-xs text-stone-900 focus:outline-none focus:border-[#B86B42] focus:bg-white"
+                      className="w-full px-3.5 py-2.5 rounded bg-white/5 border border-white/10 text-white text-xs font-sans placeholder:text-slate-500 focus:outline-none focus:border-[#FF7120]"
                     />
                   </div>
                 </div>
 
-                <div>
-                  <label className="text-xs font-semibold text-stone-700 block mb-1">
-                    Mensaje o descripción del requerimiento
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono font-bold text-slate-300">
+                    Servicio Requerido *
+                  </label>
+                  <select
+                    value={formData.service}
+                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded bg-[#0D1219] border border-white/10 text-white text-xs font-sans focus:outline-none focus:border-[#FF7120]"
+                  >
+                    <option value="Outsourcing TI">Outsourcing TI Integral</option>
+                    <option value="Mesa de Ayuda">Mesa de Ayuda (Help Desk)</option>
+                    <option value="Infraestructura y Redes">Infraestructura & Servidores</option>
+                    <option value="Mantenimiento Preventivo">Mantenimiento Preventivo</option>
+                    <option value="Google Workspace">Google Workspace & Cloud</option>
+                    <option value="Desarrollo de Software">Desarrollo de Software a Medida</option>
+                    <option value="Software GranjaWP">Software Agrícola GranjaWP</option>
+                    <option value="Software InvernaderoFM">Software Agronómico InvernaderoFM</option>
+                  </select>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono font-bold text-slate-300">
+                    Detalle del Requerimiento *
                   </label>
                   <textarea
                     rows={4}
-                    placeholder="Describa brevemente lo que necesita su empresa..."
+                    required
+                    placeholder="Describa brevemente el número de usuarios, equipos o necesidad tecnológica..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#FDFBF7] border border-[#E8E2D5] text-xs text-stone-900 focus:outline-none focus:border-[#B86B42] focus:bg-white"
+                    className="w-full px-3.5 py-2.5 rounded bg-white/5 border border-white/10 text-white text-xs font-sans placeholder:text-slate-500 focus:outline-none focus:border-[#FF7120]"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-[#FDFBF7] bg-[#1F2923] hover:bg-[#141C17] shadow-md transition-all flex items-center justify-center space-x-2"
+                  className="w-full btn-cyber-primary text-xs py-3.5"
                 >
-                  <Send className="w-4 h-4 text-[#B86B42]" />
-                  <span>ENVIAR SOLICITUD A INTEPE →</span>
+                  <Send className="w-4 h-4" />
+                  <span>ENVIAR SOLICITUD POR WHATSAPP</span>
                 </button>
 
-                <p className="text-[10px] text-stone-500 text-center">
-                  Sus datos personales están protegidos conforme a la Ley 1581 de 2012 de Colombia.
-                </p>
+                {isSubmitted && (
+                  <div className="p-3 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono text-center">
+                    ✓ Mensaje estructurado y enviado hacia WhatsApp corporativo.
+                  </div>
+                )}
               </form>
-            )}
+
+            </div>
           </div>
 
         </div>

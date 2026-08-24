@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Ing. William Penagos
+N:Penagos;William;;Ing.;
+ORG:INTEPE S.A.S. - Informática y Tecnología Penagos S.A.S.
+TITLE:Director General & Especialista TI
+ROLE:Dirección de Operaciones & Soluciones
+TEL;TYPE=CELL,VOICE:(+57) 313 386 2656
+TEL;TYPE=WORK,VOICE:(+60 1) 471 8518
+EMAIL;TYPE=WORK,INTERNET:soporte@intepe.net
+URL:https://www.intepe.net
+ADR;TYPE=WORK:;;Calle 152A No. 54-68;Bogotá;Cundinamarca;;Colombia
+NOTE:NIT: 830.066.815-0 | Soluciones TI, Mesa de Ayuda, Infraestructura y Software a Medida.
+END:VCARD

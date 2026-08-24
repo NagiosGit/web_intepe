@@ -1,50 +1,54 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Briefcase, Headset, Server, Code2, ArrowRight } from 'lucide-react';
+import { Briefcase, Headset, Server, Code2, ArrowRight, Terminal } from 'lucide-react';
 import { siteConfig } from '../../config/siteConfig';
 
 export const ValueProposition: React.FC = () => {
   const cards = [
     {
       title: 'Outsourcing TI',
-      description: 'Gestión integral de tecnología para garantizar continuidad y productividad en su empresa.',
+      description: 'Gestión integral de sistemas para garantizar continuidad y máxima productividad en su empresa.',
       icon: Briefcase,
       link: '/outsourcing-ti',
+      tag: 'GESTIÓN TOTAL'
     },
     {
-      title: 'Soporte TI & Help Desk',
-      description: 'Atención remota y presencial oportuna para mantener a sus colaboradores y sistemas siempre operativos.',
+      title: 'Help Desk & Soporte',
+      description: 'Atención remota y presencial oportuna para mantener a sus colaboradores siempre operativos.',
       icon: Headset,
       link: '/help-desk',
+      tag: 'NIVELES L1-L3'
     },
     {
       title: 'Infraestructura & Redes',
-      description: 'Servidores, redes, virtualización y soluciones cloud configuradas para alta disponibilidad y seguridad.',
+      description: 'Servidores, switches, virtualización y soluciones cloud configuradas para alta disponibilidad.',
       icon: Server,
       link: '/infraestructura-tecnologica',
+      tag: 'SEGURIDAD & NUBE'
     },
     {
       title: 'Desarrollo de Software',
-      description: 'Sistemas ERP y aplicaciones a la medida adaptadas exactamente a los flujos y procesos de su empresa.',
+      description: 'Sistemas web, plataformas ERP y aplicaciones a medida adaptadas a sus procesos.',
       icon: Code2,
       link: '/desarrollo-software',
+      tag: '100% A MEDIDA'
     }
   ];
 
   return (
-    <section className="py-24 bg-[#FDFBF7] border-b border-[#E8E2D5]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-[#080B0E] border-b border-white/10 relative overflow-hidden cyber-grid">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#F5F0E6] border border-[#E8E2D5] text-stone-800 text-xs font-semibold shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B86B42]"></span>
-            <span>Propuesta de Valor Integral</span>
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <div className="tech-badge">
+            <Terminal className="w-3.5 h-3.5 text-[#FF7120]" />
+            <span>INTEGRACIÓN TECNOLÓGICA END-TO-END</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-950 tracking-tight">
-            Un solo aliado para toda su tecnología
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-['Space_Grotesk']">
+            Un Solo Aliado para <span className="text-[#FF7120]">Toda su Tecnología</span>
           </h2>
-          <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+          <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-sans">
             {siteConfig.valueProposition}
           </p>
         </div>
@@ -54,32 +58,38 @@ export const ValueProposition: React.FC = () => {
           {cards.map((card, idx) => {
             const Icon = card.icon;
             return (
-              <div 
+              <Link
                 key={idx}
-                className="p-7 rounded-3xl bg-white border border-[#E8E2D5] shadow-xs hover:-translate-y-1 hover:shadow-md hover:border-[#B86B42]/50 transition-all duration-300 flex flex-col justify-between group"
+                to={card.link}
+                className="p-7 rounded-lg cyber-card hud-box flex flex-col justify-between group space-y-4"
               >
-                <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-2xl bg-[#F5F0E6] border border-[#E8E2D5] flex items-center justify-center text-stone-800 group-hover:bg-[#1F2923] group-hover:text-white transition-colors">
-                    <Icon className="w-6 h-6" />
+                <div className="hud-corner-tl"></div>
+                <div className="hud-corner-br"></div>
+
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="w-10 h-10 rounded bg-[#FF7120]/10 border border-[#FF7120]/30 flex items-center justify-center text-[#FF7120] group-hover:scale-105 transition-transform">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span className="text-[9px] font-mono font-bold text-[#FF853A] border border-[#FF7120]/20 bg-white/5 px-2 py-0.5 rounded">
+                      {card.tag}
+                    </span>
                   </div>
-                  <h3 className="text-lg font-bold text-stone-950 tracking-tight group-hover:text-[#B86B42] transition-colors">
+
+                  <h3 className="font-bold text-base text-white font-['Space_Grotesk'] group-hover:text-[#FF853A] transition-colors">
                     {card.title}
                   </h3>
-                  <p className="text-stone-600 text-xs leading-relaxed">
+
+                  <p className="text-xs text-slate-400 leading-relaxed font-sans">
                     {card.description}
                   </p>
                 </div>
 
-                <div className="pt-5 mt-4 border-t border-[#F5F0E6]">
-                  <Link
-                    to={card.link}
-                    className="inline-flex items-center text-xs font-bold text-stone-900 hover:text-[#B86B42] group-hover:translate-x-1 transition-all"
-                  >
-                    <span>Conocer más</span>
-                    <ArrowRight className="w-3.5 h-3.5 ml-1 text-[#B86B42]" />
-                  </Link>
+                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono font-bold text-[#FF7120] group-hover:translate-x-1 transition-transform">
+                  <span>EXPLORAR SERVICIO</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

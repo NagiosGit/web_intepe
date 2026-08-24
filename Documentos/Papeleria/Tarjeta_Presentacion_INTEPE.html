@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarjeta Profesional - Ing. William Penagos | INTEPE S.A.S.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cyber-bg: #080B0E;
+      --cyber-card: #0D1219;
+      --cyber-card-inner: #111822;
+      --cyber-orange: #FF7120;
+      --cyber-orange-hover: #FF853A;
+      --cyber-cyan: #00E5FF;
+      --cyber-emerald: #10B981;
+      --cyber-border: rgba(255, 255, 255, 0.1);
+      --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--cyber-bg);
+      color: #F8FAFC;
+      font-family: var(--font-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px 60px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+
+    .badge-hub {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255, 113, 32, 0.1);
+      border: 1px solid rgba(255, 113, 32, 0.3);
+      color: var(--cyber-orange);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .btn-admin-lock {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #94A3B8;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-admin-lock:hover {
+      background: rgba(255, 113, 32, 0.15);
+      color: #FFF;
+      border-color: var(--cyber-orange);
+    }
+
+    .btn-admin-lock.unlocked {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.4);
+      color: var(--cyber-emerald);
+    }
+
+    .header h1 {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #FFF;
+    }
+
+    .header h1 span {
+      color: var(--cyber-orange);
+    }
+
+    .header p {
+      color: #94A3B8;
+      font-size: 14px;
+      max-width: 600px;
+    }
+
+    /* Controls & Tabs (Hidden by default for customers, unlocked via PIN) */
+    .tabs-bar {
+      display: none;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .tabs-bar.visible {
+      display: flex;
+    }
+
+    .tab-btn {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 10px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 1px solid var(--cyber-border);
+      background: rgba(255, 255, 255, 0.05);
+      color: #94A3B8;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: var(--cyber-orange);
+      color: #080B0E;
+      border-color: var(--cyber-orange);
+      box-shadow: 0 0 20px rgba(255, 113, 32, 0.4);
+    }
+
+    /* 3D Card Virtual Viewer - 2 Balanced Columns */
+    .card-showcase {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+      align-items: center;
+      background: rgba(13, 18, 25, 0.7);
+      border: 1px solid var(--cyber-border);
+      padding: 36px;
+      border-radius: 16px;
+      backdrop-blur: 16px;
+    }
+
+    @media (max-width: 850px) {
+      .card-showcase {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .scene-3d {
+      width: 100%;
+      max-width: 480px;
+      height: 280px;
+      perspective: 1200px;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    .card-3d {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 16px;
+    }
+
+    .card-3d.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden !important;
+      -webkit-backface-visibility: hidden !important;
+      border-radius: 16px;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(255, 113, 32, 0.4);
+      background-color: #0D1219 !important;
+      background-image: linear-gradient(135deg, #0D1219 0%, #111822 60%, #080B0E 100%) !important;
+      box-shadow: 0 20px 50px rgba(255, 113, 32, 0.15), 0 0 20px rgba(0,0,0,0.8);
+      overflow: hidden;
+      transform: rotateY(0deg);
+      transition: opacity 0.25s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card-3d.flipped .card-face.front {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .card-face.back {
+      transform: rotateY(180deg);
+      background-color: #0D1219 !important;
+      background-image: linear-gradient(135deg, #080B0E 0%, #111822 60%, #0D1219 100%) !important;
+      border-color: rgba(0, 229, 255, 0.4);
+      box-shadow: 0 20px 50px rgba(0, 229, 255, 0.15), 0 0 20px rgba(0,0,0,0.8);
+      opacity: 0;
+    }
+
+    .card-3d.flipped .card-face.back {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .card-circuit-bg {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255, 113, 32, 0.15) 0%, rgba(0,0,0,0) 70%);
+      pointer-events: none;
+    }
+
+    .card-brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+
+    .brand-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 113, 32, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyber-orange);
+      font-size: 16px;
+    }
+
+    .brand-text-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .brand-text-name span {
+      color: var(--cyber-orange);
+    }
+
+    .brand-legal-name {
+      font-family: var(--font-main);
+      font-size: 10px;
+      font-weight: 700;
+      color: #CBD5E1;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-nit {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      color: #94A3B8;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .brand-tag {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--cyber-cyan);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      background: rgba(0, 229, 255, 0.05);
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.1em;
+    }
+
+    .card-person {
+      position: relative;
+      z-index: 2;
+      margin: 10px 0;
+    }
+
+    .person-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #FFF;
+      line-height: 1.2;
+    }
+
+    .person-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--cyber-orange);
+      margin-top: 3px;
+    }
+
+    .person-dept {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: #94A3B8;
+    }
+
+    .card-contacts {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 12px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #E2E8F0;
+    }
+
+    .contact-item span:first-child {
+      color: var(--cyber-orange);
+    }
+
+    .contact-item-full {
+      grid-column: span 2;
+      color: #94A3B8;
+      font-size: 9px;
+    }
+
+    /* Card Back (Reverso) */
+    .back-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 8px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--cyber-orange);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .back-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 16px;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .services-list {
+      list-style: none;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: #CBD5E1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .services-list li::before {
+      content: "•";
+      color: var(--cyber-orange);
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .qr-container {
+      background: #FFFFFF;
+      padding: 6px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 90px;
+      height: 90px;
+      margin: 0 auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    .qr-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .qr-label {
+      font-family: var(--font-mono);
+      font-size: 7px;
+      color: #0F172A;
+      font-weight: 800;
+      text-align: center;
+      margin-top: 2px;
+      letter-spacing: 0.05em;
+    }
+
+    .back-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: #94A3B8;
+    }
+
+    /* Actions Panel */
+    .actions-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .panel-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .btn-action {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-vcf {
+      background: var(--cyber-orange);
+      color: #000;
+      border: none;
+      box-shadow: 0 0 20px rgba(255,113,32,0.3);
+    }
+
+    .btn-vcf:hover {
+      background: var(--cyber-orange-hover);
+      box-shadow: 0 0 25px rgba(255,113,32,0.5);
+    }
+
+    .btn-whatsapp {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: var(--cyber-emerald);
+    }
+
+    .btn-whatsapp:hover {
+      background: rgba(16, 185, 129, 0.25);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--cyber-border);
+      color: #FFF;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #FFF;
+    }
+
+    /* Print Studio (Hidden by default, only accessible by company admin) */
+    .print-studio {
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .print-studio.active {
+      display: flex;
+    }
+
+    .print-sheet {
+      background: #FFFFFF;
+      color: #000;
+      padding: 10mm;
+      width: 216mm;
+      min-height: 279mm;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 85mm 85mm;
+      grid-auto-rows: 55mm;
+      gap: 6mm 10mm;
+      justify-content: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      border-radius: 8px;
+    }
+
+    .print-card-box {
+      width: 85mm;
+      height: 55mm;
+      background: #FFFFFF !important;
+      color: #0F172A !important;
+      border: 0.5px dashed #CBD5E1;
+      padding: 4.5mm 5.5mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-sizing: border-box;
+      border-radius: 2px;
+    }
+
+    /* PIN Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .pin-card {
+      background: #0D1219;
+      border: 1px solid var(--cyber-orange);
+      border-radius: 12px;
+      padding: 24px 28px;
+      max-width: 360px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 113, 32, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .pin-input {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      color: #FFF;
+      font-family: var(--font-mono);
+      font-size: 20px;
+      text-align: center;
+      letter-spacing: 0.3em;
+      padding: 10px;
+      outline: none;
+    }
+
+    .pin-input:focus {
+      border-color: var(--cyber-orange);
+      box-shadow: 0 0 10px rgba(255, 113, 32, 0.3);
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #FFF !important;
+        padding: 0 !important;
+      }
+      .no-print, .header, .tabs-bar, #section-virtual, .modal-overlay {
+        display: none !important;
+      }
+      .print-studio, .print-sheet {
+        display: grid !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header no-print">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;">
+        <div class="badge-hub">⚡ IDENTIDAD CORPORATIVA & SOLUCIONES TI</div>
+        <button class="btn-admin-lock" id="btn-admin-toggle" onclick="openPinModal()" title="Acceso exclusivo para personal de INTEPE">
+          🔒 Acceso Papelería
+        </button>
+      </div>
+
+      <h1>Tarjeta Profesional <span>Ing. William Penagos</span></h1>
+      <p id="header-desc">Director General & Especialista TI — INTEPE S.A.S. Presentación interactiva y contacto directo.</p>
+      
+      <!-- Tabs (Only displayed after entering correct PIN) -->
+      <div class="tabs-bar" id="admin-tabs">
+        <button class="tab-btn active" id="tab-virtual" onclick="showTab('virtual')">1. Modo Virtual 3D</button>
+        <button class="tab-btn" id="tab-print" onclick="showTab('print')">2. Pliego de Impresión Física</button>
+      </div>
+    </header>
+
+    <!-- 1. VIRTUAL 3D SECTION (2 Balanced Columns - Lo que ve el cliente siempre) -->
+    <section id="section-virtual" class="card-showcase">
+      
+      <!-- 3D Card Interactive Display (Left Column) -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 14px;">
+        <div class="scene-3d" onclick="toggleCardFlip()">
+          <div class="card-3d" id="interactive-card">
+            
+            <!-- FRONT (ANVERSO) -->
+            <div class="card-face front">
+              <div class="card-circuit-bg"></div>
+
+              <div class="card-brand">
+                <div class="brand-logo-wrap">
+                  <div class="brand-icon">⚡</div>
+                  <div>
+                    <div class="brand-text-name">INTEPE <span>S.A.S.</span></div>
+                    <div class="brand-legal-name">Informática y Tecnología Penagos S.A.S.</div>
+                    <div class="brand-nit">NIT: 830.066.815-0</div>
+                  </div>
+                </div>
+                <div class="brand-tag">TI SOLUTIONS</div>
+              </div>
+
+              <div class="card-person">
+                <div class="person-name" id="disp-name">Ing. William Penagos</div>
+                <div class="person-title" id="disp-title">Director General & Especialista TI</div>
+                <div class="person-dept" id="disp-dept">Dirección de Operaciones & Soluciones</div>
+              </div>
+
+              <div class="card-contacts">
+                <div class="contact-item">
+                  <span>📞</span> <span id="disp-mobile">(+57) 313 386 2656</span>
+                </div>
+                <div class="contact-item">
+                  <span>✉️</span> <span id="disp-email">soporte@intepe.net</span>
+                </div>
+                <div class="contact-item contact-item-full">
+                  <span>🌐</span> <span>https://www.intepe.net • Bogotá, Colombia</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- BACK (REVERSO) -->
+            <div class="card-face back">
+              <div class="back-header">
+                <span>// SERVICIOS TI CORPORATIVOS</span>
+                <span style="color: #94A3B8;">Bogotá, CO</span>
+              </div>
+
+              <div class="back-grid">
+                <ul class="services-list">
+                  <li>Outsourcing TI Integral</li>
+                  <li>Mesa de Ayuda L1/L2/L3</li>
+                  <li>Infraestructura & Servidores</li>
+                  <li>Desarrollo de Software a Medida</li>
+                </ul>
+
+                <div class="qr-container">
+                  <!-- Real High-Resolution Scannable QR Code Matrix -->
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fwww.intepe.net%2Ftarjeta-presentacion%3Fp%3Dwilliam" alt="QR William Penagos" />
+                  <div class="qr-label">ESCANEAR</div>
+                </div>
+              </div>
+
+              <div class="back-footer">
+                <span>Calle 152A No. 54-68</span>
+                <span style="color: var(--cyber-orange); font-weight: 700;">www.intepe.net</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <button class="btn-outline" onclick="toggleCardFlip()" style="padding: 6px 16px; border-radius: 999px; font-size: 11px; cursor: pointer;">
+          🔄 Haz clic en la tarjeta o aquí para girar (Ver Reverso / QR)
+        </button>
+      </div>
+
+      <!-- Action Panel (Right Column) -->
+      <div class="actions-panel">
+        <div class="panel-title">
+          <span>Acciones Digitales Inmediatas</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--cyber-emerald);">vCard 3.0 Ready</span>
+        </div>
+
+        <!-- 1. Download VCF -->
+        <button class="btn-action btn-vcf" onclick="downloadVCardFile()">
+          📥 Guardar en Contactos del Celular (.VCF)
+        </button>
+
+        <!-- 2. Direct WhatsApp -->
+        <a class="btn-action btn-whatsapp" href="https://wa.me/573133862656?text=Hola%20Ing.%20William%20Penagos%2C%20me%20comunico%20desde%20su%20Tarjeta%20Digital%20INTEPE%20S.A.S." target="_blank">
+          💬 Chatear por WhatsApp Directo
+        </a>
+
+        <!-- 3. Phone & Email Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <a class="btn-action btn-outline" href="tel:+573133862656">
+            📞 Llamar Móvil
+          </a>
+          <a class="btn-action btn-outline" href="mailto:soporte@intepe.net">
+            ✉️ Enviar Correo
+          </a>
+        </div>
+
+        <div style="font-family: var(--font-mono); font-size: 11px; color: #94A3B8; background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.06); line-height: 1.4;">
+          💡 <strong>Tip Comercial:</strong> Al escanear el código QR con cualquier teléfono se abrirá la tarjeta interactiva oficial con descarga directa de contactos.
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 2. PHYSICAL PRINT STUDIO SECTION (Protegido con PIN 0408) -->
+    <section id="section-print" class="print-studio">
+      
+      <div class="no-print" style="display: flex; justify-content: space-between; align-items: center; background: rgba(0, 229, 255, 0.06); border: 1px solid rgba(0, 229, 255, 0.25); padding: 18px 24px; border-radius: 10px;">
+        <div>
+          <h3 style="font-family: var(--font-display); font-size: 16px; font-weight: 700; color: #FFF;">
+            🖨️ Pliego de Impresión Física (85 x 55 mm — Blanco Ejecutivo)
+          </h3>
+          <p style="font-family: var(--font-mono); font-size: 11px; color: #94A3B8; margin-top: 4px;">
+            Fondo blanco puro: Ahorra 90% de tinta, no sangra y permite anotaciones a mano. Recomendado en Opalina 250g o Propalcote 300g mate.
+          </p>
+        </div>
+
+        <button class="btn-action btn-vcf" onclick="window.print()" style="background: var(--cyber-cyan); box-shadow: 0 0 20px rgba(0,229,255,0.4); font-size: 12px;">
+          🖨️ IMPRIMIR / EXPORTAR A PDF
+        </button>
+      </div>
+
+      <!-- Pliego Masivo de Impresión (8 Tarjetas: 4 Frente en Columna 1, 4 Reverso en Columna 2) -->
+      <div class="print-sheet">
+        
+        <!-- Fila 1: Tarjeta 1 (Frente) -->
+        <div class="print-card-box">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <div style="font-family: var(--font-display); font-size: 15px; font-weight: 800; color: #0F172A; line-height: 1;">INTEPE <span style="color: #EA580C;">S.A.S.</span></div>
+              <div style="font-family: var(--font-main); font-size: 8px; font-weight: 700; color: #475569; margin-top: 1px;">Informática y Tecnología Penagos S.A.S.</div>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 7.5px; color: #EA580C; background: #FFF7ED; border: 1px solid #FDBA74; padding: 1.5px 5px; border-radius: 3px; font-weight: 700;">TI SOLUTIONS</span>
+          </div>
+          <div>
+            <div style="font-family: var(--font-display); font-size: 14px; font-weight: 800; color: #0F172A; line-height: 1.1;">Ing. William Penagos</div>
+            <div style="font-size: 10.5px; font-weight: 700; color: #EA580C; margin-top: 1px;">Director General & Especialista TI</div>
+            <div style="font-family: var(--font-mono); font-size: 8px; color: #64748B; margin-top: 1px;">NIT: 830.066.815-0</div>
+          </div>
+          <div style="border-top: 1px solid #E2E8F0; padding-top: 1.5mm; font-family: var(--font-mono); font-size: 8.5px; display: grid; grid-template-columns: 1fr 1fr; gap: 1mm; color: #1E293B;">
+            <div style="font-weight: 600;">📞 (+57) 313 386 2656</div>
+            <div style="font-weight: 600;">✉️ soporte@intepe.net</div>
+            <div style="grid-column: span 2; color: #475569; font-size: 8px;">🌐 www.intepe.net • Bogotá, Colombia</div>
+          </div>
+        </div>
+
+        <!-- Fila 1: Tarjeta 2 (Reverso) -->
+        <div class="print-card-box">
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #E2E8F0; padding-bottom: 1mm; font-family: var(--font-mono); font-size: 8px; color: #EA580C; font-weight: 700;">
+            <span>// SERVICIOS TI CORPORATIVOS</span>
+            <span style="color: #64748B;">Bogotá, CO</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 2mm; align-items: center;">
+            <div style="font-family: var(--font-mono); font-size: 8px; line-height: 1.5; color: #0F172A; font-weight: 600;">
+              <div>• Outsourcing TI Integral</div>
+              <div>• Mesa de Ayuda L1/L2/L3</div>
+              <div>• Infraestructura & Servidores</div>
+              <div>• Desarrollo de Software a Medida</div>
+            </div>
+            <div style="background: #FFF; border: 1px solid #CBD5E1; padding: 2px; border-radius: 4px; width: 17mm; height: 17mm; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fwww.intepe.net%2Ftarjeta-presentacion%3Fp%3Dwilliam" alt="QR" style="width: 100%; height: 100%; object-fit: contain;" />
+            </div>
+          </div>
+          <div style="border-top: 1px solid #E2E8F0; padding-top: 1mm; font-family: var(--font-mono); font-size: 8px; color: #475569; display: flex; justify-content: space-between;">
+            <span>Calle 152A No. 54-68</span>
+            <strong style="color: #EA580C;">intepe.net</strong>
+          </div>
+        </div>
+
+        <!-- Fila 2: Tarjeta 3 (Frente) -->
+        <div class="print-card-box">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <div style="font-family: var(--font-display); font-size: 15px; font-weight: 800; color: #0F172A; line-height: 1;">INTEPE <span style="color: #EA580C;">S.A.S.</span></div>
+              <div style="font-family: var(--font-main); font-size: 8px; font-weight: 700; color: #475569; margin-top: 1px;">Informática y Tecnología Penagos S.A.S.</div>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 7.5px; color: #EA580C; background: #FFF7ED; border: 1px solid #FDBA74; padding: 1.5px 5px; border-radius: 3px; font-weight: 700;">TI SOLUTIONS</span>
+          </div>
+          <div>
+            <div style="font-family: var(--font-display); font-size: 14px; font-weight: 800; color: #0F172A; line-height: 1.1;">Ing. William Penagos</div>
+            <div style="font-size: 10.5px; font-weight: 700; color: #EA580C; margin-top: 1px;">Director General & Especialista TI</div>
+            <div style="font-family: var(--font-mono); font-size: 8px; color: #64748B; margin-top: 1px;">NIT: 830.066.815-0</div>
+          </div>
+          <div style="border-top: 1px solid #E2E8F0; padding-top: 1.5mm; font-family: var(--font-mono); font-size: 8.5px; display: grid; grid-template-columns: 1fr 1fr; gap: 1mm; color: #1E293B;">
+            <div style="font-weight: 600;">📞 (+57) 313 386 2656</div>
+            <div style="font-weight: 600;">✉️ soporte@intepe.net</div>
+            <div style="grid-column: span 2; color: #475569; font-size: 8px;">🌐 www.intepe.net • Bogotá, Colombia</div>
+          </div>
+        </div>
+
+        <!-- Fila 2: Tarjeta 4 (Reverso) -->
+        <div class="print-card-box">
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #E2E8F0; padding-bottom: 1mm; font-family: var(--font-mono); font-size: 8px; color: #EA580C; font-weight: 700;">
+            <span>// SERVICIOS TI CORPORATIVOS</span>
+            <span style="color: #64748B;">Bogotá, CO</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 2mm; align-items: center;">
+            <div style="font-family: var(--font-mono); font-size: 8px; line-height: 1.5; color: #0F172A; font-weight: 600;">
+              <div>• Outsourcing TI Integral</div>
+              <div>• Mesa de Ayuda L1/L2/L3</div>
+              <div>• Infraestructura & Servidores</div>
+              <div>• Desarrollo de Software a Medida</div>
+            </div>
+            <div style="background: #FFF; border: 1px solid #CBD5E1; padding: 2px; border-radius: 4px; width: 17mm; height: 17mm; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fwww.intepe.net%2Ftarjeta-presentacion%3Fp%3Dwilliam" alt="QR" style="width: 100%; height: 100%; object-fit: contain;" />
+            </div>
+          </div>
+          <div style="border-top: 1px solid #E2E8F0; padding-top: 1mm; font-family: var(--font-mono); font-size: 8px; color: #475569; display: flex; justify-content: space-between;">
+            <span>Calle 152A No. 54-68</span>
+            <strong style="color: #EA580C;">intepe.net</strong>
+          </div>
+        </div>
+
+        <!-- Fila 3: Tarjeta 5 (Frente) -->
+        <div class="print-card-box">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <div style="font-family: var(--font-display); font-size: 15px; font-weight: 800; color: #0F172A; line-height: 1;">INTEPE <span style="color: #EA580C;">S.A.S.</span></div>
+              <div style="font-family: var(--font-main); font-size: 8px; font-weight: 700; color: #475569; margin-top: 1px;">Informática y Tecnología Penagos S.A.S.</div>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 7.5px; color: #EA580C; background: #FFF7ED; border: 1px solid #FDBA74; padding: 1.5px 5px; border-radius: 3px; font-weight: 700;">TI SOLUTIONS</span>
+          </div>
+          <div>
+            <div style="font-family: var(--font-display); font-size: 14px; font-weight: 800; color: #0F172A; line-height: 1.1;">Ing. William Penagos</div>
+            <div style="font-size: 10.5px; font-weight: 700; color: #EA580C; margin-top: 1px;">Director General & Especialista TI</div>
+            <div style="font-family: var(--font-mono); font-size: 8px; color: #64748B; margin-top: 1px;">NIT: 830.066.815-0</div>
+          </div>
+          <div style="border-top: 1px solid #E2E8F0; padding-top: 1.5mm; font-family: var(--font-mono); font-size: 8.5px; display: grid; grid-template-columns: 1fr 1fr; gap: 1mm; color: #1E293B;">
+            <div style="font-weight: 600;">📞 (+57) 313 386 2656</div>
+            <div style="font-weight: 600;">✉️ soporte@intepe.net</div>
+            <div style="grid-column: span 2; color: #475569; font-size: 8px;">🌐 www.intepe.net • Bogotá, Colombia</div>
+          </div>
+        </div>
+
+        <!-- Fila 3: Tarjeta 6 (Reverso) -->
+        <div class="print-card-box">
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #E2E8F0; padding-bottom: 1mm; font-family: var(--font-mono); font-size: 8px; color: #EA580C; font-weight: 700;">
+            <span>// SERVICIOS TI CORPORATIVOS</span>
+            <span style="color: #64748B;">Bogotá, CO</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 2mm; align-items: center;">
+            <div style="font-family: var(--font-mono); font-size: 8px; line-height: 1.5; color: #0F172A; font-weight: 600;">
+              <div>• Outsourcing TI Integral</div>
+              <div>• Mesa de Ayuda L1/L2/L3</div>
+              <div>• Infraestructura & Servidores</div>
+              <div>• Desarrollo de Software a Medida</div>
+            </div>
+            <div style="background: #FFF; border: 1px solid #CBD5E1; padding: 2px; border-radius: 4px; width: 17mm; height: 17mm; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fwww.intepe.net%2Ftarjeta-presentacion%3Fp%3Dwilliam" alt="QR" style="width: 100%; height: 100%; object-fit: contain;" />
+            </div>
+          </div>
+          <div style="border-top: 1px solid #E2E8F0; padding-top: 1mm; font-family: var(--font-mono); font-size: 8px; color: #475569; display: flex; justify-content: space-between;">
+            <span>Calle 152A No. 54-68</span>
+            <strong style="color: #EA580C;">intepe.net</strong>
+          </div>
+        </div>
+
+        <!-- Fila 4: Tarjeta 7 (Frente) -->
+        <div class="print-card-box">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <div style="font-family: var(--font-display); font-size: 15px; font-weight: 800; color: #0F172A; line-height: 1;">INTEPE <span style="color: #EA580C;">S.A.S.</span></div>
+              <div style="font-family: var(--font-main); font-size: 8px; font-weight: 700; color: #475569; margin-top: 1px;">Informática y Tecnología Penagos S.A.S.</div>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 7.5px; color: #EA580C; background: #FFF7ED; border: 1px solid #FDBA74; padding: 1.5px 5px; border-radius: 3px; font-weight: 700;">TI SOLUTIONS</span>
+          </div>
+          <div>
+            <div style="font-family: var(--font-display); font-size: 14px; font-weight: 800; color: #0F172A; line-height: 1.1;">Ing. William Penagos</div>
+            <div style="font-size: 10.5px; font-weight: 700; color: #EA580C; margin-top: 1px;">Director General & Especialista TI</div>
+            <div style="font-family: var(--font-mono); font-size: 8px; color: #64748B; margin-top: 1px;">NIT: 830.066.815-0</div>
+          </div>
+          <div style="border-top: 1px solid #E2E8F0; padding-top: 1.5mm; font-family: var(--font-mono); font-size: 8.5px; display: grid; grid-template-columns: 1fr 1fr; gap: 1mm; color: #1E293B;">
+            <div style="font-weight: 600;">📞 (+57) 313 386 2656</div>
+            <div style="font-weight: 600;">✉️ soporte@intepe.net</div>
+            <div style="grid-column: span 2; color: #475569; font-size: 8px;">🌐 www.intepe.net • Bogotá, Colombia</div>
+          </div>
+        </div>
+
+        <!-- Fila 4: Tarjeta 8 (Reverso) -->
+        <div class="print-card-box">
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #E2E8F0; padding-bottom: 1mm; font-family: var(--font-mono); font-size: 8px; color: #EA580C; font-weight: 700;">
+            <span>// SERVICIOS TI CORPORATIVOS</span>
+            <span style="color: #64748B;">Bogotá, CO</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 2mm; align-items: center;">
+            <div style="font-family: var(--font-mono); font-size: 8px; line-height: 1.5; color: #0F172A; font-weight: 600;">
+              <div>• Outsourcing TI Integral</div>
+              <div>• Mesa de Ayuda L1/L2/L3</div>
+              <div>• Infraestructura & Servidores</div>
+              <div>• Desarrollo de Software a Medida</div>
+            </div>
+            <div style="background: #FFF; border: 1px solid #CBD5E1; padding: 2px; border-radius: 4px; width: 17mm; height: 17mm; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fwww.intepe.net%2Ftarjeta-presentacion%3Fp%3Dwilliam" alt="QR" style="width: 100%; height: 100%; object-fit: contain;" />
+            </div>
+          </div>
+          <div style="border-top: 1px solid #E2E8F0; padding-top: 1mm; font-family: var(--font-mono); font-size: 8px; color: #475569; display: flex; justify-content: space-between;">
+            <span>Calle 152A No. 54-68</span>
+            <strong style="color: #EA580C;">intepe.net</strong>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- PIN Modal para desbloquear funciones de papelería interna -->
+  <div class="modal-overlay" id="pin-modal">
+    <div class="pin-card">
+      <div style="font-size: 28px;">🔐</div>
+      <h3 style="font-family: var(--font-display); font-size: 16px; color: #FFF;">Acceso a Papelería Interna</h3>
+      <p style="font-size: 12px; color: #94A3B8; font-family: var(--font-mono);">
+        Ingrese el código PIN de seguridad de INTEPE para desbloquear el pliego de impresión física.
+      </p>
+      
+      <input type="password" id="input-pin" class="pin-input" placeholder="••••" maxlength="6" autofocus onkeydown="if(event.key==='Enter') verifyPin()" />
+      
+      <div id="pin-error" style="color: #EF4444; font-size: 11px; font-family: var(--font-mono); display: none;">
+        PIN incorrecto. Intente nuevamente.
+      </div>
+
+      <div style="display: flex; gap: 8px; justify-content: center; margin-top: 8px;">
+        <button class="btn-action btn-outline" onclick="closePinModal()" style="padding: 8px 16px; font-size: 12px;">
+          Cancelar
+        </button>
+        <button class="btn-action btn-vcf" onclick="verifyPin()" style="padding: 8px 20px; font-size: 12px;">
+          Desbloquear
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SECURITY_PIN = "0408";
+    let isAdmin = false;
+
+    // Abrir modal de PIN
+    function openPinModal() {
+      if (isAdmin) {
+        // Bloquear si ya está activo
+        isAdmin = false;
+        document.getElementById('btn-admin-toggle').classList.remove('unlocked');
+        document.getElementById('btn-admin-toggle').innerHTML = '🔒 Acceso Papelería';
+        document.getElementById('admin-tabs').classList.remove('visible');
+        showTab('virtual');
+        return;
+      }
+      document.getElementById('pin-modal').classList.add('active');
+      document.getElementById('input-pin').value = '';
+      document.getElementById('pin-error').style.display = 'none';
+      document.getElementById('input-pin').focus();
+    }
+
+    function closePinModal() {
+      document.getElementById('pin-modal').classList.remove('active');
+    }
+
+    function verifyPin() {
+      const pin = document.getElementById('input-pin').value.trim();
+      if (pin === SECURITY_PIN) {
+        isAdmin = true;
+        closePinModal();
+        document.getElementById('btn-admin-toggle').classList.add('unlocked');
+        document.getElementById('btn-admin-toggle').innerHTML = '🔓 Papelería Activa';
+        document.getElementById('admin-tabs').classList.add('visible');
+        showTab('print');
+      } else {
+        document.getElementById('pin-error').style.display = 'block';
+      }
+    }
+
+    // Tab switching
+    function showTab(tabName) {
+      const tabVirtual = document.getElementById('tab-virtual');
+      const tabPrint = document.getElementById('tab-print');
+      const secVirtual = document.getElementById('section-virtual');
+      const secPrint = document.getElementById('section-print');
+
+      if (tabName === 'virtual') {
+        tabVirtual.classList.add('active');
+        tabPrint.classList.remove('active');
+        secVirtual.style.display = 'grid';
+        secPrint.classList.remove('active');
+      } else {
+        if (!isAdmin) {
+          openPinModal();
+          return;
+        }
+        tabPrint.classList.add('active');
+        tabVirtual.classList.remove('active');
+        secVirtual.style.display = 'none';
+        secPrint.classList.add('active');
+      }
+    }
+
+    // 3D Card Flip Toggle
+    function toggleCardFlip() {
+      const card = document.getElementById('interactive-card');
+      card.classList.toggle('flipped');
+    }
+
+    // Download .VCF contact file
+    function downloadVCardFile() {
+      const vcardData = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'FN:Ing. William Penagos',
+        'N:Penagos;William;;Ing.;',
+        'ORG:INTEPE S.A.S. - Informática y Tecnología Penagos S.A.S.',
+        'TITLE:Director General & Especialista TI',
+        'ROLE:Dirección de Operaciones & Soluciones',
+        'TEL;TYPE=CELL,VOICE:(+57) 313 386 2656',
+        'TEL;TYPE=WORK,VOICE:(+60 1) 471 8518',
+        'EMAIL;TYPE=WORK,INTERNET:soporte@intepe.net',
+        'URL:https://www.intepe.net',
+        'ADR;TYPE=WORK:;;Calle 152A No. 54-68;Bogotá;Cundinamarca;;Colombia',
+        'NOTE:NIT: 830.066.815-0 | Informática y Tecnología Penagos S.A.S. | Soluciones Corporativas TI, Outsourcing, Help Desk y Desarrollo de Software.',
+        'END:VCARD'
+      ].join('\r\n');
+
+      const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Contacto_INTEPE_Ing_William_Penagos.vcf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+
+</body>
+</html>

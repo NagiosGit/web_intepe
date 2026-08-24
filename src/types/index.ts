@@ -28,6 +28,7 @@ export interface Project {
   image?: string;
   demoUrl?: string;
   modules?: { name: string; desc: string }[];
+  screenshots?: { title: string; desc: string; image: string; tag: string }[];
 }
 
 export interface SoftwareCapability {

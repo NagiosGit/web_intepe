@@ -4,25 +4,25 @@ export const servicesData: Service[] = [
   {
     id: 'outsourcing-ti',
     slug: 'outsourcing-ti',
-    title: 'Outsourcing TI',
-    shortDescription: 'Gestión integral del área de tecnología para garantizar la continuidad y productividad de su empresa.',
-    fullDescription: 'En INTEPE S.A.S. asumimos la administración y soporte completo de la infraestructura tecnológica de su organización. Nuestro servicio de Outsourcing TI combina soporte técnico especializado, monitoreo de sistemas, administración de servidores y redes, permitiendo a su equipo enfocarse en el crecimiento del negocio sin preocuparse por fallas técnicas.',
+    title: 'Outsourcing TI Integral',
+    shortDescription: 'Departamento de tecnología tercerizado para la continuidad, seguridad y productividad de su empresa.',
+    fullDescription: 'En INTEPE S.A.S. asumimos la administración y soporte completo de la infraestructura tecnológica de su organización. Nuestro servicio de Outsourcing TI combina Mesa de Ayuda dedicada L1/L2/L3, mantenimiento preventivo programado, administración de servidores, seguridad perimetral y dirección técnica, permitiendo a su equipo enfocarse en el crecimiento del negocio sin preocupaciones operativas.',
     category: 'outsourcing',
     icon: 'Briefcase',
-    badge: 'Gestión Integral',
+    badge: 'Gestión Integral TI',
     features: [
-      'Soporte técnico integral para usuarios (Help Desk L1/L2)',
-      'Administración y mantenimiento de sistemas operativos',
-      'Gestión y monitoreo de infraestructura tecnológica',
-      'Administración de servidores Windows y Linux',
-      'Configuración y seguridad de redes LAN/WAN y Wi-Fi',
-      'Mantenimiento preventivo y correctivo programado',
-      'Modalidades de atención remota y presencial con SLA'
+      'Mesa de Ayuda dedicada para usuarios con SLA < 15 min (L1/L2/L3)',
+      'Administración proactiva de servidores Windows Server, Linux y Proxmox',
+      'Mantenimiento preventivo y correctivo programado de computadores',
+      'Configuración y seguridad de redes LAN, WAN, Wi-Fi y Firewalls',
+      'Copias de seguridad automáticas locales y en la nube',
+      'Servicios IMAC (Instalaciones, traslados y adecuación de puestos)',
+      'Modalidades: 100% Remoto, Híbrido con visitas y Técnico Residente'
     ],
     benefits: [
       'Reducción de costos laborales fijos sin pasivos de nómina',
       'Continuidad operativa garantizada con equipo multidisciplinario',
-      'Soporte técnico confiable con tiempos de respuesta definidos'
+      'Soporte técnico confiable con acuerdos de nivel de servicio (SLA)'
     ],
     ctaText: 'Conocer Outsourcing TI →',
     ctaLink: '/outsourcing-ti'
@@ -30,26 +30,27 @@ export const servicesData: Service[] = [
   {
     id: 'help-desk',
     slug: 'help-desk',
-    title: 'Mesa de Ayuda / Help Desk',
-    shortDescription: 'Servicio de atención y soporte técnico ágil para mantener a sus colaboradores siempre productivos.',
-    fullDescription: 'Canalice y resuelva cualquier requerimiento informático de sus usuarios con rapidez y eficiencia. Nuestra Mesa de Ayuda gestiona incidentes de software, hardware, conectividad y cuentas de usuario mediante atención remota inmediata y asistencia técnica presencial cuando sea necesario.',
+    title: 'Mesa de Ayuda (Help Desk L1/L2/L3)',
+    shortDescription: 'Asistencia técnica inmediata multicanal para mantener a sus colaboradores siempre productivos y sin interrupciones.',
+    fullDescription: 'Canalice y resuelva cualquier requerimiento informático de sus usuarios con rapidez y trazabilidad total. Nuestra Mesa de Ayuda gestiona incidentes de software, hardware, conectividad, correo y cuentas de usuario mediante WhatsApp corporativo, portal de tickets, asistencia remota instantánea y visitas presenciales en sitio.',
     category: 'outsourcing',
     icon: 'Headset',
-    badge: 'Atención a Usuarios',
+    badge: 'Soporte Inmediato L1/L2/L3',
     features: [
-      'Atención de incidentes técnicos de forma remota y ágil',
-      'Soporte técnico telefónico, por chat y escritorio remoto',
-      'Gestión organizada de solicitudes y tickets de servicio',
-      'Asistencia técnica para equipos Windows, macOS y Linux',
-      'Configuración de periféricos, impresoras y cuentas de correo',
-      'Seguimiento y cierre formal de requerimientos'
+      'Atención multicanal: WhatsApp Corporativo, Portal de Tickets, PBX y Remoto',
+      'Tiempos de primera respuesta < 15 minutos en incidentes críticos',
+      'Soporte especializado para equipos Windows, macOS y Linux',
+      'Diagnóstico y solución de periféricos, impresoras y conectividad',
+      'Gestión de cuentas Google Workspace, Microsoft 365 y software ofimático',
+      'Escalamiento técnico estructurado (Nivel 1, Nivel 2 y Nivel 3)',
+      'Reportes mensuales de gestión con métricas e indicadores de servicio'
     ],
     benefits: [
       'Resolución rápida de dudas y problemas cotidianos de los usuarios',
-      'Disminución del tiempo de inactividad de los puestos de trabajo',
-      'Trazabilidad clara de solicitudes y tiempos de atención'
+      'Máxima disponibilidad de los puestos de trabajo sin pérdidas de tiempo',
+      'Trazabilidad en tiempo real de cada requerimiento con sistema de tickets'
     ],
-    ctaText: 'Conocer Help Desk →',
+    ctaText: 'Ver Mesa de Ayuda →',
     ctaLink: '/help-desk'
   },
   {

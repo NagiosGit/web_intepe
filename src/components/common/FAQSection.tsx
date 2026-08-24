@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { faqData } from '../../data/faqData';
-import { HelpCircle, ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp, Terminal } from 'lucide-react';
 
 export const FAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -10,20 +10,23 @@ export const FAQSection: React.FC = () => {
   };
 
   return (
-    <section className="py-24 bg-[#FAF6EE] border-b border-[#E8E2D5]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-[#080B0E] border-b border-white/10 relative overflow-hidden">
+      {/* Background Radial Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#FF7120]/5 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="text-center space-y-3 mb-16">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white border border-[#E8E2D5] text-stone-800 text-xs font-semibold shadow-2xs">
-            <HelpCircle className="w-3.5 h-3.5 text-[#B86B42]" />
-            <span>Respuestas a Dudas Frecuentes</span>
+          <div className="tech-badge">
+            <Terminal className="w-3.5 h-3.5 text-[#FF7120]" />
+            <span>BASE DE CONOCIMIENTO TI</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-950 tracking-tight">
-            Preguntas Frecuentes sobre el Servicio TI
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-['Space_Grotesk']">
+            Preguntas <span className="text-[#FF7120]">Frecuentes</span>
           </h2>
-          <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-            Aspectos clave sobre la contratación, cobertura y modalidades de atención de INTEPE S.A.S.
+          <p className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+            Aspectos clave sobre la contratación, cobertura, SLAs y modalidades de atención de INTEPE S.A.S.
           </p>
         </div>
 
@@ -31,28 +34,47 @@ export const FAQSection: React.FC = () => {
         <div className="space-y-3.5">
           {faqData.map((item, idx) => {
             const isOpen = openIndex === idx;
+            const formattedNum = String(idx + 1).padStart(2, '0');
             return (
               <div
                 key={idx}
-                className={`bg-white rounded-2xl border transition-all duration-200 overflow-hidden shadow-2xs ${
-                  isOpen ? 'border-[#B86B42] ring-1 ring-[#B86B42]/20' : 'border-[#E8E2D5]'
+                className={`cyber-card rounded-md border transition-all duration-200 overflow-hidden hud-box ${
+                  isOpen 
+                    ? 'border-[#FF7120]/60 bg-[#141C27]' 
+                    : 'border-white/10 hover:border-white/20'
                 }`}
               >
+                {isOpen && (
+                  <>
+                    <div className="hud-corner-tl"></div>
+                    <div className="hud-corner-br"></div>
+                  </>
+                )}
+                
                 <button
                   type="button"
                   onClick={() => toggleFAQ(idx)}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none"
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between space-x-4 focus:outline-none group"
                 >
-                  <span className="font-bold text-sm sm:text-base text-stone-900">
-                    {item.question}
-                  </span>
-                  <div className="p-1.5 rounded-xl bg-[#F5F0E6] text-[#B86B42] shrink-0">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs font-bold text-[#FF7120]">
+                      [{formattedNum}]
+                    </span>
+                    <span className={`font-bold text-sm sm:text-base transition-colors font-['Space_Grotesk'] ${
+                      isOpen ? 'text-[#FF853A]' : 'text-slate-200 group-hover:text-white'
+                    }`}>
+                      {item.question}
+                    </span>
+                  </div>
+                  <div className={`p-1.5 rounded bg-white/5 shrink-0 transition-colors ${
+                    isOpen ? 'text-[#FF7120] bg-[#FF7120]/10' : 'text-slate-400'
+                  }`}>
                     {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 pt-1 text-stone-600 text-xs sm:text-sm leading-relaxed border-t border-[#F5F0E6]">
+                  <div className="px-5 sm:px-6 pb-6 pt-1 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-white/5 font-sans pl-11">
                     {item.answer}
                   </div>
                 )}
