@@ -1,0 +1,12 @@
+Comandos para Suber archivos desde el terminal: 
+
+Carpeta: C:\Users\WINTEPE\Desktop\PROYECTOS_IA\Web_Intepe
+
+TERMINAL:
+
+git remote add origin https://github.com/IntepeGit/web_intepe.git
+git push -u origin main
+
+=================ACTUALIZA LA APP EN GITHUB========================
+git add .; git commit -m "UpdateDiseñoPaginaWebF"; git push origin main
+===================================================================

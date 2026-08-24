@@ -7,7 +7,6 @@ import { IndustrySolutions } from '../components/home/IndustrySolutions';
 import { TechEcosystem } from '../components/home/TechEcosystem';
 import { SoftwareSection } from '../components/home/SoftwareSection';
 import { ProjectsOverview } from '../components/home/ProjectsOverview';
-import { TestimonialsSection } from '../components/home/TestimonialsSection';
 import { OutsourcingCalculator } from '../components/calculator/OutsourcingCalculator';
 import { DifferentialSection } from '../components/home/DifferentialSection';
 import { MethodologySection } from '../components/home/MethodologySection';
@@ -41,10 +40,7 @@ export const HomePage: React.FC = () => {
       {/* 8. Proyectos Reales Demostrados (GranjaWP, InvernaderoFM, INTEPR-ERP) */}
       <ProjectsOverview />
 
-      {/* 9. Casos de Éxito y Reseñas B2B con Métricas */}
-      <TestimonialsSection />
-
-      {/* 10. Cotizador Dinámico de Outsourcing TI */}
+      {/* 9. Cotizador Dinámico de Outsourcing TI */}
       <OutsourcingCalculator />
 
       {/* 11. Sección Diferencial: ¿Necesita algo que no está en el catálogo? */}
