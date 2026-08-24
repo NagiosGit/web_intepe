@@ -13,11 +13,11 @@ import {
 } from 'lucide-react';
 
 export const OutsourcingCalculator: React.FC = () => {
-  // Wizard state
-  const [selectedUserRangeId, setSelectedUserRangeId] = useState<string>('11-25');
-  const [workstationsCount, setWorkstationsCount] = useState<number>(15);
-  const [selectedServerId, setSelectedServerId] = useState<string>('1');
-  const [selectedSupportModeId, setSelectedSupportModeId] = useState<string>('hybrid');
+  // Wizard state (Default preset: 10 users, 0 servers, Remote, Business hours, 3 core add-ons)
+  const [selectedUserRangeId, setSelectedUserRangeId] = useState<string>('1-10');
+  const [workstationsCount, setWorkstationsCount] = useState<number>(10);
+  const [selectedServerId, setSelectedServerId] = useState<string>('0');
+  const [selectedSupportModeId, setSelectedSupportModeId] = useState<string>('remote');
   const [selectedScheduleId, setSelectedScheduleId] = useState<string>('business');
   const [selectedAddons, setSelectedAddons] = useState<string[]>([
     'backup',
@@ -203,7 +203,7 @@ export const OutsourcingCalculator: React.FC = () => {
                     type="button"
                     onClick={() => {
                       setSelectedUserRangeId(range.id);
-                      setWorkstationsCount(range.minUsers);
+                      setWorkstationsCount(range.id === '1-10' ? 10 : range.minUsers);
                     }}
                     className={`py-1.5 px-2 rounded text-[11px] font-mono transition-all text-center ${
                       selectedUserRangeId === range.id
