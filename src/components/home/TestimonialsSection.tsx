@@ -4,9 +4,9 @@ import { Star, Terminal } from 'lucide-react';
 export const TestimonialsSection: React.FC = () => {
   const reviews = [
     {
-      author: 'Carlos E. Mendoza',
+      author: 'nn',
       role: 'Gerente de Operaciones',
-      company: 'Distribuciones & Logística Andina',
+      company: 'Dnn',
       sector: 'Comercial & Distribución',
       rating: 5,
       metric: '99.9% Disponibilidad',
@@ -15,8 +15,8 @@ export const TestimonialsSection: React.FC = () => {
       verified: true
     },
     {
-      author: 'Alejandro P. Gómez',
-      role: 'Director de Producción & Cultivos',
+      author: 'nn',
+      role: 'Director dn',
       company: 'Sector Agropecuario Cundinamarca',
       sector: 'Invernaderos & Campo',
       rating: 5,
@@ -26,9 +26,9 @@ export const TestimonialsSection: React.FC = () => {
       verified: true
     },
     {
-      author: 'Patricia R. Beltrán',
+      author: 'nn',
       role: 'Directora Administrativa',
-      company: 'Firma de Consultoría y Servicios SAS',
+      company: 'Firma n',
       sector: 'Consultoría & Servicios',
       rating: 5,
       metric: '0 Pérdidas de Datos',
