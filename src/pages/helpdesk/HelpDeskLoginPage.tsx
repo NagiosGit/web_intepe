@@ -100,17 +100,6 @@ export const HelpDeskLoginPage: React.FC = () => {
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10 px-4">
         
-        {/* Back Link */}
-        <div className="mb-5 text-center">
-          <Link 
-            to="/" 
-            className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-300 hover:text-[#FF7120] transition-colors"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Volver a www.intepe.net</span>
-          </Link>
-        </div>
-
         {/* Brand Header with Official HelpDesk Round Logo */}
         <div className="text-center space-y-4">
           <Link to="/" className="inline-block group mb-1" title="Ir al sitio web principal">
@@ -235,6 +224,17 @@ export const HelpDeskLoginPage: React.FC = () => {
             </p>
           </div>
 
+        </div>
+
+        {/* Back Link at Bottom */}
+        <div className="mt-6 text-center">
+          <Link 
+            to="/" 
+            className="inline-flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-[#FF7120] hover:underline transition-colors px-3 py-1.5 rounded-lg hover:bg-white/5"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Volver a www.intepe.net</span>
+          </Link>
         </div>
       </div>
 

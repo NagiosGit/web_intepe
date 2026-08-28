@@ -64,17 +64,6 @@ export const UpdatePasswordPage: React.FC = () => {
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10 px-4">
         
-        {/* Back Link */}
-        <div className="mb-5 text-center">
-          <Link 
-            to="/help-desk/login" 
-            className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-300 hover:text-[#FF7120] transition-colors"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Volver al Inicio de Sesión</span>
-          </Link>
-        </div>
-
         {/* Brand Header */}
         <div className="text-center space-y-3">
           <Link to="/help-desk/login" className="inline-block group mb-1" title="Ir al Inicio de Sesión">
@@ -193,6 +182,16 @@ export const UpdatePasswordPage: React.FC = () => {
 
         </div>
 
+        {/* Back Link at Bottom */}
+        <div className="mt-6 text-center">
+          <Link 
+            to="/help-desk/login" 
+            className="inline-flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-[#FF7120] hover:underline transition-colors px-3 py-1.5 rounded-lg hover:bg-white/5"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Volver al Inicio de Sesión</span>
+          </Link>
+        </div>
       </div>
 
     </div>
