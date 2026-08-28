@@ -10,7 +10,6 @@ import {
   ArrowLeft,
   Wrench,
   LayoutDashboard,
-  Cpu,
   Sparkles
 } from 'lucide-react';
 
@@ -59,25 +58,27 @@ export const HelpDeskLayout: React.FC<Props> = ({ children, title, subtitle, act
   const navLinks = getNavLinks();
 
   return (
-    <div className="relative min-h-screen bg-[#080B0E] text-slate-100 flex flex-col font-sans selection:bg-[#FF7120] selection:text-black overflow-x-hidden cyber-grid">
+    <div className="relative min-h-screen bg-[#0F172A] text-slate-100 flex flex-col font-sans selection:bg-[#FF7120] selection:text-black overflow-x-hidden cyber-grid">
       
       {/* 0. Ambient Glowing Gradients matching main website */}
-      <div className="fixed top-0 left-1/4 -translate-x-1/2 -translate-y-1/3 w-[850px] h-[550px] bg-[#FF7120]/8 rounded-full blur-[140px] pointer-events-none z-0"></div>
-      <div className="fixed top-1/3 right-0 w-[650px] h-[550px] bg-cyan-500/6 rounded-full blur-[140px] pointer-events-none z-0"></div>
-      <div className="fixed bottom-0 left-1/3 w-[700px] h-[400px] bg-purple-600/4 rounded-full blur-[160px] pointer-events-none z-0"></div>
+      <div className="fixed top-0 left-1/4 -translate-x-1/2 -translate-y-1/3 w-[850px] h-[550px] bg-[#FF7120]/12 rounded-full blur-[140px] pointer-events-none z-0"></div>
+      <div className="fixed top-1/3 right-0 w-[650px] h-[550px] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none z-0"></div>
+      <div className="fixed bottom-0 left-1/3 w-[700px] h-[400px] bg-purple-600/6 rounded-full blur-[160px] pointer-events-none z-0"></div>
 
       {/* 1. Header Bar */}
-      <header className="sticky top-0 z-40 bg-[#080B0E]/90 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.8)] relative">
+      <header className="sticky top-0 z-40 bg-[#0F172A]/95 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             
             {/* Logo & Portal Brand matching Navbar */}
             <div className="flex items-center space-x-3">
-              <Link to="/" className="flex items-center space-x-2.5 group">
-                <div className="relative p-1.5 rounded-lg bg-white/5 border border-white/10 group-hover:border-[#FF7120]/50 transition-colors">
-                  <div className="hud-corner-tl"></div>
-                  <div className="hud-corner-br"></div>
-                  <Cpu className="w-5 h-5 text-[#FF7120] transition-transform group-hover:scale-110" />
+              <Link to="/help-desk" className="flex items-center space-x-3 group">
+                <div className="relative rounded-full p-0.5 bg-gradient-to-b from-cyan-500/40 to-[#FF7120]/30 shadow-[0_0_15px_rgba(0,229,255,0.25)] group-hover:shadow-[0_0_22px_rgba(0,229,255,0.45)] transition-all">
+                  <img 
+                    src="/logo/logoRedondo_helpdesk.png" 
+                    alt="Logo Mesa de Ayuda" 
+                    className="w-9 h-9 object-contain rounded-full transition-transform group-hover:scale-105"
+                  />
                 </div>
                 <div>
                   <div className="text-base font-black text-white font-['Space_Grotesk'] tracking-tight flex items-center gap-1.5 leading-none">
@@ -230,7 +231,7 @@ export const HelpDeskLayout: React.FC<Props> = ({ children, title, subtitle, act
       </main>
 
       {/* 4. Help Desk Footer */}
-      <footer className="relative z-10 border-t border-white/10 bg-[#080B0E]/90 backdrop-blur-md py-4 text-center text-xs font-mono text-slate-500">
+      <footer className="relative z-10 border-t border-white/10 bg-[#0F172A]/90 backdrop-blur-md py-4 text-center text-xs font-mono text-slate-400">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <span>INFORMÁTICA Y TECNOLOGÍA PENAGOS S.A.S. (INTEPE S.A.S.) • Tel: (+57) 313 386 2656</span>
           <span className="text-cyan-400/80 flex items-center gap-1">

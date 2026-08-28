@@ -54,7 +54,7 @@ const CorporateIdentityCard3D: React.FC = () => {
       >
         {/* Floating Top Bracket Tag */}
         <div 
-          className="absolute -top-4 -left-2 z-20 flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-[#080B0E]/90 border border-[#FF7120]/40 text-[#FF853A] font-mono text-[9px] shadow-[0_0_15px_rgba(255,113,32,0.3)]"
+          className="absolute -top-4 -left-2 z-20 flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-[#0F172A]/95 border border-[#FF7120]/40 text-[#FF853A] font-mono text-[9px] shadow-[0_0_15px_rgba(255,113,32,0.3)]"
           style={{ transform: 'translateZ(30px)' }}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#FF7120] animate-ping"></span>
@@ -62,7 +62,7 @@ const CorporateIdentityCard3D: React.FC = () => {
         </div>
 
         {/* Main Card Body */}
-        <div className="p-8 rounded-xl cyber-card hud-box border border-white/15 bg-[#080B0E]/90 backdrop-blur-xl flex flex-col items-center text-center space-y-4 w-full shadow-[0_25px_50px_rgba(0,0,0,0.8)] overflow-hidden relative">
+        <div className="p-8 rounded-xl cyber-card hud-box border border-white/20 bg-[#1E293B]/95 backdrop-blur-xl flex flex-col items-center text-center space-y-4 w-full shadow-[0_25px_50px_rgba(0,0,0,0.6)] overflow-hidden relative">
           <div className="hud-corner-tl !border-[#FF7120]"></div>
           <div className="hud-corner-tr !border-[#FF7120]"></div>
           <div className="hud-corner-bl !border-[#FF7120]"></div>
@@ -119,7 +119,7 @@ const CorporateIdentityCard3D: React.FC = () => {
 
 export const AboutPage: React.FC = () => {
   return (
-    <div className="bg-[#080B0E] text-slate-100 min-h-screen">
+    <div className="bg-[#0F172A] text-slate-100 min-h-screen">
       <PageHeader
         badge="Nuestra Compañía"
         title="Informática y Tecnología Penagos S.A.S."
@@ -128,7 +128,7 @@ export const AboutPage: React.FC = () => {
       />
 
       {/* 1. Core Intro & Corporate Badge */}
-      <div className="bg-[#080B0E] py-24 border-b border-white/10 cyber-grid">
+      <div className="bg-[#0F172A] py-24 border-b border-white/10 cyber-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
@@ -158,7 +158,7 @@ export const AboutPage: React.FC = () => {
       </div>
 
       {/* 2. Mission and Vision */}
-      <div className="bg-[#080B0E] py-24 border-b border-white/10 relative overflow-hidden">
+      <div className="bg-[#0F172A] py-24 border-b border-white/10 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
@@ -197,7 +197,7 @@ export const AboutPage: React.FC = () => {
       </div>
 
       {/* 3. Corporate Data Card */}
-      <div className="bg-[#080B0E] py-24 border-b border-white/10 cyber-grid">
+      <div className="bg-[#0F172A] py-24 border-b border-white/10 cyber-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="flex items-center space-x-3 border-b border-white/10 pb-4">
             <div className="w-10 h-10 rounded bg-[#FF7120]/10 border border-[#FF7120]/30 flex items-center justify-center text-[#FF7120]">

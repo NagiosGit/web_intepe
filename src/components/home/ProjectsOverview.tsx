@@ -24,7 +24,7 @@ export const ProjectsOverview: React.FC<ProjectsOverviewProps> = ({
   };
 
   return (
-    <section className={`bg-[#080B0E] border-b border-white/10 relative overflow-hidden cyber-grid ${showHeader ? 'py-24' : 'py-16'}`}>
+    <section className={`bg-[#0F172A] border-b border-white/10 relative overflow-hidden cyber-grid ${showHeader ? 'py-24' : 'py-16'}`}>
       {/* Background Radial Glow */}
       <div className="absolute top-1/2 right-1/4 w-[600px] h-[400px] bg-[#FF7120]/5 rounded-full blur-3xl pointer-events-none"></div>
 

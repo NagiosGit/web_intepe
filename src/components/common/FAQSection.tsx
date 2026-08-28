@@ -10,7 +10,7 @@ export const FAQSection: React.FC = () => {
   };
 
   return (
-    <section className="py-24 bg-[#080B0E] border-b border-white/10 relative overflow-hidden">
+    <section className="py-24 bg-[#0F172A] border-b border-white/10 relative overflow-hidden">
       {/* Background Radial Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#FF7120]/5 rounded-full blur-3xl pointer-events-none"></div>
 

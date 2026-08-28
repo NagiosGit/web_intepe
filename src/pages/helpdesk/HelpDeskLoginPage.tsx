@@ -11,8 +11,7 @@ import {
   ShieldAlert, 
   CheckCircle2, 
   ArrowLeft,
-  KeyRound,
-  Cpu
+  KeyRound
 } from 'lucide-react';
 
 export const HelpDeskLoginPage: React.FC = () => {
@@ -93,11 +92,11 @@ export const HelpDeskLoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#080B0E] text-slate-100 flex flex-col justify-center py-10 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div className="min-h-screen bg-[#0F172A] text-slate-100 flex flex-col justify-center py-10 sm:px-6 lg:px-8 relative overflow-hidden cyber-grid">
       
       {/* Background Ambience Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#FF7120]/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#FF7120]/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10 px-4">
         
@@ -105,30 +104,30 @@ export const HelpDeskLoginPage: React.FC = () => {
         <div className="mb-5 text-center">
           <Link 
             to="/" 
-            className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-[#FF7120] transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-300 hover:text-[#FF7120] transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Volver a www.intepe.net</span>
           </Link>
         </div>
 
-        {/* Brand Header - Minimalist Style Option A */}
-        <div className="text-center space-y-3">
+        {/* Brand Header with Official HelpDesk Round Logo */}
+        <div className="text-center space-y-4">
           <Link to="/" className="inline-block group mb-1" title="Ir al sitio web principal">
-            <div className="relative p-3.5 rounded-2xl bg-[#0D1219] border border-white/15 group-hover:border-[#FF7120]/70 transition-all duration-300 shadow-[0_0_35px_rgba(255,113,32,0.3)] inline-flex items-center justify-center">
-              <div className="hud-corner-tl"></div>
-              <div className="hud-corner-tr"></div>
-              <div className="hud-corner-bl"></div>
-              <div className="hud-corner-br"></div>
-              <Cpu className="w-10 h-10 text-[#FF7120] transition-transform duration-300 group-hover:scale-110" />
+            <div className="relative inline-flex items-center justify-center p-1.5 rounded-full bg-gradient-to-b from-cyan-500/30 via-transparent to-[#FF7120]/30 shadow-[0_0_40px_rgba(0,229,255,0.3)] group-hover:shadow-[0_0_55px_rgba(0,229,255,0.5)] transition-all duration-300">
+              <img 
+                src="/logo/logoRedondo_helpdesk.png" 
+                alt="Mesa de Ayuda INTEPE" 
+                className="w-24 h-24 sm:w-28 sm:h-28 object-contain rounded-full transition-transform duration-300 group-hover:scale-105"
+              />
             </div>
           </Link>
 
           <div>
-            <h1 className="text-2xl font-black text-white font-['Space_Grotesk'] tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-black text-white font-['Space_Grotesk'] tracking-tight">
               Mesa de Ayuda <span className="text-[#FF7120]">INTEPE</span>
             </h1>
-            <p className="text-xs font-mono text-slate-400 max-w-xs mx-auto mt-1">
+            <p className="text-xs font-mono text-slate-300 max-w-xs mx-auto mt-1">
               Ingreso seguro a la plataforma corporativa
             </p>
           </div>
@@ -137,7 +136,7 @@ export const HelpDeskLoginPage: React.FC = () => {
 
       {/* Login Card */}
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md relative z-10 px-4">
-        <div className="bg-[#0D1219]/90 backdrop-blur-xl py-7 px-6 sm:px-9 rounded-2xl border border-white/10 shadow-[0_25px_50px_rgba(0,0,0,0.8)] hud-box">
+        <div className="bg-[#1E293B]/95 backdrop-blur-xl py-7 px-6 sm:px-9 rounded-2xl border border-white/15 shadow-[0_25px_50px_rgba(0,0,0,0.5)] hud-box">
           <div className="hud-corner-tl"></div>
           <div className="hud-corner-br"></div>
 

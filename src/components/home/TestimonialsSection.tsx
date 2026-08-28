@@ -39,7 +39,7 @@ export const TestimonialsSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#080B0E] border-b border-white/10 relative overflow-hidden cyber-grid">
+    <section className="py-24 bg-[#0F172A] border-b border-white/10 relative overflow-hidden cyber-grid">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}

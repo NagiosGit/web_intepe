@@ -18,7 +18,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#080B0E] flex flex-col items-center justify-center text-slate-300 font-mono space-y-4">
+      <div className="min-h-screen bg-[#0F172A] flex flex-col items-center justify-center text-slate-300 font-mono space-y-4 cyber-grid">
         <div className="w-12 h-12 rounded-xl bg-[#FF7120]/10 border border-[#FF7120]/40 flex items-center justify-center text-[#FF7120] animate-pulse">
           <Lock className="w-6 h-6 animate-spin" />
         </div>

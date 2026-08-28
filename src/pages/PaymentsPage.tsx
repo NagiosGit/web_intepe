@@ -76,7 +76,7 @@ export const PaymentsPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-[#080B0E] text-slate-100 min-h-screen">
+    <div className="bg-[#0F172A] text-slate-100 min-h-screen">
       {/* Header */}
       <PageHeader
         badge="Pasarela Segura // PSE, Tarjetas y Bancos"
@@ -86,7 +86,7 @@ export const PaymentsPage: React.FC = () => {
       />
 
       {/* Intro Security Notice */}
-      <section className="py-12 bg-[#080B0E] border-b border-white/10 cyber-grid relative">
+      <section className="py-12 bg-[#0F172A] border-b border-white/10 cyber-grid relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="cyber-card p-4 sm:p-5 rounded-lg hud-box border border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="hud-corner-tl"></div>
@@ -116,7 +116,7 @@ export const PaymentsPage: React.FC = () => {
       </section>
 
       {/* Payment Gateways Grid */}
-      <section className="py-16 bg-[#080B0E] border-b border-white/10 relative">
+      <section className="py-16 bg-[#0F172A] border-b border-white/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="text-center max-w-3xl mx-auto space-y-3">
@@ -209,7 +209,7 @@ export const PaymentsPage: React.FC = () => {
       </section>
 
       {/* Bre-B Instant Transfer & Receipt Submission */}
-      <section className="py-16 bg-[#080B0E] border-b border-white/10 cyber-grid relative">
+      <section className="py-16 bg-[#0F172A] border-b border-white/10 cyber-grid relative">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           
           <div className="text-center space-y-2">
@@ -418,7 +418,7 @@ export const PaymentsPage: React.FC = () => {
       </section>
 
       {/* FAQs Section */}
-      <section className="py-20 bg-[#080B0E] border-b border-white/10 relative">
+      <section className="py-20 bg-[#0F172A] border-b border-white/10 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="text-center space-y-2">
             <div className="tech-badge">
@@ -454,7 +454,7 @@ export const PaymentsPage: React.FC = () => {
       </section>
 
       {/* Support Banner */}
-      <section className="py-16 bg-[#080B0E] relative">
+      <section className="py-16 bg-[#0F172A] relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <h4 className="text-xl font-bold text-white font-['Space_Grotesk']">
             ¿Necesita una cotización previa o formalizar un contrato de Outsourcing?

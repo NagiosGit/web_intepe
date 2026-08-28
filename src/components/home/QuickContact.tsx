@@ -46,7 +46,7 @@ export const QuickContact: React.FC<QuickContactProps> = ({
   };
 
   return (
-    <section id="contacto" className={`bg-[#080B0E] border-b border-white/10 relative overflow-hidden cyber-grid ${showHeader ? 'py-24' : 'py-16'}`}>
+    <section id="contacto" className={`bg-[#0F172A] border-b border-white/10 relative overflow-hidden cyber-grid ${showHeader ? 'py-24' : 'py-16'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}

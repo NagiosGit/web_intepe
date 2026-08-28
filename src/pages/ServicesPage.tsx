@@ -22,7 +22,7 @@ export const ServicesPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#080B0E] text-slate-100">
+    <div className="bg-[#0F172A] text-slate-100">
       <PageHeader
         badge="Portafolio de Servicios"
         title="Soluciones Tecnológicas para su Empresa"
@@ -31,7 +31,7 @@ export const ServicesPage: React.FC = () => {
       />
 
       {/* Services Grid */}
-      <div className="bg-[#080B0E] border-b border-white/10 py-24 cyber-grid">
+      <div className="bg-[#0F172A] border-b border-white/10 py-24 cyber-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

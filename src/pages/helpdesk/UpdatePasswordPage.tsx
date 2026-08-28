@@ -8,7 +8,6 @@ import {
   ArrowRight, 
   CheckCircle2, 
   ArrowLeft,
-  KeyRound,
   ShieldCheck,
   AlertCircle
 } from 'lucide-react';
@@ -57,11 +56,11 @@ export const UpdatePasswordPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#080B0E] text-slate-100 flex flex-col justify-center py-10 sm:px-6 lg:px-8 relative overflow-hidden cyber-grid">
+    <div className="min-h-screen bg-[#0F172A] text-slate-100 flex flex-col justify-center py-10 sm:px-6 lg:px-8 relative overflow-hidden cyber-grid">
       
       {/* Background Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#FF7120]/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#FF7120]/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10 px-4">
         
@@ -69,7 +68,7 @@ export const UpdatePasswordPage: React.FC = () => {
         <div className="mb-5 text-center">
           <Link 
             to="/help-desk/login" 
-            className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-[#FF7120] transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-300 hover:text-[#FF7120] transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Volver al Inicio de Sesión</span>
@@ -78,32 +77,26 @@ export const UpdatePasswordPage: React.FC = () => {
 
         {/* Brand Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center justify-center gap-3 mb-1">
-            <div className="relative p-2.5 rounded-xl bg-[#0D1219] border border-white/10 shadow-[0_0_25px_rgba(255,113,32,0.25)]">
-              <div className="hud-corner-tl"></div>
-              <div className="hud-corner-br"></div>
-              <KeyRound className="w-7 h-7 text-[#FF7120]" />
+          <Link to="/help-desk/login" className="inline-block group mb-1" title="Ir al Inicio de Sesión">
+            <div className="relative inline-flex items-center justify-center p-1 rounded-full bg-gradient-to-b from-cyan-500/30 to-[#FF7120]/30 shadow-[0_0_30px_rgba(0,229,255,0.3)] group-hover:shadow-[0_0_45px_rgba(0,229,255,0.5)] transition-all duration-300">
+              <img 
+                src="/logo/logoRedondo_helpdesk.png" 
+                alt="Mesa de Ayuda INTEPE" 
+                className="w-20 h-20 sm:w-24 sm:h-24 object-contain rounded-full transition-transform duration-300 group-hover:scale-105"
+              />
             </div>
-            <div className="text-left">
-              <div className="text-xl font-black text-white font-['Space_Grotesk'] tracking-tight">
-                INTEPE <span className="text-[#FF7120]">S.A.S.</span>
-              </div>
-              <div className="text-[10px] font-mono tracking-widest text-slate-400 uppercase">
-                // SEGURIDAD DE ACCESO
-              </div>
-            </div>
-          </div>
+          </Link>
 
           <h1 className="text-2xl font-bold text-white font-['Space_Grotesk'] tracking-tight">
             Restablecer Contraseña
           </h1>
-          <p className="text-xs font-mono text-slate-400 max-w-xs mx-auto">
+          <p className="text-xs font-mono text-slate-300 max-w-xs mx-auto">
             Ingrese su nueva contraseña de acceso para su cuenta en la Mesa de Ayuda.
           </p>
         </div>
 
         {/* Form Card */}
-        <div className="mt-8 bg-[#0D1219]/90 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 hud-box shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+        <div className="mt-8 bg-[#1E293B]/95 backdrop-blur-xl border border-white/15 rounded-2xl p-6 sm:p-8 hud-box shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
           <div className="hud-corner-tl"></div>
           <div className="hud-corner-br"></div>
 

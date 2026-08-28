@@ -14,11 +14,11 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   subtitle,
 }) => {
   return (
-    <div className="pt-32 pb-12 md:pt-36 md:pb-16 bg-[#080B0E] border-b border-white/10 relative overflow-hidden cyber-grid">
+    <div className="pt-32 pb-12 md:pt-36 md:pb-16 bg-[#0F172A] border-b border-white/10 relative overflow-hidden cyber-grid">
       
       {/* Decorative Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#FF7120]/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute top-0 right-1/4 w-[400px] h-[250px] bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#FF7120]/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-0 right-1/4 w-[400px] h-[250px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3 text-center relative z-10">
         

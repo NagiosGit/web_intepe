@@ -13,7 +13,7 @@ import {
 
 export const ServicesOverview: React.FC = () => {
   return (
-    <section className="py-24 bg-[#080B0E] border-b border-white/10 relative overflow-hidden cyber-grid">
+    <section className="py-24 bg-[#0F172A] border-b border-white/10 relative overflow-hidden cyber-grid">
       
       {/* Background Radial Glow */}
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[#FF7120]/5 rounded-full blur-3xl pointer-events-none"></div>

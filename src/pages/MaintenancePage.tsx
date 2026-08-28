@@ -6,7 +6,7 @@ import { siteConfig } from '../config/siteConfig';
 
 export const MaintenancePage: React.FC = () => {
   return (
-    <div className="bg-[#080B0E] text-slate-100">
+    <div className="bg-[#0F172A] text-slate-100">
       <PageHeader
         badge="Cuidado y Rendimiento del Hardware"
         title="Mantenimiento Preventivo y Correctivo"
@@ -15,7 +15,7 @@ export const MaintenancePage: React.FC = () => {
       />
 
       {/* Intro Section */}
-      <div className="bg-[#080B0E] py-24 border-b border-white/10 cyber-grid">
+      <div className="bg-[#0F172A] py-24 border-b border-white/10 cyber-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
@@ -87,7 +87,7 @@ export const MaintenancePage: React.FC = () => {
       </div>
 
       {/* Protocolo de Mantenimiento */}
-      <div className="bg-[#080B0E] py-24 border-b border-white/10 relative">
+      <div className="bg-[#0F172A] py-24 border-b border-white/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <div className="tech-badge">

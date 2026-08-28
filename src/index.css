@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --color-cyber-bg: #080B0E;
-  --color-cyber-surface: #0D1219;
-  --color-cyber-card: #111822;
-  --color-cyber-card-hover: #16202E;
-  --color-cyber-border: rgba(255, 255, 255, 0.08);
-  --color-cyber-border-glow: rgba(255, 113, 32, 0.35);
+  --color-cyber-bg: #0F172A;
+  --color-cyber-surface: #1E293B;
+  --color-cyber-card: #24334A;
+  --color-cyber-card-hover: #2D3E59;
+  --color-cyber-border: rgba(255, 255, 255, 0.14);
+  --color-cyber-border-glow: rgba(255, 113, 32, 0.5);
   --color-cyber-orange: #FF7120;
   --color-cyber-orange-hover: #FF853A;
   --color-cyber-cyan: #00E5FF;
@@ -21,11 +21,11 @@
   --font-display: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   
-  --color-cyber-bg: #080B0E;
-  --color-cyber-surface: #0D1219;
-  --color-cyber-card: #111822;
-  --color-cyber-card-hover: #16202E;
-  --color-cyber-border: rgba(255, 255, 255, 0.08);
+  --color-cyber-bg: #0F172A;
+  --color-cyber-surface: #1E293B;
+  --color-cyber-card: #24334A;
+  --color-cyber-card-hover: #2D3E59;
+  --color-cyber-border: rgba(255, 255, 255, 0.14);
   --color-cyber-orange: #FF7120;
   --color-cyber-orange-hover: #FF853A;
   --color-cyber-cyan: #00E5FF;
@@ -36,12 +36,12 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #080B0E;
+    background-color: #0F172A;
     color: #F8FAFC;
   }
 
   body {
-    background-color: #080B0E;
+    background-color: #0F172A;
     color: #F8FAFC;
     overflow-x: hidden;
   }
@@ -55,24 +55,24 @@
 /* Cyber Architectural Grid & Lines */
 .cyber-grid {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
 .cyber-grid-dense {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
 .cyber-radial-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(255, 113, 32, 0.12) 0%, rgba(8, 11, 14, 0) 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(255, 113, 32, 0.20) 0%, rgba(15, 23, 42, 0) 70%);
 }
 
 .cyber-radial-cyan {
-  background: radial-gradient(circle at 50% 30%, rgba(0, 229, 255, 0.08) 0%, rgba(8, 11, 14, 0) 70%);
+  background: radial-gradient(circle at 50% 30%, rgba(0, 229, 255, 0.14) 0%, rgba(15, 23, 42, 0) 70%);
 }
 
 /* HUD Corner Accents (ChainGPT Labs signature) */
@@ -126,24 +126,24 @@
 
 /* Glass & Card Surfaces */
 .cyber-card {
-  background: rgba(13, 18, 25, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(30, 41, 59, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cyber-card:hover {
-  border-color: rgba(255, 113, 32, 0.35);
-  background: rgba(17, 24, 34, 0.85);
+  border-color: rgba(255, 113, 32, 0.6);
+  background: rgba(36, 51, 74, 0.95);
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.5), 0 0 20px -4px rgba(255, 113, 32, 0.15);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.5), 0 0 25px -4px rgba(255, 113, 32, 0.25);
 }
 
 .cyber-card-active {
   border-color: #FF7120 !important;
-  background: rgba(22, 32, 46, 0.9) !important;
-  box-shadow: 0 0 25px -5px rgba(255, 113, 32, 0.25);
+  background: rgba(45, 62, 89, 0.95) !important;
+  box-shadow: 0 0 25px -5px rgba(255, 113, 32, 0.35);
 }
 
 /* Marquee infinite animation */
@@ -217,7 +217,7 @@
   justify-content: center;
   gap: 0.5rem;
   background: #FF7120;
-  color: #080B0E;
+  color: #0F172A;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   font-size: 0.875rem;
@@ -242,20 +242,20 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.04);
   color: #F8FAFC;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 0.02em;
   padding: 0.75rem 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 0.25rem;
   transition: all 0.25s ease;
 }
 
 .btn-cyber-outline:hover {
-  background: rgba(255, 113, 32, 0.08);
+  background: rgba(255, 113, 32, 0.10);
   border-color: #FF7120;
   color: #FF853A;
   box-shadow: 0 0 20px -4px rgba(255, 113, 32, 0.3);
@@ -319,11 +319,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #080B0E;
+  background: #0F172A;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
+  background: #334155;
   border-radius: 3px;
 }
 

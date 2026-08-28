@@ -206,7 +206,7 @@ export const HelpDeskPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-[#080B0E] text-slate-100 min-h-screen">
+    <div className="bg-[#0F172A] text-slate-100 min-h-screen">
       {/* Page Header */}
       <PageHeader
         badge="Mesa de Ayuda & Asistencia Técnica L1 / L2 / L3"
@@ -216,7 +216,7 @@ export const HelpDeskPage: React.FC = () => {
       />
 
       {/* 1. Value Proposition & SLA Telemetry */}
-      <section className="py-16 bg-[#080B0E] border-b border-white/10 cyber-grid relative">
+      <section className="py-16 bg-[#0F172A] border-b border-white/10 cyber-grid relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
@@ -322,7 +322,7 @@ export const HelpDeskPage: React.FC = () => {
       </section>
 
       {/* 2. Multichannel Support */}
-      <section className="py-20 bg-[#080B0E] border-b border-white/10 relative">
+      <section className="py-20 bg-[#0F172A] border-b border-white/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <div className="tech-badge">
@@ -368,7 +368,7 @@ export const HelpDeskPage: React.FC = () => {
       </section>
 
       {/* 3. Interactive Escallation Levels (L1, L2, L3) */}
-      <section className="py-20 bg-[#080B0E] border-b border-white/10 cyber-grid relative">
+      <section className="py-20 bg-[#0F172A] border-b border-white/10 cyber-grid relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <div className="tech-badge">
@@ -456,7 +456,7 @@ export const HelpDeskPage: React.FC = () => {
       </section>
 
       {/* 4. Incident Management Workflow */}
-      <section className="py-20 bg-[#080B0E] border-b border-white/10 relative">
+      <section className="py-20 bg-[#0F172A] border-b border-white/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <div className="tech-badge">
@@ -494,7 +494,7 @@ export const HelpDeskPage: React.FC = () => {
       </section>
 
       {/* 5. Modalities Table */}
-      <section className="py-20 bg-[#080B0E] border-b border-white/10 cyber-grid relative">
+      <section className="py-20 bg-[#0F172A] border-b border-white/10 cyber-grid relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <div className="tech-badge">
@@ -568,7 +568,7 @@ export const HelpDeskPage: React.FC = () => {
       </section>
 
       {/* 6. Supported Technologies and Brands */}
-      <section className="py-16 bg-[#080B0E] border-b border-white/10 relative">
+      <section className="py-16 bg-[#0F172A] border-b border-white/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
           <div className="max-w-2xl mx-auto space-y-2">
             <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest">
@@ -608,7 +608,7 @@ export const HelpDeskPage: React.FC = () => {
       </section>
 
       {/* 7. FAQ Section */}
-      <section className="py-20 bg-[#080B0E] border-b border-white/10 relative">
+      <section className="py-20 bg-[#0F172A] border-b border-white/10 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="text-center space-y-2">
             <div className="tech-badge">
@@ -644,7 +644,7 @@ export const HelpDeskPage: React.FC = () => {
       </section>
 
       {/* 8. Call to Action Banner */}
-      <section className="py-20 bg-[#080B0E] relative overflow-hidden">
+      <section className="py-20 bg-[#0F172A] relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="cyber-card p-10 sm:p-12 rounded-lg hud-box border border-cyan-500/40 shadow-[0_0_50px_rgba(0,229,255,0.1)] text-center space-y-6">
             <div className="hud-corner-tl"></div>

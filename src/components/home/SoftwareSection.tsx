@@ -21,7 +21,7 @@ interface SoftwareSectionProps {
 
 export const SoftwareSection: React.FC<SoftwareSectionProps> = ({
   showHeader = true,
-  bgClass = 'bg-[#080B0E]'
+  bgClass = 'bg-[#0F172A]'
 }) => {
   const renderIcon = (iconName: string) => {
     switch (iconName) {

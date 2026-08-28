@@ -1023,7 +1023,7 @@ export const BusinessCardPage: React.FC = () => {
                       className={`w-[85mm] h-[55mm] p-5 rounded-none border flex flex-col justify-between relative overflow-hidden shadow-lg ${
                         cardTheme === 'minimal-white'
                           ? 'bg-white text-slate-900 border-slate-200'
-                          : 'bg-[#080B0E] text-white border-slate-700'
+                          : 'bg-[#0F172A] text-white border-slate-700'
                       }`}
                       style={{
                         width: cardStandard === 'iso' ? '85mm' : '90mm',
@@ -1104,7 +1104,7 @@ export const BusinessCardPage: React.FC = () => {
                       className={`w-[85mm] h-[55mm] p-5 rounded-none border flex flex-col justify-between relative overflow-hidden shadow-lg ${
                         cardTheme === 'minimal-white'
                           ? 'bg-white text-slate-900 border-slate-200'
-                          : 'bg-[#080B0E] text-white border-slate-700'
+                          : 'bg-[#0F172A] text-white border-slate-700'
                       }`}
                       style={{
                         width: cardStandard === 'iso' ? '85mm' : '90mm',
@@ -1177,7 +1177,7 @@ export const BusinessCardPage: React.FC = () => {
                     className={`border p-4 flex flex-col justify-between relative print-avoid-break ${
                       cardTheme === 'minimal-white' 
                         ? 'bg-white text-slate-900 border-slate-300 shadow-sm' 
-                        : 'bg-[#080B0E] text-white border-slate-700'
+                        : 'bg-[#0F172A] text-white border-slate-700'
                     }`}
                     style={{
                       width: '85mm',

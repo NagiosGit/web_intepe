@@ -91,7 +91,7 @@ export const IndustrySolutions: React.FC = () => {
   const current = industries[activeTab];
 
   return (
-    <section className="py-24 bg-[#080B0E] border-b border-white/10 relative overflow-hidden cyber-grid">
+    <section className="py-24 bg-[#0F172A] border-b border-white/10 relative overflow-hidden cyber-grid">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
@@ -182,7 +182,7 @@ export const IndustrySolutions: React.FC = () => {
                   alt={current.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#080B0E] via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="text-xs font-mono font-bold text-white uppercase tracking-wider bg-black/60 backdrop-blur-md px-3 py-1.5 rounded border border-white/10 inline-block">
                     {current.name}

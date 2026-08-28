@@ -34,7 +34,7 @@ export const ProjectDetailPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#080B0E] text-slate-100 min-h-screen">
+    <div className="bg-[#0F172A] text-slate-100 min-h-screen">
       <PageHeader
         badge={project.category}
         title={project.title}
@@ -43,7 +43,7 @@ export const ProjectDetailPage: React.FC = () => {
       />
 
       {/* Main Project Details */}
-      <div className="bg-[#080B0E] py-16 sm:py-24 border-b border-white/10 cyber-grid">
+      <div className="bg-[#0F172A] py-16 sm:py-24 border-b border-white/10 cyber-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -75,7 +75,7 @@ export const ProjectDetailPage: React.FC = () => {
                       alt={project.title} 
                       className="w-full h-full object-cover opacity-85 group-hover:scale-103 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#080B0E] via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent"></div>
                     <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                       <span className="text-[11px] font-mono font-bold uppercase tracking-wider bg-black/80 backdrop-blur-md px-3.5 py-1.5 rounded border border-white/20 text-[#FF853A]">
                         {project.category}
@@ -218,7 +218,7 @@ export const ProjectDetailPage: React.FC = () => {
       </div>
 
       {/* Other Projects Banner */}
-      <div className="bg-[#080B0E] py-16 border-b border-white/10 text-center space-y-4">
+      <div className="bg-[#0F172A] py-16 border-b border-white/10 text-center space-y-4">
         <h3 className="text-xl sm:text-2xl font-bold text-white font-['Space_Grotesk']">
           Explore más soluciones desarrolladas por INTEPE
         </h3>

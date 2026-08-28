@@ -120,7 +120,7 @@ export const OutsourcingCalculator: React.FC = () => {
   };
 
   return (
-    <div className="py-12 bg-[#080B0E] relative cyber-grid">
+    <div className="py-12 bg-[#0F172A] relative cyber-grid">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Header */}

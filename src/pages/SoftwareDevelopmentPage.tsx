@@ -10,7 +10,7 @@ import { siteConfig } from '../config/siteConfig';
 
 export const SoftwareDevelopmentPage: React.FC = () => {
   return (
-    <div className="bg-[#080B0E] text-slate-100">
+    <div className="bg-[#0F172A] text-slate-100">
       <PageHeader
         badge="Software & Sistemas a Medida"
         title="Su proceso. Su software. Su solución."
@@ -19,7 +19,7 @@ export const SoftwareDevelopmentPage: React.FC = () => {
       />
 
       {/* Main Capabilities Grid */}
-      <SoftwareSection showHeader={false} bgClass="bg-[#080B0E]" />
+      <SoftwareSection showHeader={false} bgClass="bg-[#0F172A]" />
 
       {/* Estimator Tool */}
       <SoftwareEstimator />
@@ -31,7 +31,7 @@ export const SoftwareDevelopmentPage: React.FC = () => {
       <ProjectsOverview showHeader={true} />
 
       {/* Final Action Banner */}
-      <div className="py-24 bg-[#080B0E] text-white border-t border-white/10 cyber-grid relative overflow-hidden">
+      <div className="py-24 bg-[#0F172A] text-white border-t border-white/10 cyber-grid relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[#FF7120]/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-4xl mx-auto px-4 text-center space-y-6 relative z-10">

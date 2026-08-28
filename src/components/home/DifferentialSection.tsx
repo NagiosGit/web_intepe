@@ -5,7 +5,7 @@ import { siteConfig } from '../../config/siteConfig';
 
 export const DifferentialSection: React.FC = () => {
   return (
-    <section className="py-24 bg-[#080B0E] text-white relative overflow-hidden border-b border-white/10 cyber-grid">
+    <section className="py-24 bg-[#0F172A] text-white relative overflow-hidden border-b border-white/10 cyber-grid">
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-[#FF7120]/10 rounded-full blur-3xl pointer-events-none" />
 

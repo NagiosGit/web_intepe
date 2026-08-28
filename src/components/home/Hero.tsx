@@ -27,11 +27,12 @@ const techBadges = [
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 bg-[#080B0E] border-b border-white/10 overflow-hidden cyber-grid">
+    <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 bg-[#0F172A] border-b border-white/10 overflow-hidden cyber-grid">
 
-      {/* 2. Ambient Radial Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[550px] bg-[#FF7120]/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute top-12 right-12 w-[550px] h-[450px] bg-cyan-500/8 rounded-full blur-3xl pointer-events-none"></div>
+      {/* 2. Ambient Radial Glows - Warmth & Tech Illumination */}
+      <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-gradient-to-b from-[#FF7120]/20 via-indigo-500/15 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[450px] bg-[#FF7120]/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-10 right-4 w-[600px] h-[500px] bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
 
       {/* 3. Top Cyber Ticker Ribbon */}
       <div className="w-full overflow-hidden border-y border-white/5 bg-white/[0.015] py-2 mb-10 select-none relative z-10">

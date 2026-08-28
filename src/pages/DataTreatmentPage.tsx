@@ -5,7 +5,7 @@ import { siteConfig } from '../config/siteConfig';
 
 export const DataTreatmentPage: React.FC = () => {
   return (
-    <div className="bg-[#080B0E] text-slate-100">
+    <div className="bg-[#0F172A] text-slate-100">
       <PageHeader
         badge="Cumplimiento Ley 1581 de 2012"
         title="Tratamiento de Datos Personales"
@@ -13,7 +13,7 @@ export const DataTreatmentPage: React.FC = () => {
         breadcrumbCurrent="Tratamiento de Datos"
       />
 
-      <div className="bg-[#080B0E] py-24 border-b border-white/10 cyber-grid">
+      <div className="bg-[#0F172A] py-24 border-b border-white/10 cyber-grid">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="cyber-card rounded-lg p-8 sm:p-12 hud-box border border-white/10 space-y-8 text-slate-300 text-sm leading-relaxed font-sans">
             <div className="hud-corner-tl"></div>

@@ -4,7 +4,7 @@ title SINCRONIZADOR DUAL GITHUB - INTEPE S.A.S.
 cd /d "%~dp0"
 
 echo ================================================================
-echo   INTEPE S.A.S. - SINCRONIZADOR DUAL AUTOMÁTICO A GITHUB
+echo   INTEPE S.A.S. - SINCRONIZADOR DUAL AUTOMATICO A GITHUB
 echo ================================================================
 echo   [1] Repositorio Vercel:    https://github.com/NagiosGit/web_intepe.git
 echo   [2] Repositorio Respaldo:  https://github.com/IntepeGit/web_intepe.git
@@ -16,7 +16,7 @@ if "%mensaje%"=="" set mensaje=Actualizacion INTEPE - %date% %time%
 
 echo.
 echo [1/4] Preparando todos los archivos modificados...
-git add .
+git add -A
 
 echo.
 echo [2/4] Empaquetando cambios con el mensaje: "%mensaje%"...
@@ -24,18 +24,18 @@ git commit -m "%mensaje%"
 
 echo.
 echo [3/4] Subiendo a repositorio 1: NagiosGit (Produccion Vercel)...
-git push https://github.com/NagiosGit/web_intepe.git main --force
+git push https://github.com/NagiosGit/web_intepe.git main
 
 echo.
 echo [4/4] Subiendo a repositorio 2: IntepeGit (Respaldo Corporativo)...
-git push https://github.com/IntepeGit/web_intepe.git main --force
+git push https://github.com/IntepeGit/web_intepe.git main
 
 echo.
 echo ================================================================
-echo   ¡TODO ACTUALIZADO Y SINCRONIZADO CON ÉXITO EN AMBOS GITHUB!
+echo   TODO ACTUALIZADO Y SINCRONIZADO CON EXITO EN AMBOS GITHUB!
 echo ================================================================
 echo.
-echo Vercel se encargará de compilar y publicar en:
+echo Vercel se encargara de compilar y publicar en:
 echo 👉 https://web-intepe.vercel.app
 echo.
 pause

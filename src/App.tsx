@@ -48,12 +48,12 @@ function AppLayout() {
     location.pathname.startsWith('/admin');
 
   return (
-    <div className="min-h-screen bg-[#080B0E] text-slate-100 font-sans selection:bg-[#FF7120] selection:text-black flex flex-col antialiased relative cyber-grid">
+    <div className="min-h-screen bg-[#0F172A] text-slate-100 font-sans selection:bg-[#FF7120] selection:text-black flex flex-col antialiased relative cyber-grid">
       {/* Architectural vertical body lines */}
-      <div className="fixed inset-0 pointer-events-none z-0 flex justify-between max-w-7xl mx-auto px-4 opacity-15">
-        <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
-        <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-white/10 to-transparent hidden md:block"></div>
-        <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+      <div className="fixed inset-0 pointer-events-none z-0 flex justify-between max-w-7xl mx-auto px-4 opacity-25">
+        <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[#FF7120]/40 to-transparent"></div>
+        <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-cyan-400/30 to-transparent hidden md:block"></div>
+        <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[#FF7120]/40 to-transparent"></div>
       </div>
 
       {/* Show Public Navbar only on non-portal pages */}
