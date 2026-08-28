@@ -11,6 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+.env.*
+!.env.example
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +25,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local credential notes
+help-desk/LEER_CONFG_HELP_DESK_NAGIOS.txt
+LEE.txt

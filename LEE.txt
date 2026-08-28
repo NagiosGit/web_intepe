@@ -10,3 +10,5 @@ git push -u origin main
 =================ACTUALIZA LA APP EN GITHUB========================
 git add .; git commit -m "UpdateDiseñoPaginaWebF"; git push origin main
 ===================================================================
+git add .
+git commit -m "fix: configurar on para rutas directas"git push

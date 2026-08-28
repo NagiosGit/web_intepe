@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centro Maestro de Accesos & Help Desk — INTEPE S.A.S.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #080B0E;
+      --card-bg: #0D1219;
+      --card-inner: #05070A;
+      --cyber-orange: #FF7120;
+      --cyber-orange-glow: rgba(255, 113, 32, 0.4);
+      --cyber-cyan: #00E5FF;
+      --cyber-emerald: #10B981;
+      --cyber-purple: #A855F7;
+      --text-main: #F1F5F9;
+      --text-muted: #94A3B8;
+      --border: rgba(255, 255, 255, 0.1);
+      --border-focus: rgba(255, 113, 32, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 30px 16px;
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(255, 113, 32, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(0, 229, 255, 0.04) 0%, transparent 40%);
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* HEADER HUD */
+    .header-card {
+      background: linear-gradient(135deg, #0D1219 0%, #111822 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--cyber-orange);
+      background: rgba(255,113,32,0.1);
+      border: 1px solid rgba(255,113,32,0.3);
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 6px;
+    }
+
+    h1 span {
+      color: var(--cyber-orange);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ENVIRONMENT SWITCHER */
+    .env-switcher-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      sm-flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    @media (min-width: 640px) {
+      .env-switcher-card {
+        flex-direction: row;
+      }
+    }
+
+    .env-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .env-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .env-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+
+    .env-btn.active {
+      background: var(--cyber-orange);
+      color: #000;
+      border-color: var(--cyber-orange);
+      box-shadow: 0 0 15px rgba(255,113,32,0.4);
+    }
+
+    /* SECTION STYLING */
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .section.highlight-helpdesk {
+      border-color: rgba(0, 229, 255, 0.3);
+      background: linear-gradient(180deg, rgba(0, 229, 255, 0.03) 0%, rgba(13,18,25,1) 100%);
+    }
+
+    .section.highlight-card {
+      border-color: rgba(255, 113, 32, 0.3);
+      background: linear-gradient(180deg, rgba(255, 113, 32, 0.03) 0%, rgba(13,18,25,1) 100%);
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .section-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .badge-cyan {
+      background: rgba(0, 229, 255, 0.15);
+      color: var(--cyber-cyan);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+    }
+
+    .badge-orange {
+      background: rgba(255, 113, 32, 0.15);
+      color: var(--cyber-orange);
+      border: 1px solid rgba(255, 113, 32, 0.3);
+    }
+
+    .badge-green {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--cyber-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    /* GRID OF TILES */
+    .tiles-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .tiles-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .tile {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .tile:hover {
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.02);
+      transform: translateY(-1px);
+    }
+
+    .tile-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .tile-icon {
+      font-size: 18px;
+      line-height: 1;
+      padding: 6px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+    }
+
+    .tile-info {
+      flex: 1;
+    }
+
+    .tile-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #FFF;
+      margin-bottom: 2px;
+    }
+
+    .tile-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .tile-route {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--cyber-cyan);
+      word-break: break-all;
+      background: rgba(0,0,0,0.5);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .tile-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 7px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      flex: 1;
+    }
+
+    .btn-orange {
+      background: var(--cyber-orange);
+      color: #000;
+    }
+    .btn-orange:hover {
+      background: #FF853A;
+      box-shadow: 0 0 15px rgba(255,113,32,0.4);
+    }
+
+    .btn-cyan {
+      background: rgba(0, 229, 255, 0.15);
+      color: var(--cyber-cyan);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+    }
+    .btn-cyan:hover {
+      background: var(--cyber-cyan);
+      color: #000;
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    /* CREDENTIALS BOX */
+    .pin-box {
+      background: rgba(255, 113, 32, 0.06);
+      border: 1px dashed var(--cyber-orange);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      margin: 16px 0;
+    }
+
+    .pin-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--cyber-orange);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .pin-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: 6px;
+      color: #FFFFFF;
+      text-shadow: 0 0 15px rgba(255,113,32,0.5);
+    }
+
+    /* FOOTER */
+    .footer-note {
+      text-align: center;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #64748B;
+      margin-top: 30px;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--cyber-emerald);
+      color: #000;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+      display: none;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- 1. HEADER HUD -->
+    <div class="header-card">
+      <div style="display: inline-flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px;">
+        <div style="position: relative; padding: 10px; border-radius: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,113,32,0.4); box-shadow: 0 0 20px rgba(255,113,32,0.25);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF7120" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+            <rect x="9" y="9" width="6" height="6"></rect>
+            <path d="M15 2v2"></path>
+            <path d="M15 20v2"></path>
+            <path d="M2 15h2"></path>
+            <path d="M2 9h2"></path>
+            <path d="M20 15h2"></path>
+            <path d="M20 9h2"></path>
+            <path d="M9 2v2"></path>
+            <path d="M9 20v2"></path>
+          </svg>
+        </div>
+        <div style="text-align: left;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 800; color: #FFF; line-height: 1;">
+            INTEPE <span style="color: var(--cyber-orange);">S.A.S.</span>
+          </div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; margin-top: 4px;">
+            TI & SOFTWARE SOLUTIONS
+          </div>
+        </div>
+      </div>
+      
+      <div>
+        <div class="badge-top">⚡ CENTRO MAESTRO DE ACCESOS & RECURSOS DIGITALES</div>
+      </div>
+      <div class="subtitle">// Informática y Tecnología Penagos S.A.S. • NIT: 830.066.815-0</div>
+    </div>
+
+    <!-- 2. ENVIRONMENT SWITCHER -->
+    <div class="env-switcher-card">
+      <div class="env-title">
+        <span>🌐 Entorno de Ejecución Activo:</span>
+        <span id="env-label" style="color: var(--cyber-orange); font-family: 'JetBrains Mono', monospace;">PRODUCCIÓN (Vercel)</span>
+      </div>
+      <div class="env-buttons">
+        <button id="btn-prod" class="env-btn active" onclick="setEnvironment('prod')">🌐 Producción (Vercel)</button>
+        <button id="btn-local" class="env-btn" onclick="setEnvironment('local')">💻 Local (Port 5173)</button>
+      </div>
+    </div>
+
+    <!-- 3. MESA DE AYUDA & HELP DESK B2B (MÓDULO CENTRAL) -->
+    <div class="section highlight-helpdesk">
+      <div class="section-title">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span>🎧 Mesa de Ayuda B2B & Help Desk Multi-Tenant</span>
+        </div>
+        <span class="section-badge badge-cyan">Supabase + PostgreSQL RLS</span>
+      </div>
+      
+      <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px; font-family: 'JetBrains Mono', monospace;">
+        Plataforma aislada por cliente con control de estados, roles (Admin, Técnico, Cliente), conversación timeline y adjuntos privados.
+      </p>
+
+      <div class="tiles-grid">
+        
+        <!-- Login Mesa de Ayuda -->
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">🔐</div>
+            <div class="tile-info">
+              <div class="tile-name">Acceso Login Mesa de Ayuda</div>
+              <div class="tile-desc">Ingreso para empresas clientes, técnicos e ingenieros de INTEPE.</div>
+            </div>
+          </div>
+          <div class="tile-route" data-route="/help-desk/login">https://web-intepe.vercel.app/help-desk/login</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan action-link" href="https://web-intepe.vercel.app/help-desk/login" target="_blank">Abrir</a>
+            <button class="btn btn-outline" onclick="copyLink(this)">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Centro de Mando Admin -->
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">👑</div>
+            <div class="tile-info">
+              <div class="tile-name">Centro de Mando Admin INTEPE</div>
+              <div class="tile-desc">Supervisión general, asignación técnica y bandeja global de tickets.</div>
+            </div>
+          </div>
+          <div class="tile-route" data-route="/admin/help-desk">https://web-intepe.vercel.app/admin/help-desk</div>
+          <div class="tile-actions">
+            <a class="btn btn-orange action-link" href="https://web-intepe.vercel.app/admin/help-desk" target="_blank">Abrir</a>
+            <button class="btn btn-outline" onclick="copyLink(this)">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Empresas Clientes -->
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">🏢</div>
+            <div class="tile-info">
+              <div class="tile-name">Gestión de Empresas Clientes</div>
+              <div class="tile-desc">Creación de clientes (CLI-0001) y aprovisionamiento de usuarios.</div>
+            </div>
+          </div>
+          <div class="tile-route" data-route="/admin/clientes">https://web-intepe.vercel.app/admin/clientes</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan action-link" href="https://web-intepe.vercel.app/admin/clientes" target="_blank">Abrir</a>
+            <button class="btn btn-outline" onclick="copyLink(this)">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Técnicos INTEPE -->
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">👨‍💻</div>
+            <div class="tile-info">
+              <div class="tile-name">Gestión de Técnicos de Soporte</div>
+              <div class="tile-desc">Alta de ingenieros, especialidades técnicas y carga de tickets.</div>
+            </div>
+          </div>
+          <div class="tile-route" data-route="/admin/tecnicos">https://web-intepe.vercel.app/admin/tecnicos</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan action-link" href="https://web-intepe.vercel.app/admin/tecnicos" target="_blank">Abrir</a>
+            <button class="btn btn-outline" onclick="copyLink(this)">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Panel del Cliente -->
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">📊</div>
+            <div class="tile-info">
+              <div class="tile-name">Panel del Cliente (Dashboard)</div>
+              <div class="tile-desc">Métricas y seguimiento de casos exclusivos de la empresa.</div>
+            </div>
+          </div>
+          <div class="tile-route" data-route="/help-desk">https://web-intepe.vercel.app/help-desk</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan action-link" href="https://web-intepe.vercel.app/help-desk" target="_blank">Abrir</a>
+            <button class="btn btn-outline" onclick="copyLink(this)">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Radicar Solicitud -->
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">➕</div>
+            <div class="tile-info">
+              <div class="tile-name">Radicar Nueva Solicitud</div>
+              <div class="tile-desc">Formulario con categoría, prioridad y carga de adjuntos (5MB).</div>
+            </div>
+          </div>
+          <div class="tile-route" data-route="/help-desk/tickets/nuevo">https://web-intepe.vercel.app/help-desk/tickets/nuevo</div>
+          <div class="tile-actions">
+            <a class="btn btn-orange action-link" href="https://web-intepe.vercel.app/help-desk/tickets/nuevo" target="_blank">Abrir</a>
+            <button class="btn btn-outline" onclick="copyLink(this)">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Panel del Técnico -->
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">🛠️</div>
+            <div class="tile-info">
+              <div class="tile-name">Panel del Técnico Asignado</div>
+              <div class="tile-desc">Bandeja de solicitudes asignadas y semáforo de urgencias.</div>
+            </div>
+          </div>
+          <div class="tile-route" data-route="/tecnico">https://web-intepe.vercel.app/tecnico</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan action-link" href="https://web-intepe.vercel.app/tecnico" target="_blank">Abrir</a>
+            <button class="btn btn-outline" onclick="copyLink(this)">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Restablecer Contraseña -->
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">🔐</div>
+            <div class="tile-info">
+              <div class="tile-name">Restablecer Contraseña</div>
+              <div class="tile-desc">Definir nueva contraseña segura mediante enlace de recuperación.</div>
+            </div>
+          </div>
+          <div class="tile-route" data-route="/help-desk/cambiar-clave">https://web-intepe.vercel.app/help-desk/cambiar-clave</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan action-link" href="https://web-intepe.vercel.app/help-desk/cambiar-clave" target="_blank">Abrir</a>
+            <button class="btn btn-outline" onclick="copyLink(this)">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Consola Supabase -->
+        <div class="tile" style="border-color: rgba(16, 185, 129, 0.3);">
+          <div class="tile-header">
+            <div class="tile-icon">⚡</div>
+            <div class="tile-info">
+              <div class="tile-name">Consola Supabase Cloud</div>
+              <div class="tile-desc">Base de datos PostgreSQL, RLS, Storage y Auth de INTEPE.</div>
+            </div>
+          </div>
+          <div class="tile-route">https://supabase.com/dashboard/project/xpbtcakvdhujepsfkwve</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan" href="https://supabase.com/dashboard/project/xpbtcakvdhujepsfkwve" target="_blank">Abrir Supabase</a>
+            <button class="btn btn-outline" onclick="copyText('https://supabase.com/dashboard/project/xpbtcakvdhujepsfkwve')">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Guía de Registro y Gestión -->
+        <div class="tile" style="border-color: rgba(255, 113, 32, 0.4); grid-column: 1 / -1;">
+          <div class="tile-header">
+            <div class="tile-icon">📘</div>
+            <div class="tile-info">
+              <div class="tile-name" style="color: var(--cyber-orange);">Manual Operativo: Guía de Registro y Gestión Help Desk</div>
+              <div class="tile-desc">Instructivo paso a paso para crear empresas, usuarios clientes, técnicos INTEPE y ciclo de vida de incidentes (con función para exportar a PDF).</div>
+            </div>
+          </div>
+          <div class="tile-route">GuíadeRegistroyGestiónMesadeAyuda.html</div>
+          <div class="tile-actions">
+            <a class="btn btn-orange" href="GuíadeRegistroyGestiónMesadeAyuda.html" target="_blank">Abrir Manual Interactivo / Imprimir PDF</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Datos de Acceso Admin Inicial -->
+      <div style="margin-top: 16px; padding: 12px 16px; border-radius: 8px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; font-size: 11px;">
+        <span style="color: var(--cyber-emerald); font-weight: 700;">👤 Administrador Principal Registrado:</span>
+        <div style="color: #FFF; margin-top: 4px;">Correo: <strong style="color: var(--cyber-cyan);">soporte@intepe.net</strong> • Rol: <strong style="color: var(--cyber-orange);">[ADMIN_INTEPE]</strong></div>
+      </div>
+    </div>
+
+    <!-- 4. TARJETA PROFESIONAL & NFC -->
+    <div class="section highlight-card">
+      <div class="section-title">
+        <span>📇 Tarjeta de Presentación Digital & NFC</span>
+        <span class="section-badge badge-orange">PIN: 0408</span>
+      </div>
+
+      <div class="pin-box">
+        <div class="pin-title">🔒 PIN DE SEGURIDAD ADMINISTRADOR:</div>
+        <div class="pin-code">0408</div>
+        <div style="font-size: 11px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-top: 4px;">
+          Ingresa este código para activar el modo de configuración, edición de perfiles, generación de QR y descarga de vCard.
+        </div>
+      </div>
+
+      <div class="tiles-grid">
+        
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">📱</div>
+            <div class="tile-info">
+              <div class="tile-name">Enlace Tarjeta Digital (Directo / NFC)</div>
+              <div class="tile-desc">Ruta optimizada para chip NFC, WhatsApp y código QR.</div>
+            </div>
+          </div>
+          <div class="tile-route" data-route="/tarjeta">https://web-intepe.vercel.app/tarjeta</div>
+          <div class="tile-actions">
+            <a class="btn btn-orange action-link" href="https://web-intepe.vercel.app/tarjeta" target="_blank">Abrir Tarjeta</a>
+            <button class="btn btn-outline" onclick="copyLink(this)">Copiar</button>
+          </div>
+        </div>
+
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">🖨️</div>
+            <div class="tile-info">
+              <div class="tile-name">Pliego de Impresión Litográfica 8x</div>
+              <div class="tile-desc">Frente y reverso con marcas de corte (85×55 mm / 90×50 mm).</div>
+            </div>
+          </div>
+          <div class="tile-route" data-route="/tarjeta">https://web-intepe.vercel.app/tarjeta (Menú Exportar)</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan action-link" href="https://web-intepe.vercel.app/tarjeta" target="_blank">Ir a Exportar</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 5. PORTAL WEB PRINCIPAL & SIMULADORES -->
+    <div class="section">
+      <div class="section-title">
+        <span>🌐 Portal Web Corporativo & Simuladores</span>
+        <span class="section-badge badge-green">Vite + React 19</span>
+      </div>
+
+      <div class="tiles-grid">
+        
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">🏛️</div>
+            <div class="tile-info">
+              <div class="tile-name">Sitio Web Oficial INTEPE</div>
+              <div class="tile-desc">Página principal con servicios, portafolio e infraestructura 3D.</div>
+            </div>
+          </div>
+          <div class="tile-route" data-route="/">https://web-intepe.vercel.app/</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan action-link" href="https://web-intepe.vercel.app/" target="_blank">Abrir Web</a>
+            <button class="btn btn-outline" onclick="copyLink(this)">Copiar</button>
+          </div>
+        </div>
+
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">🧮</div>
+            <div class="tile-info">
+              <div class="tile-name">Cotizador de Outsourcing TI en Vivo</div>
+              <div class="tile-desc">Simulador dinámico con cálculo exacto mensual en pesos colombianos.</div>
+            </div>
+          </div>
+          <div class="tile-route" data-route="/cotizador-outsourcing">https://web-intepe.vercel.app/cotizador-outsourcing</div>
+          <div class="tile-actions">
+            <a class="btn btn-orange action-link" href="https://web-intepe.vercel.app/cotizador-outsourcing" target="_blank">Abrir Cotizador</a>
+            <button class="btn btn-outline" onclick="copyLink(this)">Copiar</button>
+          </div>
+        </div>
+
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">💳</div>
+            <div class="tile-info">
+              <div class="tile-name">Portal de Pagos PSE / Tarjetas</div>
+              <div class="tile-desc">Pasarela corporativa para recaudos directos de clientes.</div>
+            </div>
+          </div>
+          <div class="tile-route" data-route="/pagos">https://web-intepe.vercel.app/pagos</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan action-link" href="https://web-intepe.vercel.app/pagos" target="_blank">Abrir Pagos</a>
+            <button class="btn btn-outline" onclick="copyLink(this)">Copiar</button>
+          </div>
+        </div>
+
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">🚀</div>
+            <div class="tile-info">
+              <div class="tile-name">Portafolio de Software & Proyectos</div>
+              <div class="tile-desc">Módulos GranjaWP, InvernaderoFM y desarrollos a la medida.</div>
+            </div>
+          </div>
+          <div class="tile-route" data-route="/proyectos">https://web-intepe.vercel.app/proyectos</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan action-link" href="https://web-intepe.vercel.app/proyectos" target="_blank">Abrir Proyectos</a>
+            <button class="btn btn-outline" onclick="copyLink(this)">Copiar</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 6. IDENTIDAD VISUAL & LOGOS -->
+    <div class="section">
+      <div class="section-title">
+        <span>⚡ Identidad Visual, Logos & Generador WhatsApp</span>
+        <span class="section-badge badge-orange">Master Assets</span>
+      </div>
+
+      <div class="tiles-grid">
+        
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">📱</div>
+            <div class="tile-info">
+              <div class="tile-name">Estudio Interactivo LOG-8 WhatsApp</div>
+              <div class="tile-desc">Generador de banners para WhatsApp con exportación 4K.</div>
+            </div>
+          </div>
+          <div class="tile-route">Logo/Generador_LOG-8_WhatsApp.html</div>
+          <div class="tile-actions">
+            <a class="btn btn-orange" href="Logo/Generador_LOG-8_WhatsApp.html" target="_blank">Abrir Estudio LOG-8</a>
+          </div>
+        </div>
+
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">🏆</div>
+            <div class="tile-info">
+              <div class="tile-name">Logo Oficial PNG Transparente</div>
+              <div class="tile-desc">Chip Microprocesador + HUD Corchetes Neón (1024×1024 px).</div>
+            </div>
+          </div>
+          <div class="tile-route">Logo/logo.png</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan" href="Logo/logo.png" target="_blank">Ver Logo PNG</a>
+          </div>
+        </div>
+
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">👤</div>
+            <div class="tile-info">
+              <div class="tile-name">Avatar Oficial Redes & App Móvil</div>
+              <div class="tile-desc">Icono PWA para acceso directo en Android e iPhone iOS.</div>
+            </div>
+          </div>
+          <div class="tile-route">Logo/logo_perfil_avatar.png</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan" href="Logo/logo_perfil_avatar.png" target="_blank">Ver Avatar PNG</a>
+          </div>
+        </div>
+
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">🏢</div>
+            <div class="tile-info">
+              <div class="tile-name">Logo Horizontal Corporativo</div>
+              <div class="tile-desc">Isotipo + Nombre + Razón Social + NIT (2400×800 px).</div>
+            </div>
+          </div>
+          <div class="tile-route">Logo/logo_horizontal_completo.png</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan" href="Logo/logo_horizontal_completo.png" target="_blank">Ver Horizontal PNG</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 7. FOOTER NOTE -->
+    <div class="footer-note">
+      INFORMÁTICA Y TECNOLOGÍA PENAGOS S.A.S. (INTEPE S.A.S.) • Bogotá, Colombia • Soporte: (+57) 313 386 2656
+    </div>
+
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="toast">✓ Enlace copiado al portapapeles</div>
+
+  <script>
+    let currentEnv = 'prod';
+    const baseUrls = {
+      prod: 'https://web-intepe.vercel.app',
+      local: 'http://localhost:5173'
+    };
+
+    function setEnvironment(env) {
+      currentEnv = env;
+      
+      document.getElementById('btn-prod').classList.toggle('active', env === 'prod');
+      document.getElementById('btn-local').classList.toggle('active', env === 'local');
+      document.getElementById('env-label').textContent = env === 'prod' ? 'PRODUCCIÓN (Vercel)' : 'DESARROLLO LOCAL (Port 5173)';
+      document.getElementById('env-label').style.color = env === 'prod' ? 'var(--cyber-orange)' : 'var(--cyber-cyan)';
+
+      const base = baseUrls[env];
+
+      // Update all route boxes and action links
+      document.querySelectorAll('.tile-route[data-route]').forEach(el => {
+        const route = el.getAttribute('data-route');
+        el.textContent = base + route;
+      });
+
+      document.querySelectorAll('.action-link').forEach(btn => {
+        const tile = btn.closest('.tile');
+        const routeBox = tile.querySelector('.tile-route[data-route]');
+        if (routeBox) {
+          const route = routeBox.getAttribute('data-route');
+          btn.setAttribute('href', base + route);
+        }
+      });
+    }
+
+    function copyLink(buttonEl) {
+      const tile = buttonEl.closest('.tile');
+      const routeEl = tile.querySelector('.tile-route');
+      if (routeEl) {
+        copyText(routeEl.textContent.trim());
+      }
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast();
+      });
+    }
+
+    function showToast() {
+      const toast = document.getElementById('toast');
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 2200);
+    }
+  </script>
+
+</body>
+</html>

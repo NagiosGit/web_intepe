@@ -141,8 +141,14 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
-                <Link to="/pagos" className="text-cyan-400 font-semibold hover:text-cyan-300 flex items-center group">
+                <Link to="/help-desk/login" className="text-cyan-400 font-semibold hover:text-cyan-300 flex items-center group">
                   <ChevronRight className="w-3 h-3 mr-1 text-cyan-400 group-hover:translate-x-0.5 transition-transform" />
+                  <span>🎧 Mesa de Ayuda (Clientes)</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/pagos" className="text-slate-300 hover:text-white flex items-center group">
+                  <ChevronRight className="w-3 h-3 mr-1 text-slate-500 group-hover:translate-x-0.5 transition-transform" />
                   <span>💳 Pagos en Línea (PSE)</span>
                 </Link>
               </li>

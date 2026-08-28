@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estudio de Diseño - Banner WhatsApp LOG-8 | INTEPE S.A.S.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <style>
+    :root {
+      --cyber-bg: #050709;
+      --cyber-card: #0D1219;
+      --cyber-orange: #FF7120;
+      --cyber-orange-hover: #FF853A;
+      --cyber-cyan: #00E5FF;
+      --cyber-emerald: #10B981;
+      --cyber-border: rgba(255, 255, 255, 0.12);
+      --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--cyber-bg);
+      color: #F8FAFC;
+      font-family: var(--font-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px 60px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge-hub {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(255, 113, 32, 0.12);
+      border: 1px solid rgba(255, 113, 32, 0.35);
+      color: var(--cyber-orange);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .header h1 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 800;
+      color: #FFF;
+    }
+
+    .header h1 span {
+      color: var(--cyber-orange);
+    }
+
+    .header p {
+      color: #94A3B8;
+      font-size: 14px;
+      max-width: 600px;
+    }
+
+    /* Control Toolbar */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      background: rgba(13, 18, 25, 0.8);
+      border: 1px solid var(--cyber-border);
+      padding: 12px 20px;
+      border-radius: 12px;
+      backdrop-filter: blur(12px);
+    }
+
+    .btn {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 1px solid var(--cyber-border);
+      background: rgba(255, 255, 255, 0.05);
+      color: #FFF;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--cyber-orange);
+      color: #080B0E;
+      border-color: var(--cyber-orange);
+      box-shadow: 0 0 20px rgba(255, 113, 32, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--cyber-orange-hover);
+      box-shadow: 0 0 25px rgba(255, 113, 32, 0.6);
+    }
+
+    .btn-cyan {
+      background: var(--cyber-cyan);
+      color: #080B0E;
+      border-color: var(--cyber-cyan);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.35);
+    }
+
+    .btn:hover:not(.btn-primary):not(.btn-cyan) {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #FFF;
+    }
+
+    /* Studio Workspace */
+    .workspace {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    /* THE BANNER (Target 720 x 1080 rendered scaled in browser) */
+    .banner-frame {
+      width: 480px;
+      min-height: 720px;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 32px 28px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 113, 32, 0.15);
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    /* Dark Mode Theme */
+    .theme-dark {
+      background-color: #080B0E;
+      background-image: 
+        radial-gradient(circle at top right, rgba(255, 113, 32, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at bottom left, rgba(0, 229, 255, 0.1) 0%, transparent 60%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 24px 24px, 24px 24px;
+      border: 1.5px solid rgba(255, 113, 32, 0.4);
+      color: #FFF;
+    }
+
+    /* White Mode Theme */
+    .theme-white {
+      background-color: #FFFFFF;
+      background-image: 
+        radial-gradient(circle at top right, rgba(234, 88, 12, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at bottom left, rgba(14, 165, 233, 0.08) 0%, transparent 60%),
+        linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 24px 24px, 24px 24px;
+      border: 1.5px solid #E2E8F0;
+      color: #0F172A;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Banner Header */
+    .banner-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 6px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .banner-top-pill {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 4px;
+    }
+
+    .theme-dark .banner-top-pill {
+      background: rgba(255, 113, 32, 0.15);
+      border: 1px solid rgba(255, 113, 32, 0.4);
+      color: var(--cyber-orange);
+    }
+
+    .theme-white .banner-top-pill {
+      background: #FFF7ED;
+      border: 1px solid #FDBA74;
+      color: #EA580C;
+    }
+
+    .banner-brand-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .theme-dark .banner-brand-title span {
+      color: var(--cyber-orange);
+    }
+
+    .theme-white .banner-brand-title span {
+      color: #EA580C;
+    }
+
+    .banner-legal {
+      font-family: var(--font-main);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .theme-dark .banner-legal {
+      color: #CBD5E1;
+    }
+
+    .theme-white .banner-legal {
+      color: #475569;
+    }
+
+    .banner-nit {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    .theme-dark .banner-nit {
+      color: var(--cyber-orange);
+    }
+
+    .theme-white .banner-nit {
+      color: #EA580C;
+    }
+
+    .banner-divider {
+      width: 100%;
+      height: 2px;
+      margin: 14px 0 16px;
+      position: relative;
+    }
+
+    .theme-dark .banner-divider {
+      background: linear-gradient(90deg, transparent, rgba(255, 113, 32, 0.6), transparent);
+    }
+
+    .theme-white .banner-divider {
+      background: linear-gradient(90deg, transparent, #CBD5E1, transparent);
+    }
+
+    /* 6 Services Grid (2 Columns x 3 Rows) */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      position: relative;
+      z-index: 2;
+      margin: 10px 0 16px;
+    }
+
+    .service-card {
+      padding: 12px 14px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .theme-dark .service-card {
+      background: rgba(13, 18, 25, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .theme-white .service-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .service-tag {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .theme-dark .service-tag.orange { color: var(--cyber-orange); }
+    .theme-dark .service-tag.cyan { color: var(--cyber-cyan); }
+    .theme-dark .service-tag.emerald { color: var(--cyber-emerald); }
+
+    .theme-white .service-tag.orange { color: #EA580C; }
+    .theme-white .service-tag.cyan { color: #0284C7; }
+    .theme-white .service-tag.emerald { color: #059669; }
+
+    .service-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .service-icon-box {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .theme-dark .service-icon-box {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .theme-white .service-icon-box {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .theme-dark .service-title { color: #FFF; }
+    .theme-white .service-title { color: #0F172A; }
+
+    .service-desc {
+      font-family: var(--font-main);
+      font-size: 9px;
+      line-height: 1.35;
+    }
+
+    .theme-dark .service-desc { color: #94A3B8; }
+    .theme-white .service-desc { color: #475569; }
+
+    /* Banner Footer Cockpit */
+    .banner-footer {
+      border-radius: 10px;
+      padding: 12px 14px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .theme-dark .banner-footer {
+      background: rgba(13, 18, 25, 0.95);
+      border: 1px solid var(--cyber-orange);
+      box-shadow: 0 0 20px rgba(255, 113, 32, 0.2);
+    }
+
+    .theme-white .banner-footer {
+      background: #FFFFFF;
+      border: 1.5px solid #EA580C;
+      box-shadow: 0 4px 15px rgba(234, 88, 12, 0.15);
+    }
+
+    .footer-url {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .theme-dark .footer-url { color: var(--cyber-orange); }
+    .theme-white .footer-url { color: #EA580C; }
+
+    .footer-contact {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 700;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .theme-dark .footer-contact { color: #F1F5F9; }
+    .theme-white .footer-contact { color: #1E293B; }
+
+    .footer-address {
+      font-family: var(--font-mono);
+      font-size: 8.5px;
+    }
+
+    .theme-dark .footer-address { color: #94A3B8; }
+    .theme-white .footer-address { color: #64748B; }
+
+    /* Status Alert */
+    .status-toast {
+      position: fixed;
+      bottom: 20px;
+      background: var(--cyber-orange);
+      color: #000;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 13px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="badge-hub">⚡ ESTUDIO DE IDENTIDAD CORPORATIVA</div>
+      <h1>Banner Oficial WhatsApp <span>LOG-8</span></h1>
+      <p>Diseño corporativo actualizado con los 6 pilares de servicio de INTEPE S.A.S. para catálogos, perfiles de WhatsApp y papelería digital.</p>
+    </header>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <button class="btn btn-primary" onclick="setTheme('dark')">
+        🌙 Modo Cyber Oscuro (Principal)
+      </button>
+      <button class="btn" onclick="setTheme('white')">
+        ☀️ Modo Blanco Ejecutivo
+      </button>
+      <button class="btn btn-cyan" onclick="exportBanner('LOG-8.jpg')">
+        📥 Descargar como LOG-8.jpg (HD)
+      </button>
+      <button class="btn" onclick="exportBanner('LOG-8_Ultra_4K.png')">
+        💎 Exportar PNG Alta Calidad (4K)
+      </button>
+    </div>
+
+    <!-- Workspace Preview -->
+    <div class="workspace">
+      
+      <!-- THE BANNER -->
+      <div class="banner-frame theme-dark" id="target-banner">
+        
+        <!-- Header -->
+        <div class="banner-header">
+          <div class="banner-top-pill">⚡ SOLUCIONES CORPORATIVAS TI & CONSULTORÍA</div>
+          
+          <div class="banner-brand-title">
+            INTEPE <span>S.A.S.</span>
+          </div>
+
+          <div class="banner-legal">
+            Informática y Tecnología Penagos S.A.S.
+          </div>
+
+          <div class="banner-nit">
+            NIT: 830.066.815-0 • BOGOTÁ, COLOMBIA
+          </div>
+        </div>
+
+        <div class="banner-divider"></div>
+
+        <!-- 6 Services Grid -->
+        <div class="services-grid">
+          
+          <!-- 1. Mesa de Ayuda -->
+          <div class="service-card">
+            <div class="service-tag orange">// HELP DESK TI</div>
+            <div class="service-head">
+              <div class="service-icon-box">🎧</div>
+              <div class="service-title">Mesa de Ayuda L1/L2/L3</div>
+            </div>
+            <div class="service-desc">
+              Soporte técnico integral, atención a usuarios remota y presencial, tickets e incidencias TI.
+            </div>
+          </div>
+
+          <!-- 2. Servicio Técnico -->
+          <div class="service-card">
+            <div class="service-tag cyan">// HARDWARE & LAB</div>
+            <div class="service-head">
+              <div class="service-icon-box">🛠️</div>
+              <div class="service-title">Servicio Técnico Especializado</div>
+            </div>
+            <div class="service-desc">
+              Diagnóstico, reparación de hardware, mantenimiento correctivo y ensambles de alto nivel.
+            </div>
+          </div>
+
+          <!-- 3. Infraestructura -->
+          <div class="service-card">
+            <div class="service-tag emerald">// REDES & SERVIDORES</div>
+            <div class="service-head">
+              <div class="service-icon-box">☁️</div>
+              <div class="service-title">Infraestructura & Servidores</div>
+            </div>
+            <div class="service-desc">
+              Redes estructuradas, WiFi corporativo, servidores Windows/Linux, virtualización y cloud.
+            </div>
+          </div>
+
+          <!-- 4. Software a Medida -->
+          <div class="service-card">
+            <div class="service-tag orange">// SOFTWARE & ERP</div>
+            <div class="service-head">
+              <div class="service-icon-box">💻</div>
+              <div class="service-title">Desarrollo de Software</div>
+            </div>
+            <div class="service-desc">
+              Plataformas web, ERPs empresariales, sistemas agropecuarios y soluciones a medida.
+            </div>
+          </div>
+
+          <!-- 5. Mantenimiento Preventivo -->
+          <div class="service-card">
+            <div class="service-tag cyan">// PÓLIZAS TI</div>
+            <div class="service-head">
+              <div class="service-icon-box">🔄</div>
+              <div class="service-title">Mantenimiento Periódico</div>
+            </div>
+            <div class="service-desc">
+              Pólizas preventivas, limpieza profunda, optimización de sistemas y copias de seguridad.
+            </div>
+          </div>
+
+          <!-- 6. Licenciamiento & Seguridad -->
+          <div class="service-card">
+            <div class="service-tag emerald">// LICENCIAS & CLOUD</div>
+            <div class="service-head">
+              <div class="service-icon-box">🔑</div>
+              <div class="service-title">Licenciamiento & Software</div>
+            </div>
+            <div class="service-desc">
+              Google Workspace, Microsoft 365, antivirus corporativo y auditoría de software legal.
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Footer Cockpit -->
+        <div class="banner-footer">
+          <div class="footer-url">
+            🌐 https://www.intepe.net
+          </div>
+
+          <div class="footer-contact">
+            <span>📞 (+57) 313 386 2656</span>
+            <span>•</span>
+            <span>✉️ soporte@intepe.net</span>
+          </div>
+
+          <div class="footer-address">
+            Calle 152A No. 54-68 • Bogotá D.C., Colombia
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="status-toast" id="toast">
+    Exportando imagen en ultra alta definición...
+  </div>
+
+  <script>
+    function setTheme(mode) {
+      const banner = document.getElementById('target-banner');
+      if (mode === 'white') {
+        banner.className = 'banner-frame theme-white';
+      } else {
+        banner.className = 'banner-frame theme-dark';
+      }
+    }
+
+    function exportBanner(filename) {
+      const toast = document.getElementById('toast');
+      toast.style.display = 'block';
+      toast.innerText = 'Generando imagen en ultra alta definición...';
+
+      const banner = document.getElementById('target-banner');
+
+      html2canvas(banner, {
+        scale: 3, // 3x Retina resolution for crystal clear WhatsApp rendering
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: null
+      }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = canvas.toDataURL(filename.endsWith('.png') ? 'image/png' : 'image/jpeg', 0.98);
+        link.click();
+        
+        toast.innerText = '¡Descarga completada con éxito!';
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 3000);
+      });
+    }
+  </script>
+
+</body>
+</html>

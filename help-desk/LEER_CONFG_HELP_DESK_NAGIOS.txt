@@ -1,0 +1,46 @@
+git add .; git commit -m "UpdateDiseñoOscuro"; git push origin main 
+
+===================================================================
+git remote set-url --add --push origin https://github.com/IntepeGit/web_intepe.git
+git remote set-url --add --push origin https://github.com/NagiosGit/web_intepe.git
+git remote -v
+
+git push origin main
+===================================================================
+Publishable key = sb_publishable_o3qRTwVNo2bYaDjbufR95g_5lYMV3_U
+
+Secret keys= [CONFIGURADO_EN_SUPABASE]
+
+API URL = https://xpbtcakvdhujepsfkwve.supabase.co
+
+anon public= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhwYnRjYWt2ZGh1amVwc2Zrd3ZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc5MjYxMDEsImV4cCI6MjEwMzUwMjEwMX0.VfAER4rz1EPOIQRwOGOH63BSYcM_wo90iL-dcyRrwZ8
+service_role= [CONFIGURADO_EN_SUPABASE]
+==============================================
+User SupaBase:
+
+email= erroresnagios@gmail.com
+pass=  NNErrNag**
+=================================================================
+LINK LOCAL
+
+💻 Módulos y Rutas Listas para Usar:
+🔐 Inicio de Sesión: http://localhost:5173/help-desk/login
+👑 Centro de Mando Administrativo: http://localhost:5173/admin/help-desk     ==> erroresnagios@gmail.com  == NNErrNag**
+🏢 Administración de Empresas Clientes: http://localhost:5173/admin/clientes
+👨‍💻 Gestión de Técnicos INTEPE: http://localhost:5173/admin/tecnicos
+📊 Panel del Cliente: http://localhost:5173/help-desk
+➕ Nueva Solicitud de Soporte: http://localhost:5173/help-desk/tickets/nuevo
+🛠️ Panel del Técnico: http://localhost:5173/tecnico
+📘 Documentación Técnica Completa:
+He generado una guía detallada en 
+
+help-desk/README.md
+ y en el 
+walkthrough.md
+.
+
+(Recuerda que cuando desees sincronizar estos cambios con tu repositorio GitHub o Vercel, lo haces ejecutando tu script manual 
+
+subir_a_github.bat
+).
+

@@ -119,6 +119,11 @@ export const Navbar: React.FC = () => {
               <Mail className="w-3 h-3 text-[#FF7120]" />
               <span>{siteConfig.email}</span>
             </a>
+            <span className="text-slate-700">|</span>
+            <Link to="/help-desk/login" className="flex items-center gap-1.5 text-cyan-400 hover:text-cyan-300 font-bold transition-colors">
+              <Headset className="w-3 h-3 text-cyan-400" />
+              <span>PORTAL HELP DESK</span>
+            </Link>
           </div>
         </div>
       </div>
