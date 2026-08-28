@@ -12,8 +12,7 @@ import {
   CheckCircle2, 
   ArrowLeft,
   KeyRound,
-  Cpu,
-  Headset
+  Cpu
 } from 'lucide-react';
 
 export const HelpDeskLoginPage: React.FC = () => {
@@ -113,34 +112,24 @@ export const HelpDeskLoginPage: React.FC = () => {
           </Link>
         </div>
 
-        {/* Brand Header with Exact HUD Microchip + Typography */}
+        {/* Brand Header - Minimalist Style Option A */}
         <div className="text-center space-y-3">
-          <Link to="/" className="inline-flex items-center justify-center gap-3 group mb-1">
-            <div className="relative p-2.5 rounded-xl bg-[#0D1219] border border-white/10 group-hover:border-[#FF7120]/50 transition-all shadow-[0_0_25px_rgba(255,113,32,0.25)]">
+          <Link to="/" className="inline-block group mb-1" title="Ir al sitio web principal">
+            <div className="relative p-3.5 rounded-2xl bg-[#0D1219] border border-white/15 group-hover:border-[#FF7120]/70 transition-all duration-300 shadow-[0_0_35px_rgba(255,113,32,0.3)] inline-flex items-center justify-center">
               <div className="hud-corner-tl"></div>
+              <div className="hud-corner-tr"></div>
+              <div className="hud-corner-bl"></div>
               <div className="hud-corner-br"></div>
-              <Cpu className="w-8 h-8 text-[#FF7120] transition-transform group-hover:scale-110" />
-            </div>
-            <div className="text-left">
-              <div className="text-2xl font-black tracking-tight text-white font-['Space_Grotesk'] leading-none">
-                INTEPE <span className="text-[#FF7120]">S.A.S.</span>
-              </div>
-              <div className="text-[10px] font-mono tracking-widest text-slate-400 uppercase mt-1">
-                TI & SOFTWARE SOLUTIONS
-              </div>
+              <Cpu className="w-10 h-10 text-[#FF7120] transition-transform duration-300 group-hover:scale-110" />
             </div>
           </Link>
 
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-[10px] font-bold mb-2">
-              <Headset className="w-3 h-3" />
-              <span>// MESA DE AYUDA B2B</span>
-            </div>
-            <h2 className="text-xl sm:text-2xl font-black text-white font-['Space_Grotesk'] tracking-tight">
-              Ingreso Seguro a la Plataforma
-            </h2>
-            <p className="text-xs font-mono text-slate-400 max-w-sm mx-auto mt-1">
-              Ingrese con su cuenta corporativa para radicar y gestionar sus solicitudes de soporte técnico.
+            <h1 className="text-2xl font-black text-white font-['Space_Grotesk'] tracking-tight">
+              Mesa de Ayuda <span className="text-[#FF7120]">INTEPE</span>
+            </h1>
+            <p className="text-xs font-mono text-slate-400 max-w-xs mx-auto mt-1">
+              Ingreso seguro a la plataforma corporativa
             </p>
           </div>
         </div>

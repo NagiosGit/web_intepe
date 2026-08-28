@@ -1,26 +1,41 @@
 @echo off
 chcp 65001 > nul
-echo ========================================================
-echo   INTEPE S.A.S. - SINCRONIZADOR AUTOMATICO A GITHUB
-echo ========================================================
+title SINCRONIZADOR DUAL GITHUB - INTEPE S.A.S.
+cd /d "%~dp0"
+
+echo ================================================================
+echo   INTEPE S.A.S. - SINCRONIZADOR DUAL AUTOMÁTICO A GITHUB
+echo ================================================================
+echo   [1] Repositorio Vercel:    https://github.com/NagiosGit/web_intepe.git
+echo   [2] Repositorio Respaldo:  https://github.com/IntepeGit/web_intepe.git
+echo ================================================================
 echo.
 
-set /p mensaje="Escribe el mensaje de la actualizacion (o presiona ENTER para 'Actualizacion web'): "
-if "%mensaje%"=="" set mensaje=Actualizacion web INTEPE
+set /p mensaje="Escribe el mensaje del cambio (o presiona ENTER para 'Actualizacion INTEPE'): "
+if "%mensaje%"=="" set mensaje=Actualizacion INTEPE - %date% %time%
 
 echo.
-echo [1/3] Agregando archivos modificados...
+echo [1/4] Preparando todos los archivos modificados...
 git add .
 
-echo [2/3] Guardando cambios con el mensaje: "%mensaje%"...
+echo.
+echo [2/4] Empaquetando cambios con el mensaje: "%mensaje%"...
 git commit -m "%mensaje%"
 
-echo [3/3] Subiendo cambios a GitHub...
-git push origin main
+echo.
+echo [3/4] Subiendo a repositorio 1: NagiosGit (Produccion Vercel)...
+git push https://github.com/NagiosGit/web_intepe.git main --force
 
 echo.
-echo ========================================================
-echo   ¡ACTUALIZACION SUBIDA EXITOSAMENTE A GITHUB!
-echo ========================================================
+echo [4/4] Subiendo a repositorio 2: IntepeGit (Respaldo Corporativo)...
+git push https://github.com/IntepeGit/web_intepe.git main --force
+
+echo.
+echo ================================================================
+echo   ¡TODO ACTUALIZADO Y SINCRONIZADO CON ÉXITO EN AMBOS GITHUB!
+echo ================================================================
+echo.
+echo Vercel se encargará de compilar y publicar en:
+echo 👉 https://web-intepe.vercel.app
 echo.
 pause

@@ -90,8 +90,8 @@ export const Navbar: React.FC = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-[#080B0E]/90 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.8)]' 
-        : 'bg-[#080B0E]/75 backdrop-blur-md border-b border-white/5'
+        ? 'bg-[#080B0E]/98 backdrop-blur-2xl border-b border-white/15 shadow-[0_10px_40px_rgba(0,0,0,0.9)]' 
+        : 'bg-[#080B0E]/95 backdrop-blur-xl border-b border-white/10'
     }`}>
       
       {/* 1. Micro Top Bar - Cyber HUD style */}
@@ -179,140 +179,142 @@ export const Navbar: React.FC = () => {
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesOpen ? 'rotate-180 text-[#FF7120]' : ''}`} />
               </button>
 
-              {/* Mega Dropdown Menu */}
+              {/* Mega Dropdown Menu with Hover Bridge */}
               {servicesOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[680px] cyber-card rounded-md p-5 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.9)] z-50">
-                  <div className="hud-corner-tl"></div>
-                  <div className="hud-corner-tr"></div>
-                  <div className="hud-corner-bl"></div>
-                  <div className="hud-corner-br"></div>
-                  
-                  <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10 text-xs font-mono text-slate-400">
-                    <span className="text-[#FF7120] font-semibold tracking-wider flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF7120] animate-pulse"></span>
-                      PORTAFOLIO DE SERVICIOS TI CORPORATIVOS
-                    </span>
-                    <Link to="/servicios" className="hover:text-white flex items-center gap-1 transition-colors text-slate-300">
-                      Ver Catálogo Completo <ArrowRight className="w-3 h-3 text-[#FF7120]" />
-                    </Link>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    {/* Columna 1: Soporte & Mesa de Ayuda */}
-                    <div className="space-y-2">
-                      <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#00E5FF] px-2 py-0.5 rounded bg-cyan-500/10 inline-block border border-cyan-500/20">
-                        // SOPORTE & MESA DE AYUDA
-                      </div>
-
-                      <Link 
-                        to="/help-desk"
-                        className="p-3 rounded-sm bg-white/[0.02] hover:bg-white/[0.06] border border-transparent hover:border-cyan-500/30 transition-all group flex items-start gap-3"
-                      >
-                        <div className="p-2 rounded bg-cyan-500/10 text-cyan-400 group-hover:scale-105 transition-transform shrink-0">
-                          <Headset className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors flex items-center gap-1.5">
-                            Mesa de Ayuda (Help Desk)
-                            <span className="text-[9px] px-1.5 py-0.2 rounded bg-cyan-500/20 text-cyan-300 font-mono">L1/L2/L3</span>
-                          </div>
-                          <div className="text-xs text-slate-400 line-clamp-1">Soporte multicanal con SLA &lt; 15 min</div>
-                        </div>
-                      </Link>
-
-                      <Link 
-                        to="/outsourcing-ti"
-                        className="p-3 rounded-sm bg-white/[0.02] hover:bg-white/[0.06] border border-transparent hover:border-[#FF7120]/30 transition-all group flex items-start gap-3"
-                      >
-                        <div className="p-2 rounded bg-[#FF7120]/10 text-[#FF7120] group-hover:scale-105 transition-transform shrink-0">
-                          <Briefcase className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-semibold text-white group-hover:text-[#FF7120] transition-colors">
-                            Outsourcing TI Integral
-                          </div>
-                          <div className="text-xs text-slate-400 line-clamp-1">Departamento de sistemas tercerizado</div>
-                        </div>
-                      </Link>
-
-                      <Link 
-                        to="/mantenimiento"
-                        className="p-3 rounded-sm bg-white/[0.02] hover:bg-white/[0.06] border border-transparent hover:border-emerald-500/30 transition-all group flex items-start gap-3"
-                      >
-                        <div className="p-2 rounded bg-emerald-500/10 text-emerald-400 group-hover:scale-105 transition-transform shrink-0">
-                          <Wrench className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">
-                            Mantenimiento Preventivo
-                          </div>
-                          <div className="text-xs text-slate-400 line-clamp-1">Hardware, limpieza física y optimización SO</div>
-                        </div>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-6 w-[700px] z-50">
+                  <div className="bg-[#0B0F15] rounded-xl p-5 border border-white/15 shadow-[0_30px_70px_rgba(0,0,0,0.98),0_0_35px_rgba(255,113,32,0.12)] hud-box">
+                    <div className="hud-corner-tl"></div>
+                    <div className="hud-corner-tr"></div>
+                    <div className="hud-corner-bl"></div>
+                    <div className="hud-corner-br"></div>
+                    
+                    <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10 text-xs font-mono text-slate-400">
+                      <span className="text-[#FF7120] font-bold tracking-wider flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-[#FF7120] animate-pulse"></span>
+                        PORTAFOLIO DE SERVICIOS TI CORPORATIVOS
+                      </span>
+                      <Link to="/servicios" className="hover:text-white flex items-center gap-1 transition-colors text-slate-300 font-medium">
+                        Ver Catálogo Completo <ArrowRight className="w-3 h-3 text-[#FF7120]" />
                       </Link>
                     </div>
 
-                    {/* Columna 2: Infraestructura & Nube */}
-                    <div className="space-y-2">
-                      <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-amber-400 px-2 py-0.5 rounded bg-amber-500/10 inline-block border border-amber-500/20">
-                        // INFRAESTRUCTURA & CLOUD
+                    <div className="grid grid-cols-2 gap-3.5">
+                      {/* Columna 1: Soporte & Mesa de Ayuda */}
+                      <div className="space-y-2.5">
+                        <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#00E5FF] px-2.5 py-1 rounded bg-cyan-500/10 inline-block border border-cyan-500/30">
+                          // SOPORTE & MESA DE AYUDA
+                        </div>
+
+                        <Link 
+                          to="/help-desk"
+                          className="p-3 rounded-lg bg-[#05070A] hover:bg-[#111722] border border-white/10 hover:border-cyan-400/50 shadow-sm transition-all group flex items-start gap-3"
+                        >
+                          <div className="p-2 rounded-lg bg-cyan-500/15 text-cyan-400 group-hover:scale-110 transition-transform shrink-0 border border-cyan-500/20">
+                            <Headset className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+                              Mesa de Ayuda (Help Desk)
+                              <span className="text-[9px] px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-mono font-bold">L1/L2/L3</span>
+                            </div>
+                            <div className="text-xs text-slate-400 line-clamp-1">Soporte multicanal con SLA &lt; 15 min</div>
+                          </div>
+                        </Link>
+
+                        <Link 
+                          to="/outsourcing-ti"
+                          className="p-3 rounded-lg bg-[#05070A] hover:bg-[#181310] border border-white/10 hover:border-[#FF7120]/50 shadow-sm transition-all group flex items-start gap-3"
+                        >
+                          <div className="p-2 rounded-lg bg-[#FF7120]/15 text-[#FF7120] group-hover:scale-110 transition-transform shrink-0 border border-[#FF7120]/20">
+                            <Briefcase className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="text-sm font-semibold text-white group-hover:text-[#FF7120] transition-colors">
+                              Outsourcing TI Integral
+                            </div>
+                            <div className="text-xs text-slate-400 line-clamp-1">Departamento de sistemas tercerizado</div>
+                          </div>
+                        </Link>
+
+                        <Link 
+                          to="/mantenimiento"
+                          className="p-3 rounded-lg bg-[#05070A] hover:bg-[#0c1813] border border-white/10 hover:border-emerald-400/50 shadow-sm transition-all group flex items-start gap-3"
+                        >
+                          <div className="p-2 rounded-lg bg-emerald-500/15 text-emerald-400 group-hover:scale-110 transition-transform shrink-0 border border-emerald-500/20">
+                            <Wrench className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">
+                              Mantenimiento Preventivo
+                            </div>
+                            <div className="text-xs text-slate-400 line-clamp-1">Hardware, limpieza física y optimización SO</div>
+                          </div>
+                        </Link>
                       </div>
 
-                      <Link 
-                        to="/infraestructura-tecnologica"
-                        className="p-3 rounded-sm bg-white/[0.02] hover:bg-white/[0.06] border border-transparent hover:border-amber-500/30 transition-all group flex items-start gap-3"
-                      >
-                        <div className="p-2 rounded bg-amber-500/10 text-amber-400 group-hover:scale-105 transition-transform shrink-0">
-                          <Server className="w-4 h-4" />
+                      {/* Columna 2: Infraestructura & Nube */}
+                      <div className="space-y-2.5">
+                        <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-amber-400 px-2.5 py-1 rounded bg-amber-500/10 inline-block border border-amber-500/30">
+                          // INFRAESTRUCTURA & CLOUD
                         </div>
-                        <div>
-                          <div className="text-sm font-semibold text-white group-hover:text-amber-400 transition-colors">
-                            Infraestructura & Redes
-                          </div>
-                          <div className="text-xs text-slate-400 line-clamp-1">Servidores, cableado, Wi-Fi y backups</div>
-                        </div>
-                      </Link>
 
-                      <Link 
-                        to="/google-workspace"
-                        className="p-3 rounded-sm bg-white/[0.02] hover:bg-white/[0.06] border border-transparent hover:border-blue-500/30 transition-all group flex items-start gap-3"
-                      >
-                        <div className="p-2 rounded bg-blue-500/10 text-blue-400 group-hover:scale-105 transition-transform shrink-0">
-                          <Cloud className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">
-                            Google Workspace & Cloud
+                        <Link 
+                          to="/infraestructura-tecnologica"
+                          className="p-3 rounded-lg bg-[#05070A] hover:bg-[#1a150c] border border-white/10 hover:border-amber-400/50 shadow-sm transition-all group flex items-start gap-3"
+                        >
+                          <div className="p-2 rounded-lg bg-amber-500/15 text-amber-400 group-hover:scale-110 transition-transform shrink-0 border border-amber-500/20">
+                            <Server className="w-4 h-4" />
                           </div>
-                          <div className="text-xs text-slate-400 line-clamp-1">Correo corporativo y productividad nube</div>
-                        </div>
-                      </Link>
+                          <div>
+                            <div className="text-sm font-semibold text-white group-hover:text-amber-400 transition-colors">
+                              Infraestructura & Redes
+                            </div>
+                            <div className="text-xs text-slate-400 line-clamp-1">Servidores, cableado, Wi-Fi y backups</div>
+                          </div>
+                        </Link>
 
-                      <Link 
-                        to="/desarrollo-software"
-                        className="p-3 rounded-sm bg-white/[0.02] hover:bg-white/[0.06] border border-transparent hover:border-purple-500/30 transition-all group flex items-start gap-3"
-                      >
-                        <div className="p-2 rounded bg-purple-500/10 text-purple-400 group-hover:scale-105 transition-transform shrink-0">
-                          <Code2 className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-semibold text-white group-hover:text-purple-400 transition-colors">
-                            Software a Medida
+                        <Link 
+                          to="/google-workspace"
+                          className="p-3 rounded-lg bg-[#05070A] hover:bg-[#0f1725] border border-white/10 hover:border-blue-400/50 shadow-sm transition-all group flex items-start gap-3"
+                        >
+                          <div className="p-2 rounded-lg bg-blue-500/15 text-blue-400 group-hover:scale-110 transition-transform shrink-0 border border-blue-500/20">
+                            <Cloud className="w-4 h-4" />
                           </div>
-                          <div className="text-xs text-slate-400 line-clamp-1">Automatización y desarrollo especializado</div>
-                        </div>
+                          <div>
+                            <div className="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">
+                              Google Workspace & Cloud
+                            </div>
+                            <div className="text-xs text-slate-400 line-clamp-1">Correo corporativo y productividad nube</div>
+                          </div>
+                        </Link>
+
+                        <Link 
+                          to="/desarrollo-software"
+                          className="p-3 rounded-lg bg-[#05070A] hover:bg-[#171024] border border-white/10 hover:border-purple-400/50 shadow-sm transition-all group flex items-start gap-3"
+                        >
+                          <div className="p-2 rounded-lg bg-purple-500/15 text-purple-400 group-hover:scale-110 transition-transform shrink-0 border border-purple-500/20">
+                            <Code2 className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="text-sm font-semibold text-white group-hover:text-purple-400 transition-colors">
+                              Software a Medida
+                            </div>
+                            <div className="text-xs text-slate-400 line-clamp-1">Automatización y desarrollo especializado</div>
+                          </div>
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Micro Footer Bar inside dropdown */}
+                    <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-300">
+                      <span className="text-emerald-400 flex items-center gap-1.5 font-medium">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                        Atención Remota + Presencial en Bogotá y Sabana
+                      </span>
+                      <Link to="/cotizador-outsourcing" className="text-[#FF7120] hover:underline font-bold flex items-center gap-1">
+                        Cotizar Plan Mensual →
                       </Link>
                     </div>
-                  </div>
-
-                  {/* Micro Footer Bar inside dropdown */}
-                  <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                    <span className="text-emerald-400 flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                      Atención Remota + Presencial en Bogotá y Sabana
-                    </span>
-                    <Link to="/cotizador-outsourcing" className="text-[#FF7120] hover:underline font-bold flex items-center gap-1">
-                      Cotizar Plan Mensual →
-                    </Link>
                   </div>
                 </div>
               )}
@@ -336,40 +338,50 @@ export const Navbar: React.FC = () => {
               </button>
 
               {softwareOpen && (
-                <div className="absolute top-full left-0 mt-2 w-72 cyber-card rounded-md p-3 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.9)] z-50">
-                  <div className="hud-corner-tl"></div>
-                  <div className="hud-corner-br"></div>
-                  <div className="space-y-1">
-                    <Link 
-                      to="/desarrollo-software"
-                      className="p-2.5 rounded-sm hover:bg-white/5 flex items-center gap-2.5 text-sm text-slate-300 hover:text-white group"
-                    >
-                      <Code2 className="w-4 h-4 text-[#FF7120]" />
-                      <div>
-                        <div className="font-medium group-hover:text-[#FF7120] transition-colors">Desarrollo Propio</div>
-                        <div className="text-[11px] text-slate-400">ERPs y plataformas a la medida</div>
-                      </div>
-                    </Link>
-                    <Link 
-                      to="/proyectos/granjaweb"
-                      className="p-2.5 rounded-sm hover:bg-white/5 flex items-center gap-2.5 text-sm text-slate-300 hover:text-white group"
-                    >
-                      <Sprout className="w-4 h-4 text-emerald-400" />
-                      <div>
-                        <div className="font-medium group-hover:text-emerald-400 transition-colors">GranjaWP</div>
-                        <div className="text-[11px] text-slate-400">Gestión agrícola e invernaderos</div>
-                      </div>
-                    </Link>
-                    <Link 
-                      to="/proyectos/invernaderos"
-                      className="p-2.5 rounded-sm hover:bg-white/5 flex items-center gap-2.5 text-sm text-slate-300 hover:text-white group"
-                    >
-                      <Layers className="w-4 h-4 text-cyan-400" />
-                      <div>
-                        <div className="font-medium group-hover:text-cyan-400 transition-colors">InvernaderoFM</div>
-                        <div className="text-[11px] text-slate-400">Control agronómico y cosecha</div>
-                      </div>
-                    </Link>
+                <div className="absolute top-full left-0 pt-6 w-80 z-50">
+                  <div className="bg-[#0B0F15] rounded-xl p-3.5 border border-white/15 shadow-[0_30px_70px_rgba(0,0,0,0.98),0_0_35px_rgba(255,113,32,0.12)] hud-box">
+                    <div className="hud-corner-tl"></div>
+                    <div className="hud-corner-br"></div>
+                    <div className="space-y-2">
+                      <Link 
+                        to="/desarrollo-software"
+                        className="p-3 rounded-lg bg-[#05070A] hover:bg-[#181310] border border-white/10 hover:border-[#FF7120]/50 shadow-sm flex items-center gap-3 text-sm text-slate-300 hover:text-white transition-all group"
+                      >
+                        <div className="p-2 rounded-lg bg-[#FF7120]/15 text-[#FF7120] group-hover:scale-110 transition-transform shrink-0 border border-[#FF7120]/20">
+                          <Code2 className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="font-semibold text-white group-hover:text-[#FF7120] transition-colors">Desarrollo Propio</div>
+                          <div className="text-[11px] text-slate-400">ERPs y plataformas a la medida</div>
+                        </div>
+                      </Link>
+
+                      <Link 
+                        to="/proyectos/granjaweb"
+                        className="p-3 rounded-lg bg-[#05070A] hover:bg-[#0c1813] border border-white/10 hover:border-emerald-400/50 shadow-sm flex items-center gap-3 text-sm text-slate-300 hover:text-white transition-all group"
+                      >
+                        <div className="p-2 rounded-lg bg-emerald-500/15 text-emerald-400 group-hover:scale-110 transition-transform shrink-0 border border-emerald-500/20">
+                          <Sprout className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="font-semibold text-white group-hover:text-emerald-400 transition-colors">GranjaWP</div>
+                          <div className="text-[11px] text-slate-400">Gestión agrícola e invernaderos</div>
+                        </div>
+                      </Link>
+
+                      <Link 
+                        to="/proyectos/invernaderos"
+                        className="p-3 rounded-lg bg-[#05070A] hover:bg-[#111722] border border-white/10 hover:border-cyan-400/50 shadow-sm flex items-center gap-3 text-sm text-slate-300 hover:text-white transition-all group"
+                      >
+                        <div className="p-2 rounded-lg bg-cyan-500/15 text-cyan-400 group-hover:scale-110 transition-transform shrink-0 border border-cyan-500/20">
+                          <Layers className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="font-semibold text-white group-hover:text-cyan-400 transition-colors">InvernaderoFM</div>
+                          <div className="text-[11px] text-slate-400">Control agronómico y cosecha</div>
+                        </div>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )}
@@ -457,11 +469,11 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu Panel */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#080B0E] border-b border-white/10 px-4 pt-2 pb-6 space-y-2 max-h-[calc(100vh-80px)] overflow-y-auto">
+        <div className="lg:hidden bg-[#0B0F15] border-b border-white/15 px-4 pt-3 pb-6 space-y-2 max-h-[calc(100vh-80px)] overflow-y-auto shadow-2xl">
           <Link
             to="/"
             className={`block px-3 py-2 text-base font-medium rounded ${
-              location.pathname === '/' ? 'text-[#FF7120] bg-white/5' : 'text-slate-300'
+              location.pathname === '/' ? 'text-[#FF7120] bg-white/5 font-bold' : 'text-slate-300'
             }`}
           >
             Inicio
@@ -470,20 +482,20 @@ export const Navbar: React.FC = () => {
           <div>
             <button
               onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-              className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-slate-300"
+              className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-slate-300 hover:text-white"
             >
               <span>Servicios TI</span>
               <ChevronDown className={`w-4 h-4 transition-transform ${mobileServicesOpen ? 'rotate-180 text-[#FF7120]' : ''}`} />
             </button>
             {mobileServicesOpen && (
-              <div className="pl-4 space-y-1 mt-1 border-l border-white/10">
-                <Link to="/servicios" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">Ver Catálogo Completo</Link>
-                <Link to="/help-desk" className="block px-3 py-1.5 text-sm text-cyan-400 hover:text-white font-medium">Mesa de Ayuda (Help Desk L1/L2/L3)</Link>
-                <Link to="/outsourcing-ti" className="block px-3 py-1.5 text-sm text-[#FF7120] hover:text-white font-medium">Outsourcing TI Integral</Link>
-                <Link to="/infraestructura-tecnologica" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">Infraestructura & Redes</Link>
-                <Link to="/mantenimiento" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">Mantenimiento Preventivo</Link>
-                <Link to="/google-workspace" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">Google Workspace & Cloud</Link>
-                <Link to="/desarrollo-software" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">Software a Medida</Link>
+              <div className="pl-4 space-y-1.5 mt-1 border-l-2 border-[#FF7120]/40 my-2">
+                <Link to="/servicios" className="block px-3 py-1.5 text-sm text-slate-300 hover:text-white">Ver Catálogo Completo</Link>
+                <Link to="/help-desk" className="block px-3 py-1.5 text-sm text-cyan-400 hover:text-cyan-300 font-medium">Mesa de Ayuda (Help Desk L1/L2/L3)</Link>
+                <Link to="/outsourcing-ti" className="block px-3 py-1.5 text-sm text-[#FF7120] hover:text-[#FF853A] font-medium">Outsourcing TI Integral</Link>
+                <Link to="/infraestructura-tecnologica" className="block px-3 py-1.5 text-sm text-amber-400 hover:text-amber-300">Infraestructura & Redes</Link>
+                <Link to="/mantenimiento" className="block px-3 py-1.5 text-sm text-emerald-400 hover:text-emerald-300">Mantenimiento Preventivo</Link>
+                <Link to="/google-workspace" className="block px-3 py-1.5 text-sm text-blue-400 hover:text-blue-300">Google Workspace & Cloud</Link>
+                <Link to="/desarrollo-software" className="block px-3 py-1.5 text-sm text-purple-400 hover:text-purple-300">Software a Medida</Link>
               </div>
             )}
           </div>
@@ -491,16 +503,16 @@ export const Navbar: React.FC = () => {
           <div>
             <button
               onClick={() => setMobileSoftwareOpen(!mobileSoftwareOpen)}
-              className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-slate-300"
+              className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-slate-300 hover:text-white"
             >
               <span>Software Desarrollado</span>
               <ChevronDown className={`w-4 h-4 transition-transform ${mobileSoftwareOpen ? 'rotate-180 text-[#FF7120]' : ''}`} />
             </button>
             {mobileSoftwareOpen && (
-              <div className="pl-4 space-y-1 mt-1 border-l border-white/10">
-                <Link to="/desarrollo-software" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">Software a Medida</Link>
-                <Link to="/proyectos/granjaweb" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">GranjaWP (Agrícola)</Link>
-                <Link to="/proyectos/invernaderos" className="block px-3 py-1.5 text-sm text-slate-400 hover:text-white">InvernaderoFM (Agronómico)</Link>
+              <div className="pl-4 space-y-1.5 mt-1 border-l-2 border-[#FF7120]/40 my-2">
+                <Link to="/desarrollo-software" className="block px-3 py-1.5 text-sm text-purple-400 hover:text-purple-300">Software a Medida</Link>
+                <Link to="/proyectos/granjaweb" className="block px-3 py-1.5 text-sm text-emerald-400 hover:text-emerald-300">GranjaWP (Agrícola)</Link>
+                <Link to="/proyectos/invernaderos" className="block px-3 py-1.5 text-sm text-cyan-400 hover:text-cyan-300">InvernaderoFM (Agronómico)</Link>
               </div>
             )}
           </div>
