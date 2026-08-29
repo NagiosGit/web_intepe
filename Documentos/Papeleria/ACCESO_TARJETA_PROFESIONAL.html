@@ -9,14 +9,16 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #080B0E;
-      --card-bg: #0D1219;
+      --bg-dark: #0F172A;
+      --card-bg: #1E293B;
+      --card-inner: #0F172A;
       --cyber-orange: #FF7120;
       --cyber-cyan: #00E5FF;
       --cyber-emerald: #10B981;
-      --text-main: #F1F5F9;
+      --text-main: #F8FAFC;
       --text-muted: #94A3B8;
-      --border: rgba(255, 255, 255, 0.1);
+      --border: rgba(255, 255, 255, 0.12);
+      --border-glow: rgba(255, 113, 32, 0.35);
     }
 
     * {
@@ -27,27 +29,34 @@
 
     body {
       background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(255, 113, 32, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 100% 40%, rgba(0, 229, 255, 0.08) 0%, transparent 50%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
       color: var(--text-main);
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
       padding: 40px 20px;
+      min-height: 100vh;
     }
 
     .container {
-      max-width: 800px;
+      max-width: 860px;
       margin: 0 auto;
     }
 
     .header-card {
-      background: linear-gradient(135deg, #0D1219 0%, #111822 100%);
+      background: linear-gradient(135deg, #1E293B 0%, #172033 100%);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 32px;
+      padding: 36px 32px;
       text-align: center;
       margin-bottom: 24px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     }
 
     .header-card::before {
@@ -57,7 +66,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(255,113,32,0.08) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(255,113,32,0.15) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -68,19 +77,21 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--cyber-orange);
-      background: rgba(255,113,32,0.1);
-      border: 1px solid rgba(255,113,32,0.3);
-      padding: 4px 12px;
+      background: rgba(255,113,32,0.12);
+      border: 1px solid rgba(255,113,32,0.4);
+      padding: 4px 14px;
       border-radius: 999px;
       margin-bottom: 12px;
+      font-weight: 700;
     }
 
     h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 800;
       color: #FFF;
       margin-bottom: 6px;
+      letter-spacing: -0.5px;
     }
 
     h1 span {
@@ -95,10 +106,11 @@
     .pin-box {
       background: rgba(255, 113, 32, 0.08);
       border: 2px dashed var(--cyber-orange);
-      border-radius: 12px;
-      padding: 20px;
+      border-radius: 14px;
+      padding: 22px;
       text-align: center;
       margin: 24px 0;
+      box-shadow: 0 0 30px rgba(255,113,32,0.1);
     }
 
     .pin-title {
@@ -108,36 +120,38 @@
       text-transform: uppercase;
       font-weight: 700;
       margin-bottom: 6px;
+      letter-spacing: 1px;
     }
 
     .pin-code {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 40px;
+      font-size: 44px;
       font-weight: 800;
-      letter-spacing: 8px;
+      letter-spacing: 10px;
       color: #FFFFFF;
-      text-shadow: 0 0 20px rgba(255,113,32,0.6);
+      text-shadow: 0 0 25px rgba(255,113,32,0.7);
     }
 
     .section {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 20px;
+      border-radius: 14px;
+      padding: 26px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
 
     .section-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 700;
       color: #FFF;
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 16px;
+      gap: 10px;
+      margin-bottom: 18px;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 10px;
+      padding-bottom: 12px;
     }
 
     .link-list {
@@ -149,16 +163,17 @@
     .link-item {
       display: flex;
       flex-direction: column;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 14px 16px;
-      border-radius: 8px;
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      padding: 14px 18px;
+      border-radius: 10px;
       transition: all 0.2s;
     }
 
     .link-item:hover {
-      border-color: rgba(0, 229, 255, 0.4);
-      background: rgba(0, 229, 255, 0.04);
+      border-color: rgba(0, 229, 255, 0.5);
+      background: #172033;
+      transform: translateY(-1px);
     }
 
     .link-label {
@@ -166,6 +181,9 @@
       font-weight: 600;
       color: #FFF;
       margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .link-url {
@@ -183,7 +201,7 @@
     .btn-row {
       display: flex;
       gap: 12px;
-      margin-top: 16px;
+      margin-top: 18px;
       flex-wrap: wrap;
     }
 
@@ -193,9 +211,9 @@
       justify-content: center;
       gap: 8px;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
-      padding: 12px 20px;
+      padding: 11px 18px;
       border-radius: 8px;
       text-decoration: none;
       cursor: pointer;
@@ -206,12 +224,13 @@
     .btn-primary {
       background: var(--cyber-orange);
       color: #000;
-      box-shadow: 0 0 20px rgba(255,113,32,0.3);
+      box-shadow: 0 0 20px rgba(255,113,32,0.35);
     }
 
     .btn-primary:hover {
       background: #ff853a;
-      box-shadow: 0 0 25px rgba(255,113,32,0.5);
+      box-shadow: 0 0 25px rgba(255,113,32,0.55);
+      transform: translateY(-1px);
     }
 
     .btn-cyan {
@@ -223,32 +242,104 @@
     .btn-cyan:hover {
       background: #33ebff;
       box-shadow: 0 0 25px rgba(0,229,255,0.5);
+      transform: translateY(-1px);
+    }
+
+    .btn-emerald {
+      background: var(--cyber-emerald);
+      color: #000;
+      box-shadow: 0 0 20px rgba(16,185,129,0.3);
+    }
+
+    .btn-emerald:hover {
+      background: #34d399;
+      box-shadow: 0 0 25px rgba(16,185,129,0.5);
+      transform: translateY(-1px);
     }
 
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
+      gap: 14px;
       margin-top: 12px;
     }
 
     .feature-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 14px;
-      border-radius: 8px;
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      padding: 16px;
+      border-radius: 10px;
       font-size: 13px;
     }
 
     .feature-card strong {
       display: block;
       color: #FFF;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
+      font-size: 14px;
     }
 
     .feature-card p {
       color: var(--text-muted);
       font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .logo-card {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .logo-card:hover {
+      border-color: rgba(255, 113, 32, 0.5);
+      box-shadow: 0 0 20px rgba(255,113,32,0.15);
+      transform: translateY(-2px);
+    }
+
+    .logo-preview-box {
+      width: 100%;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+      margin-bottom: 12px;
+      padding: 10px;
+    }
+
+    .logo-preview-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .logo-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #FFF;
+      margin-bottom: 4px;
+    }
+
+    .logo-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      flex-grow: 1;
     }
 
     .footer-note {
@@ -256,7 +347,9 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
       color: var(--text-muted);
-      margin-top: 30px;
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
     }
   </style>
 </head>
@@ -264,6 +357,7 @@
 
   <div class="container">
 
+    <!-- ENCABEZADO PRINCIPAL -->
     <div class="header-card">
       <div class="badge">DOCUMENTO DE CONTROL & CREDENCIALES</div>
       <h1>Tarjeta Profesional <span>INTEPE S.A.S.</span></h1>
@@ -275,7 +369,7 @@
       <div class="pin-title">🔒 PIN DE SEGURIDAD ADMINISTRATIVO</div>
       <div class="pin-code">0408</div>
       <p style="font-size: 12px; color: #94A3B8; margin-top: 6px;">
-        Use este código para desbloquear el panel de edición en vivo y el estudio de impresión física.
+        Use este código para desbloquear el panel de edición en vivo y el estudio de impresión física en la web.
       </p>
     </div>
 
@@ -307,7 +401,14 @@
         </div>
 
         <div class="link-item">
-          <div class="link-label">4. Enlace Público Oficial (Al Publicar en Internet):</div>
+          <div class="link-label">4. Enlace Directo Mesa de Ayuda (Soporte TI):</div>
+          <a class="link-url" href="http://localhost:5173/tarjeta?p=helpdesk" target="_blank">
+            http://localhost:5173/tarjeta?p=helpdesk
+          </a>
+        </div>
+
+        <div class="link-item">
+          <div class="link-label">5. Enlace Público Oficial (Producción en Internet):</div>
           <a class="link-url" href="https://www.intepe.net/tarjeta" target="_blank">
             https://www.intepe.net/tarjeta
           </a>
@@ -319,8 +420,20 @@
         <a class="btn btn-primary" href="http://localhost:5173/tarjeta?p=director" target="_blank">
           👔 Tarjeta Ing. William Penagos
         </a>
-        <a class="btn btn-primary" href="http://localhost:5173/tarjeta?p=rrhh" target="_blank" style="background: #10B981; box-shadow: 0 0 20px rgba(16,185,129,0.3);">
+        <a class="btn btn-emerald" href="http://localhost:5173/tarjeta?p=rrhh" target="_blank">
           👩‍💼 Tarjeta Patricia Muñoz (RRHH)
+        </a>
+        <a class="btn btn-cyan" href="PLIEGO_IMPRESION_TARJETAS_DOBLE_CARA.html" target="_blank">
+          🖨️ Pliego Dúplex 2 Hojas (.HTML)
+        </a>
+        <a class="btn btn-primary" href="Pliego_Tarjetas_Ing_William_Penagos.docx" download>
+          📄 Word (.DOCX): William Penagos
+        </a>
+        <a class="btn btn-emerald" href="Pliego_Tarjetas_Patricia_Munoz.docx" download>
+          📄 Word (.DOCX): Patricia Muñoz
+        </a>
+        <a class="btn btn-cyan" href="http://localhost:5173/tarjeta?p=helpdesk" target="_blank">
+          🎧 Tarjeta Soporte Help Desk
         </a>
         <a class="btn btn-cyan" href="Tarjeta_Presentacion_INTEPE.html" target="_blank">
           💾 Offline: William Penagos (.HTML)
@@ -358,81 +471,138 @@
       </div>
     </div>
 
-    <!-- SECCION IDENTIDAD VISUAL & GENERADOR DE LOGOS -->
-    <div class="section" style="border-color: rgba(255,113,32,0.3); background: linear-gradient(180deg, rgba(255,113,32,0.03) 0%, rgba(13,18,25,1) 100%);">
+    <!-- SECCION IDENTIDAD VISUAL, MESA DE AYUDA Y LOGOS OFICIALES -->
+    <div class="section" style="border-color: rgba(255,113,32,0.35); background: linear-gradient(180deg, rgba(255,113,32,0.04) 0%, rgba(30,41,59,1) 100%);">
       <div class="section-title" style="color: var(--cyber-orange);">
-        ⚡ Identidad Visual, Logos & Generador WhatsApp
+        ⚡ Identidad Visual, Logos de Mesa de Ayuda & Google Workspace
       </div>
       
       <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
-        Acceso directo al estudio interactivo de banners para WhatsApp y a los nuevos logos vectoriales y transparentes oficiales de INTEPE S.A.S.
+        Acceso directo a todos los recursos gráficos oficiales, logos circulares de perfil, avatares de Mesa de Ayuda y formatos para Google Workspace:
       </p>
 
-      <div class="link-list">
+      <!-- GALERIA VISUAL DE LOGOS -->
+      <div class="logo-grid">
+        
+        <!-- Logo Redondo Soporte / HelpDesk -->
+        <div class="logo-card">
+          <div class="logo-preview-box">
+            <img src="../Logo/logoRedondo_helpdesk.png" alt="Logo HelpDesk" class="logo-preview-img">
+          </div>
+          <div class="logo-title">🎧 Mesa de Ayuda & Soporte TI</div>
+          <div class="logo-desc">Logo circular HD con diadema y chip central para correos soporte@intepe.net y HelpDesk.</div>
+          <a class="btn btn-cyan" style="width: 100%; font-size: 11px; padding: 7px 10px;" href="../Logo/logoRedondo_helpdesk.png" target="_blank">
+            Abrir PNG HD
+          </a>
+        </div>
+
+        <!-- Logo Redondo General -->
+        <div class="logo-card">
+          <div class="logo-preview-box">
+            <img src="../Logo/logoRedondo.png" alt="Logo Redondo General" class="logo-preview-img">
+          </div>
+          <div class="logo-title">🔵 Avatar General Corporativo</div>
+          <div class="logo-desc">Logo circular 1024×1024 px para perfiles de Gmail, Google Workspace y WhatsApp.</div>
+          <a class="btn btn-cyan" style="width: 100%; font-size: 11px; padding: 7px 10px;" href="../Logo/logoRedondo.png" target="_blank">
+            Abrir PNG HD
+          </a>
+        </div>
+
+        <!-- Logo Google Workspace 320x132 -->
+        <div class="logo-card">
+          <div class="logo-preview-box" style="background: rgba(255,255,255,0.05);">
+            <img src="../Logo/logo_google_workspace.png" alt="Logo Google Workspace" class="logo-preview-img">
+          </div>
+          <div class="logo-title">🟠 INTEPE Google Workspace</div>
+          <div class="logo-desc">Formato oficial 320×132 px en perspectiva 3D naranja y fondo transparente.</div>
+          <a class="btn btn-primary" style="width: 100%; font-size: 11px; padding: 7px 10px;" href="../Logo/logo_google_workspace.png" target="_blank">
+            Abrir Logo Workspace
+          </a>
+        </div>
+
+        <!-- Logo Horizontal Completo -->
+        <div class="logo-card">
+          <div class="logo-preview-box">
+            <img src="../Logo/orig/logo_horizontal_completo.png" alt="Logo Horizontal" class="logo-preview-img">
+          </div>
+          <div class="logo-title">🏢 Logo Horizontal Completo</div>
+          <div class="logo-desc">Versión 2400×800 px con Isotipo + Razón Social + NIT para firmas y membretes.</div>
+          <a class="btn btn-cyan" style="width: 100%; font-size: 11px; padding: 7px 10px;" href="../Logo/orig/logo_horizontal_completo.png" target="_blank">
+            Abrir Logo Horizontal
+          </a>
+        </div>
+
+      </div>
+
+      <!-- LISTADO DETALLADO -->
+      <div class="link-list" style="margin-top: 18px;">
+        
         <div class="link-item">
-          <div class="link-label">📱 1. Estudio Interactivo de Banner WhatsApp (LOG-8):</div>
-          <a class="link-url" href="../Logo/Generador_LOG-8_WhatsApp.html" target="_blank">
-            ../Logo/Generador_LOG-8_WhatsApp.html (Modo Dark / Blanco con exportación 4K)
+          <div class="link-label">🎧 1. Logo Redondo Mesa de Ayuda (1024 × 1024 px):</div>
+          <a class="link-url" href="../Logo/logoRedondo_helpdesk.png" target="_blank">
+            ../Logo/logoRedondo_helpdesk.png (Diadema TI + Chip + Badge SOPORTE TI)
           </a>
         </div>
 
         <div class="link-item">
-          <div class="link-label">🏆 2. Nuevo Logo Oficial PNG Transparente (1024 × 1024 px):</div>
-          <a class="link-url" href="../Logo/logo.png" target="_blank">
-            ../Logo/logo.png (Microchip CPU + HUD Corchetes Neón)
+          <div class="link-label">🔵 2. Logo Redondo Corporativo (1024 × 1024 px):</div>
+          <a class="link-url" href="../Logo/logoRedondo.png" target="_blank">
+            ../Logo/logoRedondo.png (Isotipo Chip CPU + Borde Neón Circular)
           </a>
         </div>
 
         <div class="link-item">
-          <div class="link-label">👤 3. Avatar Oficial para Redes & Perfil WhatsApp:</div>
-          <a class="link-url" href="../Logo/logo_perfil_avatar.png" target="_blank">
-            ../Logo/logo_perfil_avatar.png (Fondo Dark Cyber #080B0E)
+          <div class="link-label">🟠 3. Logotipo "INTEPE" 3D Naranja para Google Workspace:</div>
+          <a class="link-url" href="../Logo/logo_google_workspace.png" target="_blank">
+            ../Logo/logo_google_workspace.png (320 × 132 px Transparente / Blanco)
           </a>
         </div>
 
         <div class="link-item">
-          <div class="link-label">🏢 4. Logo Horizontal Corporativo (2400 × 800 px):</div>
-          <a class="link-url" href="../Logo/logo_horizontal_completo.png" target="_blank">
-            ../Logo/logo_horizontal_completo.png (Isotipo + Nombre + Razón Social + NIT)
+          <div class="link-label">📱 4. Estudio Interactivo de Banner WhatsApp (LOG-8):</div>
+          <a class="link-url" href="../Logo/orig/Generador_LOG-8_WhatsApp.html" target="_blank">
+            ../Logo/orig/Generador_LOG-8_WhatsApp.html (Modo Dark / Blanco con exportación 4K)
           </a>
         </div>
 
         <div class="link-item">
           <div class="link-label">💎 5. Vector Gráfico Infinito (SVG para Imprenta):</div>
-          <a class="link-url" href="../Logo/logo.svg" target="_blank">
-            ../Logo/logo.svg (Escalable sin pérdida de calidad)
+          <a class="link-url" href="../Logo/orig/logo.svg" target="_blank">
+            ../Logo/orig/logo.svg (Escalable sin pérdida de calidad)
           </a>
         </div>
+
       </div>
 
-      <div class="btn-row" style="margin-top: 16px;">
-        <a class="btn btn-primary" href="../Logo/Generador_LOG-8_WhatsApp.html" target="_blank">
-          🛠️ Abrir Estudio LOG-8 WhatsApp
+      <div class="btn-row" style="margin-top: 18px;">
+        <a class="btn btn-primary" href="../Logo/logoRedondo_helpdesk.png" target="_blank">
+          🎧 Ver Logo Mesa de Ayuda
         </a>
-        <a class="btn btn-cyan" href="../Logo/logo.png" target="_blank">
-          📥 Ver Logo Oficial (.PNG)
+        <a class="btn btn-cyan" href="../Logo/logoRedondo.png" target="_blank">
+          🔵 Ver Logo Redondo General
         </a>
-        <a class="btn btn-cyan" href="../Logo/logo_perfil_avatar.png" target="_blank">
-          👤 Ver Avatar Redes (.PNG)
+        <a class="btn btn-primary" href="../Logo/logo_google_workspace.png" target="_blank">
+          🟠 Ver Logo Workspace
         </a>
-        <a class="btn btn-cyan" href="../Logo/logo_horizontal_completo.png" target="_blank">
-          🏢 Ver Logo Horizontal (.PNG)
+        <a class="btn btn-cyan" href="../Logo/orig/Generador_LOG-8_WhatsApp.html" target="_blank">
+          🛠️ Estudio WhatsApp
         </a>
       </div>
     </div>
 
     <!-- ARCHIVOS EN ESTA CARPETA -->
     <div class="section">
-      <div class="section-title">📁 Archivos de Papelería & Recursos Gráficos</div>
+      <div class="section-title">📁 Resumen de Archivos y Recursos</div>
       
-      <ul style="padding-left: 20px; font-size: 13px; color: #CBD5E1; space-y: 8px;">
-        <li style="margin-bottom: 6px;"><code>Tarjeta_Presentacion_INTEPE.html</code>: Tarjeta 3D offline del Ing. William Penagos.</li>
-        <li style="margin-bottom: 6px;"><code>Tarjeta_Presentacion_Patricia_Munoz.html</code>: Tarjeta 3D offline de Patricia Muñoz (RRHH).</li>
-        <li style="margin-bottom: 6px;"><code>Contacto_INTEPE_Ing_William_Penagos.vcf</code>: Contacto digital vCard para celular (William Penagos).</li>
-        <li style="margin-bottom: 6px;"><code>Contacto_INTEPE_Patricia_Munoz.vcf</code>: Contacto digital vCard para celular (Patricia Muñoz).</li>
-        <li style="margin-bottom: 6px;"><code>../Logo/Generador_LOG-8_WhatsApp.html</code>: Estudio interactivo de diseño y exportación para banner WhatsApp.</li>
-        <li style="margin-bottom: 6px;"><code>../Logo/logo.png</code> / <code>../Logo/logo.svg</code>: Nuevos logos vectoriales y transparentes oficiales.</li>
-        <li style="margin-bottom: 6px;"><code>ACCESO_TARJETA_PROFESIONAL.html</code>: Panel maestro de acceso corporativo.</li>
+      <ul style="padding-left: 20px; font-size: 13px; color: #CBD5E1; line-height: 1.8;">
+        <li><code>Tarjeta_Presentacion_INTEPE.html</code>: Tarjeta 3D offline del Ing. William Penagos.</li>
+        <li><code>Tarjeta_Presentacion_Patricia_Munoz.html</code>: Tarjeta 3D offline de Patricia Muñoz (RRHH).</li>
+        <li><code>Contacto_INTEPE_Ing_William_Penagos.vcf</code>: Contacto digital vCard para celular (William Penagos).</li>
+        <li><code>Contacto_INTEPE_Patricia_Munoz.vcf</code>: Contacto digital vCard para celular (Patricia Muñoz).</li>
+        <li><code>../Logo/logoRedondo_helpdesk.png</code>: Logo redondo de soporte y mesa de ayuda.</li>
+        <li><code>../Logo/logoRedondo.png</code>: Logo redondo general para perfiles de correo.</li>
+        <li><code>../Logo/logo_google_workspace.png</code>: Logo corporativo para encabezado Google Workspace.</li>
+        <li><code>ACCESO_TARJETA_PROFESIONAL.html</code>: Este panel maestro de control.</li>
       </ul>
     </div>
 

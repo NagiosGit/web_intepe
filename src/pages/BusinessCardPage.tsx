@@ -22,7 +22,8 @@ import {
   Unlock,
   KeyRound,
   X,
-  CreditCard
+  CreditCard,
+  FileText
 } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
@@ -153,7 +154,7 @@ export const BusinessCardPage: React.FC = () => {
   const [cardTheme, setCardTheme] = useState<'cyber-dark' | 'executive-navy' | 'minimal-white'>('cyber-dark');
   const [cardStandard, setCardStandard] = useState<'iso' | 'usa'>('iso'); // iso: 85x55mm, usa: 90x50mm
   const [activeTab, setActiveTab] = useState<'virtual' | 'print' | 'editor'>('virtual');
-  const [printLayout, setPrintLayout] = useState<'individual' | 'sheet-front' | 'sheet-back'>('individual');
+  const [printLayout, setPrintLayout] = useState<'sheet-both' | 'sheet-front' | 'sheet-back' | 'individual'>('sheet-both');
   const [qrDataUrl, setQrDataUrl] = useState<string>('');
   const [copied, setCopied] = useState<boolean>(false);
   const [vcfDownloaded, setVcfDownloaded] = useState<boolean>(false);
@@ -322,9 +323,446 @@ export const BusinessCardPage: React.FC = () => {
     }
   };
 
-  // Trigger Print
+  // Generate Pure Isolated HTML for 100% Reliable Print Dialog
+  const getPrintHtml = () => {
+    const isWhite = cardTheme === 'minimal-white';
+    const bgCard = isWhite ? '#FFFFFF' : '#0F172A';
+    const textMain = isWhite ? '#0F172A' : '#F8FAFC';
+    const textSub = isWhite ? '#475569' : '#94A3B8';
+    const borderColor = isWhite ? '#CBD5E1' : '#334155';
+    const badgeBg = isWhite ? '#FFF7ED' : 'rgba(0, 229, 255, 0.1)';
+    const badgeBorder = isWhite ? '#FFEDD5' : 'rgba(0, 229, 255, 0.3)';
+    const badgeText = isWhite ? '#C2410C' : '#00E5FF';
+    const tagLabel = profile.id === 'rrhh' ? 'TALENTO TI' : 'TI SOLUTIONS';
+
+    const cardFrontHtml = `
+      <div class="card-box">
+        <div class="cf-top">
+          <div class="cf-brand">
+            <div class="cf-logo-box">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FF7120" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="16" height="16" x="4" y="4" rx="2.5" fill="rgba(255, 113, 32, 0.08)"/>
+                <rect width="6" height="6" x="9" y="9" rx="1" fill="#FF7120"/>
+                <path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/>
+              </svg>
+            </div>
+            <div>
+              <div class="cf-name-intepe">INTEPE <span>S.A.S.</span></div>
+              <div class="cf-sub-razon">Informática y Tecnología Penagos S.A.S.</div>
+            </div>
+          </div>
+          <div class="cf-tag">${tagLabel}</div>
+        </div>
+
+        <div class="cf-center">
+          <div class="cf-fullname">${profile.name}</div>
+          <div class="cf-title">${profile.title}</div>
+          <div class="cf-dept">${profile.department}</div>
+        </div>
+
+        <div class="cf-bottom">
+          <div>📞 ${profile.mobile}</div>
+          <div style="text-align: right;">✉️ ${profile.email}</div>
+          <div class="cf-bottom-full">🌐 www.intepe.net • NIT: ${profile.nit}</div>
+        </div>
+      </div>
+    `;
+
+    const cardBackHtml = `
+      <div class="card-box">
+        <div class="cb-top">
+          <span class="cb-tag">// ${profile.id === 'rrhh' ? 'GESTIÓN HUMANA' : 'SERVICIOS TI'}</span>
+          <span class="cb-city">Bogotá, CO</span>
+        </div>
+
+        <div class="cb-center">
+          <div class="cb-srv-list">
+            ${profile.services.map((s) => `<div class="cb-srv-item">${s}</div>`).join('')}
+          </div>
+          <div class="cb-qr">
+            ${qrDataUrl ? `<img src="${qrDataUrl}" class="cb-qr-img" alt="QR" />` : ''}
+            <span class="cb-qr-lbl">ESCANEAR</span>
+          </div>
+        </div>
+
+        <div class="cb-bottom">
+          <span>${profile.address}</span>
+          <strong>intepe.net</strong>
+        </div>
+      </div>
+    `;
+
+    const eightFrontCards = Array.from({ length: 8 }).map(() => cardFrontHtml).join('');
+    const eightBackCards = Array.from({ length: 8 }).map(() => cardBackHtml).join('');
+
+    let pagesContent = '';
+
+    if (printLayout === 'sheet-both') {
+      pagesContent = `
+        <div class="page-sheet">
+          <div class="sheet-label">
+            <span>📄 HOJA 1 DE 2: PLIEGO FRENTE (8 TARJETAS - ANVERSO)</span>
+            <span>INTEPE S.A.S. • NIT: ${profile.nit}</span>
+          </div>
+          <div class="cards-grid">
+            ${eightFrontCards}
+          </div>
+        </div>
+
+        <div class="page-sheet">
+          <div class="sheet-label">
+            <span>🔄 HOJA 2 DE 2: PLIEGO REVERSO (8 TARJETAS - DORSO CON QR)</span>
+            <span>ALINEACIÓN DÚPLEX 1:1 (GIRO BORDE LARGO)</span>
+          </div>
+          <div class="cards-grid">
+            ${eightBackCards}
+          </div>
+        </div>
+      `;
+    } else if (printLayout === 'sheet-front') {
+      pagesContent = `
+        <div class="page-sheet">
+          <div class="sheet-label">
+            <span>📄 PLIEGO FRENTE (8 TARJETAS - ANVERSO)</span>
+            <span>INTEPE S.A.S.</span>
+          </div>
+          <div class="cards-grid">
+            ${eightFrontCards}
+          </div>
+        </div>
+      `;
+    } else if (printLayout === 'sheet-back') {
+      pagesContent = `
+        <div class="page-sheet">
+          <div class="sheet-label">
+            <span>🔄 PLIEGO REVERSO (8 TARJETAS - DORSO CON QR)</span>
+            <span>INTEPE S.A.S.</span>
+          </div>
+          <div class="cards-grid">
+            ${eightBackCards}
+          </div>
+        </div>
+      `;
+    } else {
+      // Individual 1 card front + 1 card back
+      pagesContent = `
+        <div class="page-sheet">
+          <div class="sheet-label">
+            <span>TARJETA INDIVIDUAL (FRENTE Y REVERSO)</span>
+            <span>INTEPE S.A.S.</span>
+          </div>
+          <div class="cards-grid" style="grid-template-rows: 55mm 55mm; gap: 8mm;">
+            ${cardFrontHtml}
+            ${cardBackHtml}
+          </div>
+        </div>
+      `;
+    }
+
+    return `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Impresion Tarjetas INTEPE S.A.S. - ${profile.name}</title>
+  <style>
+    @page {
+      size: letter portrait;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body {
+      background: #FFFFFF;
+      color: ${textMain};
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .page-sheet {
+      width: 215.9mm;
+      height: 279.4mm;
+      box-sizing: border-box;
+      padding: 12mm 15.45mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      page-break-after: always;
+      break-after: page;
+      background: #FFFFFF;
+      overflow: hidden;
+      position: relative;
+    }
+    .page-sheet:last-of-type {
+      page-break-after: auto;
+      break-after: auto;
+    }
+    .sheet-label {
+      width: 174mm;
+      margin-bottom: 3mm;
+      font-family: monospace;
+      font-size: 8px;
+      font-weight: 700;
+      color: #64748B;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 1.5mm;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 85mm 85mm;
+      grid-template-rows: repeat(4, 55mm);
+      gap: 4mm;
+      justify-content: center;
+      align-content: center;
+    }
+    .card-box {
+      width: 85mm;
+      height: 55mm;
+      box-sizing: border-box;
+      padding: 4.5mm 5mm;
+      border: 1px solid ${borderColor};
+      border-radius: 1.5mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: ${bgCard};
+      color: ${textMain};
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .cf-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .cf-brand {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .cf-logo-box {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .cf-name-intepe {
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.2px;
+    }
+    .cf-name-intepe span {
+      color: #FF7120;
+    }
+    .cf-sub-razon {
+      font-size: 9px;
+      font-weight: 700;
+      color: ${textSub};
+      margin-top: 1.5px;
+    }
+    .cf-tag {
+      font-size: 9px;
+      font-weight: 800;
+      font-family: monospace;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: ${badgeBg};
+      border: 1px solid ${badgeBorder};
+      color: ${badgeText};
+      text-transform: uppercase;
+    }
+    .cf-center {
+      margin: auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .cf-fullname {
+      font-size: 17.5px;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.3px;
+    }
+    .cf-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: #EA580C;
+    }
+    .cf-dept {
+      font-size: 9.5px;
+      font-weight: 600;
+      font-family: monospace;
+      color: ${textSub};
+    }
+    .cf-bottom {
+      border-top: 1.5px solid ${borderColor};
+      padding-top: 2mm;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px 6px;
+      font-size: 9.5px;
+      font-weight: 600;
+      font-family: monospace;
+      color: ${textMain};
+    }
+    .cf-bottom-full {
+      grid-column: span 2;
+      font-size: 8.5px;
+      color: ${textSub};
+    }
+    .cb-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid ${borderColor};
+      padding-bottom: 2mm;
+      font-size: 9.5px;
+      font-family: monospace;
+    }
+    .cb-tag {
+      font-weight: 800;
+      color: #C2410C;
+      text-transform: uppercase;
+    }
+    .cb-city {
+      font-size: 9px;
+      color: ${textSub};
+    }
+    .cb-center {
+      display: grid;
+      grid-template-columns: 1fr 20mm;
+      gap: 3mm;
+      align-items: center;
+      margin: auto 0;
+    }
+    .cb-srv-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 9px;
+      font-weight: 600;
+      font-family: monospace;
+      color: ${textMain};
+    }
+    .cb-srv-item {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cb-srv-item::before {
+      content: "• ";
+      color: #FF7120;
+      font-weight: 900;
+    }
+    .cb-qr {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #F8FAFC;
+      border: 1px solid ${borderColor};
+      border-radius: 4px;
+      padding: 1.5mm;
+    }
+    .cb-qr-img {
+      width: 15mm;
+      height: 15mm;
+      display: block;
+    }
+    .cb-qr-lbl {
+      font-size: 7px;
+      font-weight: 800;
+      font-family: monospace;
+      color: #C2410C;
+      margin-top: 1.5px;
+      text-transform: uppercase;
+    }
+    .cb-bottom {
+      border-top: 1.5px solid ${borderColor};
+      padding-top: 2mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 9px;
+      font-weight: 600;
+      font-family: monospace;
+      color: ${textSub};
+    }
+    .cb-bottom strong {
+      color: #FF7120;
+      font-size: 10px;
+    }
+  </style>
+</head>
+<body>
+  ${pagesContent}
+</body>
+</html>`;
+  };
+
+  // Trigger Isolated Print Dialog (0 blank pages in Firefox & Chrome, 100% duplex registration)
   const handlePrint = () => {
-    window.print();
+    try {
+      const htmlContent = getPrintHtml();
+      
+      // Method 1: Clean dedicated print popup window (Works 100% in Firefox and Chrome)
+      const printWindow = window.open('', '_blank', 'width=980,height=850,menubar=no,toolbar=no,location=no,status=no');
+      
+      if (printWindow) {
+        printWindow.document.open();
+        printWindow.document.write(htmlContent);
+        printWindow.document.close();
+        printWindow.focus();
+        
+        setTimeout(() => {
+          printWindow.print();
+        }, 400);
+        return;
+      }
+
+      // Method 2: Off-screen iframe with FULL Letter dimensions (Firefox requires non-zero iframe width/height)
+      const printFrame = document.createElement('iframe');
+      printFrame.style.position = 'fixed';
+      printFrame.style.top = '-10000px';
+      printFrame.style.left = '-10000px';
+      printFrame.style.width = '215.9mm';
+      printFrame.style.height = '279.4mm';
+      printFrame.style.border = '0';
+      document.body.appendChild(printFrame);
+
+      const doc = printFrame.contentWindow?.document;
+      if (doc) {
+        doc.open();
+        doc.write(htmlContent);
+        doc.close();
+
+        setTimeout(() => {
+          printFrame.contentWindow?.focus();
+          printFrame.contentWindow?.print();
+          setTimeout(() => {
+            if (document.body.contains(printFrame)) {
+              document.body.removeChild(printFrame);
+            }
+          }, 4000);
+        }, 400);
+      } else {
+        window.print();
+      }
+    } catch (e) {
+      console.error('Error during isolated printing, falling back to window.print():', e);
+      window.print();
+    }
   };
 
   // Color Theme classes (Opaque solid backgrounds to prevent bleed-through)
@@ -353,7 +791,7 @@ export const BusinessCardPage: React.FC = () => {
   };
 
   return (
-    <div className="pt-32 pb-16 md:pt-36 md:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8 min-h-screen">
+    <div className="business-card-page-wrapper pt-32 pb-16 md:pt-36 md:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8 min-h-screen">
       
       {/* 1. Header & Mode Switcher (Hidden during print) */}
       <div className="no-print space-y-4 text-center max-w-3xl mx-auto">
@@ -941,12 +1379,12 @@ export const BusinessCardPage: React.FC = () => {
                 <div className="flex items-center gap-1.5 bg-black/50 p-1 rounded border border-white/10 text-xs font-mono">
                   <span className="text-slate-400 px-1">Disposición:</span>
                   <button
-                    onClick={() => setPrintLayout('individual')}
+                    onClick={() => setPrintLayout('sheet-both')}
                     className={`px-2.5 py-1 rounded transition-colors ${
-                      printLayout === 'individual' ? 'bg-cyan-500 text-black font-bold' : 'text-slate-300 hover:text-white'
+                      printLayout === 'sheet-both' ? 'bg-cyan-500 text-black font-bold' : 'text-slate-300 hover:text-white'
                     }`}
                   >
-                    Frente + Reverso
+                    📄 2 Hojas (Frente + Reverso)
                   </button>
                   <button
                     onClick={() => setPrintLayout('sheet-front')}
@@ -954,7 +1392,7 @@ export const BusinessCardPage: React.FC = () => {
                       printLayout === 'sheet-front' ? 'bg-cyan-500 text-black font-bold' : 'text-slate-300 hover:text-white'
                     }`}
                   >
-                    Pliego Frente (8x)
+                    Frente (8x)
                   </button>
                   <button
                     onClick={() => setPrintLayout('sheet-back')}
@@ -962,7 +1400,15 @@ export const BusinessCardPage: React.FC = () => {
                       printLayout === 'sheet-back' ? 'bg-cyan-500 text-black font-bold' : 'text-slate-300 hover:text-white'
                     }`}
                   >
-                    Pliego Reverso (8x)
+                    Reverso (8x)
+                  </button>
+                  <button
+                    onClick={() => setPrintLayout('individual')}
+                    className={`px-2.5 py-1 rounded transition-colors ${
+                      printLayout === 'individual' ? 'bg-cyan-500 text-black font-bold' : 'text-slate-300 hover:text-white'
+                    }`}
+                  >
+                    1 Tarjeta
                   </button>
                 </div>
 
@@ -973,6 +1419,15 @@ export const BusinessCardPage: React.FC = () => {
                   <Printer className="w-4 h-4" />
                   <span>IMPRIMIR / GUARDAR PDF</span>
                 </button>
+
+                <a
+                  href={profile.id === 'rrhh' ? '/downloads/Pliego_Tarjetas_Patricia_Munoz.docx' : '/downloads/Pliego_Tarjetas_Ing_William_Penagos.docx'}
+                  download
+                  className="px-4 py-2.5 rounded bg-blue-600 hover:bg-blue-500 text-white font-bold font-['Space_Grotesk'] text-xs flex items-center gap-2 transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] cursor-pointer"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>DESCARGAR WORD (.DOCX)</span>
+                </a>
               </div>
             </div>
 
@@ -982,7 +1437,7 @@ export const BusinessCardPage: React.FC = () => {
                 <span className="text-[#FF7120] font-bold">📄 Papel Recomendado:</span> Opalina 250g, Propalcote 300g mate o Cartulina Kimberly.
               </div>
               <div className="p-2.5 rounded bg-black/40 border border-white/5">
-                <span className="text-cyan-400 font-bold">💡 Beneficio Fondo Claro:</span> Máximo ahorro de tinta, textura suave y permite escribir notas al respaldo.
+                <span className="text-cyan-400 font-bold">💡 Impresión Dúplex:</span> Imprime primero la Hoja 1 (Frentes) y luego al respaldo la Hoja 2 (Reversos). Coincidencia exacta 1:1.
               </div>
               <div className="p-2.5 rounded bg-black/40 border border-white/5">
                 <span className="text-emerald-400 font-bold">✂️ Guías de Corte:</span> Líneas perimetrales listas para guillotina o tijeras.
@@ -1159,47 +1614,51 @@ export const BusinessCardPage: React.FC = () => {
           )}
 
           {/* =================================================================
-              PRINTABLE AREA: PLIEGO COMPLETO (HOJA CARTA / A4 CON 8 TARJETAS)
+              PRINTABLE AREA: PLIEGO COMPLETO (2 HOJAS DÚPLEX COINCIDENTES)
               ================================================================= */}
-          {(printLayout === 'sheet-front' || printLayout === 'sheet-back') && (
-            <div className="printable-card-container bg-white text-black p-4 sm:p-8 rounded-xl shadow-2xl overflow-x-auto">
-              <div className="no-print text-center pb-4 text-xs font-mono text-slate-800 border-b border-slate-300">
-                <span className="font-bold uppercase">PLIEGO DE IMPRESIÓN MASIVA (8 TARJETAS POR HOJA CARTA / A4)</span>
-                <p className="text-slate-600">
-                  {cardTheme === 'minimal-white' ? '⚪ Fondo Blanco Ejecutivo: Ahorro de tinta y máxima pulcritud.' : '⚫ Fondo Oscuro: Acabado mate con reserva brillante.'}
-                </p>
-              </div>
+          {(printLayout === 'sheet-both' || printLayout === 'sheet-front' || printLayout === 'sheet-back') && (
+            <div className="printable-card-container space-y-12">
+              
+              {/* HOJA 1: PLIEGO FRENTE (8 TARJETAS) */}
+              {(printLayout === 'sheet-both' || printLayout === 'sheet-front') && (
+                <div className="print-sheet-page bg-white text-black p-4 sm:p-8 rounded-xl shadow-2xl overflow-x-auto">
+                  <div className="no-print text-center pb-4 text-xs font-mono text-slate-800 border-b border-slate-300 w-full mb-3">
+                    <span className="font-bold uppercase text-emerald-700 tracking-wider">
+                      {printLayout === 'sheet-both' ? '📄 HOJA 1 DE 2: PLIEGO FRENTE (8 TARJETAS - ANVERSO)' : '📄 PLIEGO FRENTE (8 TARJETAS)'}
+                    </span>
+                    <p className="text-slate-600 text-[11px] mt-0.5">
+                      {cardTheme === 'minimal-white' ? '⚪ Fondo Blanco Ejecutivo: Máximo ahorro de tinta y pulcritud.' : '⚫ Fondo Cyber Dark: Acabado mate corporativo.'}
+                    </p>
+                  </div>
 
-              <div className="grid grid-cols-2 gap-x-[4mm] gap-y-[4mm] max-w-[185mm] mx-auto py-4">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <div 
-                    key={i} 
-                    className={`border p-4 flex flex-col justify-between relative print-avoid-break ${
-                      cardTheme === 'minimal-white' 
-                        ? 'bg-white text-slate-900 border-slate-300 shadow-sm' 
-                        : 'bg-[#0F172A] text-white border-slate-700'
-                    }`}
-                    style={{
-                      width: '85mm',
-                      height: '55mm',
-                      boxSizing: 'border-box'
-                    }}
-                  >
-                    {printLayout === 'sheet-front' ? (
-                      <>
+                  <div className="print-sheet-grid grid grid-cols-2 gap-x-[4mm] gap-y-[4mm] max-w-[185mm] mx-auto py-2">
+                    {Array.from({ length: 8 }).map((_, i) => (
+                      <div 
+                        key={`front-${i}`} 
+                        className={`print-card-item border p-4 flex flex-col justify-between relative print-avoid-break ${
+                          cardTheme === 'minimal-white' 
+                            ? 'bg-white text-slate-900 border-slate-300 shadow-sm' 
+                            : 'bg-[#0F172A] text-white border-slate-700'
+                        }`}
+                        style={{
+                          width: '85mm',
+                          height: '55mm',
+                          boxSizing: 'border-box'
+                        }}
+                      >
                         <div className="flex items-start justify-between">
                           <div className="flex items-center gap-2">
-                            <Cpu className="w-4 h-4 text-[#FF7120]" />
+                            <Cpu className="w-5 h-5 text-[#FF7120]" />
                             <div>
-                              <div className={`text-xs font-black font-['Space_Grotesk'] tracking-tight leading-none ${cardTheme === 'minimal-white' ? 'text-slate-900' : 'text-white'}`}>
+                              <div className={`text-sm font-black font-['Space_Grotesk'] tracking-tight leading-none ${cardTheme === 'minimal-white' ? 'text-slate-900' : 'text-white'}`}>
                                 INTEPE <span className="text-[#FF7120]">S.A.S.</span>
                               </div>
-                              <div className={`text-[7px] font-sans font-bold tracking-tight ${cardTheme === 'minimal-white' ? 'text-slate-600' : 'text-slate-300'}`}>
+                              <div className={`text-[9px] font-sans font-bold tracking-tight mt-0.5 ${cardTheme === 'minimal-white' ? 'text-slate-600' : 'text-slate-300'}`}>
                                 Informática y Tecnología Penagos S.A.S.
                               </div>
                             </div>
                           </div>
-                          <span className={`text-[7px] font-mono px-1.5 py-0.5 rounded uppercase font-bold ${
+                          <span className={`text-[8.5px] font-mono px-2 py-0.5 rounded uppercase font-bold ${
                             cardTheme === 'minimal-white' 
                               ? 'bg-orange-50 border border-orange-200 text-[#EA580C]' 
                               : 'text-cyan-400 border border-white/20'
@@ -1208,31 +1667,61 @@ export const BusinessCardPage: React.FC = () => {
                           </span>
                         </div>
 
-                        <div className="my-auto space-y-0.5">
-                          <div className={`text-sm font-extrabold font-['Space_Grotesk'] leading-tight ${cardTheme === 'minimal-white' ? 'text-slate-900' : 'text-white'}`}>
+                        <div className="my-auto space-y-1">
+                          <div className={`text-base font-extrabold font-['Space_Grotesk'] leading-tight ${cardTheme === 'minimal-white' ? 'text-slate-900' : 'text-white'}`}>
                             {profile.name}
                           </div>
-                          <div className={`text-[10px] font-bold ${cardTheme === 'minimal-white' ? 'text-[#EA580C]' : 'text-[#FF7120]'}`}>
+                          <div className={`text-xs font-bold ${cardTheme === 'minimal-white' ? 'text-[#EA580C]' : 'text-[#FF7120]'}`}>
                             {profile.title}
                           </div>
-                          <div className={`text-[8px] font-mono ${cardTheme === 'minimal-white' ? 'text-slate-500' : 'text-slate-400'}`}>
+                          <div className={`text-[9.5px] font-mono ${cardTheme === 'minimal-white' ? 'text-slate-500' : 'text-slate-400'}`}>
                             {profile.department}
                           </div>
                         </div>
 
-                        <div className={`pt-1.5 border-t grid grid-cols-2 gap-1 text-[8px] font-mono ${
+                        <div className={`pt-2 border-t grid grid-cols-2 gap-1.5 text-[9px] font-mono ${
                           cardTheme === 'minimal-white' ? 'border-slate-200 text-slate-700' : 'border-white/10 text-slate-300'
                         }`}>
                           <div className="truncate font-semibold">📞 {profile.mobile}</div>
-                          <div className="truncate font-semibold">✉️ {profile.email}</div>
-                          <div className={`truncate col-span-2 text-[7.5px] ${cardTheme === 'minimal-white' ? 'text-slate-600' : 'text-slate-400'}`}>
-                            🌐 {profile.website} • NIT: {profile.nit}
+                          <div className="truncate font-semibold text-right">✉️ {profile.email}</div>
+                          <div className={`truncate col-span-2 text-[8.5px] ${cardTheme === 'minimal-white' ? 'text-slate-600' : 'text-slate-400'}`}>
+                            🌐 www.intepe.net • NIT: {profile.nit}
                           </div>
                         </div>
-                      </>
-                    ) : (
-                      <>
-                        <div className={`flex items-center justify-between pb-1 border-b text-[8px] font-mono ${
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* HOJA 2: PLIEGO REVERSO (8 TARJETAS - COLUMNAS ESPEJADAS PARA COINCIDIR EXACTO AL IMPRIMIR A DOBLE CARA) */}
+              {(printLayout === 'sheet-both' || printLayout === 'sheet-back') && (
+                <div className="print-sheet-page bg-white text-black p-4 sm:p-8 rounded-xl shadow-2xl overflow-x-auto">
+                  <div className="no-print text-center pb-4 text-xs font-mono text-slate-800 border-b border-slate-300 w-full mb-3">
+                    <span className="font-bold uppercase text-cyan-700 tracking-wider">
+                      {printLayout === 'sheet-both' ? '🔄 HOJA 2 DE 2: PLIEGO REVERSO (8 TARJETAS - DORSO CON QR)' : '🔄 PLIEGO REVERSO (8 TARJETAS)'}
+                    </span>
+                    <p className="text-slate-600 text-[11px] mt-0.5">
+                      Alineación dúplex con columnas invertidas: al girar la hoja, cada frente coincide con su respectivo reverso.
+                    </p>
+                  </div>
+
+                  <div className="print-sheet-grid grid grid-cols-2 gap-x-[4mm] gap-y-[4mm] max-w-[185mm] mx-auto py-2">
+                    {Array.from({ length: 8 }).map((_, i) => (
+                      <div 
+                        key={`back-${i}`} 
+                        className={`print-card-item border p-4 flex flex-col justify-between relative print-avoid-break ${
+                          cardTheme === 'minimal-white' 
+                            ? 'bg-white text-slate-900 border-slate-300 shadow-sm' 
+                            : 'bg-[#0F172A] text-white border-slate-700'
+                        }`}
+                        style={{
+                          width: '85mm',
+                          height: '55mm',
+                          boxSizing: 'border-box'
+                        }}
+                      >
+                        <div className={`flex items-center justify-between pb-1.5 border-b text-[9px] font-mono ${
                           cardTheme === 'minimal-white' ? 'border-slate-200' : 'border-white/10'
                         }`}>
                           <span className={`font-bold uppercase ${cardTheme === 'minimal-white' ? 'text-[#EA580C]' : 'text-[#FF853A]'}`}>
@@ -1241,33 +1730,34 @@ export const BusinessCardPage: React.FC = () => {
                           <span className={cardTheme === 'minimal-white' ? 'text-slate-500' : 'text-slate-400'}>Bogotá, CO</span>
                         </div>
 
-                        <div className="grid grid-cols-12 gap-1.5 items-center my-auto">
-                          <div className="col-span-8 space-y-1 text-[7.5px] font-mono">
+                        <div className="grid grid-cols-12 gap-2 items-center my-auto">
+                          <div className="col-span-8 space-y-1 text-[8.5px] font-mono">
                             {profile.services.map((srv, idx) => (
                               <div key={idx} className={`truncate font-medium ${cardTheme === 'minimal-white' ? 'text-slate-800' : 'text-slate-200'}`}>
                                 • {srv}
                               </div>
                             ))}
                           </div>
-                          <div className={`col-span-4 flex flex-col items-center p-0.5 rounded ${cardTheme === 'minimal-white' ? 'bg-slate-50 border border-slate-200' : 'bg-white/5'}`}>
-                            {qrDataUrl && <img src={qrDataUrl} alt="QR" className="w-12 h-12 bg-white p-0.5 rounded shadow-sm" />}
-                            <span className={`text-[6px] font-mono mt-0.5 font-bold ${cardTheme === 'minimal-white' ? 'text-[#EA580C]' : 'text-cyan-400'}`}>
+                          <div className={`col-span-4 flex flex-col items-center p-1 rounded ${cardTheme === 'minimal-white' ? 'bg-slate-50 border border-slate-200' : 'bg-white/5'}`}>
+                            {qrDataUrl && <img src={qrDataUrl} alt="QR" className="w-14 h-14 bg-white p-0.5 rounded shadow-sm" />}
+                            <span className={`text-[7px] font-mono mt-0.5 font-bold ${cardTheme === 'minimal-white' ? 'text-[#EA580C]' : 'text-cyan-400'}`}>
                               ESCANEAR
                             </span>
                           </div>
                         </div>
 
-                        <div className={`pt-1 border-t flex items-center justify-between text-[7.5px] font-mono ${
+                        <div className={`pt-1.5 border-t flex items-center justify-between text-[8.5px] font-mono ${
                           cardTheme === 'minimal-white' ? 'border-slate-200 text-slate-600' : 'border-white/10 text-slate-400'
                         }`}>
                           <span className="truncate">{profile.address}</span>
                           <span className="text-[#FF7120] font-bold">intepe.net</span>
                         </div>
-                      </>
-                    )}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              )}
+
             </div>
           )}
 

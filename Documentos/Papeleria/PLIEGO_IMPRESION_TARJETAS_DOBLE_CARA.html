@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estudio de Impresión Dúplex (2 Hojas) - Tarjetas INTEPE S.A.S.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+  <style>
+    :root {
+      --cyber-bg: #0F172A;
+      --cyber-card: #1E293B;
+      --cyber-orange: #FF7120;
+      --cyber-orange-dark: #C2410C;
+      --cyber-cyan: #00E5FF;
+      --cyber-emerald: #10B981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      background-color: #0B0F17;
+      color: #F8FAFC;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 15px 60px;
+    }
+
+    /* Controls Header (Hidden in Print) */
+    .control-panel {
+      max-width: 900px;
+      width: 100%;
+      background: #1E293B;
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .panel-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .panel-title span {
+      color: var(--cyber-cyan);
+    }
+
+    .panel-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .select-input, .btn-action {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: #0F172A;
+      color: #FFF;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .btn-print-main {
+      background: var(--cyber-cyan);
+      color: #000;
+      font-weight: 800;
+      border: none;
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+      transition: all 0.2s;
+    }
+
+    .btn-print-main:hover {
+      background: #38BDF8;
+      transform: translateY(-1px);
+    }
+
+    .tips-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #94A3B8;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 12px;
+    }
+
+    .tips-bar strong {
+      color: var(--cyber-orange);
+    }
+
+    /* Print Sheets Container */
+    .sheets-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+    }
+
+    /* Sheet Page Dimension: Standard Letter (215.9mm x 279.4mm) */
+    .sheet-page {
+      width: 215.9mm;
+      height: 279.4mm;
+      background: #FFFFFF;
+      color: #0F172A;
+      padding: 12mm 15mm;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+      border-radius: 4px;
+    }
+
+    .sheet-label {
+      position: absolute;
+      top: 4mm;
+      left: 15mm;
+      right: 15mm;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      color: #64748B;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 2px;
+    }
+
+    /* 2 Columns x 4 Rows = 8 Cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 85mm);
+      grid-template-rows: repeat(4, 55mm);
+      gap: 4mm;
+      justify-content: center;
+      align-content: center;
+    }
+
+    /* Card Item (ISO 85mm x 55mm) */
+    .card-item {
+      width: 85mm;
+      height: 55mm;
+      padding: 4.5mm 5mm;
+      box-sizing: border-box;
+      border: 1px solid #CBD5E1;
+      border-radius: 1.5mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      background: #FFFFFF;
+      color: #0F172A;
+    }
+
+    /* Theme: Cyber Dark */
+    body.theme-dark .card-item {
+      background: #0F172A;
+      color: #F8FAFC;
+      border-color: #334155;
+    }
+
+    /* Card Front Styles */
+    .cf-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .cf-brand {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cf-logo-icon {
+      width: 16px;
+      height: 16px;
+      background: #FF7120;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      font-size: 10px;
+      font-weight: 900;
+    }
+    .cf-title-intepe {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.2px;
+    }
+    .cf-title-intepe span {
+      color: #FF7120;
+    }
+    .cf-sub-razon {
+      font-size: 9px;
+      font-weight: 700;
+      color: #475569;
+      margin-top: 1.5px;
+    }
+    body.theme-dark .cf-sub-razon {
+      color: #94A3B8;
+    }
+    .cf-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: #FFF7ED;
+      border: 1px solid #FFEDD5;
+      color: #C2410C;
+      text-transform: uppercase;
+    }
+    body.theme-dark .cf-badge {
+      background: rgba(0, 229, 255, 0.1);
+      border-color: rgba(0, 229, 255, 0.3);
+      color: #00E5FF;
+    }
+
+    .cf-body {
+      margin: auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .cf-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17.5px;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.3px;
+    }
+    .cf-role {
+      font-size: 12px;
+      font-weight: 800;
+      color: #EA580C;
+    }
+    body.theme-dark .cf-role {
+      color: #FF7120;
+    }
+    .cf-dept {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 600;
+      color: #64748B;
+    }
+    body.theme-dark .cf-dept {
+      color: #94A3B8;
+    }
+
+    .cf-footer {
+      border-top: 1.5px solid #E2E8F0;
+      padding-top: 2mm;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 600;
+      color: #334155;
+    }
+    body.theme-dark .cf-footer {
+      border-color: #334155;
+      color: #CBD5E1;
+    }
+    .cf-footer-full {
+      grid-column: span 2;
+      font-size: 8.5px;
+      color: #64748B;
+    }
+    body.theme-dark .cf-footer-full {
+      color: #94A3B8;
+    }
+
+    /* Card Back Styles */
+    .cb-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid #E2E8F0;
+      padding-bottom: 2mm;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+    }
+    body.theme-dark .cb-header {
+      border-color: #334155;
+    }
+    .cb-tag {
+      font-weight: 800;
+      color: #C2410C;
+      text-transform: uppercase;
+    }
+    body.theme-dark .cb-tag {
+      color: #FF7120;
+    }
+    .cb-city {
+      font-size: 9px;
+      color: #64748B;
+    }
+
+    .cb-content {
+      display: grid;
+      grid-template-columns: 1fr 20mm;
+      gap: 3mm;
+      align-items: center;
+      margin: auto 0;
+    }
+    .cb-services {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 600;
+      color: #1E293B;
+    }
+    body.theme-dark .cb-services {
+      color: #E2E8F0;
+    }
+    .cb-services div {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cb-services div::before {
+      content: "• ";
+      color: #FF7120;
+      font-weight: 900;
+    }
+
+    .cb-qr-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 4px;
+      padding: 1.5mm;
+    }
+    body.theme-dark .cb-qr-box {
+      background: rgba(255,255,255,0.05);
+      border-color: #334155;
+    }
+    .cb-qr-img {
+      width: 15mm;
+      height: 15mm;
+      background: #FFF;
+      padding: 1px;
+      border-radius: 2px;
+    }
+    .cb-qr-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7px;
+      font-weight: 800;
+      color: #C2410C;
+      margin-top: 1.5px;
+      text-transform: uppercase;
+    }
+    body.theme-dark .cb-qr-label {
+      color: #00E5FF;
+    }
+
+    .cb-footer {
+      border-top: 1.5px solid #E2E8F0;
+      padding-top: 2mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 600;
+      color: #64748B;
+    }
+    body.theme-dark .cb-footer {
+      border-color: #334155;
+      color: #94A3B8;
+    }
+    .cb-footer strong {
+      color: #FF7120;
+      font-size: 10px;
+    }
+
+    /* =========================================================================
+       PRINT RULES (Impresión Física / Dúplex)
+       ========================================================================= */
+    @media print {
+      @page {
+        size: letter portrait;
+        margin: 0;
+      }
+
+      body {
+        background: #FFFFFF !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .control-panel, .sheet-label {
+        display: none !important;
+      }
+
+      .sheets-wrapper {
+        gap: 0 !important;
+      }
+
+      .sheet-page {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        width: 215.9mm !important;
+        height: 279.4mm !important;
+        min-height: 279.4mm !important;
+        max-height: 279.4mm !important;
+        margin: 0 auto !important;
+        padding: 12mm 15mm !important;
+      }
+
+      .sheet-page:last-child {
+        page-break-after: auto !important;
+        break-after: auto !important;
+      }
+
+      .cards-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 85mm) !important;
+        grid-template-rows: repeat(4, 55mm) !important;
+        gap: 4mm !important;
+      }
+
+      .card-item {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+    }
+  </style>
+</head>
+<body class="theme-white">
+
+  <!-- Control Header (No Print) -->
+  <div class="control-panel">
+    <div class="panel-header">
+      <div class="panel-title">
+        🖨️ <span>Estudio de Impresión Dúplex (2 Hojas Frente + Reverso)</span>
+      </div>
+      <div class="panel-actions">
+        <select id="profileSelect" class="select-input" onchange="changeProfile(this.value)">
+          <option value="director">Ing. William Penagos (Director General)</option>
+          <option value="rrhh">Patricia Muñoz (Gerente RRHH)</option>
+          <option value="helpdesk">Mesa de Ayuda & Soporte</option>
+          <option value="comercial">Consultoría & Comercial</option>
+        </select>
+
+        <select id="themeSelect" class="select-input" onchange="changeTheme(this.value)">
+          <option value="white">⚪ Blanco Ejecutivo (Recomendado)</option>
+          <option value="dark">⚫ Cyber Dark</option>
+        </select>
+
+        <button onclick="window.print()" class="btn-action btn-print-main">
+          IMPRIMIR 2 HOJAS (PDF)
+        </button>
+      </div>
+    </div>
+
+    <div class="tips-bar">
+      <div><strong>📄 Papel:</strong> Propalcote 300g mate, Opalina 250g o Kimberly.</div>
+      <div><strong>🔄 Alineación Dúplex:</strong> Columnas espejadas para coincidencia 1:1 al voltear la hoja.</div>
+      <div><strong>✂️ Corte:</strong> 8 tarjetas estándar (85x55 mm) por hoja Carta/A4.</div>
+    </div>
+  </div>
+
+  <!-- Printable Sheets Container -->
+  <div class="sheets-wrapper">
+
+    <!-- HOJA 1: PLIEGO FRENTE (8 TARJETAS) -->
+    <div class="sheet-page" id="sheet-front">
+      <div class="sheet-label">
+        <span>📄 HOJA 1 DE 2: PLIEGO FRENTE (8 TARJETAS - ANVERSO)</span>
+        <span>INTEPE S.A.S. • NIT: 830.066.815-0</span>
+      </div>
+
+      <div class="cards-grid" id="grid-front">
+        <!-- Generado dinámicamente con JS -->
+      </div>
+    </div>
+
+    <!-- HOJA 2: PLIEGO REVERSO (8 TARJETAS CON COLUMNAS ESPEJADAS PARA DÚPLEX) -->
+    <div class="sheet-page" id="sheet-back">
+      <div class="sheet-label">
+        <span>🔄 HOJA 2 DE 2: PLIEGO REVERSO (8 TARJETAS - DORSO CON QR)</span>
+        <span>ALINEADO DÚPLEX 1:1 (GIRO BORDE LARGO)</span>
+      </div>
+
+      <div class="cards-grid" id="grid-back">
+        <!-- Generado dinámicamente con JS -->
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const profiles = {
+      director: {
+        name: "Ing. William Penagos",
+        role: "Director General & Especialista TI",
+        dept: "Dirección de Operaciones & Soluciones",
+        mobile: "(+57) 313 386 2656",
+        phone: "(601) 745 2345",
+        email: "director@intepe.net",
+        address: "Cl. 152a # 55-44, Bogotá",
+        website: "https://www.intepe.net",
+        nit: "830.066.815-0",
+        tag: "TI SOLUTIONS",
+        services: [
+          "Outsourcing TI Integral",
+          "Mesa de Ayuda L1/L2/L3",
+          "Infraestructura & Servidores",
+          "Desarrollo de Software a Medida"
+        ]
+      },
+      rrhh: {
+        name: "Patricia Muñoz",
+        role: "Gerente de Recursos Humanos",
+        dept: "Gestión del Talento & Desarrollo Organizacional",
+        mobile: "(+57) 313 386 2656",
+        phone: "(601) 745 2345",
+        email: "rrhh@intepe.net",
+        address: "Cl. 152a # 55-44, Bogotá",
+        website: "https://www.intepe.net",
+        nit: "830.066.815-0",
+        tag: "TALENTO TI",
+        services: [
+          "Gestión del Talento Humano",
+          "Selección de Personal TI",
+          "Bienestar & Clima Organizacional",
+          "Capacitación & Desarrollo TI"
+        ]
+      },
+      helpdesk: {
+        name: "Mesa de Ayuda & Soporte",
+        role: "Help Desk & Operaciones TI",
+        dept: "Atención y Soporte Técnico Especializado",
+        mobile: "(+57) 313 386 2656",
+        phone: "(601) 745 2345",
+        email: "soporte@intepe.net",
+        address: "Cl. 152a # 55-44, Bogotá",
+        website: "https://www.intepe.net/help-desk",
+        nit: "830.066.815-0",
+        tag: "SOPORTE TI",
+        services: [
+          "Atención Remota & Presencial",
+          "Mantenimiento Preventivo / Correctivo",
+          "Soporte a Redes & Servidores",
+          "Licenciamiento Google Workspace"
+        ]
+      },
+      comercial: {
+        name: "Consultoría & Soluciones TI",
+        role: "Asesoría Empresarial en Tecnología",
+        dept: "Proyectos & Transformación Digital",
+        mobile: "(+57) 313 386 2656",
+        phone: "(601) 745 2345",
+        email: "comercial@intepe.net",
+        address: "Cl. 152a # 55-44, Bogotá",
+        website: "https://www.intepe.net",
+        nit: "830.066.815-0",
+        tag: "VENTAS TI",
+        services: [
+          "Auditoría y Diagnóstico TI",
+          "Cotización de Outsourcing a Medida",
+          "Automatización de Procesos ERP",
+          "Planes Corporativos Mensuales"
+        ]
+      }
+    };
+
+    let currentProfile = profiles.director;
+    let qrDataUrl = "";
+
+    function renderCards() {
+      const gridFront = document.getElementById('grid-front');
+      const gridBack = document.getElementById('grid-back');
+
+      // Generate QR
+      QRCode.toDataURL(currentProfile.website, {
+        width: 200,
+        margin: 1,
+        color: { dark: '#000000', light: '#FFFFFF' }
+      }, function (err, url) {
+        if (!err) qrDataUrl = url;
+        populateGrids();
+      });
+    }
+
+    function populateGrids() {
+      const gridFront = document.getElementById('grid-front');
+      const gridBack = document.getElementById('grid-back');
+
+      gridFront.innerHTML = '';
+      gridBack.innerHTML = '';
+
+      const p = currentProfile;
+
+      // 8 Front Cards (2 col x 4 rows)
+      for (let i = 0; i < 8; i++) {
+        const cardFront = document.createElement('div');
+        cardFront.className = 'card-item';
+        cardFront.innerHTML = `
+          <div class="cf-header">
+            <div class="cf-brand">
+              <div class="cf-logo-icon" style="background: transparent;">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FF7120" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="16" height="16" x="4" y="4" rx="2.5" fill="rgba(255, 113, 32, 0.08)"/>
+                  <rect width="6" height="6" x="9" y="9" rx="1" fill="#FF7120"/>
+                  <path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/>
+                </svg>
+              </div>
+              <div>
+                <div class="cf-title-intepe">INTEPE <span>S.A.S.</span></div>
+                <div class="cf-sub-razon">Informática y Tecnología Penagos S.A.S.</div>
+              </div>
+            </div>
+            <div class="cf-badge">${p.tag}</div>
+          </div>
+
+          <div class="cf-body">
+            <div class="cf-name">${p.name}</div>
+            <div class="cf-role">${p.role}</div>
+            <div class="cf-dept">${p.dept}</div>
+          </div>
+
+          <div class="cf-footer">
+            <div>📞 ${p.mobile}</div>
+            <div style="text-align: right;">✉️ ${p.email}</div>
+            <div class="cf-footer-full">🌐 www.intepe.net • NIT: ${p.nit}</div>
+          </div>
+        `;
+        gridFront.appendChild(cardFront);
+      }
+
+      // 8 Back Cards (Columnas espejadas para coincidencia dúplex)
+      for (let i = 0; i < 8; i++) {
+        const cardBack = document.createElement('div');
+        cardBack.className = 'card-item';
+        cardBack.innerHTML = `
+          <div class="cb-header">
+            <span class="cb-tag">// ${p.tag === 'TALENTO TI' ? 'GESTIÓN HUMANA' : 'SERVICIOS TI'}</span>
+            <span class="cb-city">Bogotá, CO</span>
+          </div>
+
+          <div class="cb-content">
+            <div class="cb-services">
+              ${p.services.map(s => `<div>${s}</div>`).join('')}
+            </div>
+            <div class="cb-qr-box">
+              <img src="${qrDataUrl}" alt="QR" class="cb-qr-img" />
+              <span class="cb-qr-text">ESCANEAR</span>
+            </div>
+          </div>
+
+          <div class="cb-footer">
+            <span>${p.address}</span>
+            <strong>intepe.net</strong>
+          </div>
+        `;
+        gridBack.appendChild(cardBack);
+      }
+    }
+
+    function changeProfile(key) {
+      if (profiles[key]) {
+        currentProfile = profiles[key];
+        renderCards();
+      }
+    }
+
+    function changeTheme(theme) {
+      if (theme === 'dark') {
+        document.body.classList.remove('theme-white');
+        document.body.classList.add('theme-dark');
+      } else {
+        document.body.classList.remove('theme-dark');
+        document.body.classList.add('theme-white');
+      }
+    }
+
+    // Init on load
+    renderCards();
+  </script>
+</body>
+</html>

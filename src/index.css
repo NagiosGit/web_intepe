@@ -332,12 +332,18 @@
 }
 
 /* ==========================================================================
-   PRINT STYLESHEET (Estilos optimizados para Impresión Física de Papelería)
+   PRINT STYLESHEET (Estilos optimizados para Impresión Física Dúplex 2 Hojas)
    ========================================================================== */
 @media print {
   @page {
     size: letter portrait;
-    margin: 8mm;
+    margin: 0;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   html, body {
@@ -345,8 +351,20 @@
     color: #000000 !important;
     margin: 0 !important;
     padding: 0 !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  #root, main, .business-card-page-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
   }
 
   /* Ocultar elementos no imprimibles */
@@ -360,29 +378,68 @@
   .hud-corner-tl,
   .hud-corner-tr,
   .hud-corner-bl,
-  .hud-corner-br {
+  .hud-corner-br,
+  .fixed {
     display: none !important;
   }
 
-  /* Asegurar que el contenedor de impresión sea visible y centrado */
+  /* Contenedores de hojas de pliego para impresión */
   .printable-card-container {
     display: block !important;
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
-    margin: 0 auto !important;
+    margin: 0 !important;
     padding: 0 !important;
     box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  .print-sheet-page {
+    width: 215.9mm !important;
+    height: 279.4mm !important;
+    min-height: 279.4mm !important;
+    max-height: 279.4mm !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    margin: 0 auto !important;
+    padding: 12mm 15mm !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: #FFFFFF !important;
+    overflow: hidden !important;
+  }
+
+  .print-sheet-page:last-of-type {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  .print-sheet-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 85mm) !important;
+    gap: 4mm !important;
+    justify-content: center !important;
+    align-content: center !important;
+    margin: 0 auto !important;
+  }
+
+  .print-card-item {
+    width: 85mm !important;
+    height: 55mm !important;
+    box-sizing: border-box !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
   .print-page-break {
-    page-break-after: always;
-    break-after: page;
+    page-break-after: always !important;
+    break-after: page !important;
   }
 
   .print-avoid-break {
-    page-break-inside: avoid;
-    break-inside: avoid;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 }
 
