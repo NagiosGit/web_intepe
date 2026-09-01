@@ -165,9 +165,10 @@
       flex-direction: column;
       background: var(--card-inner);
       border: 1px solid var(--border);
-      padding: 14px 18px;
-      border-radius: 10px;
+      padding: 16px 20px;
+      border-radius: 12px;
       transition: all 0.2s;
+      gap: 8px;
     }
 
     .link-item:hover {
@@ -176,26 +177,98 @@
       transform: translateY(-1px);
     }
 
-    .link-label {
-      font-size: 13px;
-      font-weight: 600;
+    .link-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding-bottom: 6px;
+    }
+
+    .link-title {
+      font-size: 14px;
+      font-weight: 700;
       color: #FFF;
-      margin-bottom: 4px;
+    }
+
+    .badge-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(255, 113, 32, 0.15);
+      border: 1px solid rgba(255, 113, 32, 0.35);
+      color: var(--cyber-orange);
+      text-transform: uppercase;
+    }
+
+    .link-grid-dual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .link-grid-dual {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+
+    .link-col {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .link-env-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: #94A3B8;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
+    }
+
+    .link-env-badge.prod {
+      color: #34D399;
+    }
+
+    .link-env-badge.local {
+      color: var(--cyber-cyan);
     }
 
     .link-url {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      color: var(--cyber-cyan);
+      font-size: 12.5px;
+      color: #E2E8F0;
       text-decoration: none;
       word-break: break-all;
+      background: rgba(0,0,0,0.3);
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.15s;
     }
 
     .link-url:hover {
-      text-decoration: underline;
+      color: var(--cyber-cyan);
+      border-color: var(--cyber-cyan);
+      background: rgba(0, 229, 255, 0.08);
+      text-decoration: none;
+    }
+
+    .link-url.prod-url {
+      color: #A7F3D0;
+    }
+
+    .link-url.prod-url:hover {
+      color: #34D399;
+      border-color: #34D399;
+      background: rgba(52, 211, 153, 0.08);
     }
 
     .btn-row {
@@ -375,53 +448,106 @@
 
     <!-- ENLACES DE ACCESO -->
     <div class="section">
-      <div class="section-title">🌐 Enlaces de Acceso Web</div>
+      <div class="section-title">🌐 Enlaces de Acceso Web (Localhost y Producción Oficial)</div>
       
       <div class="link-list">
         
+        <!-- Item 1: Director General -->
         <div class="link-item">
-          <div class="link-label">1. Servidor Local (Desarrollo Activo):</div>
-          <a class="link-url" href="http://localhost:5173/tarjeta-presentacion" target="_blank">
-            http://localhost:5173/tarjeta-presentacion
-          </a>
+          <div class="link-header">
+            <span class="link-title">👔 1. Tarjeta Director General — Ing. William Penagos</span>
+            <span class="badge-role">TI SOLUTIONS</span>
+          </div>
+          <div class="link-grid-dual">
+            <div class="link-col">
+              <span class="link-env-badge prod">🌐 Producción Oficial (Internet):</span>
+              <a class="link-url prod-url" href="https://www.intepe.net/tarjeta?p=director" target="_blank">
+                https://www.intepe.net/tarjeta?p=director
+              </a>
+            </div>
+            <div class="link-col">
+              <span class="link-env-badge local">💻 Servidor Local (Desarrollo):</span>
+              <a class="link-url" href="http://localhost:5173/tarjeta?p=director" target="_blank">
+                http://localhost:5173/tarjeta?p=director
+              </a>
+            </div>
+          </div>
         </div>
 
+        <!-- Item 2: Gerente RRHH -->
         <div class="link-item">
-          <div class="link-label">2. Enlace Directo Director (Ing. William Penagos):</div>
-          <a class="link-url" href="http://localhost:5173/tarjeta?p=director" target="_blank">
-            http://localhost:5173/tarjeta?p=director
-          </a>
+          <div class="link-header">
+            <span class="link-title">👩‍💼 2. Tarjeta Gestión Humana — Patricia Muñoz</span>
+            <span class="badge-role" style="color: #34D399; background: rgba(52, 211, 153, 0.15); border-color: rgba(52, 211, 153, 0.35);">TALENTO TI</span>
+          </div>
+          <div class="link-grid-dual">
+            <div class="link-col">
+              <span class="link-env-badge prod">🌐 Producción Oficial (Internet):</span>
+              <a class="link-url prod-url" href="https://www.intepe.net/tarjeta?p=rrhh" target="_blank">
+                https://www.intepe.net/tarjeta?p=rrhh
+              </a>
+            </div>
+            <div class="link-col">
+              <span class="link-env-badge local">💻 Servidor Local (Desarrollo):</span>
+              <a class="link-url" href="http://localhost:5173/tarjeta?p=rrhh" target="_blank">
+                http://localhost:5173/tarjeta?p=rrhh
+              </a>
+            </div>
+          </div>
         </div>
 
+        <!-- Item 3: Mesa de Ayuda / Soporte TI -->
         <div class="link-item">
-          <div class="link-label">3. Enlace Directo RRHH (Patricia Muñoz):</div>
-          <a class="link-url" href="http://localhost:5173/tarjeta?p=rrhh" target="_blank">
-            http://localhost:5173/tarjeta?p=rrhh
-          </a>
+          <div class="link-header">
+            <span class="link-title">🎧 3. Tarjeta Mesa de Ayuda & Soporte TI</span>
+            <span class="badge-role" style="color: #00E5FF; background: rgba(0, 229, 255, 0.15); border-color: rgba(0, 229, 255, 0.35);">SOPORTE TI</span>
+          </div>
+          <div class="link-grid-dual">
+            <div class="link-col">
+              <span class="link-env-badge prod">🌐 Producción Oficial (Internet):</span>
+              <a class="link-url prod-url" href="https://www.intepe.net/tarjeta?p=helpdesk" target="_blank">
+                https://www.intepe.net/tarjeta?p=helpdesk
+              </a>
+            </div>
+            <div class="link-col">
+              <span class="link-env-badge local">💻 Servidor Local (Desarrollo):</span>
+              <a class="link-url" href="http://localhost:5173/tarjeta?p=helpdesk" target="_blank">
+                http://localhost:5173/tarjeta?p=helpdesk
+              </a>
+            </div>
+          </div>
         </div>
 
+        <!-- Item 4: Portal Central de Tarjetas -->
         <div class="link-item">
-          <div class="link-label">4. Enlace Directo Mesa de Ayuda (Soporte TI):</div>
-          <a class="link-url" href="http://localhost:5173/tarjeta?p=helpdesk" target="_blank">
-            http://localhost:5173/tarjeta?p=helpdesk
-          </a>
-        </div>
-
-        <div class="link-item">
-          <div class="link-label">5. Enlace Público Oficial (Producción en Internet):</div>
-          <a class="link-url" href="https://www.intepe.net/tarjeta" target="_blank">
-            https://www.intepe.net/tarjeta
-          </a>
+          <div class="link-header">
+            <span class="link-title">⚡ 4. Portal General de Tarjetas Digitales</span>
+            <span class="badge-role">PORTAL GENERAL</span>
+          </div>
+          <div class="link-grid-dual">
+            <div class="link-col">
+              <span class="link-env-badge prod">🌐 Producción Oficial (Internet):</span>
+              <a class="link-url prod-url" href="https://www.intepe.net/tarjeta" target="_blank">
+                https://www.intepe.net/tarjeta
+              </a>
+            </div>
+            <div class="link-col">
+              <span class="link-env-badge local">💻 Servidor Local (Desarrollo):</span>
+              <a class="link-url" href="http://localhost:5173/tarjeta" target="_blank">
+                http://localhost:5173/tarjeta
+              </a>
+            </div>
+          </div>
         </div>
 
       </div>
 
       <div class="btn-row">
-        <a class="btn btn-primary" href="http://localhost:5173/tarjeta?p=director" target="_blank">
-          👔 Tarjeta Ing. William Penagos
+        <a class="btn btn-primary" href="https://www.intepe.net/tarjeta?p=director" target="_blank">
+          👔 Web: William Penagos
         </a>
-        <a class="btn btn-emerald" href="http://localhost:5173/tarjeta?p=rrhh" target="_blank">
-          👩‍💼 Tarjeta Patricia Muñoz (RRHH)
+        <a class="btn btn-emerald" href="https://www.intepe.net/tarjeta?p=rrhh" target="_blank">
+          👩‍💼 Web: Patricia Muñoz (RRHH)
         </a>
         <a class="btn btn-cyan" href="PLIEGO_IMPRESION_TARJETAS_DOBLE_CARA.html" target="_blank">
           🖨️ Pliego Dúplex 2 Hojas (.HTML)
@@ -432,8 +558,8 @@
         <a class="btn btn-emerald" href="Pliego_Tarjetas_Patricia_Munoz.docx" download>
           📄 Word (.DOCX): Patricia Muñoz
         </a>
-        <a class="btn btn-cyan" href="http://localhost:5173/tarjeta?p=helpdesk" target="_blank">
-          🎧 Tarjeta Soporte Help Desk
+        <a class="btn btn-cyan" href="https://www.intepe.net/tarjeta?p=helpdesk" target="_blank">
+          🎧 Web: Soporte Help Desk
         </a>
         <a class="btn btn-cyan" href="Tarjeta_Presentacion_INTEPE.html" target="_blank">
           💾 Offline: William Penagos (.HTML)

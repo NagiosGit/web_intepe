@@ -26,6 +26,7 @@ import {
   FileText
 } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
+import { IntepeLogoIcon } from '../components/common/IntepeLogoIcon';
 
 interface CardProfile {
   id: string;
@@ -1042,8 +1043,8 @@ export const BusinessCardPage: React.FC = () => {
                   {/* Header: Logo & Chip */}
                   <div className="relative z-10 flex items-start justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="relative p-2 rounded-lg bg-white/5 border border-white/10">
-                        <Cpu className={`w-7 h-7 ${cardTheme === 'minimal-white' ? 'text-[#FF7120]' : 'text-[#FF7120]'}`} />
+                      <div className="relative w-9 h-9 flex items-center justify-center">
+                        <IntepeLogoIcon className="w-9 h-9 drop-shadow-[0_0_8px_rgba(255,113,32,0.4)]" />
                         <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-400 animate-ping"></div>
                         <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-400"></div>
                       </div>

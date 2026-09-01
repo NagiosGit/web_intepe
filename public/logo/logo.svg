@@ -1,59 +1,65 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
   <defs>
-    <!-- Background Gradient -->
-    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#111822" />
-      <stop offset="100%" stop-color="#080B0E" />
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1626" />
+      <stop offset="100%" stop-color="#070B12" />
     </linearGradient>
-
-    <!-- Neon Orange Glow Filter -->
-    <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="8" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
+    <linearGradient id="chipBodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141E30" />
+      <stop offset="100%" stop-color="#0B101D" />
+    </linearGradient>
+    <linearGradient id="coreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8A3D" />
+      <stop offset="100%" stop-color="#FF7120" />
+    </linearGradient>
   </defs>
 
-  <!-- Ambient Outer Glow -->
-  <rect x="56" y="56" width="400" height="400" rx="88" ry="88" fill="none" stroke="#FF7120" stroke-width="4" opacity="0.25" filter="url(#neonGlow)" />
+  <rect x="40" y="40" width="432" height="432" rx="90" ry="90" fill="url(#bgGrad)" stroke="#FF7120" stroke-width="10" />
 
-  <!-- Main Squircle Card Body -->
-  <rect x="64" y="64" width="384" height="384" rx="80" ry="80" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2.5" />
+  <g stroke="#FF7120" stroke-width="12" stroke-linecap="round">
+    <line x1="172" y1="140" x2="172" y2="88" />
+    <line x1="228" y1="140" x2="228" y2="88" />
+    <line x1="284" y1="140" x2="284" y2="88" />
+    <line x1="340" y1="140" x2="340" y2="88" />
 
-  <!-- Neon Orange HUD Corner Brackets -->
-  <!-- Top-Left Corner -->
-  <path d="M 96 160 L 96 96 L 160 96" fill="none" stroke="#FF7120" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)" />
-  <!-- Bottom-Right Corner -->
-  <path d="M 416 352 L 416 416 L 352 416" fill="none" stroke="#FF7120" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)" />
+    <line x1="172" y1="372" x2="172" y2="424" />
+    <line x1="228" y1="372" x2="228" y2="424" />
+    <line x1="284" y1="372" x2="284" y2="424" />
+    <line x1="340" y1="372" x2="340" y2="424" />
 
-  <!-- CPU MICROCHIP -->
-  <g transform="translate(144, 144)">
-    <!-- Top Pins -->
-    <line x1="56" y1="0" x2="56" y2="-36" stroke="#FF7120" stroke-width="10" stroke-linecap="round" />
-    <line x1="112" y1="0" x2="112" y2="-36" stroke="#FF7120" stroke-width="10" stroke-linecap="round" />
-    <line x1="168" y1="0" x2="168" y2="-36" stroke="#FF7120" stroke-width="10" stroke-linecap="round" />
+    <line x1="140" y1="172" x2="88" y2="172" />
+    <line x1="140" y1="228" x2="88" y2="228" />
+    <line x1="140" y1="284" x2="88" y2="284" />
+    <line x1="140" y1="340" x2="88" y2="340" />
 
-    <!-- Bottom Pins -->
-    <line x1="56" y1="224" x2="56" y2="260" stroke="#FF7120" stroke-width="10" stroke-linecap="round" />
-    <line x1="112" y1="224" x2="112" y2="260" stroke="#FF7120" stroke-width="10" stroke-linecap="round" />
-    <line x1="168" y1="224" x2="168" y2="260" stroke="#FF7120" stroke-width="10" stroke-linecap="round" />
-
-    <!-- Left Pins -->
-    <line x1="0" y1="56" x2="-36" y2="56" stroke="#FF7120" stroke-width="10" stroke-linecap="round" />
-    <line x1="0" y1="112" x2="-36" y2="112" stroke="#FF7120" stroke-width="10" stroke-linecap="round" />
-    <line x1="0" y1="168" x2="-36" y2="168" stroke="#FF7120" stroke-width="10" stroke-linecap="round" />
-
-    <!-- Right Pins -->
-    <line x1="224" y1="56" x2="260" y2="56" stroke="#FF7120" stroke-width="10" stroke-linecap="round" />
-    <line x1="224" y1="112" x2="260" y2="112" stroke="#FF7120" stroke-width="10" stroke-linecap="round" />
-    <line x1="224" y1="168" x2="260" y2="168" stroke="#FF7120" stroke-width="10" stroke-linecap="round" />
-
-    <!-- Outer Chip Processor Frame -->
-    <rect x="0" y="0" width="224" height="224" rx="40" ry="40" fill="none" stroke="#FF7120" stroke-width="14" stroke-linejoin="round" filter="url(#neonGlow)" />
-
-    <!-- Inner Silicon Core Die -->
-    <rect x="62" y="62" width="100" height="100" rx="22" ry="22" fill="none" stroke="#FF7120" stroke-width="12" stroke-linejoin="round" />
+    <line x1="372" y1="172" x2="424" y2="172" />
+    <line x1="372" y1="228" x2="424" y2="228" />
+    <line x1="372" y1="284" x2="424" y2="284" />
+    <line x1="372" y1="340" x2="424" y2="340" />
   </g>
+
+  <g fill="#00E5FF">
+    <circle cx="172" cy="86" r="10" />
+    <circle cx="228" cy="86" r="10" />
+    <circle cx="284" cy="86" r="10" />
+    <circle cx="340" cy="86" r="10" />
+
+    <circle cx="172" cy="426" r="10" />
+    <circle cx="228" cy="426" r="10" />
+    <circle cx="284" cy="426" r="10" />
+    <circle cx="340" cy="426" r="10" />
+
+    <circle cx="86" cy="172" r="10" />
+    <circle cx="86" cy="228" r="10" />
+    <circle cx="86" cy="284" r="10" />
+    <circle cx="86" cy="340" r="10" />
+
+    <circle cx="426" cy="172" r="10" />
+    <circle cx="426" cy="228" r="10" />
+    <circle cx="426" cy="284" r="10" />
+    <circle cx="426" cy="340" r="10" />
+  </g>
+
+  <rect x="136" y="136" width="240" height="240" rx="34" ry="34" fill="url(#chipBodyGrad)" stroke="#FF7120" stroke-width="12" />
+  <rect x="188" y="188" width="136" height="136" rx="20" ry="20" fill="url(#coreGrad)" stroke="#FF8A3D" stroke-width="3" />
 </svg>

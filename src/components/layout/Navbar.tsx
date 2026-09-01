@@ -16,10 +16,10 @@ import {
   Layers,
   Sprout,
   Calculator,
-  Cpu,
   CreditCard
 } from 'lucide-react';
 import { siteConfig } from '../../config/siteConfig';
+import { IntepeLogoIcon } from '../common/IntepeLogoIcon';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -134,10 +134,8 @@ export const Navbar: React.FC = () => {
           
           {/* Brand Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-[#FF7120]/50 transition-colors">
-              <div className="hud-corner-tl"></div>
-              <div className="hud-corner-br"></div>
-              <Cpu className="w-6 h-6 text-[#FF7120] transition-transform group-hover:scale-110" />
+            <div className="relative w-10 h-10 flex items-center justify-center transition-transform group-hover:scale-105">
+              <IntepeLogoIcon className="w-10 h-10 drop-shadow-[0_0_8px_rgba(255,113,32,0.4)]" />
             </div>
             <div>
               <span className="text-xl font-bold tracking-tight text-white font-['Space_Grotesk']">

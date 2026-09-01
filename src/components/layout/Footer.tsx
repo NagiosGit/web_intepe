@@ -4,13 +4,13 @@ import {
   Mail, 
   Phone, 
   ChevronRight, 
-  Cpu,
   Calculator,
   Terminal,
   CreditCard,
   Lock
 } from 'lucide-react';
 import { siteConfig } from '../../config/siteConfig';
+import { IntepeLogoIcon } from '../common/IntepeLogoIcon';
 
 export const Footer: React.FC = () => {
   return (
@@ -64,8 +64,8 @@ export const Footer: React.FC = () => {
           {/* Col 1: Corporate Profile & Logo (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-[#FF7120]">
-                <Cpu className="w-6 h-6" />
+              <div className="w-10 h-10 flex items-center justify-center">
+                <IntepeLogoIcon className="w-10 h-10 drop-shadow-[0_0_8px_rgba(255,113,32,0.3)]" />
               </div>
               <div>
                 <span className="text-xl font-bold tracking-tight text-white font-['Space_Grotesk']">
