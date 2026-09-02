@@ -14,7 +14,6 @@ import {
   Copy, 
   Sparkles, 
   ShieldCheck, 
-  Cpu, 
   Sliders, 
   Smartphone, 
   Eye,
@@ -50,7 +49,7 @@ const defaultProfiles: Record<string, CardProfile> = {
     department: 'Dirección de Operaciones & Soluciones',
     mobile: siteConfig.mobile,
     phone: siteConfig.phone,
-    email: siteConfig.email,
+    email: 'williampenagos@intepe.net',
     address: siteConfig.address,
     website: 'https://www.intepe.net',
     nit: siteConfig.nit,
@@ -341,10 +340,36 @@ export const BusinessCardPage: React.FC = () => {
         <div class="cf-top">
           <div class="cf-brand">
             <div class="cf-logo-box">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FF7120" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="16" height="16" x="4" y="4" rx="2.5" fill="rgba(255, 113, 32, 0.08)"/>
-                <rect width="6" height="6" x="9" y="9" rx="1" fill="#FF7120"/>
-                <path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/>
+              <svg viewBox="0 0 512 512" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="cfLogoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#0E1626" />
+                    <stop offset="100%" stop-color="#070B12" />
+                  </linearGradient>
+                  <linearGradient id="cfChipBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#141E30" />
+                    <stop offset="100%" stop-color="#0B101D" />
+                  </linearGradient>
+                  <linearGradient id="cfCoreBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FF8A3D" />
+                    <stop offset="100%" stop-color="#FF7120" />
+                  </linearGradient>
+                </defs>
+                <rect x="40" y="40" width="432" height="432" rx="90" ry="90" fill="url(#cfLogoBg)" stroke="#FF7120" stroke-width="10" />
+                <g stroke="#FF7120" stroke-width="12" stroke-linecap="round">
+                  <line x1="172" y1="140" x2="172" y2="88" /><line x1="228" y1="140" x2="228" y2="88" /><line x1="284" y1="140" x2="284" y2="88" /><line x1="340" y1="140" x2="340" y2="88" />
+                  <line x1="172" y1="372" x2="172" y2="424" /><line x1="228" y1="372" x2="228" y2="424" /><line x1="284" y1="372" x2="284" y2="424" /><line x1="340" y1="372" x2="340" y2="424" />
+                  <line x1="140" y1="172" x2="88" y2="172" /><line x1="140" y1="228" x2="88" y2="228" /><line x1="140" y1="284" x2="88" y2="284" /><line x1="140" y1="340" x2="88" y2="340" />
+                  <line x1="372" y1="172" x2="424" y2="172" /><line x1="372" y1="228" x2="424" y2="228" /><line x1="372" y1="284" x2="424" y2="284" /><line x1="372" y1="340" x2="424" y2="340" />
+                </g>
+                <g fill="#00E5FF">
+                  <circle cx="172" cy="86" r="10" /><circle cx="228" cy="86" r="10" /><circle cx="284" cy="86" r="10" /><circle cx="340" cy="86" r="10" />
+                  <circle cx="172" cy="426" r="10" /><circle cx="228" cy="426" r="10" /><circle cx="284" cy="426" r="10" /><circle cx="340" cy="426" r="10" />
+                  <circle cx="86" cy="172" r="10" /><circle cx="86" cy="228" r="10" /><circle cx="86" cy="284" r="10" /><circle cx="86" cy="340" r="10" />
+                  <circle cx="426" cy="172" r="10" /><circle cx="426" cy="228" r="10" /><circle cx="426" cy="284" r="10" /><circle cx="426" cy="340" r="10" />
+                </g>
+                <rect x="136" y="136" width="240" height="240" rx="34" ry="34" fill="url(#cfChipBg)" stroke="#FF7120" stroke-width="12" />
+                <rect x="188" y="188" width="136" height="136" rx="20" ry="20" fill="url(#cfCoreBg)" stroke="#FF8A3D" stroke-width="3" />
               </svg>
             </div>
             <div>
@@ -464,7 +489,7 @@ export const BusinessCardPage: React.FC = () => {
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Impresion Tarjetas INTEPE S.A.S. - ${profile.name}</title>
+  <title>Tarjetas_INTEPE_${profile.name.replace(/\s+/g, '_')}</title>
   <style>
     @page {
       size: letter portrait;
@@ -486,58 +511,66 @@ export const BusinessCardPage: React.FC = () => {
     }
     .page-sheet {
       width: 215.9mm;
-      height: 279.4mm;
+      height: 279mm;
+      max-height: 279mm;
       box-sizing: border-box;
-      padding: 12mm 15.45mm;
+      padding: 5mm 12mm;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      page-break-after: always;
-      break-after: page;
+      page-break-before: auto;
+      page-break-after: always !important;
+      break-after: page !important;
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
       background: #FFFFFF;
       overflow: hidden;
       position: relative;
     }
     .page-sheet:last-of-type {
-      page-break-after: auto;
-      break-after: auto;
+      page-break-after: avoid !important;
+      break-after: avoid !important;
     }
     .sheet-label {
-      width: 174mm;
-      margin-bottom: 3mm;
+      width: 173mm;
+      margin-bottom: 2mm;
       font-family: monospace;
-      font-size: 8px;
+      font-size: 7.5px;
       font-weight: 700;
       color: #64748B;
       text-transform: uppercase;
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px solid #E2E8F0;
-      padding-bottom: 1.5mm;
+      border-bottom: 1px solid #CBD5E1;
+      padding-bottom: 1mm;
+      line-height: 1;
     }
     .cards-grid {
       display: grid;
       grid-template-columns: 85mm 85mm;
-      grid-template-rows: repeat(4, 55mm);
-      gap: 4mm;
+      grid-template-rows: repeat(4, 53mm);
+      gap: 2mm 3mm;
       justify-content: center;
       align-content: center;
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
     }
     .card-box {
       width: 85mm;
-      height: 55mm;
+      height: 53mm;
       box-sizing: border-box;
-      padding: 4.5mm 5mm;
+      padding: 3.5mm 4.5mm;
       border: 1px solid ${borderColor};
-      border-radius: 1.5mm;
+      border-radius: 1mm;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       background: ${bgCard};
       color: ${textMain};
-      page-break-inside: avoid;
-      break-inside: avoid;
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+      overflow: hidden;
     }
     .cf-top {
       display: flex;
@@ -547,11 +580,11 @@ export const BusinessCardPage: React.FC = () => {
     .cf-brand {
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
     }
     .cf-logo-box {
-      width: 22px;
-      height: 22px;
+      width: 36px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1012,7 +1045,7 @@ export const BusinessCardPage: React.FC = () => {
             
             {/* 3D Flip Card Container */}
             <div 
-              className="perspective-1000 w-full max-w-[500px] h-[300px] sm:h-[315px] cursor-pointer select-none group"
+              className="perspective-1000 w-full max-w-[500px] h-[315px] sm:h-[325px] cursor-pointer select-none group"
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
               onClick={toggleFlip}
@@ -1042,27 +1075,27 @@ export const BusinessCardPage: React.FC = () => {
 
                   {/* Header: Logo & Chip */}
                   <div className="relative z-10 flex items-start justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="relative w-9 h-9 flex items-center justify-center">
-                        <IntepeLogoIcon className="w-9 h-9 drop-shadow-[0_0_8px_rgba(255,113,32,0.4)]" />
-                        <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-400 animate-ping"></div>
-                        <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-400"></div>
+                    <div className="flex items-center gap-3.5 sm:gap-4">
+                      <div className="relative w-14 h-14 sm:w-16 sm:h-16 shrink-0 flex items-center justify-center">
+                        <IntepeLogoIcon className="w-14 h-14 sm:w-16 sm:h-16 drop-shadow-[0_0_14px_rgba(255,113,32,0.45)]" />
+                        <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></div>
+                        <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
                       </div>
                       <div>
-                        <div className={`text-xl sm:text-2xl font-black tracking-tight font-['Space_Grotesk'] leading-none ${cardTheme === 'minimal-white' ? 'text-slate-900' : 'text-white'}`}>
+                        <div className={`text-2xl sm:text-[26px] font-black tracking-tight font-['Space_Grotesk'] leading-none ${cardTheme === 'minimal-white' ? 'text-slate-900' : 'text-white'}`}>
                           INTEPE <span className="text-[#FF7120]">S.A.S.</span>
                         </div>
-                        <div className={`text-[10px] font-sans font-bold tracking-tight mt-0.5 ${cardTheme === 'minimal-white' ? 'text-slate-700' : 'text-slate-300'}`}>
+                        <div className={`text-[11px] sm:text-xs font-sans font-bold tracking-tight mt-1 ${cardTheme === 'minimal-white' ? 'text-slate-700' : 'text-slate-300'}`}>
                           Informática y Tecnología Penagos S.A.S.
                         </div>
-                        <div className={`text-[9px] font-mono tracking-widest uppercase mt-0.5 ${cardTheme === 'minimal-white' ? 'text-slate-500' : 'text-slate-400'}`}>
+                        <div className={`text-[9.5px] sm:text-[10px] font-mono tracking-widest uppercase mt-0.5 ${cardTheme === 'minimal-white' ? 'text-slate-500' : 'text-slate-400'}`}>
                           NIT: {profile.nit}
                         </div>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded border uppercase tracking-wider ${
+                      <span className={`text-[10px] font-mono px-2.5 py-1 rounded border uppercase tracking-wider font-semibold ${
                         cardTheme === 'minimal-white' 
                           ? 'bg-slate-100 border-slate-300 text-slate-700 font-bold' 
                           : 'bg-white/5 border-white/10 text-cyan-400'
@@ -1177,7 +1210,10 @@ export const BusinessCardPage: React.FC = () => {
                         {profile.address}
                       </span>
                     </div>
-                    <span className="text-[#FF7120] font-bold shrink-0 ml-2">intepe.net</span>
+                    <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                      <IntepeLogoIcon className="w-3.5 h-3.5" />
+                      <span className="text-[#FF7120] font-bold">intepe.net</span>
+                    </div>
                   </div>
                 </div>
 
@@ -1413,12 +1449,21 @@ export const BusinessCardPage: React.FC = () => {
                   </button>
                 </div>
 
+                <a
+                  href={profile.id === 'rrhh' ? '/downloads/Pliego_Tarjetas_Patricia_Munoz.pdf' : '/downloads/Pliego_Tarjetas_Ing_William_Penagos.pdf'}
+                  download
+                  className="px-5 py-2.5 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-bold font-['Space_Grotesk'] text-xs flex items-center gap-2 transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)] cursor-pointer"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>DESCARGAR PDF (2 HOJAS)</span>
+                </a>
+
                 <button
                   onClick={handlePrint}
-                  className="px-5 py-2.5 rounded bg-cyan-400 hover:bg-cyan-300 text-black font-bold font-['Space_Grotesk'] text-xs flex items-center gap-2 transition-all shadow-[0_0_20px_rgba(0,229,255,0.4)] cursor-pointer"
+                  className="px-4 py-2.5 rounded bg-cyan-400 hover:bg-cyan-300 text-black font-bold font-['Space_Grotesk'] text-xs flex items-center gap-2 transition-all shadow-[0_0_20px_rgba(0,229,255,0.4)] cursor-pointer"
                 >
                   <Printer className="w-4 h-4" />
-                  <span>IMPRIMIR / GUARDAR PDF</span>
+                  <span>IMPRIMIR EN IMPRESORA</span>
                 </button>
 
                 <a
@@ -1488,9 +1533,9 @@ export const BusinessCardPage: React.FC = () => {
                       }}
                     >
                       <div className="flex items-start justify-between">
-                        <div className="flex items-center gap-2.5">
-                          <div className={`p-1.5 rounded ${cardTheme === 'minimal-white' ? 'bg-orange-50 border border-orange-200' : 'bg-white/5 border border-white/10'}`}>
-                            <Cpu className="w-5 h-5 text-[#FF7120]" />
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 shrink-0 flex items-center justify-center">
+                            <IntepeLogoIcon className="w-10 h-10 drop-shadow-sm" />
                           </div>
                           <div>
                             <div className={`text-base font-black tracking-tight font-['Space_Grotesk'] leading-none ${cardTheme === 'minimal-white' ? 'text-slate-900' : 'text-white'}`}>
@@ -1648,8 +1693,10 @@ export const BusinessCardPage: React.FC = () => {
                         }}
                       >
                         <div className="flex items-start justify-between">
-                          <div className="flex items-center gap-2">
-                            <Cpu className="w-5 h-5 text-[#FF7120]" />
+                          <div className="flex items-center gap-2.5">
+                            <div className="w-10 h-10 shrink-0 flex items-center justify-center">
+                              <IntepeLogoIcon className="w-10 h-10 drop-shadow-sm" />
+                            </div>
                             <div>
                               <div className={`text-sm font-black font-['Space_Grotesk'] tracking-tight leading-none ${cardTheme === 'minimal-white' ? 'text-slate-900' : 'text-white'}`}>
                                 INTEPE <span className="text-[#FF7120]">S.A.S.</span>

@@ -306,7 +306,7 @@ profile_william = {
     'title': 'Director General & Especialista TI',
     'department': 'Dirección de Operaciones & Soluciones',
     'mobile': '(+57) 313 386 2656',
-    'email': 'director@intepe.net',
+    'email': 'williampenagos@intepe.net',
     'address': 'Cl. 152a # 55-44, Bogotá',
     'website': 'https://www.intepe.net/tarjeta?p=director',
     'nit': '830.066.815-0',

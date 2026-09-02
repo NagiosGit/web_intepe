@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Pliego_Tarjetas_Ing_William_Penagos</title>
+  <style>
+    @page {
+      size: letter portrait;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body {
+      background: #FFFFFF;
+      color: #0F172A;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .page-sheet {
+      width: 215.9mm;
+      height: 279mm;
+      max-height: 279mm;
+      box-sizing: border-box;
+      padding: 5mm 12mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      page-break-before: auto;
+      page-break-after: always !important;
+      break-after: page !important;
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+      background: #FFFFFF;
+      overflow: hidden;
+      position: relative;
+    }
+    .page-sheet:last-of-type {
+      page-break-after: avoid !important;
+      break-after: avoid !important;
+    }
+    .sheet-label {
+      width: 173mm;
+      margin-bottom: 2mm;
+      font-family: monospace;
+      font-size: 7.5px;
+      font-weight: 700;
+      color: #64748B;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #CBD5E1;
+      padding-bottom: 1mm;
+      line-height: 1;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 85mm 85mm;
+      grid-template-rows: repeat(4, 53mm);
+      gap: 2mm 3mm;
+      justify-content: center;
+      align-content: center;
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+    }
+    .card-box {
+      width: 85mm;
+      height: 53mm;
+      box-sizing: border-box;
+      padding: 3.5mm 4.5mm;
+      border: 1px solid #CBD5E1;
+      border-radius: 1mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #FFFFFF;
+      color: #0F172A;
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+      overflow: hidden;
+    }
+    .cf-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .cf-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cf-logo-box {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .cf-name-intepe {
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.2px;
+    }
+    .cf-name-intepe span {
+      color: #FF7120;
+    }
+    .cf-sub-razon {
+      font-size: 8px;
+      font-weight: 700;
+      color: #475569;
+      margin-top: 1.5px;
+    }
+    .cf-tag {
+      font-size: 8.5px;
+      font-weight: 800;
+      font-family: monospace;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #FFF7ED;
+      border: 1px solid #FFEDD5;
+      color: #C2410C;
+      text-transform: uppercase;
+    }
+    .cf-center {
+      margin: auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5px;
+    }
+    .cf-fullname {
+      font-size: 16.5px;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.3px;
+    }
+    .cf-title {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #EA580C;
+    }
+    .cf-dept {
+      font-size: 9px;
+      font-weight: 600;
+      font-family: monospace;
+      color: #475569;
+    }
+    .cf-bottom {
+      border-top: 1.5px solid #CBD5E1;
+      padding-top: 1.5mm;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px 6px;
+      font-size: 9px;
+      font-weight: 600;
+      font-family: monospace;
+      color: #0F172A;
+    }
+    .cf-bottom-full {
+      grid-column: span 2;
+      font-size: 8.5px;
+      color: #475569;
+    }
+    .cb-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid #CBD5E1;
+      padding-bottom: 1.5mm;
+      font-size: 9px;
+      font-family: monospace;
+    }
+    .cb-tag {
+      font-weight: 800;
+      color: #C2410C;
+      text-transform: uppercase;
+    }
+    .cb-city {
+      font-size: 8.5px;
+      color: #475569;
+    }
+    .cb-center {
+      display: grid;
+      grid-template-columns: 1fr 20mm;
+      gap: 3mm;
+      align-items: center;
+      margin: auto 0;
+    }
+    .cb-srv-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 9px;
+      font-weight: 600;
+      font-family: monospace;
+      color: #0F172A;
+    }
+    .cb-srv-item {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cb-srv-item::before {
+      content: "• ";
+      color: #FF7120;
+      font-weight: 900;
+    }
+    .cb-qr {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+      padding: 1.5mm;
+    }
+    .cb-qr-img {
+      width: 14mm;
+      height: 14mm;
+      display: block;
+    }
+    .cb-qr-lbl {
+      font-size: 7px;
+      font-weight: 800;
+      font-family: monospace;
+      color: #C2410C;
+      margin-top: 1.5px;
+      text-transform: uppercase;
+    }
+    .cb-bottom {
+      border-top: 1.5px solid #CBD5E1;
+      padding-top: 1.5mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 9px;
+      font-weight: 600;
+      font-family: monospace;
+      color: #475569;
+    }
+    .cb-bottom strong {
+      color: #FF7120;
+      font-size: 9.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-sheet">
+    <div class="sheet-label">
+      <span>📄 HOJA 1 DE 2: PLIEGO FRENTE (8 TARJETAS - ANVERSO)</span>
+      <span>INTEPE S.A.S. • NIT: 830.066.815-0</span>
+    </div>
+    <div class="cards-grid">
+      
+        <div class="card-box">
+          <div class="cf-top">
+            <div class="cf-brand">
+              <div class="cf-logo-box">
+                <svg viewBox="0 0 512 512" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cfLogoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1626" />
+      <stop offset="100%" stop-color="#070B12" />
+    </linearGradient>
+    <linearGradient id="cfChipBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141E30" />
+      <stop offset="100%" stop-color="#0B101D" />
+    </linearGradient>
+    <linearGradient id="cfCoreBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8A3D" />
+      <stop offset="100%" stop-color="#FF7120" />
+    </linearGradient>
+  </defs>
+  <rect x="40" y="40" width="432" height="432" rx="90" ry="90" fill="url(#cfLogoBg)" stroke="#FF7120" stroke-width="10" />
+  <g stroke="#FF7120" stroke-width="12" stroke-linecap="round">
+    <line x1="172" y1="140" x2="172" y2="88" /><line x1="228" y1="140" x2="228" y2="88" /><line x1="284" y1="140" x2="284" y2="88" /><line x1="340" y1="140" x2="340" y2="88" />
+    <line x1="172" y1="372" x2="172" y2="424" /><line x1="228" y1="372" x2="228" y2="424" /><line x1="284" y1="372" x2="284" y2="424" /><line x1="340" y1="372" x2="340" y2="424" />
+    <line x1="140" y1="172" x2="88" y2="172" /><line x1="140" y1="228" x2="88" y2="228" /><line x1="140" y1="284" x2="88" y2="284" /><line x1="140" y1="340" x2="88" y2="340" />
+    <line x1="372" y1="172" x2="424" y2="172" /><line x1="372" y1="228" x2="424" y2="228" /><line x1="372" y1="284" x2="424" y2="284" /><line x1="372" y1="340" x2="424" y2="340" />
+  </g>
+  <g fill="#00E5FF">
+    <circle cx="172" cy="86" r="10" /><circle cx="228" cy="86" r="10" /><circle cx="284" cy="86" r="10" /><circle cx="340" cy="86" r="10" />
+    <circle cx="172" cy="426" r="10" /><circle cx="228" cy="426" r="10" /><circle cx="284" cy="426" r="10" /><circle cx="340" cy="426" r="10" />
+    <circle cx="86" cy="172" r="10" /><circle cx="86" cy="228" r="10" /><circle cx="86" cy="284" r="10" /><circle cx="86" cy="340" r="10" />
+    <circle cx="426" cy="172" r="10" /><circle cx="426" cy="228" r="10" /><circle cx="426" cy="284" r="10" /><circle cx="426" cy="340" r="10" />
+  </g>
+  <rect x="136" y="136" width="240" height="240" rx="34" ry="34" fill="url(#cfChipBg)" stroke="#FF7120" stroke-width="12" />
+  <rect x="188" y="188" width="136" height="136" rx="20" ry="20" fill="url(#cfCoreBg)" stroke="#FF8A3D" stroke-width="3" />
+</svg>
+              </div>
+              <div>
+                <div class="cf-name-intepe">INTEPE <span>S.A.S.</span></div>
+                <div class="cf-sub-razon">Informática y Tecnología Penagos S.A.S.</div>
+              </div>
+            </div>
+            <div class="cf-tag">TI SOLUTIONS</div>
+          </div>
+          <div class="cf-center">
+            <div class="cf-fullname">Ing. William Penagos</div>
+            <div class="cf-title">Director General & Especialista TI</div>
+            <div class="cf-dept">Dirección de Operaciones & Soluciones</div>
+          </div>
+          <div class="cf-bottom">
+            <div>📞 (+57) 313 386 2656</div>
+            <div style="text-align: right;">✉️ williampenagos@intepe.net</div>
+            <div class="cf-bottom-full">🌐 https://www.intepe.net • NIT: 830.066.815-0</div>
+          </div>
+        </div>
+        
+        <div class="card-box">
+          <div class="cf-top">
+            <div class="cf-brand">
+              <div class="cf-logo-box">
+                <svg viewBox="0 0 512 512" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cfLogoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1626" />
+      <stop offset="100%" stop-color="#070B12" />
+    </linearGradient>
+    <linearGradient id="cfChipBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141E30" />
+      <stop offset="100%" stop-color="#0B101D" />
+    </linearGradient>
+    <linearGradient id="cfCoreBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8A3D" />
+      <stop offset="100%" stop-color="#FF7120" />
+    </linearGradient>
+  </defs>
+  <rect x="40" y="40" width="432" height="432" rx="90" ry="90" fill="url(#cfLogoBg)" stroke="#FF7120" stroke-width="10" />
+  <g stroke="#FF7120" stroke-width="12" stroke-linecap="round">
+    <line x1="172" y1="140" x2="172" y2="88" /><line x1="228" y1="140" x2="228" y2="88" /><line x1="284" y1="140" x2="284" y2="88" /><line x1="340" y1="140" x2="340" y2="88" />
+    <line x1="172" y1="372" x2="172" y2="424" /><line x1="228" y1="372" x2="228" y2="424" /><line x1="284" y1="372" x2="284" y2="424" /><line x1="340" y1="372" x2="340" y2="424" />
+    <line x1="140" y1="172" x2="88" y2="172" /><line x1="140" y1="228" x2="88" y2="228" /><line x1="140" y1="284" x2="88" y2="284" /><line x1="140" y1="340" x2="88" y2="340" />
+    <line x1="372" y1="172" x2="424" y2="172" /><line x1="372" y1="228" x2="424" y2="228" /><line x1="372" y1="284" x2="424" y2="284" /><line x1="372" y1="340" x2="424" y2="340" />
+  </g>
+  <g fill="#00E5FF">
+    <circle cx="172" cy="86" r="10" /><circle cx="228" cy="86" r="10" /><circle cx="284" cy="86" r="10" /><circle cx="340" cy="86" r="10" />
+    <circle cx="172" cy="426" r="10" /><circle cx="228" cy="426" r="10" /><circle cx="284" cy="426" r="10" /><circle cx="340" cy="426" r="10" />
+    <circle cx="86" cy="172" r="10" /><circle cx="86" cy="228" r="10" /><circle cx="86" cy="284" r="10" /><circle cx="86" cy="340" r="10" />
+    <circle cx="426" cy="172" r="10" /><circle cx="426" cy="228" r="10" /><circle cx="426" cy="284" r="10" /><circle cx="426" cy="340" r="10" />
+  </g>
+  <rect x="136" y="136" width="240" height="240" rx="34" ry="34" fill="url(#cfChipBg)" stroke="#FF7120" stroke-width="12" />
+  <rect x="188" y="188" width="136" height="136" rx="20" ry="20" fill="url(#cfCoreBg)" stroke="#FF8A3D" stroke-width="3" />
+</svg>
+              </div>
+              <div>
+                <div class="cf-name-intepe">INTEPE <span>S.A.S.</span></div>
+                <div class="cf-sub-razon">Informática y Tecnología Penagos S.A.S.</div>
+              </div>
+            </div>
+            <div class="cf-tag">TI SOLUTIONS</div>
+          </div>
+          <div class="cf-center">
+            <div class="cf-fullname">Ing. William Penagos</div>
+            <div class="cf-title">Director General & Especialista TI</div>
+            <div class="cf-dept">Dirección de Operaciones & Soluciones</div>
+          </div>
+          <div class="cf-bottom">
+            <div>📞 (+57) 313 386 2656</div>
+            <div style="text-align: right;">✉️ williampenagos@intepe.net</div>
+            <div class="cf-bottom-full">🌐 https://www.intepe.net • NIT: 830.066.815-0</div>
+          </div>
+        </div>
+        
+        <div class="card-box">
+          <div class="cf-top">
+            <div class="cf-brand">
+              <div class="cf-logo-box">
+                <svg viewBox="0 0 512 512" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cfLogoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1626" />
+      <stop offset="100%" stop-color="#070B12" />
+    </linearGradient>
+    <linearGradient id="cfChipBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141E30" />
+      <stop offset="100%" stop-color="#0B101D" />
+    </linearGradient>
+    <linearGradient id="cfCoreBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8A3D" />
+      <stop offset="100%" stop-color="#FF7120" />
+    </linearGradient>
+  </defs>
+  <rect x="40" y="40" width="432" height="432" rx="90" ry="90" fill="url(#cfLogoBg)" stroke="#FF7120" stroke-width="10" />
+  <g stroke="#FF7120" stroke-width="12" stroke-linecap="round">
+    <line x1="172" y1="140" x2="172" y2="88" /><line x1="228" y1="140" x2="228" y2="88" /><line x1="284" y1="140" x2="284" y2="88" /><line x1="340" y1="140" x2="340" y2="88" />
+    <line x1="172" y1="372" x2="172" y2="424" /><line x1="228" y1="372" x2="228" y2="424" /><line x1="284" y1="372" x2="284" y2="424" /><line x1="340" y1="372" x2="340" y2="424" />
+    <line x1="140" y1="172" x2="88" y2="172" /><line x1="140" y1="228" x2="88" y2="228" /><line x1="140" y1="284" x2="88" y2="284" /><line x1="140" y1="340" x2="88" y2="340" />
+    <line x1="372" y1="172" x2="424" y2="172" /><line x1="372" y1="228" x2="424" y2="228" /><line x1="372" y1="284" x2="424" y2="284" /><line x1="372" y1="340" x2="424" y2="340" />
+  </g>
+  <g fill="#00E5FF">
+    <circle cx="172" cy="86" r="10" /><circle cx="228" cy="86" r="10" /><circle cx="284" cy="86" r="10" /><circle cx="340" cy="86" r="10" />
+    <circle cx="172" cy="426" r="10" /><circle cx="228" cy="426" r="10" /><circle cx="284" cy="426" r="10" /><circle cx="340" cy="426" r="10" />
+    <circle cx="86" cy="172" r="10" /><circle cx="86" cy="228" r="10" /><circle cx="86" cy="284" r="10" /><circle cx="86" cy="340" r="10" />
+    <circle cx="426" cy="172" r="10" /><circle cx="426" cy="228" r="10" /><circle cx="426" cy="284" r="10" /><circle cx="426" cy="340" r="10" />
+  </g>
+  <rect x="136" y="136" width="240" height="240" rx="34" ry="34" fill="url(#cfChipBg)" stroke="#FF7120" stroke-width="12" />
+  <rect x="188" y="188" width="136" height="136" rx="20" ry="20" fill="url(#cfCoreBg)" stroke="#FF8A3D" stroke-width="3" />
+</svg>
+              </div>
+              <div>
+                <div class="cf-name-intepe">INTEPE <span>S.A.S.</span></div>
+                <div class="cf-sub-razon">Informática y Tecnología Penagos S.A.S.</div>
+              </div>
+            </div>
+            <div class="cf-tag">TI SOLUTIONS</div>
+          </div>
+          <div class="cf-center">
+            <div class="cf-fullname">Ing. William Penagos</div>
+            <div class="cf-title">Director General & Especialista TI</div>
+            <div class="cf-dept">Dirección de Operaciones & Soluciones</div>
+          </div>
+          <div class="cf-bottom">
+            <div>📞 (+57) 313 386 2656</div>
+            <div style="text-align: right;">✉️ williampenagos@intepe.net</div>
+            <div class="cf-bottom-full">🌐 https://www.intepe.net • NIT: 830.066.815-0</div>
+          </div>
+        </div>
+        
+        <div class="card-box">
+          <div class="cf-top">
+            <div class="cf-brand">
+              <div class="cf-logo-box">
+                <svg viewBox="0 0 512 512" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cfLogoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1626" />
+      <stop offset="100%" stop-color="#070B12" />
+    </linearGradient>
+    <linearGradient id="cfChipBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141E30" />
+      <stop offset="100%" stop-color="#0B101D" />
+    </linearGradient>
+    <linearGradient id="cfCoreBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8A3D" />
+      <stop offset="100%" stop-color="#FF7120" />
+    </linearGradient>
+  </defs>
+  <rect x="40" y="40" width="432" height="432" rx="90" ry="90" fill="url(#cfLogoBg)" stroke="#FF7120" stroke-width="10" />
+  <g stroke="#FF7120" stroke-width="12" stroke-linecap="round">
+    <line x1="172" y1="140" x2="172" y2="88" /><line x1="228" y1="140" x2="228" y2="88" /><line x1="284" y1="140" x2="284" y2="88" /><line x1="340" y1="140" x2="340" y2="88" />
+    <line x1="172" y1="372" x2="172" y2="424" /><line x1="228" y1="372" x2="228" y2="424" /><line x1="284" y1="372" x2="284" y2="424" /><line x1="340" y1="372" x2="340" y2="424" />
+    <line x1="140" y1="172" x2="88" y2="172" /><line x1="140" y1="228" x2="88" y2="228" /><line x1="140" y1="284" x2="88" y2="284" /><line x1="140" y1="340" x2="88" y2="340" />
+    <line x1="372" y1="172" x2="424" y2="172" /><line x1="372" y1="228" x2="424" y2="228" /><line x1="372" y1="284" x2="424" y2="284" /><line x1="372" y1="340" x2="424" y2="340" />
+  </g>
+  <g fill="#00E5FF">
+    <circle cx="172" cy="86" r="10" /><circle cx="228" cy="86" r="10" /><circle cx="284" cy="86" r="10" /><circle cx="340" cy="86" r="10" />
+    <circle cx="172" cy="426" r="10" /><circle cx="228" cy="426" r="10" /><circle cx="284" cy="426" r="10" /><circle cx="340" cy="426" r="10" />
+    <circle cx="86" cy="172" r="10" /><circle cx="86" cy="228" r="10" /><circle cx="86" cy="284" r="10" /><circle cx="86" cy="340" r="10" />
+    <circle cx="426" cy="172" r="10" /><circle cx="426" cy="228" r="10" /><circle cx="426" cy="284" r="10" /><circle cx="426" cy="340" r="10" />
+  </g>
+  <rect x="136" y="136" width="240" height="240" rx="34" ry="34" fill="url(#cfChipBg)" stroke="#FF7120" stroke-width="12" />
+  <rect x="188" y="188" width="136" height="136" rx="20" ry="20" fill="url(#cfCoreBg)" stroke="#FF8A3D" stroke-width="3" />
+</svg>
+              </div>
+              <div>
+                <div class="cf-name-intepe">INTEPE <span>S.A.S.</span></div>
+                <div class="cf-sub-razon">Informática y Tecnología Penagos S.A.S.</div>
+              </div>
+            </div>
+            <div class="cf-tag">TI SOLUTIONS</div>
+          </div>
+          <div class="cf-center">
+            <div class="cf-fullname">Ing. William Penagos</div>
+            <div class="cf-title">Director General & Especialista TI</div>
+            <div class="cf-dept">Dirección de Operaciones & Soluciones</div>
+          </div>
+          <div class="cf-bottom">
+            <div>📞 (+57) 313 386 2656</div>
+            <div style="text-align: right;">✉️ williampenagos@intepe.net</div>
+            <div class="cf-bottom-full">🌐 https://www.intepe.net • NIT: 830.066.815-0</div>
+          </div>
+        </div>
+        
+        <div class="card-box">
+          <div class="cf-top">
+            <div class="cf-brand">
+              <div class="cf-logo-box">
+                <svg viewBox="0 0 512 512" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cfLogoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1626" />
+      <stop offset="100%" stop-color="#070B12" />
+    </linearGradient>
+    <linearGradient id="cfChipBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141E30" />
+      <stop offset="100%" stop-color="#0B101D" />
+    </linearGradient>
+    <linearGradient id="cfCoreBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8A3D" />
+      <stop offset="100%" stop-color="#FF7120" />
+    </linearGradient>
+  </defs>
+  <rect x="40" y="40" width="432" height="432" rx="90" ry="90" fill="url(#cfLogoBg)" stroke="#FF7120" stroke-width="10" />
+  <g stroke="#FF7120" stroke-width="12" stroke-linecap="round">
+    <line x1="172" y1="140" x2="172" y2="88" /><line x1="228" y1="140" x2="228" y2="88" /><line x1="284" y1="140" x2="284" y2="88" /><line x1="340" y1="140" x2="340" y2="88" />
+    <line x1="172" y1="372" x2="172" y2="424" /><line x1="228" y1="372" x2="228" y2="424" /><line x1="284" y1="372" x2="284" y2="424" /><line x1="340" y1="372" x2="340" y2="424" />
+    <line x1="140" y1="172" x2="88" y2="172" /><line x1="140" y1="228" x2="88" y2="228" /><line x1="140" y1="284" x2="88" y2="284" /><line x1="140" y1="340" x2="88" y2="340" />
+    <line x1="372" y1="172" x2="424" y2="172" /><line x1="372" y1="228" x2="424" y2="228" /><line x1="372" y1="284" x2="424" y2="284" /><line x1="372" y1="340" x2="424" y2="340" />
+  </g>
+  <g fill="#00E5FF">
+    <circle cx="172" cy="86" r="10" /><circle cx="228" cy="86" r="10" /><circle cx="284" cy="86" r="10" /><circle cx="340" cy="86" r="10" />
+    <circle cx="172" cy="426" r="10" /><circle cx="228" cy="426" r="10" /><circle cx="284" cy="426" r="10" /><circle cx="340" cy="426" r="10" />
+    <circle cx="86" cy="172" r="10" /><circle cx="86" cy="228" r="10" /><circle cx="86" cy="284" r="10" /><circle cx="86" cy="340" r="10" />
+    <circle cx="426" cy="172" r="10" /><circle cx="426" cy="228" r="10" /><circle cx="426" cy="284" r="10" /><circle cx="426" cy="340" r="10" />
+  </g>
+  <rect x="136" y="136" width="240" height="240" rx="34" ry="34" fill="url(#cfChipBg)" stroke="#FF7120" stroke-width="12" />
+  <rect x="188" y="188" width="136" height="136" rx="20" ry="20" fill="url(#cfCoreBg)" stroke="#FF8A3D" stroke-width="3" />
+</svg>
+              </div>
+              <div>
+                <div class="cf-name-intepe">INTEPE <span>S.A.S.</span></div>
+                <div class="cf-sub-razon">Informática y Tecnología Penagos S.A.S.</div>
+              </div>
+            </div>
+            <div class="cf-tag">TI SOLUTIONS</div>
+          </div>
+          <div class="cf-center">
+            <div class="cf-fullname">Ing. William Penagos</div>
+            <div class="cf-title">Director General & Especialista TI</div>
+            <div class="cf-dept">Dirección de Operaciones & Soluciones</div>
+          </div>
+          <div class="cf-bottom">
+            <div>📞 (+57) 313 386 2656</div>
+            <div style="text-align: right;">✉️ williampenagos@intepe.net</div>
+            <div class="cf-bottom-full">🌐 https://www.intepe.net • NIT: 830.066.815-0</div>
+          </div>
+        </div>
+        
+        <div class="card-box">
+          <div class="cf-top">
+            <div class="cf-brand">
+              <div class="cf-logo-box">
+                <svg viewBox="0 0 512 512" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cfLogoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1626" />
+      <stop offset="100%" stop-color="#070B12" />
+    </linearGradient>
+    <linearGradient id="cfChipBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141E30" />
+      <stop offset="100%" stop-color="#0B101D" />
+    </linearGradient>
+    <linearGradient id="cfCoreBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8A3D" />
+      <stop offset="100%" stop-color="#FF7120" />
+    </linearGradient>
+  </defs>
+  <rect x="40" y="40" width="432" height="432" rx="90" ry="90" fill="url(#cfLogoBg)" stroke="#FF7120" stroke-width="10" />
+  <g stroke="#FF7120" stroke-width="12" stroke-linecap="round">
+    <line x1="172" y1="140" x2="172" y2="88" /><line x1="228" y1="140" x2="228" y2="88" /><line x1="284" y1="140" x2="284" y2="88" /><line x1="340" y1="140" x2="340" y2="88" />
+    <line x1="172" y1="372" x2="172" y2="424" /><line x1="228" y1="372" x2="228" y2="424" /><line x1="284" y1="372" x2="284" y2="424" /><line x1="340" y1="372" x2="340" y2="424" />
+    <line x1="140" y1="172" x2="88" y2="172" /><line x1="140" y1="228" x2="88" y2="228" /><line x1="140" y1="284" x2="88" y2="284" /><line x1="140" y1="340" x2="88" y2="340" />
+    <line x1="372" y1="172" x2="424" y2="172" /><line x1="372" y1="228" x2="424" y2="228" /><line x1="372" y1="284" x2="424" y2="284" /><line x1="372" y1="340" x2="424" y2="340" />
+  </g>
+  <g fill="#00E5FF">
+    <circle cx="172" cy="86" r="10" /><circle cx="228" cy="86" r="10" /><circle cx="284" cy="86" r="10" /><circle cx="340" cy="86" r="10" />
+    <circle cx="172" cy="426" r="10" /><circle cx="228" cy="426" r="10" /><circle cx="284" cy="426" r="10" /><circle cx="340" cy="426" r="10" />
+    <circle cx="86" cy="172" r="10" /><circle cx="86" cy="228" r="10" /><circle cx="86" cy="284" r="10" /><circle cx="86" cy="340" r="10" />
+    <circle cx="426" cy="172" r="10" /><circle cx="426" cy="228" r="10" /><circle cx="426" cy="284" r="10" /><circle cx="426" cy="340" r="10" />
+  </g>
+  <rect x="136" y="136" width="240" height="240" rx="34" ry="34" fill="url(#cfChipBg)" stroke="#FF7120" stroke-width="12" />
+  <rect x="188" y="188" width="136" height="136" rx="20" ry="20" fill="url(#cfCoreBg)" stroke="#FF8A3D" stroke-width="3" />
+</svg>
+              </div>
+              <div>
+                <div class="cf-name-intepe">INTEPE <span>S.A.S.</span></div>
+                <div class="cf-sub-razon">Informática y Tecnología Penagos S.A.S.</div>
+              </div>
+            </div>
+            <div class="cf-tag">TI SOLUTIONS</div>
+          </div>
+          <div class="cf-center">
+            <div class="cf-fullname">Ing. William Penagos</div>
+            <div class="cf-title">Director General & Especialista TI</div>
+            <div class="cf-dept">Dirección de Operaciones & Soluciones</div>
+          </div>
+          <div class="cf-bottom">
+            <div>📞 (+57) 313 386 2656</div>
+            <div style="text-align: right;">✉️ williampenagos@intepe.net</div>
+            <div class="cf-bottom-full">🌐 https://www.intepe.net • NIT: 830.066.815-0</div>
+          </div>
+        </div>
+        
+        <div class="card-box">
+          <div class="cf-top">
+            <div class="cf-brand">
+              <div class="cf-logo-box">
+                <svg viewBox="0 0 512 512" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cfLogoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1626" />
+      <stop offset="100%" stop-color="#070B12" />
+    </linearGradient>
+    <linearGradient id="cfChipBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141E30" />
+      <stop offset="100%" stop-color="#0B101D" />
+    </linearGradient>
+    <linearGradient id="cfCoreBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8A3D" />
+      <stop offset="100%" stop-color="#FF7120" />
+    </linearGradient>
+  </defs>
+  <rect x="40" y="40" width="432" height="432" rx="90" ry="90" fill="url(#cfLogoBg)" stroke="#FF7120" stroke-width="10" />
+  <g stroke="#FF7120" stroke-width="12" stroke-linecap="round">
+    <line x1="172" y1="140" x2="172" y2="88" /><line x1="228" y1="140" x2="228" y2="88" /><line x1="284" y1="140" x2="284" y2="88" /><line x1="340" y1="140" x2="340" y2="88" />
+    <line x1="172" y1="372" x2="172" y2="424" /><line x1="228" y1="372" x2="228" y2="424" /><line x1="284" y1="372" x2="284" y2="424" /><line x1="340" y1="372" x2="340" y2="424" />
+    <line x1="140" y1="172" x2="88" y2="172" /><line x1="140" y1="228" x2="88" y2="228" /><line x1="140" y1="284" x2="88" y2="284" /><line x1="140" y1="340" x2="88" y2="340" />
+    <line x1="372" y1="172" x2="424" y2="172" /><line x1="372" y1="228" x2="424" y2="228" /><line x1="372" y1="284" x2="424" y2="284" /><line x1="372" y1="340" x2="424" y2="340" />
+  </g>
+  <g fill="#00E5FF">
+    <circle cx="172" cy="86" r="10" /><circle cx="228" cy="86" r="10" /><circle cx="284" cy="86" r="10" /><circle cx="340" cy="86" r="10" />
+    <circle cx="172" cy="426" r="10" /><circle cx="228" cy="426" r="10" /><circle cx="284" cy="426" r="10" /><circle cx="340" cy="426" r="10" />
+    <circle cx="86" cy="172" r="10" /><circle cx="86" cy="228" r="10" /><circle cx="86" cy="284" r="10" /><circle cx="86" cy="340" r="10" />
+    <circle cx="426" cy="172" r="10" /><circle cx="426" cy="228" r="10" /><circle cx="426" cy="284" r="10" /><circle cx="426" cy="340" r="10" />
+  </g>
+  <rect x="136" y="136" width="240" height="240" rx="34" ry="34" fill="url(#cfChipBg)" stroke="#FF7120" stroke-width="12" />
+  <rect x="188" y="188" width="136" height="136" rx="20" ry="20" fill="url(#cfCoreBg)" stroke="#FF8A3D" stroke-width="3" />
+</svg>
+              </div>
+              <div>
+                <div class="cf-name-intepe">INTEPE <span>S.A.S.</span></div>
+                <div class="cf-sub-razon">Informática y Tecnología Penagos S.A.S.</div>
+              </div>
+            </div>
+            <div class="cf-tag">TI SOLUTIONS</div>
+          </div>
+          <div class="cf-center">
+            <div class="cf-fullname">Ing. William Penagos</div>
+            <div class="cf-title">Director General & Especialista TI</div>
+            <div class="cf-dept">Dirección de Operaciones & Soluciones</div>
+          </div>
+          <div class="cf-bottom">
+            <div>📞 (+57) 313 386 2656</div>
+            <div style="text-align: right;">✉️ williampenagos@intepe.net</div>
+            <div class="cf-bottom-full">🌐 https://www.intepe.net • NIT: 830.066.815-0</div>
+          </div>
+        </div>
+        
+        <div class="card-box">
+          <div class="cf-top">
+            <div class="cf-brand">
+              <div class="cf-logo-box">
+                <svg viewBox="0 0 512 512" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cfLogoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1626" />
+      <stop offset="100%" stop-color="#070B12" />
+    </linearGradient>
+    <linearGradient id="cfChipBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141E30" />
+      <stop offset="100%" stop-color="#0B101D" />
+    </linearGradient>
+    <linearGradient id="cfCoreBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8A3D" />
+      <stop offset="100%" stop-color="#FF7120" />
+    </linearGradient>
+  </defs>
+  <rect x="40" y="40" width="432" height="432" rx="90" ry="90" fill="url(#cfLogoBg)" stroke="#FF7120" stroke-width="10" />
+  <g stroke="#FF7120" stroke-width="12" stroke-linecap="round">
+    <line x1="172" y1="140" x2="172" y2="88" /><line x1="228" y1="140" x2="228" y2="88" /><line x1="284" y1="140" x2="284" y2="88" /><line x1="340" y1="140" x2="340" y2="88" />
+    <line x1="172" y1="372" x2="172" y2="424" /><line x1="228" y1="372" x2="228" y2="424" /><line x1="284" y1="372" x2="284" y2="424" /><line x1="340" y1="372" x2="340" y2="424" />
+    <line x1="140" y1="172" x2="88" y2="172" /><line x1="140" y1="228" x2="88" y2="228" /><line x1="140" y1="284" x2="88" y2="284" /><line x1="140" y1="340" x2="88" y2="340" />
+    <line x1="372" y1="172" x2="424" y2="172" /><line x1="372" y1="228" x2="424" y2="228" /><line x1="372" y1="284" x2="424" y2="284" /><line x1="372" y1="340" x2="424" y2="340" />
+  </g>
+  <g fill="#00E5FF">
+    <circle cx="172" cy="86" r="10" /><circle cx="228" cy="86" r="10" /><circle cx="284" cy="86" r="10" /><circle cx="340" cy="86" r="10" />
+    <circle cx="172" cy="426" r="10" /><circle cx="228" cy="426" r="10" /><circle cx="284" cy="426" r="10" /><circle cx="340" cy="426" r="10" />
+    <circle cx="86" cy="172" r="10" /><circle cx="86" cy="228" r="10" /><circle cx="86" cy="284" r="10" /><circle cx="86" cy="340" r="10" />
+    <circle cx="426" cy="172" r="10" /><circle cx="426" cy="228" r="10" /><circle cx="426" cy="284" r="10" /><circle cx="426" cy="340" r="10" />
+  </g>
+  <rect x="136" y="136" width="240" height="240" rx="34" ry="34" fill="url(#cfChipBg)" stroke="#FF7120" stroke-width="12" />
+  <rect x="188" y="188" width="136" height="136" rx="20" ry="20" fill="url(#cfCoreBg)" stroke="#FF8A3D" stroke-width="3" />
+</svg>
+              </div>
+              <div>
+                <div class="cf-name-intepe">INTEPE <span>S.A.S.</span></div>
+                <div class="cf-sub-razon">Informática y Tecnología Penagos S.A.S.</div>
+              </div>
+            </div>
+            <div class="cf-tag">TI SOLUTIONS</div>
+          </div>
+          <div class="cf-center">
+            <div class="cf-fullname">Ing. William Penagos</div>
+            <div class="cf-title">Director General & Especialista TI</div>
+            <div class="cf-dept">Dirección de Operaciones & Soluciones</div>
+          </div>
+          <div class="cf-bottom">
+            <div>📞 (+57) 313 386 2656</div>
+            <div style="text-align: right;">✉️ williampenagos@intepe.net</div>
+            <div class="cf-bottom-full">🌐 https://www.intepe.net • NIT: 830.066.815-0</div>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+
+  <div class="page-sheet">
+    <div class="sheet-label">
+      <span>🔄 HOJA 2 DE 2: PLIEGO REVERSO (8 TARJETAS - DORSO CON QR)</span>
+      <span>ALINEACIÓN DÚPLEX 1:1 (GIRO BORDE LARGO)</span>
+    </div>
+    <div class="cards-grid">
+      
+        <div class="card-box">
+          <div class="cb-top">
+            <div class="cb-tag">// TI SOLUTIONS</div>
+            <div class="cb-city">Bogotá, CO</div>
+          </div>
+          <div class="cb-center">
+            <div class="cb-srv-list">
+              <div class="cb-srv-item">Outsourcing TI Integral</div><div class="cb-srv-item">Mesa de Ayuda L1/L2/L3</div><div class="cb-srv-item">Infraestructura & Servidores</div><div class="cb-srv-item">Desarrollo de Software a Medida</div>
+            </div>
+            <div class="cb-qr">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACFElEQVR4nO3bS47CMAwGYCMWLDkCR+Fo5Wg9CkeYJYtRPMSvuC0aCWkAj/R7FZp8XSWR6wSi52PiEReiI8/RddSnV6J9GtRAQF5Pvn3EiS+9a97JsPurvujM2rW/ty0mEJCqRCb5rRPyNq1f1bm+CgSkPrHJ39sWICAfJ33inhsdekZhmcbh3gcC8i/Iau9t3mbNme25BQhIUcIjnPTJL4tiprG9e4CAlCSP4uBffERje/89QED+kvhMHrlxk4yC+15thYjFrAYBKUm0XBZlNPbisA9Loc8bCEhJEnGyY45UHJZtnLy9DRCQ15DVz6j0kn2+SSGC1ts4CEhBwimjOKbisJy+WXmthywKAgGpSSQfbuMr79zyhNdXpTNlr8KBgNQisl2zFoRl8nvbIm3pPvlBQF5NphhmMWY1bz/fNLsAAalHKM6IOU7ZItPgyC6Oy/UCAlKNTL17FrxYCJp1sA7T0zddFA0EpCSJLraDuZ22bVHEpcqZfCGAgLyBxE/nlhvHObLvzzkhAQEpRySi+MDpK8+GWWjW0UBAKpJFxJWzzdFGbPUgIG8gE4+4pHu8EvP2djoRCEhJkm+nk36+pcnv7bh+BgJSluT/vllJ7erP6XFCAgJSnER5bRXjIiUIyCeIXp6kxCcecdnsySAgRYjFKf6wdtNhUlKzYYvLkyAgBUme2IloHSOdI0tIGwSkIHk+fgCVtBQEf6H2YQAAAABJRU5ErkJggg==" class="cb-qr-img" alt="QR" />
+              <div class="cb-qr-lbl">ESCANEAR</div>
+            </div>
+          </div>
+          <div class="cb-bottom">
+            <div>📍 Cl. 152a # 55-44, Bogotá</div>
+            <div><strong>www.intepe.net</strong></div>
+          </div>
+        </div>
+        
+        <div class="card-box">
+          <div class="cb-top">
+            <div class="cb-tag">// TI SOLUTIONS</div>
+            <div class="cb-city">Bogotá, CO</div>
+          </div>
+          <div class="cb-center">
+            <div class="cb-srv-list">
+              <div class="cb-srv-item">Outsourcing TI Integral</div><div class="cb-srv-item">Mesa de Ayuda L1/L2/L3</div><div class="cb-srv-item">Infraestructura & Servidores</div><div class="cb-srv-item">Desarrollo de Software a Medida</div>
+            </div>
+            <div class="cb-qr">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACFElEQVR4nO3bS47CMAwGYCMWLDkCR+Fo5Wg9CkeYJYtRPMSvuC0aCWkAj/R7FZp8XSWR6wSi52PiEReiI8/RddSnV6J9GtRAQF5Pvn3EiS+9a97JsPurvujM2rW/ty0mEJCqRCb5rRPyNq1f1bm+CgSkPrHJ39sWICAfJ33inhsdekZhmcbh3gcC8i/Iau9t3mbNme25BQhIUcIjnPTJL4tiprG9e4CAlCSP4uBffERje/89QED+kvhMHrlxk4yC+15thYjFrAYBKUm0XBZlNPbisA9Loc8bCEhJEnGyY45UHJZtnLy9DRCQ15DVz6j0kn2+SSGC1ts4CEhBwimjOKbisJy+WXmthywKAgGpSSQfbuMr79zyhNdXpTNlr8KBgNQisl2zFoRl8nvbIm3pPvlBQF5NphhmMWY1bz/fNLsAAalHKM6IOU7ZItPgyC6Oy/UCAlKNTL17FrxYCJp1sA7T0zddFA0EpCSJLraDuZ22bVHEpcqZfCGAgLyBxE/nlhvHObLvzzkhAQEpRySi+MDpK8+GWWjW0UBAKpJFxJWzzdFGbPUgIG8gE4+4pHu8EvP2djoRCEhJkm+nk36+pcnv7bh+BgJSluT/vllJ7erP6XFCAgJSnER5bRXjIiUIyCeIXp6kxCcecdnsySAgRYjFKf6wdtNhUlKzYYvLkyAgBUme2IloHSOdI0tIGwSkIHk+fgCVtBQEf6H2YQAAAABJRU5ErkJggg==" class="cb-qr-img" alt="QR" />
+              <div class="cb-qr-lbl">ESCANEAR</div>
+            </div>
+          </div>
+          <div class="cb-bottom">
+            <div>📍 Cl. 152a # 55-44, Bogotá</div>
+            <div><strong>www.intepe.net</strong></div>
+          </div>
+        </div>
+        
+        <div class="card-box">
+          <div class="cb-top">
+            <div class="cb-tag">// TI SOLUTIONS</div>
+            <div class="cb-city">Bogotá, CO</div>
+          </div>
+          <div class="cb-center">
+            <div class="cb-srv-list">
+              <div class="cb-srv-item">Outsourcing TI Integral</div><div class="cb-srv-item">Mesa de Ayuda L1/L2/L3</div><div class="cb-srv-item">Infraestructura & Servidores</div><div class="cb-srv-item">Desarrollo de Software a Medida</div>
+            </div>
+            <div class="cb-qr">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACFElEQVR4nO3bS47CMAwGYCMWLDkCR+Fo5Wg9CkeYJYtRPMSvuC0aCWkAj/R7FZp8XSWR6wSi52PiEReiI8/RddSnV6J9GtRAQF5Pvn3EiS+9a97JsPurvujM2rW/ty0mEJCqRCb5rRPyNq1f1bm+CgSkPrHJ39sWICAfJ33inhsdekZhmcbh3gcC8i/Iau9t3mbNme25BQhIUcIjnPTJL4tiprG9e4CAlCSP4uBffERje/89QED+kvhMHrlxk4yC+15thYjFrAYBKUm0XBZlNPbisA9Loc8bCEhJEnGyY45UHJZtnLy9DRCQ15DVz6j0kn2+SSGC1ts4CEhBwimjOKbisJy+WXmthywKAgGpSSQfbuMr79zyhNdXpTNlr8KBgNQisl2zFoRl8nvbIm3pPvlBQF5NphhmMWY1bz/fNLsAAalHKM6IOU7ZItPgyC6Oy/UCAlKNTL17FrxYCJp1sA7T0zddFA0EpCSJLraDuZ22bVHEpcqZfCGAgLyBxE/nlhvHObLvzzkhAQEpRySi+MDpK8+GWWjW0UBAKpJFxJWzzdFGbPUgIG8gE4+4pHu8EvP2djoRCEhJkm+nk36+pcnv7bh+BgJSluT/vllJ7erP6XFCAgJSnER5bRXjIiUIyCeIXp6kxCcecdnsySAgRYjFKf6wdtNhUlKzYYvLkyAgBUme2IloHSOdI0tIGwSkIHk+fgCVtBQEf6H2YQAAAABJRU5ErkJggg==" class="cb-qr-img" alt="QR" />
+              <div class="cb-qr-lbl">ESCANEAR</div>
+            </div>
+          </div>
+          <div class="cb-bottom">
+            <div>📍 Cl. 152a # 55-44, Bogotá</div>
+            <div><strong>www.intepe.net</strong></div>
+          </div>
+        </div>
+        
+        <div class="card-box">
+          <div class="cb-top">
+            <div class="cb-tag">// TI SOLUTIONS</div>
+            <div class="cb-city">Bogotá, CO</div>
+          </div>
+          <div class="cb-center">
+            <div class="cb-srv-list">
+              <div class="cb-srv-item">Outsourcing TI Integral</div><div class="cb-srv-item">Mesa de Ayuda L1/L2/L3</div><div class="cb-srv-item">Infraestructura & Servidores</div><div class="cb-srv-item">Desarrollo de Software a Medida</div>
+            </div>
+            <div class="cb-qr">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACFElEQVR4nO3bS47CMAwGYCMWLDkCR+Fo5Wg9CkeYJYtRPMSvuC0aCWkAj/R7FZp8XSWR6wSi52PiEReiI8/RddSnV6J9GtRAQF5Pvn3EiS+9a97JsPurvujM2rW/ty0mEJCqRCb5rRPyNq1f1bm+CgSkPrHJ39sWICAfJ33inhsdekZhmcbh3gcC8i/Iau9t3mbNme25BQhIUcIjnPTJL4tiprG9e4CAlCSP4uBffERje/89QED+kvhMHrlxk4yC+15thYjFrAYBKUm0XBZlNPbisA9Loc8bCEhJEnGyY45UHJZtnLy9DRCQ15DVz6j0kn2+SSGC1ts4CEhBwimjOKbisJy+WXmthywKAgGpSSQfbuMr79zyhNdXpTNlr8KBgNQisl2zFoRl8nvbIm3pPvlBQF5NphhmMWY1bz/fNLsAAalHKM6IOU7ZItPgyC6Oy/UCAlKNTL17FrxYCJp1sA7T0zddFA0EpCSJLraDuZ22bVHEpcqZfCGAgLyBxE/nlhvHObLvzzkhAQEpRySi+MDpK8+GWWjW0UBAKpJFxJWzzdFGbPUgIG8gE4+4pHu8EvP2djoRCEhJkm+nk36+pcnv7bh+BgJSluT/vllJ7erP6XFCAgJSnER5bRXjIiUIyCeIXp6kxCcecdnsySAgRYjFKf6wdtNhUlKzYYvLkyAgBUme2IloHSOdI0tIGwSkIHk+fgCVtBQEf6H2YQAAAABJRU5ErkJggg==" class="cb-qr-img" alt="QR" />
+              <div class="cb-qr-lbl">ESCANEAR</div>
+            </div>
+          </div>
+          <div class="cb-bottom">
+            <div>📍 Cl. 152a # 55-44, Bogotá</div>
+            <div><strong>www.intepe.net</strong></div>
+          </div>
+        </div>
+        
+        <div class="card-box">
+          <div class="cb-top">
+            <div class="cb-tag">// TI SOLUTIONS</div>
+            <div class="cb-city">Bogotá, CO</div>
+          </div>
+          <div class="cb-center">
+            <div class="cb-srv-list">
+              <div class="cb-srv-item">Outsourcing TI Integral</div><div class="cb-srv-item">Mesa de Ayuda L1/L2/L3</div><div class="cb-srv-item">Infraestructura & Servidores</div><div class="cb-srv-item">Desarrollo de Software a Medida</div>
+            </div>
+            <div class="cb-qr">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACFElEQVR4nO3bS47CMAwGYCMWLDkCR+Fo5Wg9CkeYJYtRPMSvuC0aCWkAj/R7FZp8XSWR6wSi52PiEReiI8/RddSnV6J9GtRAQF5Pvn3EiS+9a97JsPurvujM2rW/ty0mEJCqRCb5rRPyNq1f1bm+CgSkPrHJ39sWICAfJ33inhsdekZhmcbh3gcC8i/Iau9t3mbNme25BQhIUcIjnPTJL4tiprG9e4CAlCSP4uBffERje/89QED+kvhMHrlxk4yC+15thYjFrAYBKUm0XBZlNPbisA9Loc8bCEhJEnGyY45UHJZtnLy9DRCQ15DVz6j0kn2+SSGC1ts4CEhBwimjOKbisJy+WXmthywKAgGpSSQfbuMr79zyhNdXpTNlr8KBgNQisl2zFoRl8nvbIm3pPvlBQF5NphhmMWY1bz/fNLsAAalHKM6IOU7ZItPgyC6Oy/UCAlKNTL17FrxYCJp1sA7T0zddFA0EpCSJLraDuZ22bVHEpcqZfCGAgLyBxE/nlhvHObLvzzkhAQEpRySi+MDpK8+GWWjW0UBAKpJFxJWzzdFGbPUgIG8gE4+4pHu8EvP2djoRCEhJkm+nk36+pcnv7bh+BgJSluT/vllJ7erP6XFCAgJSnER5bRXjIiUIyCeIXp6kxCcecdnsySAgRYjFKf6wdtNhUlKzYYvLkyAgBUme2IloHSOdI0tIGwSkIHk+fgCVtBQEf6H2YQAAAABJRU5ErkJggg==" class="cb-qr-img" alt="QR" />
+              <div class="cb-qr-lbl">ESCANEAR</div>
+            </div>
+          </div>
+          <div class="cb-bottom">
+            <div>📍 Cl. 152a # 55-44, Bogotá</div>
+            <div><strong>www.intepe.net</strong></div>
+          </div>
+        </div>
+        
+        <div class="card-box">
+          <div class="cb-top">
+            <div class="cb-tag">// TI SOLUTIONS</div>
+            <div class="cb-city">Bogotá, CO</div>
+          </div>
+          <div class="cb-center">
+            <div class="cb-srv-list">
+              <div class="cb-srv-item">Outsourcing TI Integral</div><div class="cb-srv-item">Mesa de Ayuda L1/L2/L3</div><div class="cb-srv-item">Infraestructura & Servidores</div><div class="cb-srv-item">Desarrollo de Software a Medida</div>
+            </div>
+            <div class="cb-qr">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACFElEQVR4nO3bS47CMAwGYCMWLDkCR+Fo5Wg9CkeYJYtRPMSvuC0aCWkAj/R7FZp8XSWR6wSi52PiEReiI8/RddSnV6J9GtRAQF5Pvn3EiS+9a97JsPurvujM2rW/ty0mEJCqRCb5rRPyNq1f1bm+CgSkPrHJ39sWICAfJ33inhsdekZhmcbh3gcC8i/Iau9t3mbNme25BQhIUcIjnPTJL4tiprG9e4CAlCSP4uBffERje/89QED+kvhMHrlxk4yC+15thYjFrAYBKUm0XBZlNPbisA9Loc8bCEhJEnGyY45UHJZtnLy9DRCQ15DVz6j0kn2+SSGC1ts4CEhBwimjOKbisJy+WXmthywKAgGpSSQfbuMr79zyhNdXpTNlr8KBgNQisl2zFoRl8nvbIm3pPvlBQF5NphhmMWY1bz/fNLsAAalHKM6IOU7ZItPgyC6Oy/UCAlKNTL17FrxYCJp1sA7T0zddFA0EpCSJLraDuZ22bVHEpcqZfCGAgLyBxE/nlhvHObLvzzkhAQEpRySi+MDpK8+GWWjW0UBAKpJFxJWzzdFGbPUgIG8gE4+4pHu8EvP2djoRCEhJkm+nk36+pcnv7bh+BgJSluT/vllJ7erP6XFCAgJSnER5bRXjIiUIyCeIXp6kxCcecdnsySAgRYjFKf6wdtNhUlKzYYvLkyAgBUme2IloHSOdI0tIGwSkIHk+fgCVtBQEf6H2YQAAAABJRU5ErkJggg==" class="cb-qr-img" alt="QR" />
+              <div class="cb-qr-lbl">ESCANEAR</div>
+            </div>
+          </div>
+          <div class="cb-bottom">
+            <div>📍 Cl. 152a # 55-44, Bogotá</div>
+            <div><strong>www.intepe.net</strong></div>
+          </div>
+        </div>
+        
+        <div class="card-box">
+          <div class="cb-top">
+            <div class="cb-tag">// TI SOLUTIONS</div>
+            <div class="cb-city">Bogotá, CO</div>
+          </div>
+          <div class="cb-center">
+            <div class="cb-srv-list">
+              <div class="cb-srv-item">Outsourcing TI Integral</div><div class="cb-srv-item">Mesa de Ayuda L1/L2/L3</div><div class="cb-srv-item">Infraestructura & Servidores</div><div class="cb-srv-item">Desarrollo de Software a Medida</div>
+            </div>
+            <div class="cb-qr">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACFElEQVR4nO3bS47CMAwGYCMWLDkCR+Fo5Wg9CkeYJYtRPMSvuC0aCWkAj/R7FZp8XSWR6wSi52PiEReiI8/RddSnV6J9GtRAQF5Pvn3EiS+9a97JsPurvujM2rW/ty0mEJCqRCb5rRPyNq1f1bm+CgSkPrHJ39sWICAfJ33inhsdekZhmcbh3gcC8i/Iau9t3mbNme25BQhIUcIjnPTJL4tiprG9e4CAlCSP4uBffERje/89QED+kvhMHrlxk4yC+15thYjFrAYBKUm0XBZlNPbisA9Loc8bCEhJEnGyY45UHJZtnLy9DRCQ15DVz6j0kn2+SSGC1ts4CEhBwimjOKbisJy+WXmthywKAgGpSSQfbuMr79zyhNdXpTNlr8KBgNQisl2zFoRl8nvbIm3pPvlBQF5NphhmMWY1bz/fNLsAAalHKM6IOU7ZItPgyC6Oy/UCAlKNTL17FrxYCJp1sA7T0zddFA0EpCSJLraDuZ22bVHEpcqZfCGAgLyBxE/nlhvHObLvzzkhAQEpRySi+MDpK8+GWWjW0UBAKpJFxJWzzdFGbPUgIG8gE4+4pHu8EvP2djoRCEhJkm+nk36+pcnv7bh+BgJSluT/vllJ7erP6XFCAgJSnER5bRXjIiUIyCeIXp6kxCcecdnsySAgRYjFKf6wdtNhUlKzYYvLkyAgBUme2IloHSOdI0tIGwSkIHk+fgCVtBQEf6H2YQAAAABJRU5ErkJggg==" class="cb-qr-img" alt="QR" />
+              <div class="cb-qr-lbl">ESCANEAR</div>
+            </div>
+          </div>
+          <div class="cb-bottom">
+            <div>📍 Cl. 152a # 55-44, Bogotá</div>
+            <div><strong>www.intepe.net</strong></div>
+          </div>
+        </div>
+        
+        <div class="card-box">
+          <div class="cb-top">
+            <div class="cb-tag">// TI SOLUTIONS</div>
+            <div class="cb-city">Bogotá, CO</div>
+          </div>
+          <div class="cb-center">
+            <div class="cb-srv-list">
+              <div class="cb-srv-item">Outsourcing TI Integral</div><div class="cb-srv-item">Mesa de Ayuda L1/L2/L3</div><div class="cb-srv-item">Infraestructura & Servidores</div><div class="cb-srv-item">Desarrollo de Software a Medida</div>
+            </div>
+            <div class="cb-qr">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACFElEQVR4nO3bS47CMAwGYCMWLDkCR+Fo5Wg9CkeYJYtRPMSvuC0aCWkAj/R7FZp8XSWR6wSi52PiEReiI8/RddSnV6J9GtRAQF5Pvn3EiS+9a97JsPurvujM2rW/ty0mEJCqRCb5rRPyNq1f1bm+CgSkPrHJ39sWICAfJ33inhsdekZhmcbh3gcC8i/Iau9t3mbNme25BQhIUcIjnPTJL4tiprG9e4CAlCSP4uBffERje/89QED+kvhMHrlxk4yC+15thYjFrAYBKUm0XBZlNPbisA9Loc8bCEhJEnGyY45UHJZtnLy9DRCQ15DVz6j0kn2+SSGC1ts4CEhBwimjOKbisJy+WXmthywKAgGpSSQfbuMr79zyhNdXpTNlr8KBgNQisl2zFoRl8nvbIm3pPvlBQF5NphhmMWY1bz/fNLsAAalHKM6IOU7ZItPgyC6Oy/UCAlKNTL17FrxYCJp1sA7T0zddFA0EpCSJLraDuZ22bVHEpcqZfCGAgLyBxE/nlhvHObLvzzkhAQEpRySi+MDpK8+GWWjW0UBAKpJFxJWzzdFGbPUgIG8gE4+4pHu8EvP2djoRCEhJkm+nk36+pcnv7bh+BgJSluT/vllJ7erP6XFCAgJSnER5bRXjIiUIyCeIXp6kxCcecdnsySAgRYjFKf6wdtNhUlKzYYvLkyAgBUme2IloHSOdI0tIGwSkIHk+fgCVtBQEf6H2YQAAAABJRU5ErkJggg==" class="cb-qr-img" alt="QR" />
+              <div class="cb-qr-lbl">ESCANEAR</div>
+            </div>
+          </div>
+          <div class="cb-bottom">
+            <div>📍 Cl. 152a # 55-44, Bogotá</div>
+            <div><strong>www.intepe.net</strong></div>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+</body>
+</html>

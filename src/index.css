@@ -394,13 +394,15 @@
 
   .print-sheet-page {
     width: 215.9mm !important;
-    height: 279.4mm !important;
-    min-height: 279.4mm !important;
-    max-height: 279.4mm !important;
+    height: 278mm !important;
+    max-height: 278mm !important;
+    page-break-before: auto !important;
     page-break-after: always !important;
     break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
     margin: 0 auto !important;
-    padding: 12mm 15mm !important;
+    padding: 5mm 12mm !important;
     box-sizing: border-box !important;
     display: flex !important;
     flex-direction: column !important;
@@ -411,25 +413,30 @@
   }
 
   .print-sheet-page:last-of-type {
-    page-break-after: auto !important;
-    break-after: auto !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
   }
 
   .print-sheet-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 85mm) !important;
-    gap: 4mm !important;
+    grid-template-rows: repeat(4, 53mm) !important;
+    gap: 2mm 3mm !important;
     justify-content: center !important;
     align-content: center !important;
     margin: 0 auto !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
   .print-card-item {
     width: 85mm !important;
-    height: 55mm !important;
+    height: 53mm !important;
     box-sizing: border-box !important;
+    padding: 3.5mm 4.5mm !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
+    overflow: hidden !important;
   }
 
   .print-page-break {
