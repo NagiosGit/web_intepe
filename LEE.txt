@@ -1,3 +1,13 @@
+intepe-helpdesk
+==============================
+https://supabase.com/dashboard/project/xpbtcakvdhujepsfkwve/settings/api-keys/legacy
+===================================
+erroresnagios@gmail.com
+
+
+API URL = https://xpbtcakvdhujepsfkwve.supabase.co/rest/v1/
+anon public= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhwYnRjYWt2ZGh1amVwc2Zrd3ZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc5MjYxMDEsImV4cCI6MjEwMzUwMjEwMX0.VfAER4rz1EPOIQRwOGOH63BSYcM_wo90iL-dcyRrwZ8
+
 Comandos para Suber archivos desde el terminal: 
 
 Carpeta: C:\Users\WINTEPE\Desktop\PROYECTOS_IA\Web_Intepe
