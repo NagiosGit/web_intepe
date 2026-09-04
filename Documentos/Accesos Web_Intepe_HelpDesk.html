@@ -626,7 +626,88 @@
       </div>
     </div>
 
-    <!-- 4. TARJETA PROFESIONAL & NFC -->
+    <!-- 4. FIRMAS DE CORREO GMAIL (WILLIAM PENAGOS & HELP DESK) -->
+    <div class="section highlight-card" style="border-color: rgba(255, 113, 32, 0.4); background: linear-gradient(180deg, rgba(255, 113, 32, 0.04) 0%, rgba(13,18,25,1) 100%);">
+      <div class="section-title">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span>✉️ Firmas de Correo Gmail (William Penagos & Soporte TI)</span>
+        </div>
+        <span class="section-badge badge-orange">Gmail 1-Clic + PNG</span>
+      </div>
+
+      <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px; font-family: 'JetBrains Mono', monospace;">
+        Generador oficial de firmas de correo con selector interactivo de pestañas, copiado rich text en 1 clic para Gmail/Outlook y descarga de logos PNG.
+      </p>
+
+      <div class="tiles-grid">
+        
+        <!-- Generador Principal con Pestañas -->
+        <div class="tile" style="border-color: rgba(255, 113, 32, 0.4); grid-column: 1 / -1;">
+          <div class="tile-header">
+            <div class="tile-icon" style="background: rgba(255,113,32,0.15); border: 1px solid var(--cyber-orange);">⚡</div>
+            <div class="tile-info">
+              <div class="tile-name" style="color: var(--cyber-orange); font-size: 14px;">Estudio Interactivo de Firmas Gmail (2 en 1 con Pestañas)</div>
+              <div class="tile-desc">Herramienta completa para alternar entre la firma personal de <strong>William Penagos</strong> (con chip de Google) y la firma corporativa de <strong>Help Desk / Soporte TI</strong>, con simulador en tiempo real y descarga de imágenes PNG.</div>
+            </div>
+          </div>
+          <div class="tile-route">Papeleria/Firma_Correo_Helpdesk.html</div>
+          <div class="tile-actions">
+            <a class="btn btn-orange" href="Papeleria/Firma_Correo_Helpdesk.html" target="_blank">Abrir Generador de Firmas</a>
+            <button class="btn btn-outline" onclick="copyText('Papeleria/Firma_Correo_Helpdesk.html')">Copiar Ruta</button>
+          </div>
+        </div>
+
+        <!-- Firma Personal William Penagos -->
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">👨‍💻</div>
+            <div class="tile-info">
+              <div class="tile-name">Firma Personal — Ing. William Penagos</div>
+              <div class="tile-desc">Logo de microchip circular (foto de perfil Google), móvil (310 307 62 90), PBX y ciudad (Bogotá - Colombia).</div>
+            </div>
+          </div>
+          <div class="tile-route">williampenagos@intepe.net • Chip Circular Google</div>
+          <div class="tile-actions">
+            <a class="btn btn-orange" href="Papeleria/Firma_Correo_Helpdesk.html" target="_blank">Ver Firma William</a>
+            <a class="btn btn-outline" href="https://web-intepe.vercel.app/logo/logo_whatsapp_chip_puro.png" target="_blank">Logo PNG</a>
+          </div>
+        </div>
+
+        <!-- Firma Help Desk / Soporte -->
+        <div class="tile">
+          <div class="tile-header">
+            <div class="tile-icon">🎧</div>
+            <div class="tile-info">
+              <div class="tile-name">Firma Oficial Help Desk & Soporte TI</div>
+              <div class="tile-desc">Insignia cyber cyan con audífonos, móvil de soporte (313 386 26 56) y botón de acceso directo al portal de tickets.</div>
+            </div>
+          </div>
+          <div class="tile-route">soporte@intepe.net • Insignia Help Desk</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan" href="Papeleria/Firma_Correo_Helpdesk.html" target="_blank">Ver Firma Help Desk</a>
+            <a class="btn btn-outline" href="https://web-intepe.vercel.app/logo/logoRedondo_helpdesk.png" target="_blank">Logo PNG</a>
+          </div>
+        </div>
+
+        <!-- Documentación Markdown y Códigos Directos -->
+        <div class="tile" style="grid-column: 1 / -1;">
+          <div class="tile-header">
+            <div class="tile-icon">📋</div>
+            <div class="tile-info">
+              <div class="tile-name">Documentación Técnica & Snippets HTML Directos</div>
+              <div class="tile-desc">Guía detallada en Markdown con las tablas HTML y tutorial paso a paso para configurar la firma en Gmail o clientes externos.</div>
+            </div>
+          </div>
+          <div class="tile-route">Papeleria/Firma_Correo_Helpdesk.md</div>
+          <div class="tile-actions">
+            <a class="btn btn-outline" href="Papeleria/Firma_Correo_Helpdesk.md" target="_blank">Ver Guía Markdown</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 5. TARJETA PROFESIONAL & NFC -->
     <div class="section highlight-card">
       <div class="section-title">
         <span>📇 Tarjeta de Presentación Digital & NFC</span>
@@ -675,7 +756,7 @@
       </div>
     </div>
 
-    <!-- 5. PORTAL WEB PRINCIPAL & SIMULADORES -->
+    <!-- 6. PORTAL WEB PRINCIPAL & SIMULADORES -->
     <div class="section">
       <div class="section-title">
         <span>🌐 Portal Web Corporativo & Simuladores</span>
@@ -747,7 +828,7 @@
       </div>
     </div>
 
-    <!-- 6. IDENTIDAD VISUAL & LOGOS -->
+    <!-- 7. IDENTIDAD VISUAL & LOGOS -->
     <div class="section">
       <div class="section-title">
         <span>⚡ Identidad Visual, Logos & Generador WhatsApp</span>
@@ -755,52 +836,93 @@
       </div>
 
       <div class="tiles-grid">
-        
+
+        <!-- Insignia Help Desk -->
+        <div class="tile" style="border-color: rgba(0, 229, 255, 0.4);">
+          <div class="tile-header">
+            <img src="Logo/logoRedondo_helpdesk.png" alt="Help Desk" style="width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--cyber-cyan); background: #0A0F1D; object-fit: contain; flex-shrink: 0; box-shadow: 0 0 10px rgba(0,229,255,0.3);" />
+            <div class="tile-info">
+              <div class="tile-name" style="color: var(--cyber-cyan);">Insignia Oficial Help Desk (Neón Cyan)</div>
+              <div class="tile-desc">Audífonos cyber neón + microchip central + badge "HELP DESK" (1024×1024 px).</div>
+            </div>
+          </div>
+          <div class="tile-route">Logo/logoRedondo_helpdesk.png</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan" href="Logo/logoRedondo_helpdesk.png" target="_blank">Ver Logo Help Desk</a>
+            <button class="btn btn-outline" onclick="copyText('Logo/logoRedondo_helpdesk.png')">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Insignia Soporte TI -->
+        <div class="tile" style="border-color: rgba(0, 229, 255, 0.4);">
+          <div class="tile-header">
+            <img src="Logo/logoRedondo_soporte.png" alt="Soporte TI" style="width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--cyber-cyan); background: #0A0F1D; object-fit: contain; flex-shrink: 0; box-shadow: 0 0 10px rgba(0,229,255,0.3);" />
+            <div class="tile-info">
+              <div class="tile-name" style="color: var(--cyber-cyan);">Insignia Oficial Soporte TI</div>
+              <div class="tile-desc">Variante con badge "SOPORTE TI" para ingenieros y soporte especializado (1024×1024 px).</div>
+            </div>
+          </div>
+          <div class="tile-route">Logo/logoRedondo_soporte.png</div>
+          <div class="tile-actions">
+            <a class="btn btn-cyan" href="Logo/logoRedondo_soporte.png" target="_blank">Ver Logo Soporte</a>
+            <button class="btn btn-outline" onclick="copyText('Logo/logoRedondo_soporte.png')">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Nuevo Icono Chip Microprocesador -->
+        <div class="tile" style="border-color: rgba(255, 113, 32, 0.4);">
+          <div class="tile-header">
+            <img src="Logo/logo_icono_chip_nuevo.png" alt="Chip Microprocesador" style="width: 42px; height: 42px; border-radius: 10px; border: 1.5px solid var(--cyber-orange); background: #0A0F1D; object-fit: contain; flex-shrink: 0; box-shadow: 0 0 10px rgba(255,113,32,0.3);" />
+            <div class="tile-info">
+              <div class="tile-name" style="color: var(--cyber-orange);">Nuevo Icono Chip Microprocesador (Squircle)</div>
+              <div class="tile-desc">Chasis redondeado con pines neón cyan y núcleo naranja puro (1024×1024 px).</div>
+            </div>
+          </div>
+          <div class="tile-route">Logo/logo_icono_chip_nuevo.png</div>
+          <div class="tile-actions">
+            <a class="btn btn-orange" href="Logo/logo_icono_chip_nuevo.png" target="_blank">Ver Icono Chip PNG</a>
+            <button class="btn btn-outline" onclick="copyText('Logo/logo_icono_chip_nuevo.png')">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Avatar Chip Redondo Google / WhatsApp -->
         <div class="tile">
           <div class="tile-header">
-            <div class="tile-icon">📱</div>
+            <img src="Logo/logo_whatsapp_chip_puro.png" alt="Chip Redondo" style="width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--cyber-orange); background: #0A0F1D; object-fit: contain; flex-shrink: 0; box-shadow: 0 0 10px rgba(255,113,32,0.25);" />
             <div class="tile-info">
-              <div class="tile-name">Estudio Interactivo LOG-8 WhatsApp</div>
-              <div class="tile-desc">Generador de banners para WhatsApp con exportación 4K.</div>
+              <div class="tile-name">Logo Circular Chip (Foto Perfil Google)</div>
+              <div class="tile-desc">Avatar circular del chip para fotos de perfil Google Workspace, WhatsApp y firmas (1024×1024 px).</div>
+            </div>
+          </div>
+          <div class="tile-route">Logo/logo_whatsapp_chip_puro.png</div>
+          <div class="tile-actions">
+            <a class="btn btn-outline" href="Logo/logo_whatsapp_chip_puro.png" target="_blank">Ver Chip Circular</a>
+            <button class="btn btn-outline" onclick="copyText('Logo/logo_whatsapp_chip_puro.png')">Copiar</button>
+          </div>
+        </div>
+        
+        <!-- Estudio Interactivo LOG-8 WhatsApp -->
+        <div class="tile" style="border-color: rgba(255, 113, 32, 0.4);">
+          <div class="tile-header">
+            <img src="Logo/LOG-8.jpg" alt="LOG-8 WhatsApp" style="width: 42px; height: 42px; border-radius: 8px; border: 1.5px solid var(--cyber-orange); background: #0A0F1D; object-fit: cover; object-position: top center; flex-shrink: 0; box-shadow: 0 0 10px rgba(255,113,32,0.3);" />
+            <div class="tile-info">
+              <div class="tile-name" style="color: var(--cyber-orange);">Estudio Interactivo LOG-8 WhatsApp</div>
+              <div class="tile-desc">Generador de banners WhatsApp con selector de insignias (Help Desk, Soporte TI, Chip Squircle, Chip Google y Letras 3D), modos Cyber/Blanco y exportación 4K.</div>
             </div>
           </div>
           <div class="tile-route">Logo/Generador_LOG-8_WhatsApp.html</div>
           <div class="tile-actions">
             <a class="btn btn-orange" href="Logo/Generador_LOG-8_WhatsApp.html" target="_blank">Abrir Estudio LOG-8</a>
+            <button class="btn btn-outline" onclick="copyText('Logo/Generador_LOG-8_WhatsApp.html')">Copiar</button>
           </div>
         </div>
 
+        <!-- Logo Horizontal Corporativo -->
         <div class="tile">
           <div class="tile-header">
-            <div class="tile-icon">🏆</div>
-            <div class="tile-info">
-              <div class="tile-name">Logo Oficial PNG Transparente</div>
-              <div class="tile-desc">Chip Microprocesador + HUD Corchetes Neón (1024×1024 px).</div>
+            <div style="width: 52px; height: 42px; border-radius: 8px; border: 1.5px solid var(--cyber-cyan); background: #0A0F1D; display: flex; align-items: center; justify-content: center; padding: 3px; flex-shrink: 0; box-shadow: 0 0 10px rgba(0,229,255,0.25);">
+              <img src="Logo/logo_horizontal_completo.png" alt="Logo Horizontal" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
             </div>
-          </div>
-          <div class="tile-route">Logo/logo.png</div>
-          <div class="tile-actions">
-            <a class="btn btn-cyan" href="Logo/logo.png" target="_blank">Ver Logo PNG</a>
-          </div>
-        </div>
-
-        <div class="tile">
-          <div class="tile-header">
-            <div class="tile-icon">👤</div>
-            <div class="tile-info">
-              <div class="tile-name">Avatar Oficial Redes & App Móvil</div>
-              <div class="tile-desc">Icono PWA para acceso directo en Android e iPhone iOS.</div>
-            </div>
-          </div>
-          <div class="tile-route">Logo/logo_perfil_avatar.png</div>
-          <div class="tile-actions">
-            <a class="btn btn-cyan" href="Logo/logo_perfil_avatar.png" target="_blank">Ver Avatar PNG</a>
-          </div>
-        </div>
-
-        <div class="tile">
-          <div class="tile-header">
-            <div class="tile-icon">🏢</div>
             <div class="tile-info">
               <div class="tile-name">Logo Horizontal Corporativo</div>
               <div class="tile-desc">Isotipo + Nombre + Razón Social + NIT (2400×800 px).</div>
@@ -809,13 +931,64 @@
           <div class="tile-route">Logo/logo_horizontal_completo.png</div>
           <div class="tile-actions">
             <a class="btn btn-cyan" href="Logo/logo_horizontal_completo.png" target="_blank">Ver Horizontal PNG</a>
+            <button class="btn btn-outline" onclick="copyText('Logo/logo_horizontal_completo.png')">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Logo Oficial PNG Transparente -->
+        <div class="tile">
+          <div class="tile-header">
+            <img src="Logo/logo.png" alt="Logo Oficial" style="width: 42px; height: 42px; border-radius: 10px; border: 1.5px solid var(--cyber-orange); background: #0A0F1D; object-fit: contain; flex-shrink: 0; box-shadow: 0 0 10px rgba(255,113,32,0.25);" />
+            <div class="tile-info">
+              <div class="tile-name">Logo Oficial PNG Transparente</div>
+              <div class="tile-desc">Chip Microprocesador + HUD Corchetes Neón (1024×1024 px).</div>
+            </div>
+          </div>
+          <div class="tile-route">Logo/logo.png</div>
+          <div class="tile-actions">
+            <a class="btn btn-outline" href="Logo/logo.png" target="_blank">Ver Logo PNG</a>
+            <button class="btn btn-outline" onclick="copyText('Logo/logo.png')">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Avatar Oficial Redes & App Móvil -->
+        <div class="tile">
+          <div class="tile-header">
+            <img src="Logo/logo_perfil_avatar.png" alt="Avatar Oficial" style="width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--cyber-orange); background: #0A0F1D; object-fit: contain; flex-shrink: 0; box-shadow: 0 0 10px rgba(255,113,32,0.25);" />
+            <div class="tile-info">
+              <div class="tile-name">Avatar Oficial Redes & App Móvil</div>
+              <div class="tile-desc">Icono PWA para acceso directo en Android e iPhone iOS.</div>
+            </div>
+          </div>
+          <div class="tile-route">Logo/logo_perfil_avatar.png</div>
+          <div class="tile-actions">
+            <a class="btn btn-outline" href="Logo/logo_perfil_avatar.png" target="_blank">Ver Avatar PNG</a>
+            <button class="btn btn-outline" onclick="copyText('Logo/logo_perfil_avatar.png')">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Logo Tipográfico 3D INTEPE Naranja (Perspectiva) -->
+        <div class="tile" style="border-color: rgba(255, 113, 32, 0.4);">
+          <div class="tile-header">
+            <div style="width: 52px; height: 42px; border-radius: 8px; border: 1.5px solid var(--cyber-orange); background: #0A0F1D; display: flex; align-items: center; justify-content: center; padding: 4px; flex-shrink: 0; box-shadow: 0 0 10px rgba(255,113,32,0.3);">
+              <img src="Logo/logo_intepe_letras_3d.png" alt="INTEPE 3D" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+            </div>
+            <div class="tile-info">
+              <div class="tile-name" style="color: var(--cyber-orange);">Logo Letras 3D INTEPE (Perspectiva Naranja)</div>
+              <div class="tile-desc">Tipografía corporativa INTEPE con extrusión tridimensional, bisel profundo y fuga en perspectiva.</div>
+            </div>
+          </div>
+          <div class="tile-route">Logo/logo_intepe_letras_3d.png</div>
+          <div class="tile-actions">
+            <a class="btn btn-orange" href="Logo/logo_intepe_letras_3d.png" target="_blank">Ver Letras 3D</a>
+            <button class="btn btn-outline" onclick="copyText('Logo/logo_intepe_letras_3d.png')">Copiar</button>
           </div>
         </div>
 
       </div>
     </div>
 
-    <!-- 7. FOOTER NOTE -->
+    <!-- 8. FOOTER NOTE -->
     <div class="footer-note">
       INFORMÁTICA Y TECNOLOGÍA PENAGOS S.A.S. (INTEPE S.A.S.) • Bogotá, Colombia • Soporte: (+57) 313 386 2656
     </div>

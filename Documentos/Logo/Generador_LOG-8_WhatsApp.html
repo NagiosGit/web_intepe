@@ -142,6 +142,13 @@
       box-shadow: 0 0 20px rgba(0, 229, 255, 0.35);
     }
 
+    .btn.active {
+      border-color: var(--cyber-cyan);
+      background: rgba(0, 229, 255, 0.15);
+      color: var(--cyber-cyan);
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
+    }
+
     .btn:hover:not(.btn-primary):not(.btn-cyan) {
       background: rgba(255, 255, 255, 0.12);
       border-color: #FFF;
@@ -473,12 +480,12 @@
       <p>Diseño corporativo actualizado con los 6 pilares de servicio de INTEPE S.A.S. para catálogos, perfiles de WhatsApp y papelería digital.</p>
     </header>
 
-    <!-- Toolbar -->
+    <!-- Toolbar Theme & Export -->
     <div class="toolbar">
-      <button class="btn btn-primary" onclick="setTheme('dark')">
+      <button class="btn btn-primary" id="btn-theme-dark" onclick="setTheme('dark')">
         🌙 Modo Cyber Oscuro (Principal)
       </button>
-      <button class="btn" onclick="setTheme('white')">
+      <button class="btn" id="btn-theme-white" onclick="setTheme('white')">
         ☀️ Modo Blanco Ejecutivo
       </button>
       <button class="btn btn-cyan" onclick="exportBanner('LOG-8.jpg')">
@@ -486,6 +493,31 @@
       </button>
       <button class="btn" onclick="exportBanner('LOG-8_Ultra_4K.png')">
         💎 Exportar PNG Alta Calidad (4K)
+      </button>
+    </div>
+
+    <!-- Toolbar Icon Selector -->
+    <div class="toolbar" style="gap: 8px; padding: 10px 16px;">
+      <span style="font-family: var(--font-mono); font-size: 11px; color: #94A3B8; display: flex; align-items: center; margin-right: 6px;">
+        🏷️ Logo en Banner:
+      </span>
+      <button class="btn active" id="btn-logo-helpdesk" onclick="setLogo('helpdesk')">
+        🎧 Help Desk
+      </button>
+      <button class="btn" id="btn-logo-soporte" onclick="setLogo('soporte')">
+        🛠️ Soporte TI
+      </button>
+      <button class="btn" id="btn-logo-chip" onclick="setLogo('chip')">
+        🔲 Chip Squircle
+      </button>
+      <button class="btn" id="btn-logo-pure" onclick="setLogo('pure')">
+        🟠 Chip Google
+      </button>
+      <button class="btn" id="btn-logo-letras3d" onclick="setLogo('letras3d')">
+        🏢 Letras 3D
+      </button>
+      <button class="btn" id="btn-logo-none" onclick="setLogo('none')">
+        ✖ Sin Logo
       </button>
     </div>
 
@@ -497,6 +529,11 @@
         
         <!-- Header -->
         <div class="banner-header">
+          <!-- Interactive Logo Badge -->
+          <div id="banner-logo-wrapper" style="margin-bottom: 6px;">
+            <img id="banner-logo-img" src="logoRedondo_helpdesk.png" alt="Logo INTEPE" style="width: 76px; height: 76px; object-fit: contain; filter: drop-shadow(0 0 12px rgba(0, 229, 255, 0.45));" />
+          </div>
+
           <div class="banner-top-pill">⚡ SOLUCIONES CORPORATIVAS TI & CONSULTORÍA</div>
           
           <div class="banner-brand-title">
@@ -619,12 +656,71 @@
   </div>
 
   <script>
+    let currentTheme = 'dark';
+    let currentLogo = 'helpdesk';
+
+    const logoSources = {
+      helpdesk: 'logoRedondo_helpdesk.png',
+      soporte: 'logoRedondo_soporte.png',
+      chip: 'logo_icono_chip_nuevo.png',
+      pure: 'logo_whatsapp_chip_puro.png',
+      letras3d: 'logo_intepe_letras_3d_hd.png',
+      none: ''
+    };
+
     function setTheme(mode) {
+      currentTheme = mode;
       const banner = document.getElementById('target-banner');
+      const btnDark = document.getElementById('btn-theme-dark');
+      const btnWhite = document.getElementById('btn-theme-white');
+
       if (mode === 'white') {
         banner.className = 'banner-frame theme-white';
+        btnWhite.classList.add('btn-primary');
+        btnDark.classList.remove('btn-primary');
       } else {
         banner.className = 'banner-frame theme-dark';
+        btnDark.classList.add('btn-primary');
+        btnWhite.classList.remove('btn-primary');
+      }
+    }
+
+    function setLogo(logoKey) {
+      currentLogo = logoKey;
+      const wrapper = document.getElementById('banner-logo-wrapper');
+      const img = document.getElementById('banner-logo-img');
+
+      ['helpdesk', 'soporte', 'chip', 'pure', 'letras3d', 'none'].forEach(k => {
+        const b = document.getElementById('btn-logo-' + k);
+        if (b) b.classList.toggle('active', k === logoKey);
+      });
+
+      if (logoKey === 'none') {
+        wrapper.style.display = 'none';
+      } else {
+        wrapper.style.display = 'block';
+        img.src = logoSources[logoKey];
+        if (logoKey === 'letras3d') {
+          img.style.filter = 'drop-shadow(0 4px 15px rgba(255, 113, 32, 0.4))';
+          img.style.borderRadius = '0';
+          img.style.width = '120px';
+          img.style.height = 'auto';
+        } else if (logoKey === 'chip') {
+          img.style.filter = 'drop-shadow(0 0 14px rgba(255, 113, 32, 0.45))';
+          img.style.borderRadius = '14px';
+          img.style.width = '76px';
+          img.style.height = '76px';
+        } else if (logoKey === 'pure') {
+          img.style.filter = 'drop-shadow(0 0 12px rgba(255, 113, 32, 0.35))';
+          img.style.borderRadius = '50%';
+          img.style.width = '76px';
+          img.style.height = '76px';
+        } else {
+          img.style.filter = 'drop-shadow(0 0 14px rgba(0, 229, 255, 0.45))';
+          img.style.borderRadius = '50%';
+          img.style.width = '76px';
+          img.style.height = '76px';
+        }
       }
     }
 
